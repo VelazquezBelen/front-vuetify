@@ -1,5 +1,9 @@
 <template>
   <div class="encuestas">
+    <h1>
+      <span>ENCUESTAS</span>
+    </h1>
+    <hr />
     <div class="text-center ma2">
       <v-snackbar v-model="snackbar" :timeout="2000" top color="success">
         <span>¡Encuesta Agregada! &nbsp;</span>

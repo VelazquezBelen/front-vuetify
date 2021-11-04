@@ -2,8 +2,8 @@
   <nav>
     <v-app-bar text app>
       <v-app-bar-nav-icon class="grey--text" @click="drawer = !drawer"></v-app-bar-nav-icon>      <v-toolbar-title class="text-uppercase">
-        <span class="font-weight-light">Todo</span>
-        <span>Ninja</span>
+        <span class="font-weight-light">Trabajo</span>
+        <span>Final</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
     <v-btn text >
@@ -20,11 +20,12 @@
         <v-list-item-group
           active-class="white--text text--accent-4"
         >
-          <v-list-item router_link to='/encuestas'>
+
+          <v-list-item router_link to='/'>
             <v-list-item-icon >
-              <v-icon class="white--text">mdi-clipboard-text-outline</v-icon>
+              <v-icon class="white--text" >mdi-home</v-icon>
             </v-list-item-icon>
-            <v-list-item-title class="white--text">Encuestas</v-list-item-title>
+            <v-list-item-title class="white--text">Inicio</v-list-item-title>
           </v-list-item>
 
           <v-list-item router_link to='/profile'>
@@ -33,6 +34,14 @@
             </v-list-item-icon>
             <v-list-item-title class="white--text">Perfil</v-list-item-title>
           </v-list-item>
+
+          <v-list-item router_link to='/encuestas'>
+            <v-list-item-icon >
+              <v-icon class="white--text">mdi-clipboard-text-outline</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title class="white--text">Encuestas</v-list-item-title>
+          </v-list-item>
+
         </v-list-item-group>
       </v-list>
   </v-navigation-drawer>
