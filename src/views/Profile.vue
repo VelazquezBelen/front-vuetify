@@ -1,10 +1,12 @@
 <template>
-<div class="home">
+<div class="profile">
     <div>
       <h1>
         <span>PERFIL</span>
       </h1>
       <hr />
+    </div>
+    <div class="pa-2">
     </div>
   <v-row justify="center">
     <v-col
@@ -79,7 +81,7 @@
         </v-list>
 
         <v-img
-          src="https://www.nicepng.com/png/detail/147-1473494_circulo-instagram-profile-picture-circle-template.png"
+          src="https://i.imgflip.com/1slnr0.jpg"
           height="200px"
         ></v-img>
       </v-card>
