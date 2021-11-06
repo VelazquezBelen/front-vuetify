@@ -9,8 +9,6 @@
           pt-3
           class="mr-2"
           small
-          color="red lighten-2"
-          dark
           v-bind="attrs"
           v-on="on"
           @click="getEncuesta"

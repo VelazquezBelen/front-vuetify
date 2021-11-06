@@ -75,15 +75,14 @@
                 </v-dialog>
               </v-toolbar>
             </template>
-            <template v-slot:item.actions="{ item }">
-              <v-row>
-                <template v-if="item.tipoEncuesta === 'Neonato'"> <EditarNeonato :id="item._id" @encuestaActualizada="snackbarActualizo=true" @getEncuestas="getEncuestas"></EditarNeonato></template>
-                <template v-if="item.tipoEncuesta === 'Tercer trimestre'"> <EditarTercerTrimestre :id="item._id" @encuestaActualizada="snackbarActualizo=true" @getEncuestas="getEncuestas"></EditarTercerTrimestre></template>
-                <template v-if="item.tipoEncuesta === 'Primer y segundo trimestre'"> <EditarPrimerySegundoTrimestre :id="item._id" @encuestaActualizada="snackbarActualizo=true" @getEncuestas="getEncuestas"></EditarPrimerySegundoTrimestre></template>
+            <template v-slot:item.actions="{ item }">              <v-row>
                 <template v-if="item.tipoEncuesta === 'Tercer trimestre'"> <VerTercerTrimestre :id="item._id"></VerTercerTrimestre></template>
                 <template v-if="item.tipoEncuesta === 'Neonato'"> <VerNeonato :id="item._id"></VerNeonato></template>
                 <template v-if="item.tipoEncuesta === 'Primer y segundo trimestre'"> <VerPrimerySegundoTrimestre :id="item._id"></VerPrimerySegundoTrimestre></template>
-                <v-icon color="red lighten-2" small @click="eliminarEncuesta(item)"> mdi-delete </v-icon>
+                <template v-if="item.tipoEncuesta === 'Neonato'"> <EditarNeonato :id="item._id" @encuestaActualizada="snackbarActualizo=true" @getEncuestas="getEncuestas"></EditarNeonato></template>
+                <template v-if="item.tipoEncuesta === 'Tercer trimestre'"> <EditarTercerTrimestre :id="item._id" @encuestaActualizada="snackbarActualizo=true" @getEncuestas="getEncuestas"></EditarTercerTrimestre></template>
+                <template v-if="item.tipoEncuesta === 'Primer y segundo trimestre'"> <EditarPrimerySegundoTrimestre :id="item._id" @encuestaActualizada="snackbarActualizo=true" @getEncuestas="getEncuestas"></EditarPrimerySegundoTrimestre></template>
+                <v-icon small @click="eliminarEncuesta(item)"> mdi-delete </v-icon>
               </v-row>
             </template>
           </v-data-table>

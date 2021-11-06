@@ -3,7 +3,7 @@
     <v-dialog v-model="dialog" width="1200">
       <template v-slot:activator="{ on, attrs }">
         <v-icon class="mr-2"
-          small color="red lighten-2" dark v-bind="attrs" v-on="on" @click="getEncuesta">
+          small v-bind="attrs" v-on="on" @click="getEncuesta">
           mdi-pencil
         </v-icon>
       </template>
