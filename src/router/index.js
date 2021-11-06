@@ -3,7 +3,6 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Encuestas from '../views/PanelEncuestas.vue'
 import Profile from '../views/Profile.vue'
-import Admin from '../views/Admin.vue'
 
 Vue.use(VueRouter)
 
@@ -22,11 +21,6 @@ const routes = [
     path: "/profile",
     name: "profile",
     component: Profile
-  },
-  {
-    path: "/admin",
-    name: "admin",
-    component: Admin
   }
 ]
 

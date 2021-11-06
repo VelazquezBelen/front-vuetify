@@ -35,7 +35,6 @@
               <v-col cols="12" md="4">
                 <v-text-field
                   v-model="encuesta.nombreApellidoEncuestador1"
-                  :rules = "rules.obligatorio"
                   :counter="25"
                   label="Nombre y apellido Encuestador 1"
                 ></v-text-field>
@@ -43,11 +42,8 @@
               <v-col cols="12" md="4">
                 <v-text-field
                   v-model="encuesta.telefonoEncuestador1"
-                  :rules = "rules.obligatorio"
                   :counter="10"
                   label="Teléfono"
-                  type="number"
-                  min="0"
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="4">
@@ -66,23 +62,18 @@
               <v-col cols="12" md="4">
                 <v-text-field
                   v-model="encuesta.nombreApellidoEncuestador2"
-                  :rules = "rules.obligatorio"
                   label="Nombre y apellido Encuestador 2"            
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="4">
                 <v-text-field
                   v-model="encuesta.telefonoEncuestador2"
-                  :rules = "rules.obligatorio"
                   label="Teléfono"
-                  type="number"
-                  min="0"
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="4">
                 <v-text-field
                   v-model="encuesta.emailEncuestador2"
-                  :rules = "rules.email"
                   label="E-mail"
                   hint="email@example.com"
                   persistent-hint
@@ -118,13 +109,10 @@
               </v-menu>
               </v-col>
               <v-col cols="12" md="6">
-                <v-select
+                <v-text-field
                   v-model="encuesta.lugarRelevamiento"
-                  :items="lugares"
-                  item-value="nombre"
-                  item-text="nombre"
-                  label="Lugar de relevamiento"
-                ></v-select>
+                  label="Lugar del relevamiento"
+                ></v-text-field>
               </v-col>
             </v-row>
           </v-container>
@@ -135,17 +123,13 @@
               <v-col cols="12" md="4">
                 <v-text-field
                   v-model="encuesta.nombreApellido"
-                  :rules = "rules.obligatorio"
                   label="Nombre y apellido"
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="4">
                 <v-text-field
                   v-model="encuesta.dni"
-                  :rules = "rules.obligatorio"
                   label="DNI"
-                  type="number"
-                  min="0"
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="4">
@@ -178,7 +162,6 @@
               <v-col cols="12" md="12">
                 <v-text-field
                   v-model="encuesta.domicilioBarrio"
-                  :rules = "rules.obligatorio"
                   label="Domicilio/barrio"
                 ></v-text-field>
               </v-col>
@@ -188,8 +171,6 @@
                 <v-text-field
                   v-model="encuesta.telefono"
                   label="Teléfono"
-                  type="number"
-                  min="0"
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="4">
@@ -272,8 +253,7 @@
                   v-model="encuesta.pesoKG"
                   label="5.1 Peso"
                   suffix="Kg"
-                  type="number"
-                  min="0"
+                  placeholder="55.230"
                   :rules="rules.number"
                 ></v-text-field>
               </v-col>
@@ -291,8 +271,6 @@
                   v-model="encuesta.talla"
                   label="5.2 Longitud (talla)"
                   suffix="cm"
-                  type="number"
-                  min="0"
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -302,8 +280,6 @@
                   v-model="encuesta.perimetroCefalico"
                   label="5.3 Perímetro cefálico"
                   suffix="cm"
-                  type="number"
-                  min="0"
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="6">
@@ -313,8 +289,6 @@
                   suffix="cm"
                   hint="La medida 5.4 tomar del lado derecho del cuerpo."
                   persistent-hint
-                  type="number"
-                  min="0"
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -333,8 +307,6 @@
                 <v-text-field
                   v-model="encuesta.dniMadre"
                   label="DNI"
-                  type="number"
-                  min="0"
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -459,13 +431,8 @@ class Encuesta {
             v => /.+@.+/.test(v) || 'E-mail must be valid',
           ],
           number: [val => /^[0-9]\d*(\.\d+)?$/.test(val) || 'Usar punto'],
-          obligatorio: [o=> !!o || 'Este campo es obligatorio'],
         },
-        lugares: [],
         }
-    },
-    created() {
-    this.getLugares();
     },
     methods: {
     async agregarEncuesta() {
@@ -486,10 +453,6 @@ class Encuesta {
     limpiarEncuesta() {
       this.encuesta = new Encuesta();
     }, 
-    async getLugares() {
-      const res = await this.axios.get(`${this.baseUrl}/lugares`);
-      this.lugares = res.data;
-    },
   }
 }
 </script>

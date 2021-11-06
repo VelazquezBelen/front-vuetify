@@ -42,13 +42,6 @@
             <v-list-item-title class="white--text">Encuestas</v-list-item-title>
           </v-list-item>
 
-          <v-list-item router_link to='/admin'>
-            <v-list-item-icon >
-              <v-icon class="white--text">mdi-shield-account</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title class="white--text">Administracion</v-list-item-title>
-          </v-list-item>
-
         </v-list-item-group>
       </v-list>
   </v-navigation-drawer>

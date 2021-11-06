@@ -32,7 +32,6 @@
                     v-model="encuesta.nombreApellidoEncuestador1"
                     :counter="25"
                     label="Nombre y apellido Encuestador 1"
-                    :rules = "rules.obligatorio"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
@@ -40,15 +39,11 @@
                     v-model="encuesta.telefonoEncuestador1"
                     :counter="10"
                     label="Teléfono"
-                    type="number"
-                    min="0"
-                    :rules = "rules.obligatorio"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <v-text-field
                     v-model="encuesta.emailEncuestador1"
-                    :rules = "rules.email"
                     label="E-mail"
                     hint="email@example.com"
                     persistent-hint
@@ -62,22 +57,17 @@
                   <v-text-field
                     v-model="encuesta.nombreApellidoEncuestador2"
                     label="Nombre y apellido Encuestador 2"
-                    :rules = "rules.obligatorio"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <v-text-field
                     v-model="encuesta.telefonoEncuestador2"
                     label="Teléfono"
-                    type="number"
-                    min="0"
-                    :rules = "rules.obligatorio"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <v-text-field
                     v-model="encuesta.emailEncuestador2"
-                    :rules = "rules.email"
                     label="E-mail"
                     hint="email@example.com"
                     persistent-hint
@@ -113,13 +103,10 @@
                   </v-menu>
                 </v-col>
                 <v-col cols="12" md="6">
-                  <v-select
-                  v-model="encuesta.lugarRelevamiento"
-                  :items="lugares"
-                  item-value="nombre"
-                  item-text="nombre"
-                  label="Lugar de relevamiento"
-                ></v-select>
+                  <v-text-field
+                    v-model="encuesta.lugarRelevamiento"
+                    label="Lugar del relevamiento"
+                  ></v-text-field>
                 </v-col>
               </v-row>
             </v-container>
@@ -133,16 +120,12 @@
                   <v-text-field
                     v-model="encuesta.nombreApellido"
                     label="Nombre y apellido"
-                    :rules = "rules.obligatorio"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <v-text-field
                     v-model="encuesta.dni"
                     label="DNI"
-                    type="number"
-                    min="0"
-                    :rules = "rules.obligatorio"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
@@ -176,7 +159,6 @@
                   <v-text-field
                     v-model="encuesta.domicilioBarrio"
                     label="Domicilio/barrio"
-                    :rules = "rules.obligatorio"
                   ></v-text-field>
                 </v-col>
               </v-row>
@@ -185,8 +167,6 @@
                   <v-text-field
                     v-model="encuesta.telefono"
                     label="Teléfono"
-                    type="number"
-                    min="0"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
@@ -218,9 +198,6 @@
                   <v-text-field
                     v-model="encuesta.semanasGestacion"
                     label="Semanas de gestación"
-                    type="number"
-                    min="0"
-                    :rules = "rules.obligatorio"
                   ></v-text-field>
                 </v-col>
               </v-row>
@@ -838,8 +815,7 @@
                     v-model="encuesta.pesoKG"
                     label="3.1 Peso"
                     suffix="Kg"
-                    type="number"
-                    min="0"
+                    placeholder="55.230"
                     :rules="rules.number"
                   ></v-text-field>
                 </v-col>
@@ -857,8 +833,6 @@
                     v-model="encuesta.talla"
                     label="3.2 Talla"
                     suffix="cm"
-                    type="number"
-                    min="0"
                     :rules="rules.number"
                   ></v-text-field>
                 </v-col>
@@ -869,8 +843,6 @@
                     v-model="encuesta.tallaSentada"
                     label="3.3 Talla sentada"
                     suffix="cm"
-                    type="number"
-                    min="0"
                     :rules="rules.number"
                   ></v-text-field>
                 </v-col>
@@ -882,18 +854,14 @@
                     hint="Las mediciones entre 3.4 y 3.8 tomarlas del lado derecho
                       del cuerpo."
                     persistent-hint
-                    type="number"
-                    min="0"
                     :rules="rules.number"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <v-text-field
                     v-model="encuesta.pliegueTricipital"
-                    label="3.5 Pliegue tricipital"
+                    label="3.5 Pliegue tricipal"
                     suffix="cm"
-                    type="number"
-                    min="0"
                     :rules="rules.number"
                   ></v-text-field>
                 </v-col>
@@ -902,10 +870,8 @@
                 <v-col cols="12" md="4">
                   <v-text-field
                     v-model="encuesta.pliegueBicipital"
-                    label="3.6 Pliegue bicipital"
+                    label="3.6 Pliegue bicipal"
                     suffix="cm"
-                    type="number"
-                    min="0"
                     :rules="rules.number"
                   ></v-text-field>
                 </v-col>
@@ -914,8 +880,6 @@
                     v-model="encuesta.pliegueSubescapular"
                     label="3.7 Pliegue subescapular"
                     suffix="cm"
-                    type="number"
-                    min="0"
                     :rules="rules.number"
                   ></v-text-field>
                 </v-col>
@@ -924,8 +888,6 @@
                     v-model="encuesta.pliegueSuprailiaco"
                     label="3.8 Pliegue suprailíaco"
                     suffix="cm"
-                    type="number"
-                    min="0"
                     :rules="rules.number"
                   ></v-text-field>
                 </v-col>
@@ -1188,8 +1150,6 @@
                       <td>
                         <v-text-field
                           v-model="recordatorio.cantidad"
-                          type="number"
-                          min="0"
                         ></v-text-field>
                       </td>
                       <td>
@@ -1263,8 +1223,6 @@
                     v-model="encuesta.desayuno"
                     label="4.10 Desayuno"
                     suffix="veces"
-                    type="number"
-                    min="0"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="3">
@@ -1272,8 +1230,6 @@
                     v-model="encuesta.almuerzo"
                     label="4.11 Almuerzo"
                     suffix="veces"
-                    type="number"
-                    min="0"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="3">
@@ -1281,8 +1237,6 @@
                     v-model="encuesta.merienda"
                     label="4.12 Merienda"
                     suffix="veces"
-                    type="number"
-                    min="0"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="3">
@@ -1290,8 +1244,6 @@
                     v-model="encuesta.cena"
                     label="4.13 Cena"
                     suffix="veces"
-                    type="number"
-                    min="0"
                   ></v-text-field>
                 </v-col>
               </v-row>
@@ -1414,7 +1366,6 @@
                     v-model="encuesta.consumioLeche"
                     :items="[
                       'Nunca o menos de 1 vez al mes',
-                      'Entre 1 y 3 veces al mes',
                       '1 vez por semana',
                       '2 a 4 veces por semana',
                       '5 a 6 veces por semana',
@@ -1431,7 +1382,6 @@
                     v-model="encuesta.consumioFrutasFrescas"
                     :items="[
                       'Nunca o menos de 1 vez al mes',
-                      'Entre 1 y 3 veces al mes',
                       '1 vez por semana',
                       '2 a 4 veces por semana',
                       '5 a 6 veces por semana',
@@ -1448,7 +1398,6 @@
                     v-model="encuesta.consumioVerduras"
                     :items="[
                       'Nunca o menos de 1 vez al mes',
-                      'Entre 1 y 3 veces al mes',
                       '1 vez por semana',
                       '2 a 4 veces por semana',
                       '5 a 6 veces por semana',
@@ -1466,7 +1415,6 @@
                     v-model="encuesta.consumioPapa"
                     :items="[
                       'Nunca o menos de 1 vez al mes',
-                      'Entre 1 y 3 veces al mes',
                       '1 vez por semana',
                       '2 a 4 veces por semana',
                       '5 a 6 veces por semana',
@@ -1484,7 +1432,6 @@
                     v-model="encuesta.consumioCereales"
                     :items="[
                       'Nunca o menos de 1 vez al mes',
-                      'Entre 1 y 3 veces al mes',
                       '1 vez por semana',
                       '2 a 4 veces por semana',
                       '5 a 6 veces por semana',
@@ -1503,7 +1450,6 @@
                     v-model="encuesta.consumioEmbutidos"
                     :items="[
                       'Nunca o menos de 1 vez al mes',
-                      'Entre 1 y 3 veces al mes',
                       '1 vez por semana',
                       '2 a 4 veces por semana',
                       '5 a 6 veces por semana',
@@ -1552,7 +1498,6 @@
                     v-model="encuesta.consumioCarne"
                     :items="[
                       'Nunca o menos de 1 vez al mes',
-                      'Entre 1 y 3 veces al mes',
                       '1 vez por semana',
                       '2 a 4 veces por semana',
                       '5 a 6 veces por semana',
@@ -1570,7 +1515,6 @@
                     v-model="encuesta.consumioPescado"
                     :items="[
                       'Nunca o menos de 1 vez al mes',
-                      'Entre 1 y 3 veces al mes',
                       '1 vez por semana',
                       '2 a 4 veces por semana',
                       '5 a 6 veces por semana',
@@ -1587,7 +1531,6 @@
                     v-model="encuesta.consumioAceites"
                     :items="[
                       'Nunca o menos de 1 vez al mes',
-                      'Entre 1 y 3 veces al mes',
                       '1 vez por semana',
                       '2 a 4 veces por semana',
                       '5 a 6 veces por semana',
@@ -1605,7 +1548,6 @@
                     v-model="encuesta.consumioFrutasSecas"
                     :items="[
                       'Nunca o menos de 1 vez al mes',
-                      'Entre 1 y 3 veces al mes',
                       '1 vez por semana',
                       '2 a 4 veces por semana',
                       '5 a 6 veces por semana',
@@ -1624,7 +1566,6 @@
                     v-model="encuesta.consumioProductosCopetin"
                     :items="[
                       'Nunca o menos de 1 vez al mes',
-                      'Entre 1 y 3 veces al mes',
                       '1 vez por semana',
                       '2 a 4 veces por semana',
                       '5 a 6 veces por semana',
@@ -1642,7 +1583,6 @@
                     v-model="encuesta.consumioGolosinas"
                     :items="[
                       'Nunca o menos de 1 vez al mes',
-                      'Entre 1 y 3 veces al mes',
                       '1 vez por semana',
                       '2 a 4 veces por semana',
                       '5 a 6 veces por semana',
@@ -1938,13 +1878,8 @@ export default {
           (v) => /.+@.+/.test(v) || "E-mail must be valid",
         ],
         number: [(val) => /^[0-9]\d*(\.\d+)?$/.test(val) || "Usar punto"],
-        obligatorio: [o=> !!o || 'Este campo es obligatorio'],
       },
-      lugares: [],
     };
-  },
-  created() {
-    this.getLugares();
   },
   methods: {
     async agregarEncuesta() {
@@ -1967,10 +1902,6 @@ export default {
     limpiarEncuesta() {
       this.encuesta = new Encuesta();
     },
-    async getLugares() {
-      const res = await this.axios.get(`${this.baseUrl}/lugares`);
-      this.lugares = res.data;
-    },
     agregarRecordatorio() {
       this.recordatorios.push(this.recordatorio);
       this.recordatorio = new Recordatorio24hs();
@@ -1978,12 +1909,7 @@ export default {
     eliminarRecordatorio(recordatorio) {
       this.recordatorios.splice(this.recordatorios.indexOf(recordatorio), 1);
     },
-    editarRecordatorio(recordatorio) {
-      this.recordatorio.horaDia = this.recordatorios[this.recordatorios.indexOf(recordatorio)].horaDia;
-      this.recordatorio.tipoAlimento = this.recordatorios[this.recordatorios.indexOf(recordatorio)].tipoAlimento;
-      this.recordatorio.cantidad = this.recordatorios[this.recordatorios.indexOf(recordatorio)].cantidad;
-      this.recordatorios.splice(this.recordatorios.indexOf(recordatorio), 1);
-    },
+    editarRecordatorio(recordatorio) {},
   },
 };
 </script>
