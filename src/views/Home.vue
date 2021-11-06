@@ -1,10 +1,9 @@
 <template>
   <div class="home">
-    <div>
-      <h1>
-        <span>INICIO</span>
-      </h1>
-      <hr />
+    <h2 class="grey--text">
+      <span>INICIO</span>
+    </h2>
+    <hr />
       <div class="text-center">
         <img alt="Vue logo" src="../assets/logo.png" />
       </div>

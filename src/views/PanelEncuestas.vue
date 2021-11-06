@@ -1,7 +1,7 @@
 <template>
   <div class="encuestas">
     <h2 class="grey--text">
-      <span>Encuestas</span>
+      <span>ENCUESTAS</span>
     </h2>
     <hr />
     <div class="text-center ma2">

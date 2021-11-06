@@ -1,11 +1,9 @@
 <template>
 <div class="profile">
-    <div>
-      <h1>
-        <span>PERFIL</span>
-      </h1>
-      <hr />
-    </div>
+    <h2 class="grey--text">
+      <span>PERFIL</span>
+    </h2>
+    <hr />
     <div class="pa-2">
     </div>
   <v-row justify="center">
