@@ -1,23 +1,24 @@
 <template>
-  <div class="text-center">
+      <div class="text-center">
     <v-dialog v-model="dialog" width="1200">
       <template v-slot:activator="{ on, attrs }">
-        <v-btn
-          
-          text
-          color="blue-grey"
+        <v-icon
+          class="mr-2"
+          small
+          color="red lighten-2"
+          dark
           v-bind="attrs"
           v-on="on"
+          @click="getEncuesta"
         >
-        <v-icon left small>mdi-file-plus-outline</v-icon>
-          <span class="caption">Nueva encuesta primer y segundo trimestre</span>
-        </v-btn>
+            mdi-eye-outline
+        </v-icon>
       </template>
       <v-card>
         <v-card-title
           class="text-center text-h5 font-weight-regular blue-grey--text"
         >
-          Nueva encuesta primer y segundo trimestre
+          Encuesta primer y segundo trimestre
         </v-card-title>
         <v-divider class="mb-4"></v-divider>
         <v-card-text>
@@ -37,23 +38,22 @@
                 <v-col cols="12" md="4">
                   <v-text-field
                     v-model="encuesta.nombreApellidoEncuestador1"
-                    :counter="25"
                     label="Nombre y apellido Encuestador 1"
+                    readonly
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <v-text-field
                     v-model="encuesta.telefonoEncuestador1"
-                    :counter="10"
                     label="Teléfono"
+                    readonly
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <v-text-field
                     v-model="encuesta.emailEncuestador1"
                     label="E-mail"
-                    hint="email@example.com"
-                    persistent-hint
+                    readonly
                   ></v-text-field>
                 </v-col>
               </v-row>
@@ -64,20 +64,21 @@
                   <v-text-field
                     v-model="encuesta.nombreApellidoEncuestador2"
                     label="Nombre y apellido Encuestador 2"
+                    readonly
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <v-text-field
                     v-model="encuesta.telefonoEncuestador2"
                     label="Teléfono"
+                    readonly
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <v-text-field
                     v-model="encuesta.emailEncuestador2"
                     label="E-mail"
-                    hint="email@example.com"
-                    persistent-hint
+                    readonly
                   ></v-text-field>
                 </v-col>
               </v-row>
@@ -85,34 +86,18 @@
             <v-container>
               <v-row>
                 <v-col cols="12" md="6">
-                  <v-menu
-                    v-model="menu1"
-                    :close-on-content-click="false"
-                    :nudge-right="40"
-                    transition="scale-transition"
-                    offset-y
-                    min-width="auto"
-                  >
-                    <template v-slot:activator="{ on, attrs }">
-                      <v-text-field
+                    <v-text-field
                         v-model="encuesta.fechaRelevamiento"
                         label="Fecha de relevamiento"
                         prepend-icon="mdi-calendar"
                         readonly
-                        v-bind="attrs"
-                        v-on="on"
-                      ></v-text-field>
-                    </template>
-                    <v-date-picker
-                      v-model="encuesta.fechaRelevamiento"
-                      @input="menu1 = false"
-                    ></v-date-picker>
-                  </v-menu>
+                    ></v-text-field>                     
                 </v-col>
                 <v-col cols="12" md="6">
                   <v-text-field
                     v-model="encuesta.lugarRelevamiento"
                     label="Lugar del relevamiento"
+                    readonly
                   ></v-text-field>
                 </v-col>
               </v-row>
@@ -127,38 +112,23 @@
                   <v-text-field
                     v-model="encuesta.nombreApellido"
                     label="Nombre y apellido"
+                    readonly
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <v-text-field
                     v-model="encuesta.dni"
                     label="DNI"
+                    readonly
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
-                  <v-menu
-                    v-model="menu2"
-                    :close-on-content-click="false"
-                    :nudge-right="40"
-                    transition="scale-transition"
-                    offset-y
-                    min-width="auto"
-                  >
-                    <template v-slot:activator="{ on, attrs }">
-                      <v-text-field
+                    <v-text-field
                         v-model="encuesta.fechaNacimiento"
                         label="Fecha de nacimiento"
                         prepend-icon="mdi-calendar"
                         readonly
-                        v-bind="attrs"
-                        v-on="on"
-                      ></v-text-field>
-                    </template>
-                    <v-date-picker
-                      v-model="encuesta.fechaNacimiento"
-                      @input="menu2 = false"
-                    ></v-date-picker>
-                  </v-menu>
+                    ></v-text-field>                         
                 </v-col>
               </v-row>
               <v-row>
@@ -166,6 +136,7 @@
                   <v-text-field
                     v-model="encuesta.domicilioBarrio"
                     label="Domicilio/barrio"
+                    readonly
                   ></v-text-field>
                 </v-col>
               </v-row>
@@ -174,37 +145,22 @@
                   <v-text-field
                     v-model="encuesta.telefono"
                     label="Teléfono"
+                    readonly
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
-                  <v-menu
-                    v-model="menu3"
-                    :close-on-content-click="false"
-                    :nudge-right="40"
-                    transition="scale-transition"
-                    offset-y
-                    min-width="auto"
-                  >
-                    <template v-slot:activator="{ on, attrs }">
-                      <v-text-field
+                    <v-text-field
                         v-model="encuesta.fechaUltimaMenstruacion"
                         label="Fecha de última menstruacion"
                         prepend-icon="mdi-calendar"
                         readonly
-                        v-bind="attrs"
-                        v-on="on"
-                      ></v-text-field>
-                    </template>
-                    <v-date-picker
-                      v-model="encuesta.fechaUltimaMenstruacion"
-                      @input="menu3 = false"
-                    ></v-date-picker>
-                  </v-menu>
+                    ></v-text-field>                  
                 </v-col>
                 <v-col cols="12" md="4">
                   <v-text-field
                     v-model="encuesta.semanasGestacion"
                     label="Semanas de gestación"
+                    readonly
                   ></v-text-field>
                 </v-col>
               </v-row>
@@ -213,6 +169,7 @@
                   <v-text-field
                     v-model="encuesta.observacionesBloque0"
                     label="Observaciones"
+                    readonly
                   ></v-text-field>
                 </v-col>
               </v-row>
@@ -239,7 +196,7 @@
             <v-container>
               <v-row>
                 <v-col cols="12" md="4">
-                  <v-radio-group v-model="encuesta.diabetes" row>
+                  <v-radio-group v-model="encuesta.diabetes" row readonly>
                     <template v-slot:label>
                       <div><h3>Diabetes</h3></div>
                     </template>
@@ -249,7 +206,7 @@
                   </v-radio-group>
                 </v-col>
                 <v-col cols="12" md="4">
-                  <v-radio-group v-model="encuesta.enfermedadRenal" row>
+                  <v-radio-group v-model="encuesta.enfermedadRenal" row readonly>
                     <template v-slot:label>
                       <div><h3>Enfermedad renal</h3></div>
                     </template>
@@ -259,7 +216,7 @@
                   </v-radio-group>
                 </v-col>
                 <v-col cols="12" md="4">
-                  <v-radio-group v-model="encuesta.hipertension" row>
+                  <v-radio-group v-model="encuesta.hipertension" row readonly>
                     <template v-slot:label>
                       <div><h3>Hipertension</h3></div>
                     </template>
@@ -274,6 +231,7 @@
                   <v-radio-group
                     v-model="encuesta.colesterolTrigliceridosAltos"
                     row
+                    readonly
                   >
                     <template v-slot:label>
                       <div><h3>Colesterol - Trigliceridos altos</h3></div>
@@ -284,7 +242,7 @@
                   </v-radio-group>
                 </v-col>
                 <v-col cols="12" md="4">
-                  <v-radio-group v-model="encuesta.asmaEPOC" row>
+                  <v-radio-group v-model="encuesta.asmaEPOC" row readonly>
                     <template v-slot:label>
                       <div><h3>Asma o EPOC</h3></div>
                     </template>
@@ -294,7 +252,7 @@
                   </v-radio-group>
                 </v-col>
                 <v-col cols="12" md="4">
-                  <v-radio-group v-model="encuesta.covid19" row>
+                  <v-radio-group v-model="encuesta.covid19" row readonly>
                     <template v-slot:label>
                       <div><h3>COVID-19</h3></div>
                     </template>
@@ -306,7 +264,7 @@
               </v-row>
               <v-row>
                 <v-col cols="12" md="12">
-                  <v-radio-group v-model="encuesta.anemia" row>
+                  <v-radio-group v-model="encuesta.anemia" row readonly>
                     <template v-slot:label>
                       <div><h3>Anemia</h3></div>
                     </template>
@@ -318,7 +276,7 @@
               </v-row>
               <v-row>
                 <v-col cols="12" md="6">
-                  <v-radio-group v-model="encuesta.enfermedadCronica" row>
+                  <v-radio-group v-model="encuesta.enfermedadCronica" row readonly>
                     <template v-slot:label>
                       <div><h3>¿Otra enfermedad crónica?</h3></div>
                     </template>
@@ -331,13 +289,14 @@
                   <v-text-field
                     v-model="encuesta.cualEnfermedadCronica"
                     label="Si contesta afirmativamente: ¿Cúal?"
+                    readonly
                   ></v-text-field>
                 </v-col>
               </v-row>
               <v-divider></v-divider>
               <v-row>
                 <v-col cols="12" md="6">
-                  <v-radio-group v-model="encuesta.consumeMedicamento" row>
+                  <v-radio-group v-model="encuesta.consumeMedicamento" row readonly>
                     <template v-slot:label>
                       <div><h3>1.2 ¿Consume algún medicamento?</h3></div>
                     </template>
@@ -350,6 +309,7 @@
                   <v-text-field
                     v-model="encuesta.cualConsumeMedicamento"
                     label="Si contesta afirmativamente: ¿Cúal?"
+                    readonly
                   ></v-text-field>
                 </v-col>
               </v-row>
@@ -359,6 +319,7 @@
                   <v-radio-group
                     v-model="encuesta.consumeComplejoVitaminicoSuplemento"
                     row
+                    readonly
                   >
                     <template v-slot:label>
                       <div>
@@ -381,13 +342,14 @@
                   <v-text-field
                     v-model="encuesta.cualConsumeComplejoVitaminicoSuplemento"
                     label="Si contesta afirmativamente: ¿Cúal?"
+                    readonly
                   ></v-text-field>
                 </v-col>
               </v-row>
               <v-divider></v-divider>
               <v-row>
                 <v-col cols="12" md="12">
-                  <v-radio-group v-model="encuesta.fumaActual" row>
+                  <v-radio-group v-model="encuesta.fumaActual" row readonly>
                     <template v-slot:label>
                       <div><h3>1.4 ¿Actualmente fuma?</h3></div>
                     </template>
@@ -407,7 +369,7 @@
               <v-divider></v-divider>
               <v-row>
                 <v-col cols="12" md="12">
-                  <v-radio-group v-model="encuesta.fumaAntes" row>
+                  <v-radio-group v-model="encuesta.fumaAntes" row readonly>
                     <template v-slot:label>
                       <div><h3>1.5 ¿Fumaba antes de estar embarazada?</h3></div>
                     </template>
@@ -427,7 +389,7 @@
               <v-divider></v-divider>
               <v-row>
                 <v-col cols="12" md="12">
-                  <v-radio-group v-model="encuesta.alcoholActual" row>
+                  <v-radio-group v-model="encuesta.alcoholActual" row readonly>
                     <template v-slot:label>
                       <div>
                         <h3>1.6 ¿Actualmente consume bebidas alcoholicas?</h3>
@@ -446,7 +408,7 @@
               <v-divider></v-divider>
               <v-row>
                 <v-col cols="12" md="6">
-                  <v-radio-group v-model="encuesta.embarazoAntes" row>
+                  <v-radio-group v-model="encuesta.embarazoAntes" row readonly>
                     <template v-slot:label>
                       <div><h3>1.7 ¿Estuvo embarazada antes?</h3></div>
                     </template>
@@ -458,13 +420,14 @@
                   <v-text-field
                     v-model="encuesta.cuantosEmbarazoAntes"
                     label="Si contesta afirmativamente: ¿Cuántas veces?"
+                    readonly
                   ></v-text-field>
                 </v-col>
               </v-row>
               <v-divider></v-divider>
               <v-row>
                 <v-col cols="12" md="6">
-                  <v-radio-group v-model="encuesta.hijos" row>
+                  <v-radio-group v-model="encuesta.hijos" row readonly>
                     <template v-slot:label>
                       <div><h3>1.8 ¿Tiene hijos?</h3></div>
                     </template>
@@ -476,6 +439,7 @@
                   <v-text-field
                     v-model="encuesta.cuantosHijos"
                     label="Si contesta afirmativamente: ¿Cuántos?"
+                    readonly
                   ></v-text-field>
                 </v-col>
               </v-row>
@@ -484,6 +448,7 @@
                   <v-text-field
                     v-model="encuesta.observacionesBloque1"
                     label="Observaciones"
+                    readonly
                   ></v-text-field>
                 </v-col>
               </v-row>
@@ -506,12 +471,14 @@
                   <v-text-field
                     v-model="encuesta.pais"
                     label="2.1 ¿En que pais nació?"
+                    readonly
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="6">
                   <v-text-field
                     v-model="encuesta.provincia"
                     label="2.2 ¿En que provincia nació?"
+                    readonly
                   ></v-text-field>
                 </v-col>
               </v-row>
@@ -521,19 +488,21 @@
                     v-model="encuesta.personasVivienda"
                     label="2.3 ¿Cuántas personas viven normalmente en su
                       vivienda?"
+                    readonly
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="6">
                   <v-text-field
                     v-model="encuesta.habitacionesVivienda"
                     label="2.4 ¿Cuántas habitaciones tiene su vivienda?"
+                    readonly
                   ></v-text-field>
                 </v-col>
               </v-row>
               <v-divider></v-divider>
               <v-row>
                 <v-col>
-                  <v-radio-group v-model="encuesta.desagueCloaca" row>
+                  <v-radio-group v-model="encuesta.desagueCloaca" row readonly>
                     <template v-slot:label>
                       <div>
                         <h3>
@@ -550,7 +519,7 @@
               <v-divider></v-divider>
               <v-row>
                 <v-col>
-                  <v-radio-group v-model="encuesta.aguaPotable" row>
+                  <v-radio-group v-model="encuesta.aguaPotable" row readonly>
                     <template v-slot:label>
                       <div>
                         <h3>
@@ -568,7 +537,7 @@
               <v-divider></v-divider>
               <v-row>
                 <v-col>
-                  <v-radio-group v-model="encuesta.redElectrica" row>
+                  <v-radio-group v-model="encuesta.redElectrica" row readonly>
                     <template v-slot:label>
                       <div>
                         <h3>
@@ -585,7 +554,7 @@
               <v-divider></v-divider>
               <v-row>
                 <v-col>
-                  <v-radio-group v-model="encuesta.gasNatural" row>
+                  <v-radio-group v-model="encuesta.gasNatural" row readonly>
                     <template v-slot:label>
                       <div><h3>2.8 ¿Utiliza gas natural para cocinar?</h3></div>
                     </template>
@@ -598,42 +567,28 @@
               <v-divider></v-divider>
               <v-row>
                 <v-col>
-                  <v-select
+                  <v-text-field
                     v-model="encuesta.nivelEducativo"
-                    :items="[
-                      'Primario incompleto',
-                      'Primario completo',
-                      'Secundario incompleto',
-                      'Secundario completo',
-                      'Universitario incompleto',
-                      'Universitario completo',
-                    ]"
+                    readonly
                     label="2.9 ¿Cuál es el nivel educativo máximo que ha
                     alcanzado?"
-                  ></v-select>
+                  ></v-text-field>
                 </v-col>
               </v-row>
               <v-divider></v-divider>
               <v-row>
                 <v-col>
-                  <v-select
+                  <v-text-field
                     v-model="encuesta.empleo"
-                    :items="[
-                      'Desempleada',
-                      'Empleada en relación de dependencia registrada',
-                      'Empleada en relación de dependencia no registrada',
-                      'Trabajando por cuenta propia',
-                      'Trabajando como monotributista',
-                      'Trabajando como autonomo',
-                    ]"
+                    readonly
                     label="2.10 Respecto a su empleo, actualmente se encuentra:"
-                  ></v-select>
+                  ></v-text-field>
                 </v-col>
               </v-row>
               <v-divider></v-divider>
               <v-row>
                 <v-col cols="6">
-                  <v-radio-group v-model="encuesta.asistenciaEstado" row>
+                  <v-radio-group v-model="encuesta.asistenciaEstado" row readonly>
                     <template v-slot:label>
                       <div>
                         <h3>
@@ -646,11 +601,11 @@
                   </v-radio-group>
                 </v-col>
                 <v-col cols="6">
-                  <v-select
+                  <v-text-field
                     v-model="encuesta.cualAsistenciaEstado"
-                    :items="['AUH', 'Pensión', 'Plan social', 'Otro']"
+                    readonly
                     label="Si contesta afirmativamente: ¿Cúal?"
-                  ></v-select>
+                  ></v-text-field>
                 </v-col>
               </v-row>
               <v-divider></v-divider>
@@ -661,7 +616,7 @@
             <v-container>
               <v-row>
                 <v-col cols="6">
-                  <v-radio-group v-model="encuesta.recibioBolson" row>
+                  <v-radio-group v-model="encuesta.recibioBolson" row readonly>
                     <template v-slot:label>
                       <div><h3>¿Bolsón o caja de alimentos?</h3></div>
                     </template>
@@ -670,7 +625,7 @@
                   </v-radio-group>
                 </v-col>
                 <v-col cols="6">
-                  <v-radio-group v-model="encuesta.recibioTickets" row>
+                  <v-radio-group v-model="encuesta.recibioTickets" row readonly>
                     <template v-slot:label>
                       <div>
                         <h3>¿Tickets o bonos para la compra de alimentos?</h3>
@@ -683,7 +638,7 @@
               </v-row>
               <v-row>
                 <v-col cols="6">
-                  <v-radio-group v-model="encuesta.recibioTarjeta" row>
+                  <v-radio-group v-model="encuesta.recibioTarjeta" row readonly>
                     <template v-slot:label>
                       <div><h3>¿Tarjeta alimentar?</h3></div>
                     </template>
@@ -692,7 +647,7 @@
                   </v-radio-group>
                 </v-col>
                 <v-col cols="6">
-                  <v-radio-group v-model="encuesta.recibioLeche" row>
+                  <v-radio-group v-model="encuesta.recibioLeche" row readonly>
                     <template v-slot:label>
                       <div><h3>¿Leche fluida o en polvo?</h3></div>
                     </template>
@@ -703,7 +658,7 @@
               </v-row>
               <v-row>
                 <v-col cols="6">
-                  <v-radio-group v-model="encuesta.recibioOtra" row>
+                  <v-radio-group v-model="encuesta.recibioOtra" row readonly>
                     <template v-slot:label>
                       <div><h3>¿Otra forma de asistencia alimentaria?</h3></div>
                     </template>
@@ -720,7 +675,7 @@
               </v-row>
               <v-row>
                 <v-col>
-                  <v-radio-group v-model="encuesta.aguaPotable" row>
+                  <v-radio-group v-model="encuesta.aguaPotable" row readonly>
                     <template v-slot:label>
                       <div>
                         <h3>
@@ -739,20 +694,13 @@
             <v-container>
               <v-row>
                 <v-col>
-                  <v-select
+                  <v-text-field
                     v-model="encuesta.ingresoIndividual"
-                    :items="[
-                      '0 - 2.000',
-                      '2.200 - 4.400',
-                      '4.400 - 6.600',
-                      '6.600 - 13.000',
-                      '13.000 - 25.000',
-                      'Más de 25.000',
-                    ]"
+                    readonly
                     label="2.13 ¿Podría indicar cuál de estos tramos se ubica su
                     ingreso individual en el hogar el último mes en
                     pesos?"
-                  ></v-select>
+                  ></v-text-field>
                 </v-col>
               </v-row>
               <v-divider></v-divider>
@@ -760,17 +708,12 @@
             <v-container>
               <v-row>
                 <v-col>
-                  <v-select
+                  <v-text-field
                     v-model="encuesta.ingresoTotal"
-                    :items="[
-                      '0 - 16.000',
-                      '16.000 - 38.000',
-                      '38.000 - 60.000',
-                      'Más de 60.000',
-                    ]"
+                    readonly
                     label="2.14 ¿Podría indicar en cuál de estos tramos se ubica el
                     ingreso total mensual del hogar en pesos?"
-                  ></v-select>
+                  ></v-text-field>
                 </v-col>
               </v-row>
               <v-divider></v-divider>
@@ -778,7 +721,7 @@
             <v-container>
               <v-row>
                 <v-col>
-                  <v-radio-group v-model="encuesta.recibioIFE" row>
+                  <v-radio-group v-model="encuesta.recibioIFE" row readonly>
                     <template v-slot:label>
                       <div>
                         <h3>
@@ -799,6 +742,7 @@
                   <v-text-field
                     v-model="encuesta.observacionesBloque2"
                     label="Observaciones"
+                    readonly
                   ></v-text-field>
                 </v-col>
               </v-row>
@@ -822,17 +766,14 @@
                     v-model="encuesta.pesoKG"
                     label="3.1 Peso"
                     suffix="Kg"
-                    placeholder="55.230"
-                    :rules="rules.number"
+                    readonly
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <v-text-field
                     v-model="encuesta.ropaAlPesar"
                     label="Ropa"
-                    hint="Especificar la ropa que tiene puesta al momento de tomar
-                      el peso"
-                    persistent-hint
+                    readonly
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
@@ -840,7 +781,7 @@
                     v-model="encuesta.talla"
                     label="3.2 Talla"
                     suffix="cm"
-                    :rules="rules.number"
+                    readonly
                   ></v-text-field>
                 </v-col>
               </v-row>
@@ -850,7 +791,7 @@
                     v-model="encuesta.tallaSentada"
                     label="3.3 Talla sentada"
                     suffix="cm"
-                    :rules="rules.number"
+                    readonly
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
@@ -858,10 +799,7 @@
                     v-model="encuesta.perimetroBraquial"
                     label="3.4 Perímetro braquial"
                     suffix="cm"
-                    hint="Las mediciones entre 3.4 y 3.8 tomarlas del lado derecho
-                      del cuerpo."
-                    persistent-hint
-                    :rules="rules.number"
+                    readonly
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
@@ -869,7 +807,7 @@
                     v-model="encuesta.pliegueTricipital"
                     label="3.5 Pliegue tricipal"
                     suffix="cm"
-                    :rules="rules.number"
+                    readonly
                   ></v-text-field>
                 </v-col>
               </v-row>
@@ -879,7 +817,7 @@
                     v-model="encuesta.pliegueBicipital"
                     label="3.6 Pliegue bicipal"
                     suffix="cm"
-                    :rules="rules.number"
+                    readonly
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
@@ -887,7 +825,7 @@
                     v-model="encuesta.pliegueSubescapular"
                     label="3.7 Pliegue subescapular"
                     suffix="cm"
-                    :rules="rules.number"
+                    readonly
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
@@ -895,7 +833,7 @@
                     v-model="encuesta.pliegueSuprailiaco"
                     label="3.8 Pliegue suprailíaco"
                     suffix="cm"
-                    :rules="rules.number"
+                    readonly
                   ></v-text-field>
                 </v-col>
               </v-row>
@@ -904,6 +842,7 @@
                   <v-text-field
                     v-model="encuesta.observacionesBloque3"
                     label="Observaciones"
+                    readonly
                   ></v-text-field>
                 </v-col>
               </v-row>
@@ -938,6 +877,7 @@
                   <v-radio-group
                     v-model="encuesta.preocupadoSuficienteAlimentos"
                     row
+                    readonly
                   >
                     <template v-slot:label>
                       <div>
@@ -957,7 +897,7 @@
               <v-divider></v-divider>
               <v-row>
                 <v-col>
-                  <v-radio-group v-model="encuesta.podidoAlimentos" row>
+                  <v-radio-group v-model="encuesta.podidoAlimentos" row readonly>
                     <template v-slot:label>
                       <div>
                         <h3 class="font-weight-regular">
@@ -976,7 +916,7 @@
               <v-divider></v-divider>
               <v-row>
                 <v-col>
-                  <v-radio-group v-model="encuesta.comidoPocaVariedad" row>
+                  <v-radio-group v-model="encuesta.comidoPocaVariedad" row readonly>
                     <template v-slot:label>
                       <div>
                         <h3 class="font-weight-regular">
@@ -998,6 +938,7 @@
                   <v-radio-group
                     v-model="encuesta.dejarDesayunoAlmuerzoCena"
                     row
+                    readonly
                   >
                     <template v-slot:label>
                       <div>
@@ -1018,7 +959,7 @@
               <v-divider></v-divider>
               <v-row>
                 <v-col>
-                  <v-radio-group v-model="encuesta.comidoMenos" row>
+                  <v-radio-group v-model="encuesta.comidoMenos" row readonly>
                     <template v-slot:label>
                       <div>
                         <h3 class="font-weight-regular">
@@ -1037,7 +978,7 @@
               <v-divider></v-divider>
               <v-row>
                 <v-col>
-                  <v-radio-group v-model="encuesta.sinAlimentos" row>
+                  <v-radio-group v-model="encuesta.sinAlimentos" row readonly>
                     <template v-slot:label>
                       <div>
                         <h3 class="font-weight-regular">
@@ -1055,7 +996,7 @@
               <v-divider></v-divider>
               <v-row>
                 <v-col>
-                  <v-radio-group v-model="encuesta.sinAlimentos" row>
+                  <v-radio-group v-model="encuesta.sinAlimentos" row readonly>
                     <template v-slot:label>
                       <h3 class="font-weight-regular">
                         4.7 ¿Hubo alguna vez en que usted haya sentido hambre
@@ -1072,7 +1013,7 @@
               <v-divider></v-divider>
               <v-row>
                 <v-col>
-                  <v-radio-group v-model="encuesta.dejadoComer" row>
+                  <v-radio-group v-model="encuesta.dejadoComer" row readonly>
                     <template v-slot:label>
                       <div>
                         <h3 class="font-weight-regular">
@@ -1092,6 +1033,7 @@
                   <v-text-field
                     v-model="encuesta.observacionesBloque4Parte1"
                     label="Observaciones"
+                    readonly
                   ></v-text-field>
                 </v-col>
               </v-row>
@@ -1113,62 +1055,16 @@
                       <th class="text-left">Hora del día</th>
                       <th class="text-left">Tipo de alimento</th>
                       <th class="text-left">Cantidad</th>
-                      <th class="text-left">Acción</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>
-                        <v-text-field
-                            v-model="recordatorio.horaDia"
-                            type="time"
-                          ></v-text-field>
-                      </td>
-                      <td>
-                        <v-text-field
-                          v-model="recordatorio.tipoAlimento"
-                        ></v-text-field>
-                      </td>
-                      <td>
-                        <v-text-field
-                          v-model="recordatorio.cantidad"
-                        ></v-text-field>
-                      </td>
-                      <td>
-                        <v-btn
-                          class="mx-2"
-                          fab
-                          small
-                          dark
-                          color="indigo"
-                          @click="agregarRecordatorio"
-                        >
-                          <v-icon dark> mdi-plus </v-icon>
-                        </v-btn>
-                      </td>
-                    </tr>
                     <tr
                       v-for="recordatorio in recordatorios"
                       :key="recordatorio._id"
                     >
                       <td>{{ recordatorio.horaDia }}</td>
                       <td>{{ recordatorio.tipoAlimento }}</td>
-                      <td>{{ recordatorio.cantidad }}</td>
-                      <td>
-                        <v-icon
-                          small
-                          class="mr-2"
-                          @click="editarRecordatorio(recordatorio)"
-                        >
-                          mdi-pencil
-                        </v-icon>
-                        <v-icon
-                          small
-                          @click="eliminarRecordatorio(recordatorio)"
-                        >
-                          mdi-delete
-                        </v-icon>
-                      </td>
+                      <td>{{ recordatorio.cantidad }}</td>                      
                     </tr>
                   </tbody>
                 </template>
@@ -1205,6 +1101,7 @@
                     v-model="encuesta.desayuno"
                     label="4.10 Desayuno"
                     suffix="veces"
+                    readonly
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="3">
@@ -1212,6 +1109,7 @@
                     v-model="encuesta.almuerzo"
                     label="4.11 Almuerzo"
                     suffix="veces"
+                    readonly
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="3">
@@ -1219,6 +1117,7 @@
                     v-model="encuesta.merienda"
                     label="4.12 Merienda"
                     suffix="veces"
+                    readonly
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="3">
@@ -1226,27 +1125,19 @@
                     v-model="encuesta.cena"
                     label="4.13 Cena"
                     suffix="veces"
+                    readonly
                   ></v-text-field>
                 </v-col>
               </v-row>
               <v-row>
                 <v-col>
-                  <v-select
+                  <v-text-field
                     v-model="encuesta.frecuenciaConsumo"
-                    :items="[
-                      'Nunca',
-                      'Algunas veces',
-                      'Casi todos los dias',
-                      'Siempre/todos los dias',
-                      'NS/NC',
-                    ]"
                     label="4.14 Durante los últimos 7 días, ¿con que frecuencia
                       consumió algún alimento o bebida en otros momentos del
                       día?"
-                    hint="Solo en caso de responder afirmativamente la pregunta 4.14,
-                    pasar a la 4.15."
-                    persistent-hint
-                  ></v-select>
+                    readonly
+                  ></v-text-field>
                 </v-col>
               </v-row>
               <v-divider class="my-3"></v-divider>
@@ -1264,36 +1155,42 @@
                     v-model="encuesta.golosinas"
                     :label="`Golosinas, dulces, galletitas dulces, amasados de
                           pastelería, facturas, cereales con azúcar`"
+                    readonly
                   ></v-checkbox>
                 </v-col>
                 <v-col cols="4">
                   <v-checkbox
                     v-model="encuesta.panBlanco"
                     :label="`Pan blanco, galletitas saladas`"
+                    readonly
                   ></v-checkbox>
                 </v-col>
                 <v-col cols="4">
                   <v-checkbox
                     v-model="encuesta.pan"
                     :label="`Pan y otros cereales integrales, semillas`"
+                    readonly
                   ></v-checkbox>
                 </v-col>
                 <v-col cols="4">
                   <v-checkbox
                     v-model="encuesta.copetin"
                     :label="`Productos de copetín o snacks salados`"
+                    readonly
                   ></v-checkbox>
                 </v-col>
                 <v-col cols="4">
                   <v-checkbox
                     v-model="encuesta.frutas"
                     :label="`Frutas`"
+                    readonly
                   ></v-checkbox>
                 </v-col>
                 <v-col cols="4">
                   <v-checkbox
                     v-model="encuesta.lacteos"
                     :label="`Lácteos (leche, yogurt o quesos)`"
+                    readonly
                   ></v-checkbox>
                 </v-col>
                 <v-col cols="4">
@@ -1301,18 +1198,21 @@
                     v-model="encuesta.bebidas"
                     :label="`Bebidas azucaradas (jugos, gaseosas, infusiones con
                           azúcar, etc)`"
+                    readonly
                   ></v-checkbox>
                 </v-col>
                 <v-col cols="4">
                   <v-checkbox
                     v-model="encuesta.otros"
                     :label="`Otros`"
+                    readonly
                   ></v-checkbox>
                 </v-col>
                 <v-col cols="4">
                   <v-checkbox
                     v-model="encuesta.nsnc"
                     :label="`NS/NC`"
+                    readonly
                   ></v-checkbox>
                 </v-col>
               </v-row>
@@ -1344,105 +1244,51 @@
             <v-container>
               <v-row>
                 <v-col cols="12">
-                  <v-select
+                  <v-text-field
                     v-model="encuesta.consumioLeche"
-                    :items="[
-                      'Nunca o menos de 1 vez al mes',
-                      '1 vez por semana',
-                      '2 a 4 veces por semana',
-                      '5 a 6 veces por semana',
-                      '1 vez al día',
-                      'Entre 2 y 3 veces al día',
-                      'Entre 4 y 5 veces al día',
-                      '6 veces o más por día',
-                    ]"
+                    readonly
                     label="4.16. ... leche, yogur o quesos?"
-                  ></v-select>
+                  ></v-text-field>
                 </v-col>
                 <v-col cols="12">
-                  <v-select
+                  <v-text-field
                     v-model="encuesta.consumioFrutasFrescas"
-                    :items="[
-                      'Nunca o menos de 1 vez al mes',
-                      '1 vez por semana',
-                      '2 a 4 veces por semana',
-                      '5 a 6 veces por semana',
-                      '1 vez al día',
-                      'Entre 2 y 3 veces al día',
-                      'Entre 4 y 5 veces al día',
-                      '6 veces o más por día',
-                    ]"
+                    readonly
                     label="4.17. ... frutas frescas (solas o en preparaciones)?"
-                  ></v-select>
+                  ></v-text-field>
                 </v-col>
                 <v-col cols="12">
-                  <v-select
+                  <v-text-field
                     v-model="encuesta.consumioVerduras"
-                    :items="[
-                      'Nunca o menos de 1 vez al mes',
-                      '1 vez por semana',
-                      '2 a 4 veces por semana',
-                      '5 a 6 veces por semana',
-                      '1 vez al día',
-                      'Entre 2 y 3 veces al día',
-                      'Entre 4 y 5 veces al día',
-                      '6 veces o más por día',
-                    ]"
+                    readonly
                     label="4.18. ...verduras (solas o en preparaciones) sin contar
                     papa y batata?"
-                  ></v-select>
+                  ></v-text-field>
                 </v-col>
                 <v-col cols="12">
-                  <v-select
+                  <v-text-field
                     v-model="encuesta.consumioPapa"
-                    :items="[
-                      'Nunca o menos de 1 vez al mes',
-                      '1 vez por semana',
-                      '2 a 4 veces por semana',
-                      '5 a 6 veces por semana',
-                      '1 vez al día',
-                      'Entre 2 y 3 veces al día',
-                      'Entre 4 y 5 veces al día',
-                      '6 veces o más por día',
-                    ]"
+                    readonly
                     label="4.19. ... papa, batata, cereales refinados como arroz
                     blanco, pastas, tartas, empanadas o pan blanco?"
-                  ></v-select>
+                  ></v-text-field>
                 </v-col>
                 <v-col cols="12">
-                  <v-select
+                  <v-text-field
                     v-model="encuesta.consumioCereales"
-                    :items="[
-                      'Nunca o menos de 1 vez al mes',
-                      '1 vez por semana',
-                      '2 a 4 veces por semana',
-                      '5 a 6 veces por semana',
-                      '1 vez al día',
-                      'Entre 2 y 3 veces al día',
-                      'Entre 4 y 5 veces al día',
-                      '6 veces o más por día',
-                    ]"
                     label="4.20. ...cereales integrales, legumbres (por ejemplo
                     lentejas, garbanzos, porotos) o pan integral o de
                     salvado?"
-                  ></v-select>
+                    readonly
+                  ></v-text-field>
                 </v-col>
                 <v-col cols="12">
-                  <v-select
+                  <v-text-field
                     v-model="encuesta.consumioEmbutidos"
-                    :items="[
-                      'Nunca o menos de 1 vez al mes',
-                      '1 vez por semana',
-                      '2 a 4 veces por semana',
-                      '5 a 6 veces por semana',
-                      '1 vez al día',
-                      'Entre 2 y 3 veces al día',
-                      'Entre 4 y 5 veces al día',
-                      '6 veces o más por día',
-                    ]"
                     label="4.21. ... embutidos y fiambres (jamón, salame, chorizo,
                     salchicha, etc)?"
-                  ></v-select>
+                    readonly
+                  ></v-text-field>
                 </v-col>
               </v-row>
               <v-row>
@@ -1476,106 +1322,52 @@
             <v-container>
               <v-row>
                 <v-col cols="12">
-                  <v-select
+                  <v-text-field
                     v-model="encuesta.consumioCarne"
-                    :items="[
-                      'Nunca o menos de 1 vez al mes',
-                      '1 vez por semana',
-                      '2 a 4 veces por semana',
-                      '5 a 6 veces por semana',
-                      '1 vez al día',
-                      'Entre 2 y 3 veces al día',
-                      'Entre 4 y 5 veces al día',
-                      '6 veces o más por día',
-                    ]"
                     label="4.22. ... carne roja (por ejemplo de vaca), carne de ave o
                     huevos?"
-                  ></v-select>
+                    readonly
+                  ></v-text-field>
                 </v-col>
                 <v-col cols="12">
-                  <v-select
+                  <v-text-field
                     v-model="encuesta.consumioPescado"
-                    :items="[
-                      'Nunca o menos de 1 vez al mes',
-                      '1 vez por semana',
-                      '2 a 4 veces por semana',
-                      '5 a 6 veces por semana',
-                      '1 vez al día',
-                      'Entre 2 y 3 veces al día',
-                      'Entre 4 y 5 veces al día',
-                      '6 veces o más por día',
-                    ]"
                     label="4.23. ... pescado fresco o enlatado?"
-                  ></v-select>
+                    readonly
+                  ></v-text-field>
                 </v-col>
                 <v-col cols="12">
-                  <v-select
+                  <v-text-field
                     v-model="encuesta.consumioAceites"
-                    :items="[
-                      'Nunca o menos de 1 vez al mes',
-                      '1 vez por semana',
-                      '2 a 4 veces por semana',
-                      '5 a 6 veces por semana',
-                      '1 vez al día',
-                      'Entre 2 y 3 veces al día',
-                      'Entre 4 y 5 veces al día',
-                      '6 veces o más por día',
-                    ]"
                     label="4.24. ... aceites vegetales (como girasol, maíz, soja,
                     girasol alto oleico, oliva y canola)?"
-                  ></v-select>
+                    readonly
+                  ></v-text-field>
                 </v-col>
                 <v-col cols="12">
-                  <v-select
+                  <v-text-field
                     v-model="encuesta.consumioFrutasSecas"
-                    :items="[
-                      'Nunca o menos de 1 vez al mes',
-                      '1 vez por semana',
-                      '2 a 4 veces por semana',
-                      '5 a 6 veces por semana',
-                      '1 vez al día',
-                      'Entre 2 y 3 veces al día',
-                      'Entre 4 y 5 veces al día',
-                      '6 veces o más por día',
-                    ]"
                     label="4.25. ... frutas secas sin salar (como maní, nueces,
                     almendras, avellanas, castañas, etc.) o semillas sin salar
                     (chía, girasol, sésamo, lino, etc.)?"
-                  ></v-select>
+                    readonly
+                  ></v-text-field>
                 </v-col>
                 <v-col cols="12">
-                  <v-select
+                  <v-text-field
                     v-model="encuesta.consumioProductosCopetin"
-                    :items="[
-                      'Nunca o menos de 1 vez al mes',
-                      '1 vez por semana',
-                      '2 a 4 veces por semana',
-                      '5 a 6 veces por semana',
-                      '1 vez al día',
-                      'Entre 2 y 3 veces al día',
-                      'Entre 4 y 5 veces al día',
-                      '6 veces o más por día',
-                    ]"
                     label="4.26. ... productos de copetín (papas fritas, palitos de
                     maíz, etc.)?"
-                  ></v-select>
+                    readonly
+                  ></v-text-field>
                 </v-col>
                 <v-col cols="12">
-                  <v-select
+                  <v-text-field
                     v-model="encuesta.consumioGolosinas"
-                    :items="[
-                      'Nunca o menos de 1 vez al mes',
-                      '1 vez por semana',
-                      '2 a 4 veces por semana',
-                      '5 a 6 veces por semana',
-                      '1 vez al día',
-                      'Entre 2 y 3 veces al día',
-                      'Entre 4 y 5 veces al día',
-                      '6 veces o más por día',
-                    ]"
                     label="4.27. ... golosinas (caramelos, alfajores, chupetines,
                     chicles, barras de cereal, etc.)?"
-                  ></v-select>
+                    readonly
+                  ></v-text-field>
                 </v-col>
               </v-row>
               <v-row>
@@ -1590,13 +1382,6 @@
 
             <v-divider class="mt-3"></v-divider>
             <v-card-actions class="mx-4">
-              <v-btn color="primary" text @click="agregarEncuesta">
-                Agregar encuesta
-              </v-btn>
-
-              <v-btn class="mr-4" text @click="limpiarEncuesta">
-                Limpiar
-              </v-btn>
               <v-spacer></v-spacer>
               <v-btn color="red" text @click="dialog = false"> Cerrar </v-btn>
             </v-card-actions>
@@ -1842,56 +1627,25 @@ class Recordatorio24hs {
   }
 }
 export default {
-  data() {
-    return {
-      dialog: false,
-      encuesta: new Encuesta(),
-      recordatorio: new Recordatorio24hs(),
-      recordatorios: [],
-      encuestas: [],
-      baseUrl: "https://tpftestbackend.herokuapp.com",
-      menu1: false,
-      menu2: false,
-      menu3: false,
-      menu4: false,
-      rules: {
-        email: [
-          (v) => !!v || "E-mail is required",
-          (v) => /.+@.+/.test(v) || "E-mail must be valid",
-        ],
-        number: [(val) => /^[0-9]\d*(\.\d+)?$/.test(val) || "Usar punto"],
+    name: "VerTercerTrimestre",
+    props: ['id'],
+    data() {
+        return {
+        dialog: false,
+        encuesta: new Encuesta(),
+        recordatorios: [],
+        recordatorio: new Recordatorio24hs(),
+        baseUrl: "https://tpftestbackend.herokuapp.com",
+      }
+    },
+    methods: {
+      async getEncuesta() {
+      const res = await this.axios.get(
+        `${this.baseUrl}/encuestas1y2Trimestre/` + this.id
+      );
+      this.encuesta = res.data;
+      this.recordatorios = res.data.recordatorio24Horas;
       },
-    };
-  },
-  methods: {
-    async agregarEncuesta() {
-      this.loading = true;
-      const headers = {
-        Accept: "application/json",
-        "Content-type": "application/json",
-      };
-      this.encuesta.recordatorio24Horas = this.recordatorios;
-      this.axios.post(`${this.baseUrl}/encuestas1y2Trimestre`,     
-        JSON.stringify(this.encuesta),
-        { headers }).then((result) => {
-            this.loading = false;
-            this.encuesta = new Encuesta();
-            this.recordatorios = [];
-            this.dialog = false;
-            this.$emit('encuestaAgregada')
-        })
-    },
-    limpiarEncuesta() {
-      this.encuesta = new Encuesta();
-    },
-    agregarRecordatorio() {
-      this.recordatorios.push(this.recordatorio);
-      this.recordatorio = new Recordatorio24hs();
-    },
-    eliminarRecordatorio(recordatorio) {
-      this.recordatorios.splice(this.recordatorios.indexOf(recordatorio), 1);
-    },
-    editarRecordatorio(recordatorio) {},
-  },
-};
+    }
+}
 </script>

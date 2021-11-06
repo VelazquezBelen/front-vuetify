@@ -6,7 +6,7 @@
         <span>Final</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-    <v-btn text >
+    <v-btn outlined rounded>
       <span>Salir</span>
       <v-icon right>mdi-exit-to-app</v-icon>
     </v-btn>

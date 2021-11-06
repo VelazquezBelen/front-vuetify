@@ -2,22 +2,23 @@
   <div class="text-center">
     <v-dialog v-model="dialog" width="1200">
       <template v-slot:activator="{ on, attrs }">
-        <v-btn
-          
-          text
-          color="blue-grey"
+        <v-icon
+          class="mr-2"
+          small
+          color="red lighten-2"
+          dark
           v-bind="attrs"
           v-on="on"
+          @click="getEncuesta"
         >
-        <v-icon left small>mdi-file-plus-outline</v-icon>
-          <span class="caption">Nueva encuesta primer y segundo trimestre</span>
-        </v-btn>
+          mdi-pencil
+        </v-icon>
       </template>
       <v-card>
         <v-card-title
           class="text-center text-h5 font-weight-regular blue-grey--text"
         >
-          Nueva encuesta primer y segundo trimestre
+          Editar encuesta primer y segundo trimestre
         </v-card-title>
         <v-divider class="mb-4"></v-divider>
         <v-card-text>
@@ -1119,10 +1120,35 @@
                   <tbody>
                     <tr>
                       <td>
-                        <v-text-field
+                        <v-menu
+                          ref="menu"
+                          v-model="menu4"
+                          :close-on-content-click="false"
+                          :nudge-right="40"
+                          :return-value.sync="recordatorio.horaDia"
+                          transition="scale-transition"
+                          offset-y
+                          max-width="290px"
+                          min-width="290px"
+                        >
+                          <template v-slot:activator="{ on, attrs }">
+                            <v-text-field
+                              v-model="recordatorio.horaDia"
+                              prepend-icon="mdi-clock-time-four-outline"
+                              readonly
+                              v-bind="attrs"
+                              v-on="on"
+                            ></v-text-field>
+                          </template>
+                          <v-time-picker
+                            v-if="menu4"
                             v-model="recordatorio.horaDia"
-                            type="time"
-                          ></v-text-field>
+                            full-width
+                            @click:minute="
+                              $refs.menu.save(recordatorio.horaDia)
+                            "
+                          ></v-time-picker>
+                        </v-menu>
                       </td>
                       <td>
                         <v-text-field
@@ -1590,8 +1616,8 @@
 
             <v-divider class="mt-3"></v-divider>
             <v-card-actions class="mx-4">
-              <v-btn color="primary" text @click="agregarEncuesta">
-                Agregar encuesta
+              <v-btn color="primary" text @click="editarEncuesta">
+                Actualizar encuesta
               </v-btn>
 
               <v-btn class="mr-4" text @click="limpiarEncuesta">
@@ -1842,44 +1868,55 @@ class Recordatorio24hs {
   }
 }
 export default {
-  data() {
-    return {
-      dialog: false,
-      encuesta: new Encuesta(),
-      recordatorio: new Recordatorio24hs(),
-      recordatorios: [],
-      encuestas: [],
-      baseUrl: "https://tpftestbackend.herokuapp.com",
-      menu1: false,
-      menu2: false,
-      menu3: false,
-      menu4: false,
-      rules: {
-        email: [
-          (v) => !!v || "E-mail is required",
-          (v) => /.+@.+/.test(v) || "E-mail must be valid",
-        ],
-        number: [(val) => /^[0-9]\d*(\.\d+)?$/.test(val) || "Usar punto"],
-      },
-    };
-  },
-  methods: {
-    async agregarEncuesta() {
+    name: "Editar1y2Trimestre",
+    props: ['id'],
+    data() {
+        return {
+        dialog: false,
+        encuesta: new Encuesta(),
+        recordatorios: [],
+        recordatorio: new Recordatorio24hs(),
+        baseUrl: "https://tpftestbackend.herokuapp.com",
+        menu1: false,
+        menu2: false,
+        menu3: false,
+        menu4: false,
+        loading: false,
+        dialog: false,
+        rules: {
+          email: [
+            v => !!v || 'E-mail is required',
+            v => /.+@.+/.test(v) || 'E-mail must be valid',
+          ],
+          number: [val => /^[0-9]\d*(\.\d+)?$/.test(val) || 'Usar punto'],
+        },
+      }
+    },
+    methods: {
+      async getEncuesta() {
+      const res = await this.axios.get(
+        `${this.baseUrl}/encuestas1y2Trimestre/` + this.id
+      );
+      this.encuesta = res.data;
+      this.recordatorios = res.data.recordatorio24Horas;
+      },      
+      async editarEncuesta() {
       this.loading = true;
       const headers = {
         Accept: "application/json",
         "Content-type": "application/json",
       };
       this.encuesta.recordatorio24Horas = this.recordatorios;
-      this.axios.post(`${this.baseUrl}/encuestas1y2Trimestre`,     
+      this.axios.put(`${this.baseUrl}/encuestas1y2Trimestre/` + this.id,     
         JSON.stringify(this.encuesta),
         { headers }).then((result) => {
             this.loading = false;
             this.encuesta = new Encuesta();
             this.recordatorios = [];
             this.dialog = false;
-            this.$emit('encuestaAgregada')
-        })
+            this.$emit('encuestaActualizada')
+            this.$emit('getEncuestas')
+        }) 
     },
     limpiarEncuesta() {
       this.encuesta = new Encuesta();
@@ -1891,7 +1928,7 @@ export default {
     eliminarRecordatorio(recordatorio) {
       this.recordatorios.splice(this.recordatorios.indexOf(recordatorio), 1);
     },
-    editarRecordatorio(recordatorio) {},
-  },
-};
+    editarRecordatorio(recordatorio) {}, 
+  }    
+}
 </script>

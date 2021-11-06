@@ -2,22 +2,16 @@
   <div class="text-center">
     <v-dialog v-model="dialog" width="1200">
       <template v-slot:activator="{ on, attrs }">
-        <v-btn
-          
-          text
-          color="blue-grey"
-          v-bind="attrs"
-          v-on="on"
-        >
-        <v-icon left small>mdi-file-plus-outline</v-icon>
-          <span class="caption">Nueva encuesta tercer trimestre</span>
-        </v-btn>
+        <v-icon class="mr-2"
+          small color="red lighten-2" dark v-bind="attrs" v-on="on" @click="getEncuesta">
+          mdi-pencil
+        </v-icon>
       </template>
       <v-card>
         <v-card-title
           class="text-center text-h5 font-weight-regular blue-grey--text"
         >
-          Nueva encuesta tercer trimestre
+          Editar encuesta tercer trimestre
         </v-card-title>
         <v-divider class="mb-4"></v-divider>
         <v-card-text>
@@ -340,7 +334,7 @@
                   <tbody>
                     <tr>
                       <td>
-                          <v-text-field
+                        <v-text-field
                             v-model="recordatorio.horaDia"
                             type="time"
                           ></v-text-field>
@@ -409,10 +403,10 @@
               <v-btn
                 color="primary"
                 text
-                @click="agregarEncuesta"
+                @click="editarEncuesta"
                 :loading="loading"
               >
-                Agregar encuesta
+                Actualizar encuesta
               </v-btn>
 
               <v-btn class="mr-4" text @click="limpiarEncuesta">
@@ -499,50 +493,58 @@ class Encuesta {
     this.tipoEncuesta = "Tercer trimestre";
   }
 }
+
 export default {
-  data() {
-    return {
-      dialog: false,
-      encuesta: new Encuesta(),
-      encuestas: [],
-      recordatorios: [],
-      recordatorio: new Recordatorio24hs(),
-      baseUrl: "https://tpftestbackend.herokuapp.com",
-      menu1: false,
-      menu2: false,
-      menu3: false,
-      loading: false,
-      dialog: false,
-      rules: {
-        email: [
-          (v) => !!v || "E-mail is required",
-          (v) => /.+@.+/.test(v) || "E-mail must be valid",
-        ],
-        number: [(val) => /^[0-9]\d*(\.\d+)?$/.test(val) || "Usar punto"],
+    name: "EditarTercerTrimestre",
+    props: ['id'],
+    data() {
+        return {
+        dialog: false,
+        encuesta: new Encuesta(),
+        recordatorios: [],
+        recordatorio: new Recordatorio24hs(),
+        baseUrl: "https://tpftestbackend.herokuapp.com",
+        menu1: false,
+        menu2: false,
+        menu3: false,
+        menu4: false,
+        loading: false,
+        dialog: false,
+        rules: {
+          email: [
+            v => !!v || 'E-mail is required',
+            v => /.+@.+/.test(v) || 'E-mail must be valid',
+          ],
+          number: [val => /^[0-9]\d*(\.\d+)?$/.test(val) || 'Usar punto'],
+        },
+      }
+    },
+    methods: {
+      async getEncuesta() {
+      const res = await this.axios.get(
+        `${this.baseUrl}/encuestas3Trimestre/` + this.id
+      );
+      this.encuesta = res.data;
+      this.recordatorios = res.data.recordatorio24Horas;
       },
-    };
-  },
-  methods: {
-    async agregarEncuesta() {
+      
+      async editarEncuesta() {
       this.loading = true;
       const headers = {
         Accept: "application/json",
         "Content-type": "application/json",
       };
       this.encuesta.recordatorio24Horas = this.recordatorios;
-      this.axios
-        .post(
-          `${this.baseUrl}/encuestas3Trimestre`,
-          JSON.stringify(this.encuesta),
-          { headers }
-        )
-        .then((result) => {
-          this.loading = false;
-          this.encuesta = new Encuesta();
-          this.recordatorios = [];
-          this.dialog = false;
-          this.$emit("encuestaAgregada");
-        });
+      this.axios.put(`${this.baseUrl}/encuestas3Trimestre/` + this.id,     
+        JSON.stringify(this.encuesta),
+        { headers }).then((result) => {
+            this.loading = false;
+            this.encuesta = new Encuesta();
+            this.recordatorios = [];
+            this.dialog = false;
+            this.$emit('encuestaActualizada')
+            this.$emit('getEncuestas')
+        }) 
     },
     limpiarEncuesta() {
       this.encuesta = new Encuesta();
@@ -554,7 +556,7 @@ export default {
     eliminarRecordatorio(recordatorio) {
       this.recordatorios.splice(this.recordatorios.indexOf(recordatorio), 1);
     },
-    editarRecordatorio(recordatorio) {},
-  },
-};
+    editarRecordatorio(recordatorio) {}, 
+  }    
+}
 </script>

@@ -1,24 +1,26 @@
 <template>
-    <div class="text-center">
+        <div class="text-center">
     <v-dialog
       v-model="dialog"
       width="1200"
     >
       <template v-slot:activator="{ on, attrs }">
-        <v-btn
-          
-          text
-          color="blue-grey"
+        <v-icon
+          pt-3
+          class="mr-2"
+          small
+          color="red lighten-2"
+          dark
           v-bind="attrs"
           v-on="on"
+          @click="getEncuesta"
         >
-        <v-icon left small>mdi-file-plus-outline</v-icon>
-          <span class="caption">Nueva encuesta neonato</span>
-        </v-btn>
+          mdi-eye-outline
+        </v-icon>
       </template>
       <v-card >
         <v-card-title class="text-center text-h5 font-weight-regular blue-grey--text">
-          Nueva encuesta neonato
+          Encuesta neonato
         </v-card-title>
         <v-card-text>
         <v-card ref="form" width="5000px" flat>
@@ -36,24 +38,22 @@
               <v-col cols="12" md="4">
                 <v-text-field
                   v-model="encuesta.nombreApellidoEncuestador1"
-                  :counter="25"
                   label="Nombre y apellido Encuestador 1"
+                  readonly
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="4">
                 <v-text-field
                   v-model="encuesta.telefonoEncuestador1"
-                  :counter="10"
                   label="Teléfono"
+                  readonly
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="4">
                 <v-text-field
                   v-model="encuesta.emailEncuestador1"
-                  :rules = "rules.email"
                   label="E-mail"
-                  hint="email@example.com"
-                  persistent-hint
+                  readonly
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -63,21 +63,22 @@
               <v-col cols="12" md="4">
                 <v-text-field
                   v-model="encuesta.nombreApellidoEncuestador2"
-                  label="Nombre y apellido Encuestador 2"            
+                  label="Nombre y apellido Encuestador 2"
+                  readonly            
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="4">
                 <v-text-field
                   v-model="encuesta.telefonoEncuestador2"
                   label="Teléfono"
+                  readonly
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="4">
                 <v-text-field
                   v-model="encuesta.emailEncuestador2"
                   label="E-mail"
-                  hint="email@example.com"
-                  persistent-hint
+                  readonly
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -85,34 +86,18 @@
           <v-container>
             <v-row>
               <v-col cols="12" md="6">
-                <v-menu
-                v-model="menu1"
-                :close-on-content-click="false"
-                :nudge-right="40"
-                transition="scale-transition"
-                offset-y
-                min-width="auto"
-              >
-                <template v-slot:activator="{ on, attrs }">
-                  <v-text-field
+                <v-text-field
                     v-model="encuesta.fechaRelevamiento"
                     label="Fecha de relevamiento"
                     prepend-icon="mdi-calendar"
                     readonly
-                    v-bind="attrs"
-                    v-on="on"
-                  ></v-text-field>
-                </template>
-                <v-date-picker
-                  v-model="encuesta.fechaRelevamiento"
-                  @input="menu1 = false"
-                ></v-date-picker>
-              </v-menu>
+                ></v-text-field>
               </v-col>
               <v-col cols="12" md="6">
                 <v-text-field
                   v-model="encuesta.lugarRelevamiento"
                   label="Lugar del relevamiento"
+                  readonly
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -125,38 +110,23 @@
                 <v-text-field
                   v-model="encuesta.nombreApellido"
                   label="Nombre y apellido"
+                  readonly
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="4">
                 <v-text-field
                   v-model="encuesta.dni"
                   label="DNI"
+                  readonly
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="4">
-                <v-menu
-                v-model="menu2"
-                :close-on-content-click="false"
-                :nudge-right="40"
-                transition="scale-transition"
-                offset-y
-                min-width="auto"
-              >
-                <template v-slot:activator="{ on, attrs }">
                   <v-text-field
                     v-model="encuesta.fechaNacimiento"
                     label="Fecha de nacimiento"
                     prepend-icon="mdi-calendar"
                     readonly
-                    v-bind="attrs"
-                    v-on="on"
-                  ></v-text-field>
-                </template>
-                <v-date-picker
-                  v-model="encuesta.fechaNacimiento"
-                  @input="menu2 = false"
-                ></v-date-picker>
-              </v-menu>
+                ></v-text-field>
               </v-col>
             </v-row>
             <v-row>
@@ -164,6 +134,7 @@
                 <v-text-field
                   v-model="encuesta.domicilioBarrio"
                   label="Domicilio/barrio"
+                  readonly
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -172,38 +143,23 @@
                 <v-text-field
                   v-model="encuesta.telefono"
                   label="Teléfono"
+                  readonly
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="4">
-                <v-menu
-                v-model="menu3"
-                :close-on-content-click="false"
-                :nudge-right="40"
-                transition="scale-transition"
-                offset-y
-                min-width="auto"
-              >
-                <template v-slot:activator="{ on, attrs }">
-                  <v-text-field
+                <v-text-field
                     v-model="encuesta.fechaNacimientoBebe"
                     label="Fecha de nacimiento"
                     prepend-icon="mdi-calendar"
                     readonly
-                    v-bind="attrs"
-                    v-on="on"
-                  ></v-text-field>
-                </template>
-                <v-date-picker
-                  v-model="encuesta.fechaNacimientoBebe"
-                  @input="menu3 = false"
-                ></v-date-picker>
-                </v-menu>
+                ></v-text-field>
               </v-col>
               <v-col cols="12" md="4">
                 <v-radio-group
                   label="Via de nacimiento"
                   v-model="encuesta.viaNacimiento"
                   encuesta.viaNacimiento
+                  readonly
                 >
                   <v-radio
                     label="Parto vaginal"
@@ -218,12 +174,14 @@
                 <v-text-field
                   v-model="encuesta.lugarNacimiento"
                   label="Lugar de nacimiento"
+                  readonly
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="6">
                 <v-text-field
                   v-model="encuesta.nombreBebe"
                   label="Nombre niño/a"
+                  readonly
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -232,6 +190,7 @@
                 <v-text-field
                   v-model="encuesta.observacionesBloque0"
                   label="Observaciones"
+                  readonly
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -254,17 +213,14 @@
                   v-model="encuesta.pesoKG"
                   label="5.1 Peso"
                   suffix="Kg"
-                  placeholder="55.230"
-                  :rules="rules.number"
+                  readonly
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="4">
                 <v-text-field
                   v-model="encuesta.ropaAlPesar"
                   label="Ropa"
-                  hint="Especificar la ropa que tiene puesta al momento de tomar
-                      el peso"
-                  persistent-hint
+                  readonly
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="4">
@@ -272,6 +228,7 @@
                   v-model="encuesta.talla"
                   label="5.2 Longitud (talla)"
                   suffix="cm"
+                  readonly
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -281,6 +238,7 @@
                   v-model="encuesta.perimetroCefalico"
                   label="5.3 Perímetro cefálico"
                   suffix="cm"
+                  readonly
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="6">
@@ -288,8 +246,7 @@
                   v-model="encuesta.circunsferenciaBrazo"
                   label="5.4 Cincunsferencia del brazo"
                   suffix="cm"
-                  hint="La medida 5.4 tomar del lado derecho del cuerpo."
-                  persistent-hint
+                  readonly
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -302,12 +259,14 @@
                 <v-text-field
                   v-model="encuesta.NombreApellidoMadre"
                   label="Nombre y apellido"
+                  readonly
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="6">
                 <v-text-field
                   v-model="encuesta.dniMadre"
                   label="DNI"
+                  readonly
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -316,27 +275,13 @@
                 <v-text-field
                   v-model="encuesta.observacionesBloque5"
                   label="Observaciones"
+                  readonly
                 ></v-text-field>
               </v-col>
             </v-row>
           </v-container>
           <v-divider class="mt-3 "></v-divider>
           <v-card-actions class = "mx-4">
-          <v-btn
-            color="primary"
-            text
-            @click="agregarEncuesta" :loading="loading"
-          >
-            Agregar encuesta
-          </v-btn>
-
-          <v-btn
-            class="mr-4"
-            text
-            @click="limpiarEncuesta"
-          >
-            Limpiar
-          </v-btn>
           <v-spacer></v-spacer>
           <v-btn
             color="red"
@@ -414,46 +359,23 @@ class Encuesta {
     this.tipoEncuesta = "Neonato";
   }
 }
-  export default {
-    data () {
-      return {
+export default {
+    name: "VerNeonato",
+    props: ['id'],
+    data() {
+        return {
         dialog: false,
         encuesta: new Encuesta(),
-        encuestas: [],
         baseUrl: "https://tpftestbackend.herokuapp.com",
-        menu1: false,
-        menu2: false,
-        menu3: false,
-        loading: false,
-        dialog: false,
-        rules: {
-          email: [
-            v => !!v || 'E-mail is required',
-            v => /.+@.+/.test(v) || 'E-mail must be valid',
-          ],
-          number: [val => /^[0-9]\d*(\.\d+)?$/.test(val) || 'Usar punto'],
-        },
-        }
+      }
     },
     methods: {
-    async agregarEncuesta() {
-      this.loading = true;
-      const headers = {
-        Accept: "application/json",
-        "Content-type": "application/json",
-      };
-      this.axios.post(`${this.baseUrl}/encuestasNeonato`,     
-        JSON.stringify(this.encuesta),
-        { headers }).then((result) => {
-            this.loading = false;
-            this.encuesta = new Encuesta();
-            this.dialog = false;
-            this.$emit('encuestaAgregada')
-        }) 
-    },
-    limpiarEncuesta() {
-      this.encuesta = new Encuesta();
-    }, 
-  }
+      async getEncuesta() {
+      const res = await this.axios.get(
+        `${this.baseUrl}/encuestasNeonato/` + this.id
+      );
+      this.encuesta = res.data;
+      },
+    }
 }
 </script>

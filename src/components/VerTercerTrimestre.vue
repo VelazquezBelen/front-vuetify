@@ -1,23 +1,17 @@
 <template>
-  <div class="text-center">
+    <div class="text-center">
     <v-dialog v-model="dialog" width="1200">
       <template v-slot:activator="{ on, attrs }">
-        <v-btn
-          
-          text
-          color="blue-grey"
-          v-bind="attrs"
-          v-on="on"
-        >
-        <v-icon left small>mdi-file-plus-outline</v-icon>
-          <span class="caption">Nueva encuesta tercer trimestre</span>
-        </v-btn>
+        <v-icon class="mr-2"
+          small color="red lighten-2" dark v-bind="attrs" v-on="on" @click="getEncuesta">
+          mdi-eye-outline
+        </v-icon>
       </template>
       <v-card>
         <v-card-title
           class="text-center text-h5 font-weight-regular blue-grey--text"
         >
-          Nueva encuesta tercer trimestre
+          Encuesta tercer trimestre
         </v-card-title>
         <v-divider class="mb-4"></v-divider>
         <v-card-text>
@@ -36,23 +30,25 @@
               <v-row>
                 <v-col cols="12" md="4">
                   <v-text-field
-                    v-model="encuesta.nombreApellidoEncuestador1"
+                    v-model= "encuesta.nombreApellidoEncuestador1"
                     label="Nombre y apellido Encuestador 1"
+                    readonly
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <v-text-field
                     v-model="encuesta.telefonoEncuestador1"
                     label="Teléfono"
+                    readonly
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <v-text-field
                     v-model="encuesta.emailEncuestador1"
-                    :rules="rules.email"
                     label="E-mail"
                     hint="email@example.com"
                     persistent-hint
+                    readonly
                   ></v-text-field>
                 </v-col>
               </v-row>
@@ -61,12 +57,14 @@
                   <v-text-field
                     v-model="encuesta.nombreApellidoEncuestador2"
                     label="Nombre y apellido Encuestador 2"
+                    readonly
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <v-text-field
                     v-model="encuesta.telefonoEncuestador2"
                     label="Teléfono"
+                    readonly
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
@@ -75,39 +73,24 @@
                     label="E-mail"
                     hint="email@example.com"
                     persistent-hint
+                    readonly
                   ></v-text-field>
                 </v-col>
               </v-row>
               <v-row>
                 <v-col cols="12" md="6">
-                  <v-menu
-                    v-model="menu1"
-                    :close-on-content-click="false"
-                    :nudge-right="40"
-                    transition="scale-transition"
-                    offset-y
-                    min-width="auto"
-                  >
-                    <template v-slot:activator="{ on, attrs }">
-                      <v-text-field
+                    <v-text-field
                         v-model="encuesta.fechaRelevamiento"
                         label="Fecha de relevamiento"
                         prepend-icon="mdi-calendar"
                         readonly
-                        v-bind="attrs"
-                        v-on="on"
-                      ></v-text-field>
-                    </template>
-                    <v-date-picker
-                      v-model="encuesta.fechaRelevamiento"
-                      @input="menu1 = false"
-                    ></v-date-picker>
-                  </v-menu>
+                    ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="6">
                   <v-text-field
                     v-model="encuesta.lugarRelevamiento"
                     label="Lugar del relevamiento"
+                    readonly
                   ></v-text-field>
                 </v-col>
               </v-row>
@@ -122,38 +105,23 @@
                   <v-text-field
                     v-model="encuesta.nombreApellido"
                     label="Nombre y apellido"
+                    readonly
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <v-text-field
                     v-model="encuesta.dni"
                     label="DNI"
+                    readonly
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
-                  <v-menu
-                    v-model="menu2"
-                    :close-on-content-click="false"
-                    :nudge-right="40"
-                    transition="scale-transition"
-                    offset-y
-                    min-width="auto"
-                  >
-                    <template v-slot:activator="{ on, attrs }">
-                      <v-text-field
+                    <v-text-field
                         v-model="encuesta.fechaNacimiento"
                         label="Fecha de nacimiento"
                         prepend-icon="mdi-calendar"
                         readonly
-                        v-bind="attrs"
-                        v-on="on"
-                      ></v-text-field>
-                    </template>
-                    <v-date-picker
-                      v-model="encuesta.fechaNacimiento"
-                      @input="menu2 = false"
-                    ></v-date-picker>
-                  </v-menu>
+                    ></v-text-field>
                 </v-col>
               </v-row>
               <v-row>
@@ -161,6 +129,7 @@
                   <v-text-field
                     v-model="encuesta.domicilioBarrio"
                     label="Domicilio/barrio"
+                    readonly
                   ></v-text-field>
                 </v-col>
               </v-row>
@@ -169,37 +138,22 @@
                   <v-text-field
                     v-model="encuesta.telefono"
                     label="Teléfono"
+                    readonly
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
-                  <v-menu
-                    v-model="menu3"
-                    :close-on-content-click="false"
-                    :nudge-right="40"
-                    transition="scale-transition"
-                    offset-y
-                    min-width="auto"
-                  >
-                    <template v-slot:activator="{ on, attrs }">
-                      <v-text-field
+                    <v-text-field
                         v-model="encuesta.fechaUltimaMenstruacion"
                         label="Fecha de última menstruación"
                         prepend-icon="mdi-calendar"
                         readonly
-                        v-bind="attrs"
-                        v-on="on"
-                      ></v-text-field>
-                    </template>
-                    <v-date-picker
-                      v-model="encuesta.fechaUltimaMenstruacion"
-                      @input="menu3 = false"
-                    ></v-date-picker>
-                  </v-menu>
+                    ></v-text-field>                
                 </v-col>
                 <v-col cols="12" md="4">
                   <v-text-field
                     v-model="encuesta.semanasGestacion"
                     label="Semanas de gestación"
+                    readonly
                   ></v-text-field>
                 </v-col>
               </v-row>
@@ -208,6 +162,7 @@
                   <v-text-field
                     v-model="encuesta.observacionesBloque0"
                     label="Observaciones"
+                    readonly
                   ></v-text-field>
                 </v-col>
               </v-row>
@@ -232,7 +187,7 @@
                     label="3.1 Peso"
                     suffix="Kg"
                     placeholder="55.230"
-                    :rules="rules.number"
+                    readonly
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
@@ -242,6 +197,7 @@
                     hint="Especificar la ropa que tiene puesta al momento de tomar
                       el peso"
                     persistent-hint
+                    readonly
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
@@ -249,7 +205,7 @@
                     v-model="encuesta.talla"
                     label="3.2 Talla"
                     suffix="cm"
-                    :rules="rules.number"
+                    readonly
                   ></v-text-field>
                 </v-col>
               </v-row>
@@ -259,7 +215,7 @@
                     v-model="encuesta.tallaSentada"
                     label="3.3 Talla sentada"
                     suffix="cm"
-                    :rules="rules.number"
+                    readonly
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
@@ -270,7 +226,7 @@
                     hint="Las mediciones entre 3.4 y 3.8 tomarlas del lado derecho
                       del cuerpo."
                     persistent-hint
-                    :rules="rules.number"
+                    readonly
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
@@ -278,7 +234,7 @@
                     v-model="encuesta.pliegueTricipital"
                     label="3.5 Pliegue tricipal"
                     suffix="cm"
-                    :rules="rules.number"
+                    readonly
                   ></v-text-field>
                 </v-col>
               </v-row>
@@ -288,7 +244,7 @@
                     v-model="encuesta.pliegueBicipital"
                     label="3.6 Pliegue bicipal"
                     suffix="cm"
-                    :rules="rules.number"
+                    readonly
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
@@ -296,7 +252,7 @@
                     v-model="encuesta.pliegueSubescapular"
                     label="3.7 Pliegue subescapular"
                     suffix="cm"
-                    :rules="rules.number"
+                    readonly
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
@@ -304,7 +260,7 @@
                     v-model="encuesta.pliegueSuprailiaco"
                     label="3.8 Pliegue suprailíaco"
                     suffix="cm"
-                    :rules="rules.number"
+                    readonly
                   ></v-text-field>
                 </v-col>
               </v-row>
@@ -313,6 +269,7 @@
                   <v-text-field
                     v-model="encuesta.observacionesBloque3"
                     label="Observaciones"
+                    readonly
                   ></v-text-field>
                 </v-col>
               </v-row>
@@ -320,7 +277,8 @@
             <v-card-title
               class="text-h5 font-weight-regular blue-grey white--text"
               >Bloque 4. Inseguridad alimentaria y datos nutricionales
-              (continuación)</v-card-title
+              (continuación)
+              </v-card-title
             >
             <v-divider></v-divider>
             <v-card-subtitle
@@ -334,40 +292,9 @@
                       <th class="text-left">Hora del día</th>
                       <th class="text-left">Tipo de alimento</th>
                       <th class="text-left">Cantidad</th>
-                      <th class="text-left">Acción</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>
-                          <v-text-field
-                            v-model="recordatorio.horaDia"
-                            type="time"
-                          ></v-text-field>
-                      </td>
-                      <td>
-                        <v-text-field
-                          v-model="recordatorio.tipoAlimento"
-                        ></v-text-field>
-                      </td>
-                      <td>
-                        <v-text-field
-                          v-model="recordatorio.cantidad"
-                        ></v-text-field>
-                      </td>
-                      <td>
-                        <v-btn
-                          class="mx-2"
-                          fab
-                          small
-                          dark
-                          color="indigo"
-                          @click="agregarRecordatorio"
-                        >
-                          <v-icon dark> mdi-plus </v-icon>
-                        </v-btn>
-                      </td>
-                    </tr>
                     <tr
                       v-for="recordatorio in recordatorios"
                       :key="recordatorio._id"
@@ -375,21 +302,6 @@
                       <td>{{ recordatorio.horaDia }}</td>
                       <td>{{ recordatorio.tipoAlimento }}</td>
                       <td>{{ recordatorio.cantidad }}</td>
-                      <td>
-                        <v-icon
-                          small
-                          class="mr-2"
-                          @click="editarRecordatorio(recordatorio)"
-                        >
-                          mdi-pencil
-                        </v-icon>
-                        <v-icon
-                          small
-                          @click="eliminarRecordatorio(recordatorio)"
-                        >
-                          mdi-delete
-                        </v-icon>
-                      </td>
                     </tr>
                   </tbody>
                 </template>
@@ -399,25 +311,13 @@
                   <v-text-field
                     v-model="encuesta.observacionesBloque4"
                     label="Observaciones"
+                    readonly
                   ></v-text-field>
                 </v-col>
               </v-row>
             </v-container>
-
             <v-divider class="mt-3"></v-divider>
             <v-card-actions class="mx-4">
-              <v-btn
-                color="primary"
-                text
-                @click="agregarEncuesta"
-                :loading="loading"
-              >
-                Agregar encuesta
-              </v-btn>
-
-              <v-btn class="mr-4" text @click="limpiarEncuesta">
-                Limpiar
-              </v-btn>
               <v-spacer></v-spacer>
               <v-btn color="red" text @click="dialog = false"> Cerrar </v-btn>
             </v-card-actions>
@@ -499,62 +399,27 @@ class Encuesta {
     this.tipoEncuesta = "Tercer trimestre";
   }
 }
+
 export default {
-  data() {
-    return {
-      dialog: false,
-      encuesta: new Encuesta(),
-      encuestas: [],
-      recordatorios: [],
-      recordatorio: new Recordatorio24hs(),
-      baseUrl: "https://tpftestbackend.herokuapp.com",
-      menu1: false,
-      menu2: false,
-      menu3: false,
-      loading: false,
-      dialog: false,
-      rules: {
-        email: [
-          (v) => !!v || "E-mail is required",
-          (v) => /.+@.+/.test(v) || "E-mail must be valid",
-        ],
-        number: [(val) => /^[0-9]\d*(\.\d+)?$/.test(val) || "Usar punto"],
+    name: "VerTercerTrimestre",
+    props: ['id'],
+    data() {
+        return {
+        dialog: false,
+        encuesta: new Encuesta(),
+        recordatorios: [],
+        recordatorio: new Recordatorio24hs(),
+        baseUrl: "https://tpftestbackend.herokuapp.com",
+      }
+    },
+    methods: {
+      async getEncuesta() {
+      const res = await this.axios.get(
+        `${this.baseUrl}/encuestas3Trimestre/` + this.id
+      );
+      this.encuesta = res.data;
+      this.recordatorios = res.data.recordatorio24Horas;
       },
-    };
-  },
-  methods: {
-    async agregarEncuesta() {
-      this.loading = true;
-      const headers = {
-        Accept: "application/json",
-        "Content-type": "application/json",
-      };
-      this.encuesta.recordatorio24Horas = this.recordatorios;
-      this.axios
-        .post(
-          `${this.baseUrl}/encuestas3Trimestre`,
-          JSON.stringify(this.encuesta),
-          { headers }
-        )
-        .then((result) => {
-          this.loading = false;
-          this.encuesta = new Encuesta();
-          this.recordatorios = [];
-          this.dialog = false;
-          this.$emit("encuestaAgregada");
-        });
-    },
-    limpiarEncuesta() {
-      this.encuesta = new Encuesta();
-    },
-    agregarRecordatorio() {
-      this.recordatorios.push(this.recordatorio);
-      this.recordatorio = new Recordatorio24hs();
-    },
-    eliminarRecordatorio(recordatorio) {
-      this.recordatorios.splice(this.recordatorios.indexOf(recordatorio), 1);
-    },
-    editarRecordatorio(recordatorio) {},
-  },
-};
+    }
+}
 </script>

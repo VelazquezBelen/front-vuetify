@@ -5,20 +5,22 @@
       width="1200"
     >
       <template v-slot:activator="{ on, attrs }">
-        <v-btn
-          
-          text
-          color="blue-grey"
+        <v-icon
+          pt-3
+          class="mr-2"
+          small
+          color="red lighten-2"
+          dark
           v-bind="attrs"
           v-on="on"
+          @click="getEncuesta"
         >
-        <v-icon left small>mdi-file-plus-outline</v-icon>
-          <span class="caption">Nueva encuesta neonato</span>
-        </v-btn>
+          mdi-pencil
+        </v-icon>
       </template>
       <v-card >
         <v-card-title class="text-center text-h5 font-weight-regular blue-grey--text">
-          Nueva encuesta neonato
+          Editar encuesta neonato
         </v-card-title>
         <v-card-text>
         <v-card ref="form" width="5000px" flat>
@@ -325,9 +327,9 @@
           <v-btn
             color="primary"
             text
-            @click="agregarEncuesta" :loading="loading"
+            @click="editarEncuesta" :loading="loading"
           >
-            Agregar encuesta
+            Actualizar encuesta
           </v-btn>
 
           <v-btn
@@ -414,9 +416,11 @@ class Encuesta {
     this.tipoEncuesta = "Neonato";
   }
 }
-  export default {
-    data () {
-      return {
+export default {
+    name: "Edit",
+    props: ['id'],
+    data() {
+        return {
         dialog: false,
         encuesta: new Encuesta(),
         encuestas: [],
@@ -433,27 +437,35 @@ class Encuesta {
           ],
           number: [val => /^[0-9]\d*(\.\d+)?$/.test(val) || 'Usar punto'],
         },
-        }
+      }
     },
     methods: {
-    async agregarEncuesta() {
+      async getEncuesta() {
+      const res = await this.axios.get(
+        `${this.baseUrl}/encuestasNeonato/` + this.id
+      );
+      this.encuesta = res.data;
+      },
+      
+      async editarEncuesta() {
       this.loading = true;
       const headers = {
         Accept: "application/json",
         "Content-type": "application/json",
       };
-      this.axios.post(`${this.baseUrl}/encuestasNeonato`,     
+      this.axios.put(`${this.baseUrl}/encuestasNeonato/` + this.id,     
         JSON.stringify(this.encuesta),
         { headers }).then((result) => {
             this.loading = false;
             this.encuesta = new Encuesta();
             this.dialog = false;
-            this.$emit('encuestaAgregada')
+            this.$emit('encuestaActualizada')
+            this.$emit('getEncuestas')
         }) 
     },
     limpiarEncuesta() {
       this.encuesta = new Encuesta();
     }, 
-  }
+  }    
 }
 </script>
