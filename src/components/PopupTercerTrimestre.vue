@@ -31,12 +31,16 @@
                   <v-text-field
                     v-model="encuesta.nombreApellidoEncuestador1"
                     label="Nombre y apellido Encuestador 1"
+                    :rules = "rules.obligatorio"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <v-text-field
                     v-model="encuesta.telefonoEncuestador1"
                     label="Teléfono"
+                    type="number"
+                    min="0"
+                    :rules = "rules.obligatorio"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
@@ -54,17 +58,22 @@
                   <v-text-field
                     v-model="encuesta.nombreApellidoEncuestador2"
                     label="Nombre y apellido Encuestador 2"
+                    :rules = "rules.obligatorio"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <v-text-field
                     v-model="encuesta.telefonoEncuestador2"
                     label="Teléfono"
+                    type="number"
+                    min="0"
+                    :rules = "rules.obligatorio"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <v-text-field
                     v-model="encuesta.emailEncuestador2"
+                    :rules = "rules.email"
                     label="E-mail"
                     hint="email@example.com"
                     persistent-hint
@@ -98,10 +107,13 @@
                   </v-menu>
                 </v-col>
                 <v-col cols="12" md="6">
-                  <v-text-field
-                    v-model="encuesta.lugarRelevamiento"
-                    label="Lugar del relevamiento"
-                  ></v-text-field>
+                  <v-select
+                  v-model="encuesta.lugarRelevamiento"
+                  :items="lugares"
+                  item-value="nombre"
+                  item-text="nombre"
+                  label="Lugar de relevamiento"
+                ></v-select>
                 </v-col>
               </v-row>
             </v-container>
@@ -115,12 +127,16 @@
                   <v-text-field
                     v-model="encuesta.nombreApellido"
                     label="Nombre y apellido"
+                    :rules = "rules.obligatorio"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <v-text-field
                     v-model="encuesta.dni"
                     label="DNI"
+                    type="number"
+                    min="0"
+                    :rules = "rules.obligatorio"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
@@ -154,6 +170,7 @@
                   <v-text-field
                     v-model="encuesta.domicilioBarrio"
                     label="Domicilio/barrio"
+                    :rules = "rules.obligatorio"
                   ></v-text-field>
                 </v-col>
               </v-row>
@@ -162,6 +179,8 @@
                   <v-text-field
                     v-model="encuesta.telefono"
                     label="Teléfono"
+                    type="number"
+                    min="0"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
@@ -193,6 +212,9 @@
                   <v-text-field
                     v-model="encuesta.semanasGestacion"
                     label="Semanas de gestación"
+                    type="number"
+                    min="0"
+                    :rules = "rules.obligatorio"
                   ></v-text-field>
                 </v-col>
               </v-row>
@@ -224,7 +246,8 @@
                     v-model="encuesta.pesoKG"
                     label="3.1 Peso"
                     suffix="Kg"
-                    placeholder="55.230"
+                    type="number"
+                    min="0"
                     :rules="rules.number"
                   ></v-text-field>
                 </v-col>
@@ -242,6 +265,8 @@
                     v-model="encuesta.talla"
                     label="3.2 Talla"
                     suffix="cm"
+                    type="number"
+                    min="0"
                     :rules="rules.number"
                   ></v-text-field>
                 </v-col>
@@ -252,6 +277,8 @@
                     v-model="encuesta.tallaSentada"
                     label="3.3 Talla sentada"
                     suffix="cm"
+                    type="number"
+                    min="0"
                     :rules="rules.number"
                   ></v-text-field>
                 </v-col>
@@ -260,6 +287,8 @@
                     v-model="encuesta.perimetroBraquial"
                     label="3.4 Perímetro braquial"
                     suffix="cm"
+                    type="number"
+                    min="0"
                     hint="Las mediciones entre 3.4 y 3.8 tomarlas del lado derecho
                       del cuerpo."
                     persistent-hint
@@ -269,8 +298,10 @@
                 <v-col cols="12" md="4">
                   <v-text-field
                     v-model="encuesta.pliegueTricipital"
-                    label="3.5 Pliegue tricipal"
+                    label="3.5 Pliegue tricipital"
                     suffix="cm"
+                    type="number"
+                    min="0"
                     :rules="rules.number"
                   ></v-text-field>
                 </v-col>
@@ -279,8 +310,10 @@
                 <v-col cols="12" md="4">
                   <v-text-field
                     v-model="encuesta.pliegueBicipital"
-                    label="3.6 Pliegue bicipal"
+                    label="3.6 Pliegue bicipital"
                     suffix="cm"
+                    type="number"
+                    min="0"
                     :rules="rules.number"
                   ></v-text-field>
                 </v-col>
@@ -289,6 +322,8 @@
                     v-model="encuesta.pliegueSubescapular"
                     label="3.7 Pliegue subescapular"
                     suffix="cm"
+                    type="number"
+                    min="0"
                     :rules="rules.number"
                   ></v-text-field>
                 </v-col>
@@ -297,6 +332,8 @@
                     v-model="encuesta.pliegueSuprailiaco"
                     label="3.8 Pliegue suprailíaco"
                     suffix="cm"
+                    type="number"
+                    min="0"
                     :rules="rules.number"
                   ></v-text-field>
                 </v-col>
@@ -371,6 +408,8 @@
                       <td>
                         <v-text-field
                           v-model="recordatorio.cantidad"
+                          type="number"
+                          min="0"
                         ></v-text-field>
                       </td>
                       <td>
@@ -538,8 +577,13 @@ export default {
           (v) => /.+@.+/.test(v) || "E-mail must be valid",
         ],
         number: [(val) => /^[0-9]\d*(\.\d+)?$/.test(val) || "Usar punto"],
+        obligatorio: [o=> !!o || 'Este campo es obligatorio'],
       },
+      lugares: [],
     };
+  },
+  created() {
+    this.getLugares();
   },
   methods: {
     async agregarEncuesta() {
@@ -566,6 +610,10 @@ export default {
     limpiarEncuesta() {
       this.encuesta = new Encuesta();
     },
+    async getLugares() {
+      const res = await this.axios.get(`${this.baseUrl}/lugares`);
+      this.lugares = res.data;
+    },
     agregarRecordatorio() {
       this.recordatorios.push(this.recordatorio);
       this.recordatorio = new Recordatorio24hs();
@@ -573,7 +621,12 @@ export default {
     eliminarRecordatorio(recordatorio) {
       this.recordatorios.splice(this.recordatorios.indexOf(recordatorio), 1);
     },
-    editarRecordatorio(recordatorio) {},
+    editarRecordatorio(recordatorio) {
+      this.recordatorio.horaDia = this.recordatorios[this.recordatorios.indexOf(recordatorio)].horaDia;
+      this.recordatorio.tipoAlimento = this.recordatorios[this.recordatorios.indexOf(recordatorio)].tipoAlimento;
+      this.recordatorio.cantidad = this.recordatorios[this.recordatorios.indexOf(recordatorio)].cantidad;
+      this.recordatorios.splice(this.recordatorios.indexOf(recordatorio), 1);
+    },
   },
 };
 </script>
