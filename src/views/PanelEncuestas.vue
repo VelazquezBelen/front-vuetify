@@ -55,12 +55,14 @@
             <template v-slot:top>
               <v-toolbar flat>
                 <!-- <v-toolbar-title>My CRUD</v-toolbar-title> -->
-                <v-text-field
-                  v-model="search"
-                  append-icon="mdi-magnify"
-                  label="Buscar por DNI"
-                  hide-details
-                ></v-text-field>
+                <v-col cols="3">
+                  <v-text-field
+                    v-model="search"
+                    append-icon="mdi-magnify"
+                    label="Buscar por DNI"
+                    hide-details
+                  ></v-text-field>
+                </v-col>
                 <v-spacer></v-spacer>
                 <v-dialog v-model="dialogDelete" max-width="500px">
                   <v-card>

@@ -11,12 +11,13 @@
           color="blue-grey"
           v-bind="attrs"
           v-on="on"
+          class="caption"
         >
-        <v-icon left small>mdi-file-plus-outline</v-icon>
-          <span class="caption">Nueva encuesta neonato</span>
+        <v-icon left >mdi-file-plus-outline</v-icon>
+         Nueva encuesta neonato
         </v-btn>
       </template>
-      <v-card >
+      <v-card>
         <v-card-title class="text-center text-h5 font-weight-regular blue-grey--text">
           Nueva encuesta neonato
         </v-card-title>

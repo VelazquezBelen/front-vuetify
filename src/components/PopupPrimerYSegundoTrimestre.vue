@@ -3,14 +3,14 @@
     <v-dialog v-model="dialog" width="1200">
       <template v-slot:activator="{ on, attrs }">
         <v-btn
-          
           text
           color="blue-grey"
           v-bind="attrs"
           v-on="on"
+          class="caption"
         >
-        <v-icon left small>mdi-file-plus-outline</v-icon>
-          <span class="caption">Nueva encuesta primer y segundo trimestre</span>
+        <v-icon left >mdi-file-plus-outline</v-icon>
+          Nueva encuesta primer y segundo trimestre
         </v-btn>
       </template>
       <v-card>
@@ -1655,7 +1655,7 @@
 
             <v-divider class="mt-3"></v-divider>
             <v-card-actions class="mx-4">
-              <v-btn color="primary" text @click="agregarEncuesta">
+              <v-btn color="primary" text @click="agregarEncuesta" :loading="loading">
                 Agregar encuesta
               </v-btn>
 
@@ -1914,6 +1914,7 @@ export default {
       recordatorio: new Recordatorio24hs(),
       recordatorios: [],
       encuestas: [],
+      loading: false,
       baseUrl: "https://tpftestbackend.herokuapp.com",
       menu1: false,
       menu2: false,

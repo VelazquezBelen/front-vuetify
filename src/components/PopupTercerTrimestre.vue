@@ -8,9 +8,10 @@
           color="blue-grey"
           v-bind="attrs"
           v-on="on"
+          class="caption"
         >
-        <v-icon left small>mdi-file-plus-outline</v-icon>
-          <span class="caption">Nueva encuesta tercer trimestre</span>
+        <v-icon left>mdi-file-plus-outline</v-icon>
+          Nueva encuesta tercer trimestre
         </v-btn>
       </template>
       <v-card>

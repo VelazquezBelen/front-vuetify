@@ -17,14 +17,23 @@
             <template v-slot:top>
               <v-toolbar flat>
                 <!-- <v-toolbar-title>My CRUD</v-toolbar-title> -->
+                <v-col cols="3">
                 <v-text-field
+                  class="xs-3"
                   v-model="search"
                   append-icon="mdi-magnify"
                   label="Buscar por email"
                   hide-details
                 ></v-text-field>
+                </v-col>
                 <v-spacer></v-spacer>
-                <v-btn @click="downloadEncuestas">exportar</v-btn>
+                <v-btn text outlined @click="downloadEncuestas" :loading="loading" class="mx-2 caption"
+                  dark
+                  color="success" >Exportar a csv
+                  <v-icon dark right>
+                    mdi-file-excel
+                  </v-icon>
+                </v-btn>
               </v-toolbar>
             </template>
             <template v-slot:item.actions="{ item }">
@@ -68,6 +77,7 @@ export default {
   VerNeonato },
   data() {
     return {
+      loading: false,
       search: '',
       encuestas: [],
       encuesta: new Encuesta(),
@@ -120,7 +130,7 @@ export default {
     },
     async downloadEncuestas() {
       // Genera un archivo .csv separando los datos con ;
-      console.log(this.encuestas)
+      this.loading = true;
       var FileSaver = require("file-saver");
       var texto1y2Trimestre =
         "Encuestas Primer y Segundo Trimestre \n nombreApellidoEncuestador1; telefonoEncuestador1; emailEncuestador1; nombreApellidoEncuestador2; telefonoEncuestador2; emailEncuestador2; fechaRelevamiento; lugarRelevamiento; nombreApellido; dni; fechaNacimiento; domicilioBarrio; telefono; fechaUltimaMenstruacion; semanasGestacion; observacionesBloque0; diabetes; enfermedadRenal; hipertension; colesterolTrigliceridosAltos; asmaEPOC; covid19; anemia; enfermedadCronica; cualEnfermedadCronica; consumeMedicamento; cualConsumeMedicamento; consumeComplejoVitaminicoSuplemento; cualConsumeComplejoVitaminicoSuplemento; fumaActual; fumaAntes; alcoholActual; embarazoAntes; cuantosEmbarazoAntes; hijos; cuantosHijos; observacionesBloque1; pais; provincia; personasVivienda; habitacionesVivienda; desagueCloaca; aguaPotable; redElectrica; gasNatural; nivelEducativo; empleo; asistenciaEstado; cualAsistenciaEstado; recibioBolson; recibioTickets; recibioTarjeta; recibioLeche; recibioOtra; cualUltimoMesRecibio; ingresoIndividual; ingresoTotal; recibioIFE; observacionesBloque2; pesoKG; ropaAlPesar; talla; tallaSentada; perimetroBraquial; pliegueTricipital; pliegueBicipital; pliegueSubescapular; pliegueSuprailiaco; observacionesBloque3; preocupadoSuficienteAlimentos; podidoAlimentos; comidoPocaVariedad; dejarDesayunoAlmuerzoCena; comidoMenos; sinAlimentos; sentidoHambre; dejadoComer; observacionesBloque4Parte1; recordatorio24Horas; observacionesBloque4Parte2; desayuno; almuerzo; merienda; cena; frecuenciaConsumo; golosinas; panBlanco; pan; copetin; frutas; lacteos; bebidas; otros; nsnc; observacionesBloque4Parte3; consumioLeche; consumioFrutasFrescas; consumioVerduras; consumioPapa; consumioCereales; consumioEmbutidos; observacionesBloque4Parte4; consumioCarne; consumioPescado; consumioAceites; consumioFrutasSecas; consumioProductosCopetin; consumioGolosinas; observacionesBloque4Parte5 \n";
@@ -136,8 +146,6 @@ export default {
           const res = await this.axios.get(
             `${this.baseUrl}/encuestas1y2Trimestre/` + this.encuestas[index]._id
           );
-          console.log(this.encuestas[index]._id)
-          console.log(res.data)
           texto1y2Trimestre +=
             res.data.nombreApellidoEncuestador1 +
             "; " +
@@ -362,8 +370,7 @@ export default {
           const res = await this.axios.get(
             `${this.baseUrl}/encuestas3Trimestre/` + this.encuestas[index]._id
           );
-          console.log(this.encuestas[index]._id)
-          console.log(res.data)
+
           texto3Trimestre +=
             res.data.nombreApellidoEncuestador1 +
             "; " +
@@ -426,8 +433,6 @@ export default {
           const res = await this.axios.get(
             `${this.baseUrl}/encuestasNeonato/` + this.encuestas[index]._id
           );
-          console.log(this.encuestas[index]._id)
-          console.log(res.data)
           textoNeonato +=
             res.data.nombreApellidoEncuestador1 +
             ";" +
@@ -486,6 +491,7 @@ export default {
       var texto =
         texto1y2Trimestre + "\n" + texto3Trimestre + "\n" + textoNeonato;
       var blob = new Blob([texto], { type: "text/plain;charset=utf-8" });
+      this.loading = false;
       FileSaver.saveAs(blob, "Encuestas.csv");
     },
   },

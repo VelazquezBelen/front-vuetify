@@ -52,11 +52,11 @@
           <v-list-group color="white" :value="true" no-action >
           <template v-slot:activator>
             <v-list-item-icon>
-            <v-icon class="white--text">mdi-clipboard-text-outline</v-icon>
+            <v-icon class="white--text">mdi-shield-account</v-icon>
           </v-list-item-icon>
             <v-list-item-title class="white--text"
               >Administración
-        </v-list-item-title>
+          </v-list-item-title>
             </template>
             <v-list-item router_link to="/encuestas">
                 <v-list-item-content>
