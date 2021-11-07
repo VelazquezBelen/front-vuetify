@@ -560,8 +560,8 @@ export default {
         ],
         number: [(val) => /^[0-9]\d*(\.\d+)?$/.test(val) || "Usar punto en lugar de coma"],
         obligatorio: [o=> !!o || 'Este campo es obligatorio'],
-        lugares: [],
       },
+      lugares: [],
     };
   },
   created() {
