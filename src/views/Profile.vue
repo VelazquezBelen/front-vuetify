@@ -1,7 +1,7 @@
 <template>
 <div class="profile">
     <h2 class="grey--text">
-      <span>PERFIL</span>
+      <span>Mi Perfil</span>
     </h2>
     <hr />
     <div class="pa-2">

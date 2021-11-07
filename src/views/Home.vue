@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <h2 class="grey--text">
-      <span>INICIO</span>
+      <span>Inicio</span>
     </h2>
     <hr />
     <div class="pa-2">

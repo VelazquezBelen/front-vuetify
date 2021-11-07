@@ -1,7 +1,7 @@
 <template>
   <div class="encuestas">
     <h2 class="grey--text">
-      <span>Administrar encuestas</span>
+      <span>Administrar Encuestas</span>
     </h2>
     <hr />
     <v-row justify="center">
