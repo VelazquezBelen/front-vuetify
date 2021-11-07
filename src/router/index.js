@@ -4,6 +4,9 @@ import Home from '../views/Home.vue'
 import Encuestas from '../views/PanelEncuestas.vue'
 import Profile from '../views/Profile.vue'
 import Admin from '../views/Admin.vue'
+import AdminUsuarios from '../views/AdministrarUsuarios.vue'
+import AdminEncuestas from '../views/AdministrarEncuestas.vue'
+
 
 Vue.use(VueRouter)
 
@@ -27,6 +30,16 @@ const routes = [
     path: "/admin",
     name: "admin",
     component: Admin
+  },
+  {
+    path: "/adminusuarios",
+    name: "adminUsuarios",
+    component: AdminUsuarios
+  },
+  {
+    path: "/adminencuestas",
+    name: "adminEncuestas",
+    component: AdminEncuestas
   }
 ]
 

@@ -49,6 +49,32 @@
             <v-list-item-title class="white--text">Administracion</v-list-item-title>
           </v-list-item>
 
+          <v-list-group color="white" :value="true" no-action >
+          <template v-slot:activator>
+            <v-list-item-icon>
+            <v-icon class="white--text">mdi-clipboard-text-outline</v-icon>
+          </v-list-item-icon>
+            <v-list-item-title class="white--text"
+              >Administración
+        </v-list-item-title>
+            </template>
+            <v-list-item router_link to="/encuestas">
+                <v-list-item-content>
+                  <v-list-item-title class="white--text" 
+                    >Administrar usuarios</v-list-item-title
+                  >
+                </v-list-item-content>
+            </v-list-item>
+
+            <v-list-item router_link to="/adminencuestas">
+                <v-list-item-content >
+                  <v-list-item-title class="white--text"
+                    >Administrar encuestas</v-list-item-title
+                  >
+                </v-list-item-content>
+            </v-list-item>
+          </v-list-group>
+
         </v-list-item-group>
       </v-list>
   </v-navigation-drawer>
