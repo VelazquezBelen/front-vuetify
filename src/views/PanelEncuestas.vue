@@ -1,7 +1,7 @@
 <template>
   <div class="encuestas">
     <h2 class="grey--text">
-      <span>ENCUESTAS</span>
+      <span>Mis Encuestas</span>
     </h2>
     <hr />
     <div class="text-center ma2">
@@ -37,8 +37,13 @@
         </template>
       </v-snackbar>
     </div>
-    <v-content class="mx-10 my-2">
-      <v-layout row class="mb-3">
+    <v-row justify="center">
+    <v-col
+      cols="12"
+      sm="10"
+      class="mx-10 my-14"
+    > 
+          <v-layout row class="mb-3">
           <PopupNeonato @encuestaAgregada="snackbar = true" @getEncuestas="getEncuestas"/>
           <PrimerYSegundoTrimestre @encuestaAgregada="snackbar = true" @getEncuestas="getEncuestas"/>
           <TercerTrimestre @encuestaAgregada="snackbar = true" @getEncuestas="getEncuestas"/>
@@ -90,7 +95,8 @@
           </v-data-table>
         </v-card>
       </template>
-    </v-content>
+    </v-col>
+    </v-row>
   </div>
 </template>
 

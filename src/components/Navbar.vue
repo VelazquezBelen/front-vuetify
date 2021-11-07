@@ -1,7 +1,7 @@
 <template>
   <nav>
     <v-app-bar text app>
-      <v-app-bar-nav-icon class="grey--text" @click="drawer = !drawer"></v-app-bar-nav-icon>      <v-toolbar-title class="text-uppercase">
+      <v-app-bar-nav-icon class="grey--text" @click="drawer = !drawer"></v-app-bar-nav-icon><v-toolbar-title class="text-uppercase">
         <span class="font-weight-light">Trabajo</span>
         <span>Final</span>
       </v-toolbar-title>

@@ -4,8 +4,13 @@
       <span>Administrar encuestas</span>
     </h2>
     <hr />
-    <v-content class="mx-10 my-2">
-      <template>        
+    <v-row justify="center">
+    <v-col
+      cols="12"
+      sm="10"
+      class="mx-10 my-14"
+    > 
+    <template>        
         <v-card>
           <v-data-table
             :headers="headers"
@@ -46,7 +51,8 @@
           </v-data-table>
         </v-card>
       </template>
-    </v-content>
+    </v-col>
+     </v-row>
   </div>
 </template>
 
