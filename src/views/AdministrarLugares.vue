@@ -7,11 +7,10 @@
     <v-row justify="center">
     <v-col
       cols="12"
-      sm="10"
-      class="mx-10 my-14"
+      sm="6"
+      class="mx-20 my-14"
     > 
     <template>        
-        <v-card>
           <v-data-table
             :headers="headers"
             :items="lugares"
@@ -20,37 +19,36 @@
           >
             <template v-slot:top>
               <v-toolbar flat>
-                <v-col cols="6">
+                <v-col cols="4">
                 <v-text-field
                   class="xs-3"
                   v-model="lugarInput"
                   label="Nuevo lugar de relevamiento"
                   hide-details
-                ></v-text-field>
+                ></v-text-field>                
                 </v-col>
-                <v-spacer></v-spacer>
-                <v-btn text outlined @click="addLugar" class="mx-2 caption"
-                  dark
-                  color="grey" >Agregar lugar
-                  <v-icon dark right>
+                <v-btn  @click="addLugar"
+                  color="indigo" outlined fab x-small>
+                  <v-icon>
                     mdi-plus
                   </v-icon>
                 </v-btn>
+                <v-spacer></v-spacer>
               </v-toolbar>
             </template>
             <template v-slot:item.actions="{ item }">
                 <v-row>
-                    <v-btn
+                    <v-icon
                     text
                     @click="deleteLugar(item._id)"
                     color="grey"
+                    small
                     >
-                    <v-icon left small>mdi-delete</v-icon>
-                    </v-btn>
+                    mdi-delete
+                    </v-icon>
                 </v-row>
             </template>
           </v-data-table>
-        </v-card>
       </template>
     </v-col>
      </v-row>

@@ -49,7 +49,6 @@
           <TercerTrimestre @encuestaAgregada="snackbar = true" @getEncuestas="getEncuestas"/>
       </v-layout>
       <template>        
-        <v-card>
           <v-data-table
             :headers="headers"
             :items="encuestas"
@@ -93,7 +92,6 @@
               </v-row>
             </template>
           </v-data-table>
-        </v-card>
       </template>
     </v-col>
     </v-row>
