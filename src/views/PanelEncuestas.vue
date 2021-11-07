@@ -54,9 +54,9 @@
       class="mx-10 my-14"
     > 
           <v-layout row class="mb-3">
-          <PopupNeonato @encuestaAgregada="snackbar = true" @camposObligatorios="snackbarObligatorio = true" @getEncuestas="getEncuestas"/>
           <PrimerYSegundoTrimestre @encuestaAgregada="snackbar = true" @camposObligatorios="snackbarObligatorio = true" @getEncuestas="getEncuestas"/>
           <TercerTrimestre @encuestaAgregada="snackbar = true" @camposObligatorios="snackbarObligatorio = true" @getEncuestas="getEncuestas"/>
+          <PopupNeonato @encuestaAgregada="snackbar = true" @camposObligatorios="snackbarObligatorio = true" @getEncuestas="getEncuestas"/>
       </v-layout>
       <template>        
           <v-data-table

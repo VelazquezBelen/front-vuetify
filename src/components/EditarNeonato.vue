@@ -135,14 +135,14 @@
             <v-row>
               <v-col cols="12" md="4">
                 <v-text-field
-                  v-model="encuesta.nombreApellido"
+                  v-model="encuesta.nombreApellidoBebe"
                   label="Nombre y apellido"
                   :rules = "rules.obligatorio"
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="4">
                 <v-text-field
-                  v-model="encuesta.dni"
+                  v-model="encuesta.dniBebe"
                   label="DNI"
                   type="number"
                   min="0"
@@ -327,13 +327,13 @@
             <v-row>
               <v-col cols="12" md="6">
                 <v-text-field
-                  v-model="encuesta.NombreApellidoMadre"
+                  v-model="encuesta.nombreApellido"
                   label="Nombre y apellido"
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="6">
                 <v-text-field
-                  v-model="encuesta.dniMadre"
+                  v-model="encuesta.dni"
                   label="DNI"
                   type="number"
                   min="0"
@@ -395,8 +395,8 @@ class Encuesta {
     emailEncuestador2,
     fechaRelevamiento,
     lugarRelevamiento,
-    nombreApellido,
-    dni,
+    nombreApellidoBebe,
+    dniBebe,
     fechaNacimiento,
     domicilioBarrio,
     telefono,
@@ -410,8 +410,8 @@ class Encuesta {
     talla,
     perimetroCefalico,
     circunsferenciaBrazo,
-    NombreApellidoMadre,
-    dniMadre,
+    nombreApellido,
+    dni,
     observacionesBloque5
   ) {
     this.nombreApellidoEncuestador1 = nombreApellidoEncuestador1;
@@ -422,8 +422,8 @@ class Encuesta {
     this.emailEncuestador2 = emailEncuestador2;
     this.fechaRelevamiento = fechaRelevamiento;
     this.lugarRelevamiento = lugarRelevamiento;
-    this.nombreApellido = nombreApellido;
-    this.dni = dni;
+    this.nombreApellidoBebe = nombreApellidoBebe;
+    this.dniBebe = dniBebe;
     this.fechaNacimiento = fechaNacimiento;
     this.domicilioBarrio = domicilioBarrio;
     this.telefono = telefono;
@@ -437,8 +437,8 @@ class Encuesta {
     this.talla = talla;
     this.perimetroCefalico = perimetroCefalico;
     this.circunsferenciaBrazo = circunsferenciaBrazo;
-    this.NombreApellidoMadre = NombreApellidoMadre;
-    this.dniMadre = dniMadre;
+    this.nombreApellido = nombreApellido;
+    this.dni = dni;
     this.observacionesBloque5 = observacionesBloque5;
     this.tipoEncuesta = "Neonato";
   }

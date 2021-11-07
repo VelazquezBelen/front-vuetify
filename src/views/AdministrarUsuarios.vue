@@ -95,7 +95,8 @@
               <template v-slot:default>
                 <thead>
                   <tr>
-                    <th class="text-left">Usuario</th>
+                    <th class="text-left">Nombre usuario</th>
+                    <th class="text-left">Email</th>
                     <th class="text-left">Perfil</th>
                     <th class="text-left">Editar Permisos</th>
                     <th class="text-left">Eliminar</th>
@@ -103,8 +104,9 @@
                 </thead>
                 <tbody>
                   <tr v-for="usuario in usuarios" :key="usuario._id">
+                    <td>{{ usuario.nombre }}</td>
                     <td>{{ usuario.email }}</td>
-                    <td v-if="usuario.admin === true">Admin</td>
+                    <td v-if="usuario.admin === true">Administrador</td>
                     <td v-else>Encuestador</td>
                     <td>
                       <v-icon

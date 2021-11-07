@@ -133,7 +133,7 @@ export const useAuth0 = ({
                     Accept: "application/json",
                     "Content-type": "application/json",
                   };
-                  var usuario = { email: this.user.email, admin: false }
+                  var usuario = { email: this.user.email, nombre: this.user.name, admin: false }
                   this.axios.post("https://tpftestbackend.herokuapp.com/usuarios",JSON.stringify(usuario), { headers });
               }              
             })          

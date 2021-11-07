@@ -22,15 +22,32 @@
   </v-app-bar>
 
   <v-navigation-drawer v-model="drawer" app class="indigo">
+      <v-list>
+        <v-list-item v-if="$auth.isAuthenticated" class="my-3 justify-center">
+          <v-list-item-avatar size="60">
+            <v-img
+              :src="$auth.user.picture"              
+            ></v-img>
+          </v-list-item-avatar>
+        </v-list-item>
+
+        <v-list-item v-if="$auth.isAuthenticated">
+          <v-list-item-content>
+            <v-list-item-title class="text-h6 white--text">
+              {{$auth.user.name}}
+            </v-list-item-title>
+            <v-list-item-subtitle class="white--text">{{$auth.user.email}}</v-list-item-subtitle>
+          </v-list-item-content>
+        
+        </v-list-item>
+      </v-list>
+      <v-divider color="white"></v-divider>
     <v-list
         nav
         dense
-      >
-        <v-list-item-group
-          active-class="white--text text--accent-4"
-        >
-
-          <v-list-item router_link to='/'>
+      > 
+      <v-list-item-group>
+        <v-list-item router_link to='/'>
             <v-list-item-icon >
               <v-icon class="white--text" >mdi-home</v-icon>
             </v-list-item-icon>
@@ -103,6 +120,7 @@ export default {
       usuarios: [],
   }),
   created() {
+    console.log(this.$auth.user)
     axios
       .get("https://tpftestbackend.herokuapp.com/usuarios")
       .then((response) => {
