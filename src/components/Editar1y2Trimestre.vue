@@ -1970,22 +1970,29 @@ export default {
       this.recordatorios = res.data.recordatorio24Horas;
       },      
       async editarEncuesta() {
-      this.loading = true;
-      const headers = {
-        Accept: "application/json",
-        "Content-type": "application/json",
-      };
-      this.encuesta.recordatorio24Horas = this.recordatorios;
-      this.axios.put(`${this.baseUrl}/encuestas1y2Trimestre/` + this.id,     
-        JSON.stringify(this.encuesta),
-        { headers }).then((result) => {
-            this.loading = false;
-            this.encuesta = new Encuesta();
-            this.recordatorios = [];
-            this.dialog = false;
-            this.$emit('encuestaActualizada')
-            this.$emit('getEncuestas')
-        }) 
+        if (this.encuesta.nombreApellidoEncuestador1 && this.encuesta.telefonoEncuestador1 && this.encuesta.emailEncuestador1 && this.encuesta.nombreApellidoEncuestador2 && this.encuesta.telefonoEncuestador2 && this.encuesta.emailEncuestador2 && this.encuesta.nombreApellido && this.encuesta.dni && this.encuesta.domicilioBarrio && this.encuesta.semanasGestacion)
+        {
+          this.loading = true;
+          const headers = {
+            Accept: "application/json",
+            "Content-type": "application/json",
+          };
+          this.encuesta.recordatorio24Horas = this.recordatorios;
+          this.axios.put(`${this.baseUrl}/encuestas1y2Trimestre/` + this.id,     
+            JSON.stringify(this.encuesta),
+            { headers }).then((result) => {
+                this.loading = false;
+                this.encuesta = new Encuesta();
+                this.recordatorios = [];
+                this.dialog = false;
+                this.$emit('encuestaActualizada')
+                this.$emit('getEncuestas')
+            }) 
+        }
+        else
+        {
+          this.$emit('camposObligatorios');
+        }
     },
     limpiarEncuesta() {
       this.encuesta = new Encuesta();

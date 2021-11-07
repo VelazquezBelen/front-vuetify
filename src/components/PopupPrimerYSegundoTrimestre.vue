@@ -1936,21 +1936,29 @@ export default {
   },
   methods: {
     async agregarEncuesta() {
-      this.loading = true;
-      const headers = {
-        Accept: "application/json",
-        "Content-type": "application/json",
-      };
-      this.encuesta.recordatorio24Horas = this.recordatorios;
-      this.axios.post(`${this.baseUrl}/encuestas1y2Trimestre`,     
-        JSON.stringify(this.encuesta),
-        { headers }).then((result) => {
-            this.loading = false;
-            this.encuesta = new Encuesta();
-            this.recordatorios = [];
-            this.dialog = false;
-            this.$emit('encuestaAgregada')
-        })
+      if (this.encuesta.nombreApellidoEncuestador1 && this.encuesta.telefonoEncuestador1 && this.encuesta.emailEncuestador1 && this.encuesta.nombreApellidoEncuestador2 && this.encuesta.telefonoEncuestador2 && this.encuesta.emailEncuestador2 && this.encuesta.nombreApellido && this.encuesta.dni && this.encuesta.domicilioBarrio && this.encuesta.semanasGestacion)
+      {
+        this.loading = true;
+        const headers = {
+          Accept: "application/json",
+          "Content-type": "application/json",
+        };
+        this.encuesta.recordatorio24Horas = this.recordatorios;
+        this.axios.post(`${this.baseUrl}/encuestas1y2Trimestre`,     
+          JSON.stringify(this.encuesta),
+          { headers }).then((result) => {
+              this.loading = false;
+              this.encuesta = new Encuesta();
+              this.recordatorios = [];
+              this.dialog = false;
+              this.$emit('encuestaAgregada');
+              this.$emit('getEncuestas');
+          })
+      }
+      else
+      {
+        this.$emit('camposObligatorios');
+      }
     },
     limpiarEncuesta() {
       this.encuesta = new Encuesta();

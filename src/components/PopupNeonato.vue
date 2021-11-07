@@ -471,19 +471,27 @@ class Encuesta {
     },
     methods: {
     async agregarEncuesta() {
-      this.loading = true;
-      const headers = {
-        Accept: "application/json",
-        "Content-type": "application/json",
-      };
-      this.axios.post(`${this.baseUrl}/encuestasNeonato`,     
-        JSON.stringify(this.encuesta),
-        { headers }).then((result) => {
-            this.loading = false;
-            this.encuesta = new Encuesta();
-            this.dialog = false;
-            this.$emit('encuestaAgregada')
-        }) 
+      if (this.encuesta.nombreApellidoEncuestador1 && this.encuesta.telefonoEncuestador1 && this.encuesta.emailEncuestador1 && this.encuesta.nombreApellidoEncuestador2 && this.encuesta.telefonoEncuestador2 && this.encuesta.emailEncuestador2 && this.encuesta.nombreApellido && this.encuesta.dni && this.encuesta.domicilioBarrio)
+      {
+        this.loading = true;
+        const headers = {
+          Accept: "application/json",
+          "Content-type": "application/json",
+        };
+        this.axios.post(`${this.baseUrl}/encuestasNeonato`,     
+          JSON.stringify(this.encuesta),
+          { headers }).then((result) => {
+              this.loading = false;
+              this.encuesta = new Encuesta();
+              this.dialog = false;
+              this.$emit('encuestaAgregada');
+              this.$emit('getEncuestas');
+          })
+      }
+      else
+      {
+        this.$emit('camposObligatorios');
+      } 
     },
     limpiarEncuesta() {
       this.encuesta = new Encuesta();

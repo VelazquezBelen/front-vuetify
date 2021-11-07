@@ -37,6 +37,16 @@
         </template>
       </v-snackbar>
     </div>
+    <div class="text-center ma2">
+      <v-snackbar v-model="snackbarObligatorio" :timeout="2000" top color="error">
+        <span>Debe completar los campos obligatorios del bloque 0 &nbsp;</span>
+        <template v-slot:action="{ attrs }">
+          <v-btn v-bind="attrs" text color="white" @click="snackbarObligatorio = false"
+            >Cerrar</v-btn
+          >
+        </template>
+      </v-snackbar>
+    </div>
     <v-row justify="center">
     <v-col
       cols="12"
@@ -44,9 +54,9 @@
       class="mx-10 my-14"
     > 
           <v-layout row class="mb-3">
-          <PopupNeonato @encuestaAgregada="snackbar = true" @getEncuestas="getEncuestas"/>
-          <PrimerYSegundoTrimestre @encuestaAgregada="snackbar = true" @getEncuestas="getEncuestas"/>
-          <TercerTrimestre @encuestaAgregada="snackbar = true" @getEncuestas="getEncuestas"/>
+          <PopupNeonato @encuestaAgregada="snackbar = true" @camposObligatorios="snackbarObligatorio = true" @getEncuestas="getEncuestas"/>
+          <PrimerYSegundoTrimestre @encuestaAgregada="snackbar = true" @camposObligatorios="snackbarObligatorio = true" @getEncuestas="getEncuestas"/>
+          <TercerTrimestre @encuestaAgregada="snackbar = true" @camposObligatorios="snackbarObligatorio = true" @getEncuestas="getEncuestas"/>
       </v-layout>
       <template>        
           <v-data-table
@@ -85,9 +95,9 @@
                 <template v-if="item.tipoEncuesta === 'Tercer trimestre'"> <VerTercerTrimestre :id="item._id"></VerTercerTrimestre></template>
                 <template v-if="item.tipoEncuesta === 'Neonato'"> <VerNeonato :id="item._id"></VerNeonato></template>
                 <template v-if="item.tipoEncuesta === 'Primer y segundo trimestre'"> <VerPrimerySegundoTrimestre :id="item._id"></VerPrimerySegundoTrimestre></template>
-                <template v-if="item.tipoEncuesta === 'Neonato'"> <EditarNeonato :id="item._id" @encuestaActualizada="snackbarActualizo=true" @getEncuestas="getEncuestas"></EditarNeonato></template>
-                <template v-if="item.tipoEncuesta === 'Tercer trimestre'"> <EditarTercerTrimestre :id="item._id" @encuestaActualizada="snackbarActualizo=true" @getEncuestas="getEncuestas"></EditarTercerTrimestre></template>
-                <template v-if="item.tipoEncuesta === 'Primer y segundo trimestre'"> <EditarPrimerySegundoTrimestre :id="item._id" @encuestaActualizada="snackbarActualizo=true" @getEncuestas="getEncuestas"></EditarPrimerySegundoTrimestre></template>
+                <template v-if="item.tipoEncuesta === 'Neonato'"> <EditarNeonato :id="item._id" @encuestaActualizada="snackbarActualizo=true" @camposObligatorios="snackbarObligatorio = true" @getEncuestas="getEncuestas"></EditarNeonato></template>
+                <template v-if="item.tipoEncuesta === 'Tercer trimestre'"> <EditarTercerTrimestre :id="item._id" @encuestaActualizada="snackbarActualizo=true" @camposObligatorios="snackbarObligatorio = true" @getEncuestas="getEncuestas"></EditarTercerTrimestre></template>
+                <template v-if="item.tipoEncuesta === 'Primer y segundo trimestre'"> <EditarPrimerySegundoTrimestre :id="item._id" @encuestaActualizada="snackbarActualizo=true" @camposObligatorios="snackbarObligatorio = true" @getEncuestas="getEncuestas"></EditarPrimerySegundoTrimestre></template>
                 <v-icon small @click="eliminarEncuesta(item)"> mdi-delete </v-icon>
               </v-row>
             </template>
@@ -136,6 +146,7 @@ export default {
       loading: false,
       snackbarElimino: false,
       snackbarActualizo: false,
+      snackbarObligatorio: false,
       dialogDelete: false,
       search: '',
       encuestas: [],
