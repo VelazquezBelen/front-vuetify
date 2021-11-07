@@ -6,10 +6,19 @@
         <span>Final</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-    <v-btn outlined rounded>
-      <span>Salir</span>
-      <v-icon right>mdi-exit-to-app</v-icon>
-    </v-btn>
+    <!-- Check that the SDK client is not currently loading before accessing is methods -->
+    <div v-if="!$auth.loading">
+        <!-- show login when not authenticated -->
+        <v-btn v-if="!$auth.isAuthenticated" @click="login" outlined rounded>
+          <span>Entrar</span>
+          <v-icon right>mdi-account-arrow-left-outline</v-icon>
+        </v-btn>
+        <!-- show logout when authenticated -->
+        <v-btn v-if="$auth.isAuthenticated" @click="logout" outlined rounded>
+          <span>Salir</span>
+          <v-icon right>mdi-account-arrow-right-outline</v-icon>
+        </v-btn>
+    </div>
   </v-app-bar>
 
   <v-navigation-drawer v-model="drawer" app class="indigo">
@@ -28,21 +37,21 @@
             <v-list-item-title class="white--text">Inicio</v-list-item-title>
           </v-list-item>
 
-          <v-list-item router_link to='/profile'>
+          <v-list-item v-if="$auth.isAuthenticated" router_link to='/profile'>
             <v-list-item-icon >
               <v-icon class="white--text" >mdi-account</v-icon>
             </v-list-item-icon>
             <v-list-item-title class="white--text">Perfil</v-list-item-title>
           </v-list-item>
 
-          <v-list-item router_link to='/encuestas'>
+          <v-list-item v-if="$auth.isAuthenticated" router_link to='/encuestas'>
             <v-list-item-icon >
               <v-icon class="white--text">mdi-clipboard-text-outline</v-icon>
             </v-list-item-icon>
             <v-list-item-title class="white--text">Encuestas</v-list-item-title>
           </v-list-item>
 
-          <v-list-group color="white" :value="true" no-action >
+          <v-list-group v-if="$auth.isAuthenticated && checkAdmin()" color="white" :value="false" no-action >
           <template v-slot:activator>
             <v-list-item-icon>
             <v-icon class="white--text">mdi-shield-account</v-icon>
@@ -84,12 +93,48 @@
 </template>
 
 <script>
+import axios from "axios";
 
 export default {
   name: 'Navbar',
 
   data: () => ({
       drawer: false,
-    }),
+      usuarios: [],
+  }),
+  created() {
+    axios
+      .get("https://tpftestbackend.herokuapp.com/usuarios")
+      .then((response) => {
+        this.usuarios = response.data;
+      })
+      .catch((e) => {
+        this.errors.push(e);
+      });
+  },
+  methods: {
+    // Chequea si el usuario logueado tiene permisos de administrador, si es así
+    // muestra la opción de Administración en la barra de navegación
+    checkAdmin() {
+      const usuario = this.$auth.user.email;
+      for (var admin in this.usuarios) {
+        if (
+          usuario == this.usuarios[admin].email &&
+          this.usuarios[admin].admin
+        ) {
+          return true;
+        }
+      }
+      return false;
+    },
+    login() {
+      this.$auth.loginWithRedirect();
+    },
+    logout() {
+      this.$auth.logout({
+        returnTo: window.location.origin,
+      });
+    },
   }
+};
 </script>

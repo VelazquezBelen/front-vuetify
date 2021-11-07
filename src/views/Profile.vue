@@ -42,15 +42,12 @@
         <v-list>
           <v-list-item>
             <v-list-item-action>
-              <v-icon>mdi-phone</v-icon>
+              <v-icon>mdi-account-details</v-icon>
             </v-list-item-action>
 
             <v-list-item-content>
-              <v-list-item-title>Telefono</v-list-item-title>
+              <v-list-item-title>{{ $auth.user.name }}</v-list-item-title>
             </v-list-item-content>
-            <v-list-item-action>
-              <v-icon>mdi-message-text</v-icon>
-            </v-list-item-action>
           </v-list-item>
 
           <v-divider inset></v-divider>
@@ -61,25 +58,14 @@
             </v-list-item-action>
 
             <v-list-item-content>
-              <v-list-item-title>Email</v-list-item-title>
+              <v-list-item-title>{{ $auth.user.email }}</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
 
-          <v-divider inset></v-divider>
-
-          <v-list-item>
-            <v-list-item-action>
-              <v-icon>mdi-map-marker</v-icon>
-            </v-list-item-action>
-
-            <v-list-item-content>
-              <v-list-item-title>Direccion</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
         </v-list>
 
         <v-img
-          src="https://i.imgflip.com/1slnr0.jpg"
+          :src="$auth.user.picture"
           height="200px"
         ></v-img>
       </v-card>
