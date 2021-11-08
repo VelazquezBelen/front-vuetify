@@ -14,29 +14,6 @@
       <v-card>
         <v-card-title class="indigo">
           <span class="text-h5 white--text">Informacion Personal</span>
-
-          <v-spacer></v-spacer>
-
-          <v-btn
-            dark
-            icon
-          >
-            <v-icon>mdi-chevron-left</v-icon>
-          </v-btn>
-
-          <v-btn
-            dark
-            icon
-          >
-            <v-icon>mdi-pencil</v-icon>
-          </v-btn>
-
-          <v-btn
-            dark
-            icon
-          >
-            <v-icon>mdi-dots-vertical</v-icon>
-          </v-btn>
         </v-card-title>
 
         <v-list>

@@ -566,6 +566,7 @@ export default {
   },
   created() {
     this.getLugares();
+    this.autocompletar();
   },
   methods: {
     async agregarEncuesta() {
@@ -603,6 +604,10 @@ export default {
     async getLugares() {
       const res = await this.axios.get(`${this.baseUrl}/lugares`);
       this.lugares = res.data;
+    },
+    autocompletar() {
+      this.encuesta.nombreApellidoEncuestador1 = this.$auth.user.name;
+      this.encuesta.emailEncuestador1 = this.$auth.user.email;
     },
     agregarRecordatorio() {
       this.recordatorios.push(this.recordatorio);
