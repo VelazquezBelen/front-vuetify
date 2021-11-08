@@ -52,13 +52,13 @@
       cols="12"
       sm="10"
       class="mx-10 my-14"
-    > 
-          <v-layout row class="mb-3">
+    >         
+      <template>
+         <v-layout row class="mb-3">
           <PrimerYSegundoTrimestre @encuestaAgregada="snackbar = true" @camposObligatorios="snackbarObligatorio = true" @getEncuestas="getEncuestas"/>
           <TercerTrimestre @encuestaAgregada="snackbar = true" @camposObligatorios="snackbarObligatorio = true" @getEncuestas="getEncuestas"/>
           <PopupNeonato @encuestaAgregada="snackbar = true" @camposObligatorios="snackbarObligatorio = true" @getEncuestas="getEncuestas"/>
-      </v-layout>
-      <template>        
+      </v-layout>        
           <v-data-table
             :headers="headers"
             :items="encuestas"
@@ -173,16 +173,17 @@ export default {
   },
   methods: {
     async getEncuestas() {
+      console.log(this.$auth.user.email)
       const res1 = await this.axios.get(
-        `${this.baseUrl}/encuestas3Trimestre/panelencuestas`
+        `${this.baseUrl}/encuestas3Trimestre/panelencuestas/` + this.$auth.user.email
       );
       this.encuestas = res1.data;
       const res2 = await this.axios.get(
-        `${this.baseUrl}/encuestas1y2Trimestre/panelencuestas`
+        `${this.baseUrl}/encuestas1y2Trimestre/panelencuestas/` + this.$auth.user.email
       );
       this.encuestas = this.encuestas.concat(res2.data);
       const res3 = await this.axios.get(
-        `${this.baseUrl}/encuestasNeonato/panelencuestas`
+        `${this.baseUrl}/encuestasNeonato/panelencuestas/` + this.$auth.user.email
       );
       this.encuestas = this.encuestas.concat(res3.data);
     },
@@ -223,8 +224,6 @@ export default {
         });
       }
     },
-    editarEncuesta(encuesta) {
-    }
   },
 };
 </script>

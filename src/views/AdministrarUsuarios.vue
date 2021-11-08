@@ -87,6 +87,7 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
+    
     <v-row justify="center">
       <v-col cols="12" sm="10" class="mx-10 my-14">
         <template>

@@ -69,7 +69,7 @@
           </v-list-item>
 
           <v-list-group v-if="$auth.isAuthenticated && checkAdmin()" color="white" :value="false" no-action >
-          <template v-slot:activator>
+          <template v-slot:activator color="white">
             <v-list-item-icon>
             <v-icon class="white--text">mdi-shield-account</v-icon>
           </v-list-item-icon>
@@ -120,7 +120,6 @@ export default {
       usuarios: [],
   }),
   created() {
-    console.log(this.$auth.user)
     axios
       .get("https://tpftestbackend.herokuapp.com/usuarios")
       .then((response) => {
@@ -131,6 +130,7 @@ export default {
       });
   },
   methods: {
+
     // Chequea si el usuario logueado tiene permisos de administrador, si es así
     // muestra la opción de Administración en la barra de navegación
     checkAdmin() {

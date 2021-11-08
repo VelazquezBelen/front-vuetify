@@ -1680,7 +1680,7 @@
 
             <v-divider class="mt-3"></v-divider>
             <v-card-actions class="mx-4">
-              <v-btn color="primary" text @click="editarEncuesta">
+              <v-btn color="primary" text @click="editarEncuesta" :loading="loading">
                 Actualizar encuesta
               </v-btn>
 
