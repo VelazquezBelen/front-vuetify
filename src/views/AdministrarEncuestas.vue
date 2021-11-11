@@ -100,6 +100,15 @@
                                 ></v-date-picker>
                               </v-menu>
                             </v-col>
+                            <v-col cols="12" sm="12" md="4">
+                            <v-select
+                                v-model="emailUsuario"
+                                :items="usuarios"
+                                item-value="email"
+                                item-text="email"
+                                label="E-mail del encuestador"
+                              ></v-select>
+                            </v-col>
                             <v-col cols="12" sm="6" md="4">
                               <v-btn
                                   text
@@ -211,10 +220,13 @@ export default {
         { text: "Tipo encuesta", value: "tipoEncuesta", filterable: false},
         { text: "Ver", value: "actions", sortable: false, filterable: false },
       ],
+      usuarios: [{email: ""}],
+      emailUsuario: null,
     };
   },
   created() {
     this.getEncuestas();
+    this.getUsuarios();
   },
   methods: {
     async getEncuestas() {
@@ -230,6 +242,12 @@ export default {
         `${this.baseUrl}/encuestasNeonato/encuestas`
       );
       this.encuestas = this.encuestas.concat(res3.data);
+    },
+    async getUsuarios() {
+      const res = await this.axios.get(
+        `${this.baseUrl}/usuarios`
+      );
+      this.usuarios = this.usuarios.concat(res.data);
     },
     getRecordatorios(recordatorio24Horas) {
       var salida = "";
@@ -612,380 +630,396 @@ export default {
       this.dialogExportar = false;
       FileSaver.saveAs(blob, "Encuestas.csv");
     },
-  async exportarEncuestasPorRangoFechas() {
-      // Genera un archivo .csv separando los datos con ;
-      this.loading2 = true;
-      var FileSaver = require("file-saver");
-      var texto1y2Trimestre =
-        "Encuestas Primer y Segundo Trimestre \n nombreApellidoEncuestador1; telefonoEncuestador1; emailEncuestador1; nombreApellidoEncuestador2; telefonoEncuestador2; emailEncuestador2; fechaRelevamiento; lugarRelevamiento; nombreApellido; dni; fechaNacimiento; domicilioBarrio; telefono; fechaUltimaMenstruacion; semanasGestacion; observacionesBloque0; diabetes; enfermedadRenal; hipertension; colesterolTrigliceridosAltos; asmaEPOC; covid19; anemia; enfermedadCronica; cualEnfermedadCronica; consumeMedicamento; cualConsumeMedicamento; consumeComplejoVitaminicoSuplemento; cualConsumeComplejoVitaminicoSuplemento; fumaActual; fumaAntes; alcoholActual; embarazoAntes; cuantosEmbarazoAntes; hijos; cuantosHijos; observacionesBloque1; pais; provincia; personasVivienda; habitacionesVivienda; desagueCloaca; aguaPotable; redElectrica; gasNatural; nivelEducativo; empleo; asistenciaEstado; cualAsistenciaEstado; recibioBolson; recibioTickets; recibioTarjeta; recibioLeche; recibioOtra; cualUltimoMesRecibio; ingresoIndividual; ingresoTotal; recibioIFE; observacionesBloque2; pesoKG; ropaAlPesar; talla; tallaSentada; perimetroBraquial; pliegueTricipital; pliegueBicipital; pliegueSubescapular; pliegueSuprailiaco; observacionesBloque3; preocupadoSuficienteAlimentos; podidoAlimentos; comidoPocaVariedad; dejarDesayunoAlmuerzoCena; comidoMenos; sinAlimentos; sentidoHambre; dejadoComer; observacionesBloque4Parte1; recordatorio24Horas; observacionesBloque4Parte2; desayuno; almuerzo; merienda; cena; frecuenciaConsumo; golosinas; panBlanco; pan; copetin; frutas; lacteos; bebidas; otros; nsnc; observacionesBloque4Parte3; consumioLeche; consumioFrutasFrescas; consumioVerduras; consumioPapa; consumioCereales; consumioEmbutidos; observacionesBloque4Parte4; consumioCarne; consumioPescado; consumioAceites; consumioFrutasSecas; consumioProductosCopetin; consumioGolosinas; observacionesBloque4Parte5 \n";
-      var texto3Trimestre =
-        "Encuestas Tercer Trimestre \n nombreApellidoEncuestador1; telefonoEncuestador1; emailEncuestador1; nombreApellidoEncuestador2; telefonoEncuestador2; emailEncuestador2; fechaRelevamiento; lugarRelevamiento; nombreApellido; dni; fechaNacimiento; domicilioBarrio; telefono; fechaUltimaMenstruacion; semanasGestacion; observacionesBloque0; pesoKG; ropaAlPesar; talla; tallaSentada; perimetroBraquial; pliegueTricipital; pliegueBicipital; pliegueSubescapular; pliegueSuprailiaco; observacionesBloque3; recordatorio24Horas; observacionesBloque4 \n";
-      var textoNeonato =
-        "Encuestas Neonato \n nombreApellidoEncuestador1; telefonoEncuestador1; emailEncuestador1; nombreApellidoEncuestador2; telefonoEncuestador2; emailEncuestador2; fechaRelevamiento; lugarRelevamiento; nombreApellido; dni; fechaNacimiento; domicilioBarrio; telefono; fechaNacimientoBebe; viaNacimiento; lugarNacimiento; nombreBebe; observacionesBloque0; pesoKG; ropaAlPesar; talla; perimetroCefalico; circunsferenciaBrazo; NombreApellidoMadre; dniMadre; observacionesBloque5 \n";
+    async exportarEncuestasPorRangoFechas() {
+        // Genera un archivo .csv separando los datos con ;
+        if (this.emailUsuario != "")
+        {
+          const res1 = await this.axios.get(
+          `${this.baseUrl}/encuestas3Trimestre/encuestas/` + this.emailUsuario
+          );
+          this.encuestas = res1.data;
+          const res2 = await this.axios.get(
+            `${this.baseUrl}/encuestas1y2Trimestre/encuestas/` + this.emailUsuario
+          );
+          this.encuestas = this.encuestas.concat(res2.data);
+          const res3 = await this.axios.get(
+            `${this.baseUrl}/encuestasNeonato/encuestas/` + this.emailUsuario
+          );
+          this.encuestas = this.encuestas.concat(res3.data);
+        }
+        this.loading2 = true;
+        var FileSaver = require("file-saver");
+        var texto1y2Trimestre =
+          "Encuestas Primer y Segundo Trimestre \n nombreApellidoEncuestador1; telefonoEncuestador1; emailEncuestador1; nombreApellidoEncuestador2; telefonoEncuestador2; emailEncuestador2; fechaRelevamiento; lugarRelevamiento; nombreApellido; dni; fechaNacimiento; domicilioBarrio; telefono; fechaUltimaMenstruacion; semanasGestacion; observacionesBloque0; diabetes; enfermedadRenal; hipertension; colesterolTrigliceridosAltos; asmaEPOC; covid19; anemia; enfermedadCronica; cualEnfermedadCronica; consumeMedicamento; cualConsumeMedicamento; consumeComplejoVitaminicoSuplemento; cualConsumeComplejoVitaminicoSuplemento; fumaActual; fumaAntes; alcoholActual; embarazoAntes; cuantosEmbarazoAntes; hijos; cuantosHijos; observacionesBloque1; pais; provincia; personasVivienda; habitacionesVivienda; desagueCloaca; aguaPotable; redElectrica; gasNatural; nivelEducativo; empleo; asistenciaEstado; cualAsistenciaEstado; recibioBolson; recibioTickets; recibioTarjeta; recibioLeche; recibioOtra; cualUltimoMesRecibio; ingresoIndividual; ingresoTotal; recibioIFE; observacionesBloque2; pesoKG; ropaAlPesar; talla; tallaSentada; perimetroBraquial; pliegueTricipital; pliegueBicipital; pliegueSubescapular; pliegueSuprailiaco; observacionesBloque3; preocupadoSuficienteAlimentos; podidoAlimentos; comidoPocaVariedad; dejarDesayunoAlmuerzoCena; comidoMenos; sinAlimentos; sentidoHambre; dejadoComer; observacionesBloque4Parte1; recordatorio24Horas; observacionesBloque4Parte2; desayuno; almuerzo; merienda; cena; frecuenciaConsumo; golosinas; panBlanco; pan; copetin; frutas; lacteos; bebidas; otros; nsnc; observacionesBloque4Parte3; consumioLeche; consumioFrutasFrescas; consumioVerduras; consumioPapa; consumioCereales; consumioEmbutidos; observacionesBloque4Parte4; consumioCarne; consumioPescado; consumioAceites; consumioFrutasSecas; consumioProductosCopetin; consumioGolosinas; observacionesBloque4Parte5 \n";
+        var texto3Trimestre =
+          "Encuestas Tercer Trimestre \n nombreApellidoEncuestador1; telefonoEncuestador1; emailEncuestador1; nombreApellidoEncuestador2; telefonoEncuestador2; emailEncuestador2; fechaRelevamiento; lugarRelevamiento; nombreApellido; dni; fechaNacimiento; domicilioBarrio; telefono; fechaUltimaMenstruacion; semanasGestacion; observacionesBloque0; pesoKG; ropaAlPesar; talla; tallaSentada; perimetroBraquial; pliegueTricipital; pliegueBicipital; pliegueSubescapular; pliegueSuprailiaco; observacionesBloque3; recordatorio24Horas; observacionesBloque4 \n";
+        var textoNeonato =
+          "Encuestas Neonato \n nombreApellidoEncuestador1; telefonoEncuestador1; emailEncuestador1; nombreApellidoEncuestador2; telefonoEncuestador2; emailEncuestador2; fechaRelevamiento; lugarRelevamiento; nombreApellido; dni; fechaNacimiento; domicilioBarrio; telefono; fechaNacimientoBebe; viaNacimiento; lugarNacimiento; nombreBebe; observacionesBloque0; pesoKG; ropaAlPesar; talla; perimetroCefalico; circunsferenciaBrazo; NombreApellidoMadre; dniMadre; observacionesBloque5 \n";
 
-      for (var index in this.encuestas) {
-        if ( this.encuestas[index].tipoEncuesta == "Primer y segundo trimestre"
-          && ((this.fecha1 != "" && this.encuestas[index].fechaRelevamiento >= this.fecha1) || this.fecha1 == "") 
-          && ((this.fecha2 != "" && this.encuestas[index].fechaRelevamiento <= this.fecha2 ) || this.fecha2 == "")
-        ) {
-          const res = await this.axios.get(
-            `${this.baseUrl}/encuestas1y2Trimestre/` + this.encuestas[index]._id
-          );
-          texto1y2Trimestre +=
-            res.data.nombreApellidoEncuestador1 +
-            "; " +
-            res.data.telefonoEncuestador1 +
-            "; " +
-            res.data.emailEncuestador1 +
-            "; " +
-            res.data.nombreApellidoEncuestador2 +
-            "; " +
-            res.data.telefonoEncuestador2 +
-            "; " +
-            res.data.emailEncuestador2 +
-            "; " +
-            res.data.fechaRelevamiento +
-            "; " +
-            res.data.lugarRelevamiento +
-            "; " +
-            res.data.nombreApellido +
-            ";" +
-            res.data.dni +
-            ";" +
-            res.data.fechaNacimiento +
-            ";" +
-            res.data.domicilioBarrio +
-            ";" +
-            res.data.telefono +
-            "; " +
-            res.data.fechaUltimaMenstruacion +
-            ";" +
-            res.data.semanasGestacion +
-            ";" +
-            res.data.observacionesBloque0 +
-            ";" +
-            res.data.diabetes +
-            ";" +
-            res.data.enfermedadRenal +
-            ";" +
-            res.data.hipertension +
-            ";" +
-            res.data.colesterolTrigliceridosAltos +
-            ";" +
-            res.data.asmaEPOC +
-            ";" +
-            res.data.covid19 +
-            ";" +
-            res.data.anemia +
-            ";" +
-            res.data.enfermedadCronica +
-            ";" +
-            res.data.cualEnfermedadCronica +
-            ";" +
-            res.data.consumeMedicamento +
-            ";" +
-            res.data.cualConsumeMedicamento +
-            ";" +
-            res.data.consumeComplejoVitaminicoSuplemento +
-            ";" +
-            res.data.cualConsumeComplejoVitaminicoSuplemento +
-            ";" +
-            res.data.fumaActual +
-            ";" +
-            res.data.fumaAntes +
-            ";" +
-            res.data.alcoholActual +
-            ";" +
-            res.data.embarazoAntes +
-            ";" +
-            res.data.cuantosEmbarazoAntes +
-            ";" +
-            res.data.hijos +
-            ";" +
-            res.data.cuantosHijos +
-            ";" +
-            res.data.observacionesBloque1 +
-            ";" +
-            res.data.pais +
-            ";" +
-            res.data.provincia +
-            ";" +
-            res.data.personasVivienda +
-            ";" +
-            res.data.habitacionesVivienda +
-            ";" +
-            res.data.desagueCloaca +
-            ";" +
-            res.data.aguaPotable +
-            ";" +
-            res.data.redElectrica +
-            ";" +
-            res.data.gasNatural +
-            ";" +
-            res.data.nivelEducativo +
-            ";" +
-            res.data.empleo +
-            ";" +
-            res.data.asistenciaEstado +
-            ";" +
-            res.data.cualAsistenciaEstado +
-            ";" +
-            res.data.recibioBolson +
-            ";" +
-            res.data.recibioTickets +
-            ";" +
-            res.data.recibioTarjeta +
-            ";" +
-            res.data.recibioLeche +
-            ";" +
-            res.data.recibioOtra +
-            ";" +
-            res.data.cualUltimoMesRecibio +
-            ";" +
-            res.data.ingresoIndividual +
-            ";" +
-            res.data.ingresoTotal +
-            ";" +
-            res.data.recibioIFE +
-            ";" +
-            res.data.observacionesBloque2 +
-            ";" +
-            res.data.pesoKG +
-            ";" +
-            res.data.ropaAlPesar +
-            "; " +
-            res.data.talla +
-            "; " +
-            res.data.tallaSentada +
-            ";" +
-            res.data.perimetroBraquial +
-            ";" +
-            res.data.pliegueTricipital +
-            ";" +
-            res.data.pliegueBicipital +
-            ";" +
-            res.data.pliegueSubescapular +
-            ";" +
-            res.data.pliegueSuprailiaco +
-            ";" +
-            res.data.observacionesBloque3 +
-            ";" +
-            res.data.preocupadoSuficienteAlimentos +
-            ";" +
-            res.data.podidoAlimentos +
-            ";" +
-            res.data.comidoPocaVariedad +
-            ";" +
-            res.data.dejarDesayunoAlmuerzoCena +
-            ";" +
-            res.data.comidoMenos +
-            ";" +
-            res.data.sinAlimentos +
-            ";" +
-            res.data.sentidoHambre +
-            ";" +
-            res.data.dejadoComer +
-            ";" +
-            res.data.observacionesBloque4Parte1 +
-            ";" +
-            this.getRecordatorios(res.data.recordatorio24Horas) +
-            ";" +
-            res.data.observacionesBloque4Parte2 +
-            ";" +
-            res.data.desayuno +
-            ";" +
-            res.data.almuerzo +
-            ";" +
-            res.data.merienda +
-            ";" +
-            res.data.cena +
-            ";" +
-            res.data.frecuenciaConsumo +
-            ";" +
-            res.data.golosinas +
-            ";" +
-            res.data.panBlanco +
-            ";" +
-            res.data.pan +
-            ";" +
-            res.data.copetin +
-            ";" +
-            res.data.frutas +
-            ";" +
-            res.data.lacteos +
-            ";" +
-            res.data.bebidas +
-            ";" +
-            res.data.otros +
-            ";" +
-            res.data.nsnc +
-            ";" +
-            res.data.observacionesBloque4Parte3 +
-            ";" +
-            res.data.consumioLeche +
-            ";" +
-            res.data.consumioFrutasFrescas +
-            ";" +
-            res.data.consumioVerduras +
-            ";" +
-            res.data.consumioPapa +
-            ";" +
-            res.data.consumioCereales +
-            ";" +
-            res.data.consumioEmbutidos +
-            ";" +
-            res.data.observacionesBloque4Parte4 +
-            ";" +
-            res.data.consumioCarne +
-            ";" +
-            res.data.consumioPescado +
-            ";" +
-            res.data.consumioAceites +
-            ";" +
-            res.data.consumioFrutasFrescas +
-            ";" +
-            res.data.consumioProductosCopetin +
-            ";" +
-            res.data.consumioGolosinas +
-            ";" +
-            res.data.observacionesBloque4Parte5 +
-            "\n";
-        }
-        if (this.encuestas[index].tipoEncuesta == "Tercer trimestre"
-          && ((this.fecha1 != "" && this.encuestas[index].fechaRelevamiento >= this.fecha1) || this.fecha1 == "") 
-          && ((this.fecha2 != "" && this.encuestas[index].fechaRelevamiento <= this.fecha2 ) || this.fecha2 == "")) {
-          const res = await this.axios.get(
-            `${this.baseUrl}/encuestas3Trimestre/` + this.encuestas[index]._id
-          );
+        for (var index in this.encuestas) {
+          if ( this.encuestas[index].tipoEncuesta == "Primer y segundo trimestre"
+            && ((this.fecha1 != "" && this.encuestas[index].fechaRelevamiento >= this.fecha1) || this.fecha1 == "") 
+            && ((this.fecha2 != "" && this.encuestas[index].fechaRelevamiento <= this.fecha2 ) || this.fecha2 == "")
+          ) {
+            const res = await this.axios.get(
+              `${this.baseUrl}/encuestas1y2Trimestre/` + this.encuestas[index]._id
+            );
+            texto1y2Trimestre +=
+              res.data.nombreApellidoEncuestador1 +
+              "; " +
+              res.data.telefonoEncuestador1 +
+              "; " +
+              res.data.emailEncuestador1 +
+              "; " +
+              res.data.nombreApellidoEncuestador2 +
+              "; " +
+              res.data.telefonoEncuestador2 +
+              "; " +
+              res.data.emailEncuestador2 +
+              "; " +
+              res.data.fechaRelevamiento +
+              "; " +
+              res.data.lugarRelevamiento +
+              "; " +
+              res.data.nombreApellido +
+              ";" +
+              res.data.dni +
+              ";" +
+              res.data.fechaNacimiento +
+              ";" +
+              res.data.domicilioBarrio +
+              ";" +
+              res.data.telefono +
+              "; " +
+              res.data.fechaUltimaMenstruacion +
+              ";" +
+              res.data.semanasGestacion +
+              ";" +
+              res.data.observacionesBloque0 +
+              ";" +
+              res.data.diabetes +
+              ";" +
+              res.data.enfermedadRenal +
+              ";" +
+              res.data.hipertension +
+              ";" +
+              res.data.colesterolTrigliceridosAltos +
+              ";" +
+              res.data.asmaEPOC +
+              ";" +
+              res.data.covid19 +
+              ";" +
+              res.data.anemia +
+              ";" +
+              res.data.enfermedadCronica +
+              ";" +
+              res.data.cualEnfermedadCronica +
+              ";" +
+              res.data.consumeMedicamento +
+              ";" +
+              res.data.cualConsumeMedicamento +
+              ";" +
+              res.data.consumeComplejoVitaminicoSuplemento +
+              ";" +
+              res.data.cualConsumeComplejoVitaminicoSuplemento +
+              ";" +
+              res.data.fumaActual +
+              ";" +
+              res.data.fumaAntes +
+              ";" +
+              res.data.alcoholActual +
+              ";" +
+              res.data.embarazoAntes +
+              ";" +
+              res.data.cuantosEmbarazoAntes +
+              ";" +
+              res.data.hijos +
+              ";" +
+              res.data.cuantosHijos +
+              ";" +
+              res.data.observacionesBloque1 +
+              ";" +
+              res.data.pais +
+              ";" +
+              res.data.provincia +
+              ";" +
+              res.data.personasVivienda +
+              ";" +
+              res.data.habitacionesVivienda +
+              ";" +
+              res.data.desagueCloaca +
+              ";" +
+              res.data.aguaPotable +
+              ";" +
+              res.data.redElectrica +
+              ";" +
+              res.data.gasNatural +
+              ";" +
+              res.data.nivelEducativo +
+              ";" +
+              res.data.empleo +
+              ";" +
+              res.data.asistenciaEstado +
+              ";" +
+              res.data.cualAsistenciaEstado +
+              ";" +
+              res.data.recibioBolson +
+              ";" +
+              res.data.recibioTickets +
+              ";" +
+              res.data.recibioTarjeta +
+              ";" +
+              res.data.recibioLeche +
+              ";" +
+              res.data.recibioOtra +
+              ";" +
+              res.data.cualUltimoMesRecibio +
+              ";" +
+              res.data.ingresoIndividual +
+              ";" +
+              res.data.ingresoTotal +
+              ";" +
+              res.data.recibioIFE +
+              ";" +
+              res.data.observacionesBloque2 +
+              ";" +
+              res.data.pesoKG +
+              ";" +
+              res.data.ropaAlPesar +
+              "; " +
+              res.data.talla +
+              "; " +
+              res.data.tallaSentada +
+              ";" +
+              res.data.perimetroBraquial +
+              ";" +
+              res.data.pliegueTricipital +
+              ";" +
+              res.data.pliegueBicipital +
+              ";" +
+              res.data.pliegueSubescapular +
+              ";" +
+              res.data.pliegueSuprailiaco +
+              ";" +
+              res.data.observacionesBloque3 +
+              ";" +
+              res.data.preocupadoSuficienteAlimentos +
+              ";" +
+              res.data.podidoAlimentos +
+              ";" +
+              res.data.comidoPocaVariedad +
+              ";" +
+              res.data.dejarDesayunoAlmuerzoCena +
+              ";" +
+              res.data.comidoMenos +
+              ";" +
+              res.data.sinAlimentos +
+              ";" +
+              res.data.sentidoHambre +
+              ";" +
+              res.data.dejadoComer +
+              ";" +
+              res.data.observacionesBloque4Parte1 +
+              ";" +
+              this.getRecordatorios(res.data.recordatorio24Horas) +
+              ";" +
+              res.data.observacionesBloque4Parte2 +
+              ";" +
+              res.data.desayuno +
+              ";" +
+              res.data.almuerzo +
+              ";" +
+              res.data.merienda +
+              ";" +
+              res.data.cena +
+              ";" +
+              res.data.frecuenciaConsumo +
+              ";" +
+              res.data.golosinas +
+              ";" +
+              res.data.panBlanco +
+              ";" +
+              res.data.pan +
+              ";" +
+              res.data.copetin +
+              ";" +
+              res.data.frutas +
+              ";" +
+              res.data.lacteos +
+              ";" +
+              res.data.bebidas +
+              ";" +
+              res.data.otros +
+              ";" +
+              res.data.nsnc +
+              ";" +
+              res.data.observacionesBloque4Parte3 +
+              ";" +
+              res.data.consumioLeche +
+              ";" +
+              res.data.consumioFrutasFrescas +
+              ";" +
+              res.data.consumioVerduras +
+              ";" +
+              res.data.consumioPapa +
+              ";" +
+              res.data.consumioCereales +
+              ";" +
+              res.data.consumioEmbutidos +
+              ";" +
+              res.data.observacionesBloque4Parte4 +
+              ";" +
+              res.data.consumioCarne +
+              ";" +
+              res.data.consumioPescado +
+              ";" +
+              res.data.consumioAceites +
+              ";" +
+              res.data.consumioFrutasFrescas +
+              ";" +
+              res.data.consumioProductosCopetin +
+              ";" +
+              res.data.consumioGolosinas +
+              ";" +
+              res.data.observacionesBloque4Parte5 +
+              "\n";
+          }
+          if (this.encuestas[index].tipoEncuesta == "Tercer trimestre"
+            && ((this.fecha1 != "" && this.encuestas[index].fechaRelevamiento >= this.fecha1) || this.fecha1 == "") 
+            && ((this.fecha2 != "" && this.encuestas[index].fechaRelevamiento <= this.fecha2 ) || this.fecha2 == "")) {
+            const res = await this.axios.get(
+              `${this.baseUrl}/encuestas3Trimestre/` + this.encuestas[index]._id
+            );
 
-          texto3Trimestre +=
-            res.data.nombreApellidoEncuestador1 +
-            "; " +
-            res.data.telefonoEncuestador1 +
-            "; " +
-            res.data.emailEncuestador1 +
-            "; " +
-            res.data.nombreApellidoEncuestador2 +
-            "; " +
-            res.data.telefonoEncuestador2 +
-            "; " +
-            res.data.emailEncuestador2 +
-            "; " +
-            res.data.fechaRelevamiento +
-            "; " +
-            res.data.lugarRelevamiento +
-            "; " +
-            res.data.nombreApellido +
-            ";" +
-            res.data.dni +
-            ";" +
-            res.data.fechaNacimiento +
-            ";" +
-            res.data.domicilioBarrio +
-            ";" +
-            res.data.telefono +
-            "; " +
-            res.data.fechaUltimaMenstruacion +
-            ";" +
-            res.data.semanasGestacion +
-            ";" +
-            res.data.observacionesBloque0 +
-            ";" +
-            res.data.pesoKG +
-            ";" +
-            res.data.ropaAlPesar +
-            "; " +
-            res.data.talla +
-            "; " +
-            res.data.tallaSentada +
-            ";" +
-            res.data.perimetroBraquial +
-            ";" +
-            res.data.pliegueTricipital +
-            ";" +
-            res.data.pliegueBicipital +
-            ";" +
-            res.data.pliegueSubescapular +
-            ";" +
-            res.data.pliegueSuprailiaco +
-            ";" +
-            res.data.observacionesBloque3 +
-            ";" +
-            this.getRecordatorios(res.data.recordatorio24Horas) +
-            ";" +
-            res.data.observacionesBloque4 +
-            "\n";
+            texto3Trimestre +=
+              res.data.nombreApellidoEncuestador1 +
+              "; " +
+              res.data.telefonoEncuestador1 +
+              "; " +
+              res.data.emailEncuestador1 +
+              "; " +
+              res.data.nombreApellidoEncuestador2 +
+              "; " +
+              res.data.telefonoEncuestador2 +
+              "; " +
+              res.data.emailEncuestador2 +
+              "; " +
+              res.data.fechaRelevamiento +
+              "; " +
+              res.data.lugarRelevamiento +
+              "; " +
+              res.data.nombreApellido +
+              ";" +
+              res.data.dni +
+              ";" +
+              res.data.fechaNacimiento +
+              ";" +
+              res.data.domicilioBarrio +
+              ";" +
+              res.data.telefono +
+              "; " +
+              res.data.fechaUltimaMenstruacion +
+              ";" +
+              res.data.semanasGestacion +
+              ";" +
+              res.data.observacionesBloque0 +
+              ";" +
+              res.data.pesoKG +
+              ";" +
+              res.data.ropaAlPesar +
+              "; " +
+              res.data.talla +
+              "; " +
+              res.data.tallaSentada +
+              ";" +
+              res.data.perimetroBraquial +
+              ";" +
+              res.data.pliegueTricipital +
+              ";" +
+              res.data.pliegueBicipital +
+              ";" +
+              res.data.pliegueSubescapular +
+              ";" +
+              res.data.pliegueSuprailiaco +
+              ";" +
+              res.data.observacionesBloque3 +
+              ";" +
+              this.getRecordatorios(res.data.recordatorio24Horas) +
+              ";" +
+              res.data.observacionesBloque4 +
+              "\n";
+          }
+          if (this.encuestas[index].tipoEncuesta == "Neonato"           
+            && ((this.fecha1 != "" && this.encuestas[index].fechaRelevamiento >= this.fecha1) || this.fecha1 == "") 
+            && ((this.fecha2 != "" && this.encuestas[index].fechaRelevamiento <= this.fecha2 ) || this.fecha2 == "")) {
+            const res = await this.axios.get(
+              `${this.baseUrl}/encuestasNeonato/` + this.encuestas[index]._id
+            );
+            textoNeonato +=
+              res.data.nombreApellidoEncuestador1 +
+              ";" +
+              res.data.telefonoEncuestador1 +
+              ";" +
+              res.data.emailEncuestador1 +
+              ";" +
+              res.data.nombreApellidoEncuestador2 +
+              ";" +
+              res.data.telefonoEncuestador2 +
+              ";" +
+              res.data.emailEncuestador2 +
+              ";" +
+              res.data.fechaRelevamiento +
+              ";" +
+              res.data.lugarRelevamiento +
+              ";" +
+              res.data.nombreApellido +
+              ";" +
+              res.data.dni +
+              ";" +
+              res.data.fechaNacimiento +
+              ";" +
+              res.data.domicilioBarrio +
+              ";" +
+              res.data.telefono +
+              ";" +
+              res.data.fechaNacimientoBebe +
+              ";" +
+              res.data.viaNacimiento +
+              ";" +
+              res.data.lugarNacimiento +
+              ";" +
+              res.data.nombreBebe +
+              ";" +
+              res.data.observacionesBloque0 +
+              ";" +
+              res.data.pesoKG +
+              ";" +
+              res.data.ropaAlPesar +
+              ";" +
+              res.data.talla +
+              ";" +
+              res.data.perimetroCefalico +
+              ";" +
+              res.data.circunsferenciaBrazo +
+              ";" +
+              res.data.NombreApellidoMadre +
+              ";" +
+              res.data.dniMadre +
+              ";" +
+              res.data.observacionesBloque5 +
+              "\n";
+          }
         }
-        if (this.encuestas[index].tipoEncuesta == "Neonato"           
-           && ((this.fecha1 != "" && this.encuestas[index].fechaRelevamiento >= this.fecha1) || this.fecha1 == "") 
-          && ((this.fecha2 != "" && this.encuestas[index].fechaRelevamiento <= this.fecha2 ) || this.fecha2 == "")) {
-          const res = await this.axios.get(
-            `${this.baseUrl}/encuestasNeonato/` + this.encuestas[index]._id
-          );
-          textoNeonato +=
-            res.data.nombreApellidoEncuestador1 +
-            ";" +
-            res.data.telefonoEncuestador1 +
-            ";" +
-            res.data.emailEncuestador1 +
-            ";" +
-            res.data.nombreApellidoEncuestador2 +
-            ";" +
-            res.data.telefonoEncuestador2 +
-            ";" +
-            res.data.emailEncuestador2 +
-            ";" +
-            res.data.fechaRelevamiento +
-            ";" +
-            res.data.lugarRelevamiento +
-            ";" +
-            res.data.nombreApellido +
-            ";" +
-            res.data.dni +
-            ";" +
-            res.data.fechaNacimiento +
-            ";" +
-            res.data.domicilioBarrio +
-            ";" +
-            res.data.telefono +
-            ";" +
-            res.data.fechaNacimientoBebe +
-            ";" +
-            res.data.viaNacimiento +
-            ";" +
-            res.data.lugarNacimiento +
-            ";" +
-            res.data.nombreBebe +
-            ";" +
-            res.data.observacionesBloque0 +
-            ";" +
-            res.data.pesoKG +
-            ";" +
-            res.data.ropaAlPesar +
-            ";" +
-            res.data.talla +
-            ";" +
-            res.data.perimetroCefalico +
-            ";" +
-            res.data.circunsferenciaBrazo +
-            ";" +
-            res.data.NombreApellidoMadre +
-            ";" +
-            res.data.dniMadre +
-            ";" +
-            res.data.observacionesBloque5 +
-            "\n";
-        }
-      }
-      var texto =
-        texto1y2Trimestre + "\n" + texto3Trimestre + "\n" + textoNeonato;
-      var blob = new Blob([texto], { type: "text/plain;charset=utf-8" });
-      this.loading2 = false;
-      this.dialogExportar = false;
-      this.fecha1 = "";
-      this.fecha2 = "";
-      FileSaver.saveAs(blob, "Encuestas.csv");
+        var texto =
+          texto1y2Trimestre + "\n" + texto3Trimestre + "\n" + textoNeonato;
+        var blob = new Blob([texto], { type: "text/plain;charset=utf-8" });
+        this.loading2 = false;
+        this.dialogExportar = false;
+        this.fecha1 = "";
+        this.fecha2 = "";
+        FileSaver.saveAs(blob, "Encuestas.csv");
+        this.getEncuestas();
+      },
     },
-  },
 };
 </script>
