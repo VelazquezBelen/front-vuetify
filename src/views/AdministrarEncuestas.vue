@@ -27,7 +27,7 @@
                     ></v-text-field>
                   </v-col>
                   <v-spacer></v-spacer>
-                  <v-dialog v-model="dialogExportar" max-width="500px">
+                  <v-dialog v-model="dialogExportar" max-width="800px">
                     <template v-slot:activator="{ on, attrs }">
                       <v-btn
                         color="success"
@@ -50,7 +50,7 @@
                         <v-container>
                           <v-card-subtitle class="text-subtitle-1">Exportar según rango de fechas</v-card-subtitle>
                           <v-row>
-                            <v-col cols="12" sm="6" md="4">
+                            <v-col cols="12" md="3">
                               <v-menu
                                 v-model="menu1"
                                 :close-on-content-click="false"
@@ -75,7 +75,7 @@
                                 ></v-date-picker>
                               </v-menu>
                             </v-col>
-                            <v-col cols="12" sm="6" md="4">
+                            <v-col cols="12" md="3" >
                               <v-menu
                                 v-model="menu2"
                                 :close-on-content-click="false"
@@ -100,7 +100,7 @@
                                 ></v-date-picker>
                               </v-menu>
                             </v-col>
-                            <v-col cols="12" sm="12" md="4">
+                            <v-col cols="12" md="4" >
                             <v-select
                                 v-model="emailUsuario"
                                 :items="usuarios"
@@ -109,7 +109,7 @@
                                 label="E-mail del encuestador"
                               ></v-select>
                             </v-col>
-                            <v-col cols="12" sm="6" md="4">
+                            <v-col cols="12" md="2">
                               <v-btn
                                   text
                                   outlined
