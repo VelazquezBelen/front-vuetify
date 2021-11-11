@@ -48,7 +48,7 @@
                       </v-card-title>
                       <v-card-text>                        
                         <v-container>
-                          <v-card-subtitle class="text-subtitle-1">Exportar según rango de fechas</v-card-subtitle>
+                          <v-card-subtitle class="text-subtitle-1">Exportar según rango de fechas y/o encuestador</v-card-subtitle>
                           <v-row>
                             <v-col cols="12" md="3">
                               <v-menu
