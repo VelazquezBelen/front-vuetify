@@ -272,7 +272,6 @@
                   suffix="Kg"
                   type="number"
                   min="0"
-                  :rules="rules.number"
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="4">

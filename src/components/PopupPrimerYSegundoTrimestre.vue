@@ -849,7 +849,6 @@
                     suffix="Kg"
                     type="number"
                     min="0"
-                    :rules="rules.number"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
@@ -868,7 +867,6 @@
                     suffix="cm"
                     type="number"
                     min="0"
-                    :rules="rules.number"
                   ></v-text-field>
                 </v-col>
               </v-row>
@@ -880,7 +878,6 @@
                     suffix="cm"
                     type="number"
                     min="0"
-                    :rules="rules.number"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
@@ -893,7 +890,6 @@
                     hint="Las mediciones entre 3.4 y 3.8 tomarlas del lado derecho
                       del cuerpo."
                     persistent-hint
-                    :rules="rules.number"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
@@ -903,7 +899,6 @@
                     suffix="cm"
                     type="number"
                     min="0"
-                    :rules="rules.number"
                   ></v-text-field>
                 </v-col>
               </v-row>
@@ -915,7 +910,6 @@
                     suffix="cm"
                     type="number"
                     min="0"
-                    :rules="rules.number"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
@@ -925,7 +919,6 @@
                     suffix="cm"
                     type="number"
                     min="0"
-                    :rules="rules.number"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
@@ -935,7 +928,6 @@
                     suffix="cm"
                     type="number"
                     min="0"
-                    :rules="rules.number"
                   ></v-text-field>
                 </v-col>
               </v-row>

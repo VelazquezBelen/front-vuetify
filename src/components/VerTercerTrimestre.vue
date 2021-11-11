@@ -186,7 +186,6 @@
                     v-model="encuesta.pesoKG"
                     label="3.1 Peso"
                     suffix="Kg"
-                    placeholder="55.230"
                     readonly
                   ></v-text-field>
                 </v-col>
