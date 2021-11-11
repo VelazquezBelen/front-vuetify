@@ -19,7 +19,7 @@
           >
             <template v-slot:top>
               <v-toolbar flat>
-                <v-col cols="4">
+                <v-col sm="6">
                 <v-text-field
                   class="xs-3"
                   v-model="lugarInput"

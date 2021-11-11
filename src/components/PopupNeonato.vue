@@ -2,8 +2,7 @@
   <div class="text-center">
     <v-dialog v-model="dialog" width="1200">
       <template v-slot:activator="{ on, attrs }">
-        <v-btn text color="blue-grey" v-bind="attrs" v-on="on" class="caption">
-          <v-icon left>mdi-file-plus-outline</v-icon>
+        <v-btn text color="blue-grey" v-bind="attrs" v-on="on" class="caption" @click="completarDatosMadre">
           Nueva encuesta neonato
         </v-btn>
       </template>
@@ -30,7 +29,6 @@
                 <v-col cols="12" md="4">
                   <v-text-field
                     v-model="encuesta.nombreApellidoEncuestador1"
-                    :counter="25"
                     label="Nombre y apellido Encuestador 1"
                     :rules="rules.obligatorio"
                   ></v-text-field>
@@ -38,7 +36,6 @@
                 <v-col cols="12" md="4">
                   <v-text-field
                     v-model="encuesta.telefonoEncuestador1"
-                    :counter="10"
                     label="Teléfono"
                     type="number"
                     min="0"
@@ -359,7 +356,7 @@
                 Limpiar
               </v-btn>
               <v-spacer></v-spacer>
-              <v-btn color="red" text @click="dialog = false"> Cerrar </v-btn>
+              <v-btn color="red" text @click="close"> Cerrar </v-btn>
             </v-card-actions>
           </v-card>
         </v-card-text>
@@ -428,6 +425,7 @@ class Encuesta {
   }
 }
 export default {
+  props: ['dniMadre'],
   data() {
     return {
       dialog: false,
@@ -487,10 +485,22 @@ export default {
             this.dialog = false;
             this.$emit("encuestaAgregada");
             this.$emit("getEncuestas");
+            this.$emit("cerarDialogNuevaEncuesta");
           });
       } else {
         this.$emit("camposObligatorios");
       }
+    },
+    async completarDatosMadre() {
+      this.axios.get(`${this.baseUrl}/encuestas1y2Trimestre/madre/` + this.dniMadre)
+      .then((res) => {
+        console.log(res.data)
+        if (res.data.length == 1) {
+          console.log(res.data)
+          this.encuesta.nombreApellido = res.data[0].nombreApellido;
+          this.encuesta.dni = res.data[0].dni;
+        }
+      });
     },
     limpiarEncuesta() {
       this.encuesta = new Encuesta();
@@ -502,6 +512,9 @@ export default {
     autocompletar() {
       this.encuesta.nombreApellidoEncuestador1 = this.$auth.user.name;
       this.encuesta.emailEncuestador1 = this.$auth.user.email;
+    },
+    close(){
+      this.$emit("cerarDialogNuevaEncuesta");
     }
   },
 };

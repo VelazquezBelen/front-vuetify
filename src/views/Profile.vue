@@ -6,7 +6,7 @@
     <hr />
     <div class="pa-2">
     </div>
-  <v-row justify="center">
+  <v-row justify="center" class="mx-20 my-14">
     <v-col
       cols="12"
       sm="8"

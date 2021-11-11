@@ -9,8 +9,8 @@
           v-bind="attrs"
           v-on="on"
           class="caption"
+          @click="completarDatosMadre"
         >
-        <v-icon left>mdi-file-plus-outline</v-icon>
           Nueva encuesta tercer trimestre
         </v-btn>
       </template>
@@ -459,7 +459,7 @@
                 Limpiar
               </v-btn>
               <v-spacer></v-spacer>
-              <v-btn color="red" text @click="dialog = false"> Cerrar </v-btn>
+              <v-btn color="red" text @click="close"> Cerrar </v-btn>
             </v-card-actions>
           </v-card>
         </v-card-text>
@@ -540,6 +540,7 @@ class Encuesta {
   }
 }
 export default {
+  props: ['dniMadre'],
   data() {
     return {
       dialog: false,
@@ -591,6 +592,7 @@ export default {
             this.dialog = false;
             this.$emit("encuestaAgregada");
             this.$emit('getEncuestas');
+            this.$emit("cerarDialogNuevaEncuesta");
           });
       }
       else
@@ -598,6 +600,22 @@ export default {
         this.$emit('camposObligatorios');
       }
     },
+
+    async completarDatosMadre() {
+      this.axios.get(`${this.baseUrl}/encuestas1y2Trimestre/madre/` + this.dniMadre)
+      .then((res) => {
+        if (res.data.length == 1) {
+          this.encuesta.nombreApellido = res.data[0].nombreApellido;
+          this.encuesta.dni = res.data[0].dni;
+          this.encuesta.fechaNacimiento = res.data[0].fechaNacimiento;
+          this.encuesta.domicilioBarrio = res.data[0].domicilioBarrio;
+          this.encuesta.telefono = res.data[0].telefono;
+          this.encuesta.fechaUltimaMenstruacion =  res.data[0].fechaUltimaMenstruacion;
+          this.encuesta.semanasGestacion =  res.data[0].semanasGestacion;
+        }
+      });
+    },
+
     limpiarEncuesta() {
       this.encuesta = new Encuesta();
     },
@@ -622,6 +640,9 @@ export default {
       this.recordatorio.cantidad = this.recordatorios[this.recordatorios.indexOf(recordatorio)].cantidad;
       this.recordatorios.splice(this.recordatorios.indexOf(recordatorio), 1);
     },
+    close(){
+      this.$emit("cerarDialogNuevaEncuesta");
+    }
   },
 };
 </script>
