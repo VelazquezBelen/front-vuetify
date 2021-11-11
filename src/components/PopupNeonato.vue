@@ -485,15 +485,15 @@ export default {
       }
     },
     async completarDatosMadre() {
-      this.axios.get(`${this.baseUrl}/encuestas1y2Trimestre/madre/` + this.dniMadre)
-      .then((res) => {
-        console.log(res.data)
-        if (res.data.length == 1) {
-          console.log(res.data)
-          this.encuesta.nombreApellido = res.data[0].nombreApellido;
-          this.encuesta.dni = res.data[0].dni;
-        }
-      });
+      if (this.dniMadre != "") {
+        this.axios.get(`${this.baseUrl}/encuestas1y2Trimestre/madre/` + this.dniMadre)
+        .then((res) => {
+          if (res.data.length == 1) {
+            this.encuesta.nombreApellido = res.data[0].nombreApellido;
+            this.encuesta.dni = res.data[0].dni;
+          }
+        });
+      }
     },
     limpiarEncuesta() {
       this.encuesta = new Encuesta();
