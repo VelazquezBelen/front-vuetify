@@ -68,7 +68,6 @@
                   <v-text-field
                     v-model="encuesta.nombreApellidoEncuestador2"
                     label="Nombre y apellido Encuestador 2"
-                    :rules = "rules.obligatorio"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
@@ -77,7 +76,6 @@
                     label="Teléfono"
                     type="number"
                     min="0"
-                    :rules = "rules.obligatorio"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
@@ -86,7 +84,6 @@
                     label="E-mail"
                     hint="email@example.com"
                     persistent-hint
-                    :rules = "rules.email"
                   ></v-text-field>
                 </v-col>
               </v-row>
