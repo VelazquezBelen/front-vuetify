@@ -605,8 +605,8 @@ export default {
           this.encuesta.fechaNacimiento = res.data[0].fechaNacimiento;
           this.encuesta.domicilioBarrio = res.data[0].domicilioBarrio;
           this.encuesta.telefono = res.data[0].telefono;
-          //this.encuesta.fechaUltimaMenstruacion =  res.data[0].fechaUltimaMenstruacion;
-          //this.encuesta.semanasGestacion =  res.data[0].semanasGestacion;
+          this.encuesta.fechaUltimaMenstruacion =  res.data[0].fechaUltimaMenstruacion;
+          this.encuesta.semanasGestacion =  res.data[0].semanasGestacion;
         }
       });
     },
