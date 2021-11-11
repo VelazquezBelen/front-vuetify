@@ -1959,7 +1959,13 @@ export default {
       this.recordatorios = res.data.recordatorio24Horas;
       },      
       async editarEncuesta() {
-        if (this.encuesta.nombreApellidoEncuestador1 && this.encuesta.telefonoEncuestador1 && this.encuesta.emailEncuestador1 && this.encuesta.nombreApellidoEncuestador2 && this.encuesta.telefonoEncuestador2 && this.encuesta.emailEncuestador2 && this.encuesta.nombreApellido && this.encuesta.dni && this.encuesta.domicilioBarrio && this.encuesta.semanasGestacion)
+        if (this.encuesta.nombreApellidoEncuestador1 &&
+        this.encuesta.telefonoEncuestador1 &&
+        this.encuesta.emailEncuestador1 &&
+        this.encuesta.nombreApellido &&
+        this.encuesta.dni &&
+        this.encuesta.domicilioBarrio &&
+        this.encuesta.semanasGestacion)
         {
           this.loading = true;
           const headers = {

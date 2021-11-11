@@ -475,7 +475,13 @@ export default {
       },
       
       async editarEncuesta() {
-        if (this.encuesta.nombreApellidoEncuestador1 && this.encuesta.telefonoEncuestador1 && this.encuesta.emailEncuestador1 && this.encuesta.nombreApellidoEncuestador2 && this.encuesta.telefonoEncuestador2 && this.encuesta.emailEncuestador2 && this.encuesta.nombreApellido && this.encuesta.dni && this.encuesta.domicilioBarrio)
+        if (
+          this.encuesta.nombreApellidoEncuestador1 &&
+          this.encuesta.telefonoEncuestador1 &&
+          this.encuesta.emailEncuestador1 &&
+          this.encuesta.nombreApellido &&
+          this.encuesta.dni &&
+          this.encuesta.domicilioBarrio)
         {
           this.loading = true;
           const headers = {
