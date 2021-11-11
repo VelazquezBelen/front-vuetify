@@ -1964,8 +1964,14 @@ export default {
       this.lugares = res.data;
     },
     autocompletar() {
-      this.encuesta.nombreApellidoEncuestador1 = this.$auth.user.name;
-      this.encuesta.emailEncuestador1 = this.$auth.user.email;
+      this.axios.get(`${this.baseUrl}/usuarios/email/` + this.$auth.user.email)
+      .then((res) => {
+        if (res.data.length == 1) {
+          this.encuesta.nombreApellidoEncuestador1 = res.data[0].nombre;
+          this.encuesta.telefonoEncuestador1 = res.data[0].telefono;
+          this.encuesta.emailEncuestador1 = this.$auth.user.email;
+        }
+      });
     },
     agregarRecordatorio() {
       this.recordatorios.push(this.recordatorio);

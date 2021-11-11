@@ -23,11 +23,25 @@
             </v-list-item-action>
 
             <v-list-item-content>
-              <v-list-item-title>{{ $auth.user.name }}</v-list-item-title>
+              <v-text-field
+                    v-model="nombre"
+                    label="Nombre y apellido"
+                  ></v-text-field>
             </v-list-item-content>
           </v-list-item>
 
-          <v-divider inset></v-divider>
+          <v-list-item>
+            <v-list-item-action>
+              <v-icon>mdi-phone</v-icon>
+            </v-list-item-action>
+
+            <v-list-item-content>
+              <v-text-field
+                    v-model="telefono"
+                    label="Telefono"
+                  ></v-text-field>
+            </v-list-item-content>
+          </v-list-item>
 
           <v-list-item>
             <v-list-item-action>
@@ -35,7 +49,23 @@
             </v-list-item-action>
 
             <v-list-item-content>
-              <v-list-item-title>{{ $auth.user.email }}</v-list-item-title>
+              <v-text-field
+                    v-model="email"
+                    label="E-mail"
+                    readonly
+                  ></v-text-field>
+            </v-list-item-content>
+          </v-list-item>
+
+          <v-list-item>
+            <v-list-item-content>
+              <v-btn
+                color="primary"
+                text
+                @click="actualizarUsuario"
+              >
+                Guardar
+              </v-btn>
             </v-list-item-content>
           </v-list-item>
 
@@ -52,8 +82,43 @@
 </template>
 
 <script>
-
-  export default {
-    name: 'Profile',
-  }
+export default {
+  name: 'Profile',
+  data() {
+    return {
+      baseUrl: "https://tpftestbackend.herokuapp.com",
+      nombre: null,
+      telefono:null,
+      email: this.$auth.user.email,
+      idUsuario: null,
+    };
+  },
+  created() {
+    this.getUsuario();
+  },
+  methods: {
+    async getUsuario() {
+      this.axios.get(`${this.baseUrl}/usuarios/email/` + this.$auth.user.email)
+      .then((res) => {
+        if (res.data.length == 1) {
+          this.nombre = res.data[0].nombre;
+          this.telefono = res.data[0].telefono;
+          this.idUsuario = res.data[0]._id;
+        }
+      });
+    },
+    async actualizarUsuario() {
+      const headers = {
+        Accept: "application/json",
+        "Content-type": "application/json",
+      };
+      var usuario = {nombre: this.nombre, telefono: this.telefono};
+      this.axios.put(`${this.baseUrl}/usuarios/` + this.idUsuario,     
+        JSON.stringify(usuario),
+        { headers }).then((result) => {
+          this.getUsuario();
+        }) 
+    },
+  },
+}
 </script>
