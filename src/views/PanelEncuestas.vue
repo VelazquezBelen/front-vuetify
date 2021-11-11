@@ -360,7 +360,6 @@ export default {
   },
   methods: {
     async getEncuestas() {
-      console.log(this.$auth.user.email)
       const res1 = await this.axios.get(
         `${this.baseUrl}/encuestas3Trimestre/panelencuestas/` +
           this.$auth.user.email
