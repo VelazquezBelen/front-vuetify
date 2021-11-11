@@ -1,5 +1,28 @@
 <template>
 <div class="profile">
+
+    <div class="text-center ma2">
+      <v-snackbar
+        outlined
+        v-model="snackbarUsuario"
+        :timeout="2000"
+        top
+        color="deep-purple accent-4"
+      >
+        <span>¡Datos Actualizados! &nbsp;</span>
+        <v-icon dark> mdi-checkbox-marked-circle </v-icon>
+        <template v-slot:action="{ attrs }">
+          <v-btn
+            v-bind="attrs"
+            text
+            color="white"
+            @click="snackbarUsuario = false"
+            >Cerrar</v-btn
+          >
+        </template>
+      </v-snackbar>
+    </div>
+
     <h2 class="grey--text">
       <span>Mi Perfil</span>
     </h2>
@@ -91,6 +114,7 @@ export default {
       telefono:null,
       email: this.$auth.user.email,
       idUsuario: null,
+      snackbarUsuario: false,
     };
   },
   created() {
@@ -117,6 +141,7 @@ export default {
         JSON.stringify(usuario),
         { headers }).then((result) => {
           this.getUsuario();
+          this.snackbarUsuario = true;
         }) 
     },
   },
