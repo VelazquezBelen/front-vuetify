@@ -1922,10 +1922,10 @@ export default {
       menu4: false,
       rules: {
         email: [
-          (v) => !!v || "E-mail is required",
-          (v) => /.+@.+/.test(v) || "E-mail must be valid",
+          (v) => !!v || 'Este campo es obligatorio',
+          (v) => /.+@.+/.test(v) || 'El E-mail debe ser valido',
         ],
-        number: [(val) => /^[0-9]\d*(\.\d+)?$/.test(val) || "Usar punto en lugar de coma"],
+        number: [(val) => /^[0-9]\d*(\.\d+)?$/.test(val) || 'Usar punto en lugar de coma'],
         obligatorio: [o=> !!o || 'Este campo es obligatorio'],
       },
       lugares: [],
