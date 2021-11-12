@@ -250,7 +250,7 @@
             >
             <v-divider class="mx-3"></v-divider>
             <v-card-subtitle
-              ><h3 color="black">
+              ><h3 class="font-weight-regular">
                 1.1 ¿Ha sido diagnosticada con alguna de las siguientes
                 enfermedades?
               </h3></v-card-subtitle
@@ -260,7 +260,7 @@
                 <v-col cols="12" md="4">
                   <v-radio-group v-model="encuesta.diabetes" row>
                     <template v-slot:label>
-                      <div><h3>Diabetes</h3></div>
+                      <div><h3 class="font-weight-regular">Diabetes</h3></div>
                     </template>
                     <v-radio label="Si" value="Si"></v-radio>
                     <v-radio label="No" value="No"></v-radio>
@@ -270,7 +270,7 @@
                 <v-col cols="12" md="4">
                   <v-radio-group v-model="encuesta.enfermedadRenal" row>
                     <template v-slot:label>
-                      <div><h3>Enfermedad renal</h3></div>
+                      <div><h3 class="font-weight-regular">Enfermedad renal</h3></div>
                     </template>
                     <v-radio label="Si" value="Si"></v-radio>
                     <v-radio label="No" value="No"></v-radio>
@@ -280,7 +280,7 @@
                 <v-col cols="12" md="4">
                   <v-radio-group v-model="encuesta.hipertension" row>
                     <template v-slot:label>
-                      <div><h3>Hipertension</h3></div>
+                      <div><h3 class="font-weight-regular">Hipertension</h3></div>
                     </template>
                     <v-radio label="Si" value="Si"></v-radio>
                     <v-radio label="No" value="No"></v-radio>
@@ -295,7 +295,7 @@
                     row
                   >
                     <template v-slot:label>
-                      <div><h3>Colesterol - Trigliceridos altos</h3></div>
+                      <div><h3 class="font-weight-regular">Colesterol - Trigliceridos altos</h3></div>
                     </template>
                     <v-radio label="Si" value="Si"></v-radio>
                     <v-radio label="No" value="No"></v-radio>
@@ -305,7 +305,7 @@
                 <v-col cols="12" md="4">
                   <v-radio-group v-model="encuesta.asmaEPOC" row>
                     <template v-slot:label>
-                      <div><h3>Asma o EPOC</h3></div>
+                      <div><h3 class="font-weight-regular">Asma o EPOC</h3></div>
                     </template>
                     <v-radio label="Si" value="Si"></v-radio>
                     <v-radio label="No" value="No"></v-radio>
@@ -315,7 +315,7 @@
                 <v-col cols="12" md="4">
                   <v-radio-group v-model="encuesta.covid19" row>
                     <template v-slot:label>
-                      <div><h3>COVID-19</h3></div>
+                      <div><h3 class="font-weight-regular">COVID-19</h3></div>
                     </template>
                     <v-radio label="Si" value="Si"></v-radio>
                     <v-radio label="No" value="No"></v-radio>
@@ -327,7 +327,7 @@
                 <v-col cols="12" md="12">
                   <v-radio-group v-model="encuesta.anemia" row>
                     <template v-slot:label>
-                      <div><h3>Anemia</h3></div>
+                      <div><h3 class="font-weight-regular">Anemia</h3></div>
                     </template>
                     <v-radio label="Si" value="Si"></v-radio>
                     <v-radio label="No" value="No"></v-radio>
@@ -339,7 +339,7 @@
                 <v-col cols="12" md="6">
                   <v-radio-group v-model="encuesta.enfermedadCronica" row>
                     <template v-slot:label>
-                      <div><h3>¿Otra enfermedad crónica?</h3></div>
+                      <div><h3 class="font-weight-regular">¿Otra enfermedad crónica?</h3></div>
                     </template>
                     <v-radio label="Si" value="Si"></v-radio>
                     <v-radio label="No" value="No"></v-radio>
@@ -358,7 +358,7 @@
                 <v-col cols="12" md="6">
                   <v-radio-group v-model="encuesta.consumeMedicamento" row>
                     <template v-slot:label>
-                      <div><h3>1.2 ¿Consume algún medicamento?</h3></div>
+                      <div><h3 class="font-weight-regular">1.2 ¿Consume algún medicamento?</h3></div>
                     </template>
                     <v-radio label="Si" value="Si"></v-radio>
                     <v-radio label="No" value="No"></v-radio>
@@ -381,7 +381,7 @@
                   >
                     <template v-slot:label>
                       <div>
-                        <h3>
+                        <h3 class="font-weight-regular">
                           1.3 Antes o durante el embarazo, ¿consumió algún
                           complejo vitaminico o suplemento?
                         </h3>
@@ -408,7 +408,7 @@
                 <v-col cols="12" md="12">
                   <v-radio-group v-model="encuesta.fumaActual" row>
                     <template v-slot:label>
-                      <div><h3>1.4 ¿Actualmente fuma?</h3></div>
+                      <div><h3 class="font-weight-regular">1.4 ¿Actualmente fuma?</h3></div>
                     </template>
                     <v-radio label="No, nunca" value="No, nunca"></v-radio>
                     <v-radio
@@ -428,7 +428,7 @@
                 <v-col cols="12" md="12">
                   <v-radio-group v-model="encuesta.fumaAntes" row>
                     <template v-slot:label>
-                      <div><h3>1.5 ¿Fumaba antes de estar embarazada?</h3></div>
+                      <div><h3 class="font-weight-regular">1.5 ¿Fumaba antes de estar embarazada?</h3></div>
                     </template>
                     <v-radio label="No, nunca" value="No, nunca"></v-radio>
                     <v-radio
@@ -449,11 +449,11 @@
                   <v-radio-group v-model="encuesta.alcoholActual" row>
                     <template v-slot:label>
                       <div>
-                        <h3>1.6 ¿Actualmente consume bebidas alcoholicas?</h3>
+                        <h3 class="font-weight-regular">1.6 ¿Actualmente consume bebidas alcoholicas?</h3>
                       </div>
                     </template>
-                    <v-radio label="Si" value="Si"></v-radio>
-                    <v-radio label="No" value="No"></v-radio>
+                    <v-radio label="No, nunca" value="No, nunca"></v-radio>
+                    <v-radio label="Algunas veces" value="Algunas veces"></v-radio>
                     <v-radio
                       label="Todos los dias"
                       value="Todos los dias"
@@ -467,7 +467,7 @@
                 <v-col cols="12" md="6">
                   <v-radio-group v-model="encuesta.embarazoAntes" row>
                     <template v-slot:label>
-                      <div><h3>1.7 ¿Estuvo embarazada antes?</h3></div>
+                      <div><h3 class="font-weight-regular">1.7 ¿Estuvo embarazada antes?</h3></div>
                     </template>
                     <v-radio label="Si" value="Si"></v-radio>
                     <v-radio label="No" value="No"></v-radio>
@@ -485,7 +485,7 @@
                 <v-col cols="12" md="6">
                   <v-radio-group v-model="encuesta.hijos" row>
                     <template v-slot:label>
-                      <div><h3>1.8 ¿Tiene hijos?</h3></div>
+                      <div><h3 class="font-weight-regular">1.8 ¿Tiene hijos?</h3></div>
                     </template>
                     <v-radio label="Si" value="Si"></v-radio>
                     <v-radio label="No" value="No"></v-radio>
@@ -561,7 +561,7 @@
                   <v-radio-group v-model="encuesta.desagueCloaca" row>
                     <template v-slot:label>
                       <div>
-                        <h3>
+                        <h3 class="font-weight-regular">
                           2.5 ¿El desague del inodoro tiene conexión a cloaca?
                         </h3>
                       </div>
@@ -578,7 +578,7 @@
                   <v-radio-group v-model="encuesta.aguaPotable" row>
                     <template v-slot:label>
                       <div>
-                        <h3>
+                        <h3 class="font-weight-regular">
                           2.6 ¿Tiene conexión a la red de agua potable dentro de
                           su vivienda?
                         </h3>
@@ -596,7 +596,7 @@
                   <v-radio-group v-model="encuesta.redElectrica" row>
                     <template v-slot:label>
                       <div>
-                        <h3>
+                        <h3 class="font-weight-regular">
                           2.7 ¿Tiene conexión a la red eléctrica en su vivienda?
                         </h3>
                       </div>
@@ -612,7 +612,7 @@
                 <v-col>
                   <v-radio-group v-model="encuesta.gasNatural" row>
                     <template v-slot:label>
-                      <div><h3>2.8 ¿Utiliza gas natural para cocinar?</h3></div>
+                      <div><h3 class="font-weight-regular">2.8 ¿Utiliza gas natural para cocinar?</h3></div>
                     </template>
                     <v-radio label="Si" value="Si"></v-radio>
                     <v-radio label="No" value="No"></v-radio>
@@ -661,7 +661,7 @@
                   <v-radio-group v-model="encuesta.asistenciaEstado" row>
                     <template v-slot:label>
                       <div>
-                        <h3>
+                        <h3 class="font-weight-regular">
                           2.11 ¿Recibe alguna asistencia económica del estado?
                         </h3>
                       </div>
@@ -681,14 +681,14 @@
               <v-divider></v-divider>
             </v-container>
             <v-card-subtitle color="black"
-              ><h3>2.12 En el último mes recibio:</h3></v-card-subtitle
+              ><h3 class="font-weight-regular">2.12 En el último mes recibio:</h3></v-card-subtitle
             >
             <v-container>
               <v-row>
                 <v-col cols="6">
                   <v-radio-group v-model="encuesta.recibioBolson" row>
                     <template v-slot:label>
-                      <div><h3>¿Bolsón o caja de alimentos?</h3></div>
+                      <div><h3 class="font-weight-regular">¿Bolsón o caja de alimentos?</h3></div>
                     </template>
                     <v-radio label="Si" value="Si"></v-radio>
                     <v-radio label="No" value="No"></v-radio>
@@ -698,7 +698,7 @@
                   <v-radio-group v-model="encuesta.recibioTickets" row>
                     <template v-slot:label>
                       <div>
-                        <h3>¿Tickets o bonos para la compra de alimentos?</h3>
+                        <h3 class="font-weight-regular">¿Tickets o bonos para la compra de alimentos?</h3>
                       </div>
                     </template>
                     <v-radio label="Si" value="Si"></v-radio>
@@ -710,7 +710,7 @@
                 <v-col cols="6">
                   <v-radio-group v-model="encuesta.recibioTarjeta" row>
                     <template v-slot:label>
-                      <div><h3>¿Tarjeta alimentar?</h3></div>
+                      <div><h3 class="font-weight-regular">¿Tarjeta alimentar?</h3></div>
                     </template>
                     <v-radio label="Si" value="Si"></v-radio>
                     <v-radio label="No" value="No"></v-radio>
@@ -719,7 +719,7 @@
                 <v-col cols="6">
                   <v-radio-group v-model="encuesta.recibioLeche" row>
                     <template v-slot:label>
-                      <div><h3>¿Leche fluida o en polvo?</h3></div>
+                      <div><h3 class="font-weight-regular">¿Leche fluida o en polvo?</h3></div>
                     </template>
                     <v-radio label="Si" value="Si"></v-radio>
                     <v-radio label="No" value="No"></v-radio>
@@ -730,7 +730,7 @@
                 <v-col cols="6">
                   <v-radio-group v-model="encuesta.recibioOtra" row>
                     <template v-slot:label>
-                      <div><h3>¿Otra forma de asistencia alimentaria?</h3></div>
+                      <div><h3 class="font-weight-regular">¿Otra forma de asistencia alimentaria?</h3></div>
                     </template>
                     <v-radio label="Si" value="Si"></v-radio>
                     <v-radio label="No" value="No"></v-radio>
@@ -741,23 +741,6 @@
                     v-model="encuesta.cualUltimoMesRecibio"
                     label="Si contesta afirmativamente: ¿Cúal?"
                   ></v-text-field>
-                </v-col>
-              </v-row>
-              <v-row>
-                <v-col>
-                  <v-radio-group v-model="encuesta.aguaPotable" row>
-                    <template v-slot:label>
-                      <div>
-                        <h3>
-                          2.6 ¿Tiene conexión a la red de agua potable dentro de
-                          su vivienda?
-                        </h3>
-                      </div>
-                    </template>
-                    <v-radio label="Si" value="Si"></v-radio>
-                    <v-radio label="No" value="No"></v-radio>
-                    <v-radio label="NS/NC" value="NS/NC"></v-radio>
-                  </v-radio-group>
                 </v-col>
               </v-row>
             </v-container>
@@ -806,7 +789,7 @@
                   <v-radio-group v-model="encuesta.recibioIFE" row>
                     <template v-slot:label>
                       <div>
-                        <h3>
+                        <h3 class="font-weight-regular">
                           2.15 Durante la pandemia, ¿el hogar recibió el IFE?
                         </h3>
                       </div>
@@ -1087,7 +1070,7 @@
               <v-divider></v-divider>
               <v-row>
                 <v-col>
-                  <v-radio-group v-model="encuesta.sinAlimentos" row>
+                  <v-radio-group v-model="encuesta.sentidoHambre" row>
                     <template v-slot:label>
                       <h3 class="font-weight-regular">
                         4.7 ¿Hubo alguna vez en que usted haya sentido hambre
@@ -1135,7 +1118,7 @@
             >
             <v-divider></v-divider>
             <v-card-subtitle
-              ><h3 color="black">4.9 Recordatorio 24 horas</h3></v-card-subtitle
+              ><h3 class="font-weight-regular">4.9 Recordatorio 24 horas</h3></v-card-subtitle
             >
             <v-container>
               <v-simple-table>
@@ -1667,17 +1650,16 @@
               </v-row>
             </v-container>
 
-            <v-divider class="mt-3"></v-divider>
+            <v-divider class="mt-3"></v-divider>   
             <v-card-actions class="mx-4">
-              <v-btn color="primary" text @click="editarEncuesta" :loading="loading">
-                Actualizar encuesta
-              </v-btn>
-
+              <v-btn color="red" text @click="dialog = false"> Cerrar </v-btn>
+              <v-spacer></v-spacer>
               <v-btn class="mr-4" text @click="limpiarEncuesta">
                 Limpiar
               </v-btn>
-              <v-spacer></v-spacer>
-              <v-btn color="red" text @click="dialog = false"> Cerrar </v-btn>
+              <v-btn color="primary" text @click="editarEncuesta" :loading="loading">
+                Actualizar encuesta
+              </v-btn>           
             </v-card-actions>
           </v-card>
         </v-card-text>

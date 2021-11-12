@@ -20,19 +20,19 @@
             <template v-slot:top>
               <v-toolbar flat>
                 <v-col sm="6">
-                <v-text-field
-                  class="xs-3"
-                  v-model="lugarInput"
-                  label="Nuevo lugar de relevamiento"
-                  hide-details
-                ></v-text-field>                
-                </v-col>
-                <v-btn  @click="addLugar"
-                  color="indigo" outlined fab x-small>
-                  <v-icon>
-                    mdi-plus
-                  </v-icon>
-                </v-btn>
+                    <v-text-field
+                      class="xs-3"
+                      v-model="lugarInput"
+                      label="Nuevo lugar de relevamiento"
+                      hide-details
+                    ></v-text-field>                
+                    </v-col>
+                    <v-btn  @click="addLugar"
+                      color="grey" text fab small>
+                      <v-icon>
+                        mdi-plus
+                      </v-icon>
+                    </v-btn>
                 <v-spacer></v-spacer>
               </v-toolbar>
             </template>

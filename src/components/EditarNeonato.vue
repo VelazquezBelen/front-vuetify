@@ -20,8 +20,9 @@
         <v-card-title class="text-center text-h5 font-weight-regular blue-grey--text">
           Editar encuesta neonato
         </v-card-title>
+        <v-divider class="mb-4"></v-divider>
         <v-card-text>
-        <v-card ref="form" width="5000px" flat>
+        <v-card ref="form" width="5000px">
           <v-card-title
             class="text-h5 font-weight-regular blue-grey white--text"
             >Bloque 0. Datos de los encuestadores y participantes</v-card-title
@@ -346,14 +347,14 @@
           </v-container>
           <v-divider class="mt-3 "></v-divider>
           <v-card-actions class = "mx-4">
-          <v-btn
-            color="primary"
+             <v-btn
+            color="red"
             text
-            @click="editarEncuesta" :loading="loading"
+            @click="dialog = false"
           >
-            Actualizar encuesta
+            Cerrar
           </v-btn>
-
+          <v-spacer></v-spacer>
           <v-btn
             class="mr-4"
             text
@@ -361,19 +362,17 @@
           >
             Limpiar
           </v-btn>
-          <v-spacer></v-spacer>
           <v-btn
-            color="red"
+            color="primary"
             text
-            @click="dialog = false"
+            @click="editarEncuesta" :loading="loading"
           >
-            Cerrar
-          </v-btn>
+            Actualizar encuesta
+          </v-btn>       
+         
         </v-card-actions>
         </v-card>
-        </v-card-text>
-
-       
+        </v-card-text>      
       </v-card>
     </v-dialog>
     </div>

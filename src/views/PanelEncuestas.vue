@@ -5,25 +5,25 @@
     </h2>
     <hr />
     <div class="text-center ma2">
-      <v-snackbar v-model="snackbar" :timeout="2000" top color="success">
+      <v-snackbar v-model="snackbar" :timeout="2000" top dense text color="success">
         <span>¡Encuesta Agregada! &nbsp;</span>
-        <v-icon dark> mdi-checkbox-marked-circle </v-icon>
+        <v-icon left color="success"> mdi-checkbox-marked-circle </v-icon>
         <template v-slot:action="{ attrs }">
-          <v-btn v-bind="attrs" text color="white" @click="snackbar = false"
+          <v-btn v-bind="attrs" text color="success" @click="snackbar = false"
             >Cerrar</v-btn
           >
         </template>
       </v-snackbar>
     </div>
     <div class="text-center ma2">
-      <v-snackbar v-model="snackbarElimino" :timeout="2000" top color="error">
+      <v-snackbar v-model="snackbarElimino" :timeout="2000" top dense text color="success">
         <span>¡Encuesta Eliminada! &nbsp;</span>
-        <v-icon dark> mdi-checkbox-marked-circle </v-icon>
+        <v-icon left color="success"> mdi-checkbox-marked-circle </v-icon>
         <template v-slot:action="{ attrs }">
           <v-btn
             v-bind="attrs"
             text
-            color="white"
+            color="success"
             @click="snackbarElimino = false"
             >Cerrar</v-btn
           >
@@ -32,19 +32,17 @@
     </div>
     <div class="text-center ma2">
       <v-snackbar
-        outlined
         v-model="snackbarActualizo"
         :timeout="2000"
-        top
-        color="deep-purple accent-4"
+        top dense text color="success"
       >
         <span>¡Encuesta Actualizada! &nbsp;</span>
-        <v-icon dark> mdi-checkbox-marked-circle </v-icon>
+        <v-icon left color="success"> mdi-checkbox-marked-circle </v-icon>
         <template v-slot:action="{ attrs }">
           <v-btn
             v-bind="attrs"
             text
-            color="white"
+            color="success"
             @click="snackbarActualizo = false"
             >Cerrar</v-btn
           >
@@ -55,15 +53,15 @@
       <v-snackbar
         v-model="snackbarObligatorio"
         :timeout="2000"
-        top
-        color="error"
+        top dense text
+        color="error"        
       >
         <span>Debe completar los campos obligatorios del bloque 0 &nbsp;</span>
         <template v-slot:action="{ attrs }">
           <v-btn
             v-bind="attrs"
             text
-            color="white"
+            color="error"
             @click="snackbarObligatorio = false"
             >Cerrar</v-btn
           >
@@ -183,11 +181,11 @@
             <template v-slot:top>
               <v-toolbar flat>
                 <!-- <v-toolbar-title>My CRUD</v-toolbar-title> -->
-                <v-col cols="3">
+                <v-col sm="4">
                   <v-text-field
                     v-model="search"
                     append-icon="mdi-magnify"
-                    label="Buscar por DNI"
+                    label="Buscar por DNI o tipo encuesta"
                     hide-details
                   ></v-text-field>
                 </v-col>
@@ -195,7 +193,7 @@
                 <v-dialog v-model="dialogDelete" max-width="500px">
                   <v-card>
                     <v-card-title class="text-h5"
-                      >Estas seguro de eliminar la encuesta?</v-card-title
+                      >¿Estás seguro de eliminar la encuesta?</v-card-title
                     >
                     <v-card-actions>
                       <v-spacer></v-spacer>

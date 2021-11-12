@@ -16,12 +16,13 @@
           mdi-eye-outline
         </v-icon>
       </template>
-      <v-card >
+      <v-card>
         <v-card-title class="text-center text-h5 font-weight-regular blue-grey--text">
           Encuesta neonato
         </v-card-title>
+        <v-divider class="mb-4"></v-divider>
         <v-card-text>
-        <v-card ref="form" width="5000px" flat>
+        <v-card ref="form" width="5000px" >
           <v-card-title
             class="text-h5 font-weight-regular blue-grey white--text"
             >Bloque 0. Datos de los encuestadores y participantes</v-card-title

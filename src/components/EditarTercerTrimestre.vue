@@ -428,6 +428,11 @@
 
             <v-divider class="mt-3"></v-divider>
             <v-card-actions class="mx-4">
+              <v-btn color="red" text @click="dialog = false"> Cerrar </v-btn>
+              <v-spacer></v-spacer>
+              <v-btn class="mr-4" text @click="limpiarEncuesta">
+                Limpiar
+              </v-btn>
               <v-btn
                 color="primary"
                 text
@@ -436,12 +441,6 @@
               >
                 Actualizar encuesta
               </v-btn>
-
-              <v-btn class="mr-4" text @click="limpiarEncuesta">
-                Limpiar
-              </v-btn>
-              <v-spacer></v-spacer>
-              <v-btn color="red" text @click="dialog = false"> Cerrar </v-btn>
             </v-card-actions>
           </v-card>
         </v-card-text>

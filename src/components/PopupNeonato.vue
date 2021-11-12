@@ -2,7 +2,7 @@
   <div class="text-center">
     <v-dialog v-model="dialog" width="1200">
       <template v-slot:activator="{ on, attrs }">
-        <v-btn text color="blue-grey" v-bind="attrs" v-on="on" class="caption" @click="completarDatosMadre">
+        <v-btn text color="primary" v-bind="attrs" v-on="on" class="caption" @click="completarDatosMadre">
           Nueva encuesta neonato
         </v-btn>
       </template>
@@ -12,8 +12,9 @@
         >
           Nueva encuesta neonato
         </v-card-title>
+        <v-divider class="mb-4"></v-divider>
         <v-card-text>
-          <v-card ref="form" width="5000px" flat>
+          <v-card ref="form" width="5000px" >
             <v-card-title
               class="text-h5 font-weight-regular blue-grey white--text"
               >Bloque 0. Datos de los encuestadores y
@@ -338,7 +339,12 @@
               </v-row>
             </v-container>
             <v-divider class="mt-3"></v-divider>
-            <v-card-actions class="mx-4">
+            <v-card-actions class="mx-4">              
+              <v-btn color="red" text @click="close"> Cerrar </v-btn>
+              <v-spacer></v-spacer>
+              <v-btn class="mr-4" text @click="limpiarEncuesta">
+                Limpiar
+              </v-btn> 
               <v-btn
                 color="primary"
                 text
@@ -346,13 +352,7 @@
                 :loading="loading"
               >
                 Agregar encuesta
-              </v-btn>
-
-              <v-btn class="mr-4" text @click="limpiarEncuesta">
-                Limpiar
-              </v-btn>
-              <v-spacer></v-spacer>
-              <v-btn color="red" text @click="close"> Cerrar </v-btn>
+              </v-btn>                           
             </v-card-actions>
           </v-card>
         </v-card-text>

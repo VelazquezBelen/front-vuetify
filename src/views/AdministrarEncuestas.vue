@@ -126,6 +126,10 @@
                       </v-card-text>
                       <v-divider></v-divider>
                       <v-card-actions>
+                        <v-btn class="mx-2 caption" color="blue darken-1" text @click="dialogExportar = false">
+                          Cancelar
+                        </v-btn>
+                        <v-spacer></v-spacer>
                         <v-btn
                           text
                           outlined
@@ -135,10 +139,6 @@
                           dark
                           color="success"
                           >Exportar todas las encuestas                             
-                        </v-btn>
-                        <v-spacer></v-spacer>
-                        <v-btn class="mx-2 caption" color="blue darken-1" text @click="dialogExportar = false">
-                          Cancelar
                         </v-btn>
                       </v-card-actions>
                     </v-card>
@@ -205,6 +205,7 @@ export default {
       fecha2: "",
       search: "",
       encuestas: [],
+      encuestasExportar: [],
       encuesta: new Encuesta(),
       editedEncuesta: new Encuesta(),
       baseUrl: "https://tpftestbackend.herokuapp.com",
@@ -632,22 +633,23 @@ export default {
     },
     async exportarEncuestasPorRangoFechas() {
         // Genera un archivo .csv separando los datos con ;
+        this.loading2 = true;
         if (this.emailUsuario != "")
         {
           const res1 = await this.axios.get(
-          `${this.baseUrl}/encuestas3Trimestre/encuestas/` + this.emailUsuario
+          `${this.baseUrl}/encuestas3Trimestre/user/` + this.emailUsuario
           );
-          this.encuestas = res1.data;
+          this.encuestasExportar = res1.data;
           const res2 = await this.axios.get(
-            `${this.baseUrl}/encuestas1y2Trimestre/encuestas/` + this.emailUsuario
+            `${this.baseUrl}/encuestas1y2Trimestre/user/` + this.emailUsuario
           );
-          this.encuestas = this.encuestas.concat(res2.data);
+          this.encuestasExportar = this.encuestasExportar.concat(res2.data);
           const res3 = await this.axios.get(
-            `${this.baseUrl}/encuestasNeonato/encuestas/` + this.emailUsuario
+            `${this.baseUrl}/encuestasNeonato/user/` + this.emailUsuario
           );
-          this.encuestas = this.encuestas.concat(res3.data);
+          this.encuestasExportar = this.encuestasExportar.concat(res3.data);
         }
-        this.loading2 = true;
+               
         var FileSaver = require("file-saver");
         var texto1y2Trimestre =
           "Encuestas Primer y Segundo Trimestre \n nombreApellidoEncuestador1; telefonoEncuestador1; emailEncuestador1; nombreApellidoEncuestador2; telefonoEncuestador2; emailEncuestador2; fechaRelevamiento; lugarRelevamiento; nombreApellido; dni; fechaNacimiento; domicilioBarrio; telefono; fechaUltimaMenstruacion; semanasGestacion; observacionesBloque0; diabetes; enfermedadRenal; hipertension; colesterolTrigliceridosAltos; asmaEPOC; covid19; anemia; enfermedadCronica; cualEnfermedadCronica; consumeMedicamento; cualConsumeMedicamento; consumeComplejoVitaminicoSuplemento; cualConsumeComplejoVitaminicoSuplemento; fumaActual; fumaAntes; alcoholActual; embarazoAntes; cuantosEmbarazoAntes; hijos; cuantosHijos; observacionesBloque1; pais; provincia; personasVivienda; habitacionesVivienda; desagueCloaca; aguaPotable; redElectrica; gasNatural; nivelEducativo; empleo; asistenciaEstado; cualAsistenciaEstado; recibioBolson; recibioTickets; recibioTarjeta; recibioLeche; recibioOtra; cualUltimoMesRecibio; ingresoIndividual; ingresoTotal; recibioIFE; observacionesBloque2; pesoKG; ropaAlPesar; talla; tallaSentada; perimetroBraquial; pliegueTricipital; pliegueBicipital; pliegueSubescapular; pliegueSuprailiaco; observacionesBloque3; preocupadoSuficienteAlimentos; podidoAlimentos; comidoPocaVariedad; dejarDesayunoAlmuerzoCena; comidoMenos; sinAlimentos; sentidoHambre; dejadoComer; observacionesBloque4Parte1; recordatorio24Horas; observacionesBloque4Parte2; desayuno; almuerzo; merienda; cena; frecuenciaConsumo; golosinas; panBlanco; pan; copetin; frutas; lacteos; bebidas; otros; nsnc; observacionesBloque4Parte3; consumioLeche; consumioFrutasFrescas; consumioVerduras; consumioPapa; consumioCereales; consumioEmbutidos; observacionesBloque4Parte4; consumioCarne; consumioPescado; consumioAceites; consumioFrutasSecas; consumioProductosCopetin; consumioGolosinas; observacionesBloque4Parte5 \n";
@@ -656,13 +658,13 @@ export default {
         var textoNeonato =
           "Encuestas Neonato \n nombreApellidoEncuestador1; telefonoEncuestador1; emailEncuestador1; nombreApellidoEncuestador2; telefonoEncuestador2; emailEncuestador2; fechaRelevamiento; lugarRelevamiento; nombreApellido; dni; fechaNacimiento; domicilioBarrio; telefono; fechaNacimientoBebe; viaNacimiento; lugarNacimiento; nombreBebe; observacionesBloque0; pesoKG; ropaAlPesar; talla; perimetroCefalico; circunsferenciaBrazo; NombreApellidoMadre; dniMadre; observacionesBloque5 \n";
 
-        for (var index in this.encuestas) {
-          if ( this.encuestas[index].tipoEncuesta == "Primer y segundo trimestre"
-            && ((this.fecha1 != "" && this.encuestas[index].fechaRelevamiento >= this.fecha1) || this.fecha1 == "") 
-            && ((this.fecha2 != "" && this.encuestas[index].fechaRelevamiento <= this.fecha2 ) || this.fecha2 == "")
+        for (var index in this.encuestasExportar) {
+          if ( this.encuestasExportar[index].tipoEncuesta == "Primer y segundo trimestre"
+            && ((this.fecha1 != "" && this.encuestasExportar[index].fechaRelevamiento >= this.fecha1) || this.fecha1 == "") 
+            && ((this.fecha2 != "" && this.encuestasExportar[index].fechaRelevamiento <= this.fecha2 ) || this.fecha2 == "")
           ) {
             const res = await this.axios.get(
-              `${this.baseUrl}/encuestas1y2Trimestre/` + this.encuestas[index]._id
+              `${this.baseUrl}/encuestas1y2Trimestre/` + this.encuestasExportar[index]._id
             );
             texto1y2Trimestre +=
               res.data.nombreApellidoEncuestador1 +
@@ -884,11 +886,11 @@ export default {
               res.data.observacionesBloque4Parte5 +
               "\n";
           }
-          if (this.encuestas[index].tipoEncuesta == "Tercer trimestre"
+          if (this.encuestasExportar[index].tipoEncuesta == "Tercer trimestre"
             && ((this.fecha1 != "" && this.encuestas[index].fechaRelevamiento >= this.fecha1) || this.fecha1 == "") 
             && ((this.fecha2 != "" && this.encuestas[index].fechaRelevamiento <= this.fecha2 ) || this.fecha2 == "")) {
             const res = await this.axios.get(
-              `${this.baseUrl}/encuestas3Trimestre/` + this.encuestas[index]._id
+              `${this.baseUrl}/encuestas3Trimestre/` + this.encuestasExportar[index]._id
             );
 
             texto3Trimestre +=
@@ -949,11 +951,11 @@ export default {
               res.data.observacionesBloque4 +
               "\n";
           }
-          if (this.encuestas[index].tipoEncuesta == "Neonato"           
-            && ((this.fecha1 != "" && this.encuestas[index].fechaRelevamiento >= this.fecha1) || this.fecha1 == "") 
-            && ((this.fecha2 != "" && this.encuestas[index].fechaRelevamiento <= this.fecha2 ) || this.fecha2 == "")) {
+          if (this.encuestasExportar[index].tipoEncuesta == "Neonato"           
+            && ((this.fecha1 != "" && this.encuestasExportar[index].fechaRelevamiento >= this.fecha1) || this.fecha1 == "") 
+            && ((this.fecha2 != "" && this.encuestasExportar[index].fechaRelevamiento <= this.fecha2 ) || this.fecha2 == "")) {
             const res = await this.axios.get(
-              `${this.baseUrl}/encuestasNeonato/` + this.encuestas[index]._id
+              `${this.baseUrl}/encuestasNeonato/` + this.encuestasExportar[index]._id
             );
             textoNeonato +=
               res.data.nombreApellidoEncuestador1 +
@@ -1018,7 +1020,7 @@ export default {
         this.fecha1 = "";
         this.fecha2 = "";
         FileSaver.saveAs(blob, "Encuestas.csv");
-        this.getEncuestas();
+        this.encuestasExportar = [];
       },
     },
 };

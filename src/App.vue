@@ -1,9 +1,9 @@
 <template>
   <v-app> 
   <Navbar />
-  <v-content class="mx-6 my-8" >
+  <v-main class="mx-6 my-8" >
     <router-view></router-view>
-  </v-content>
+  </v-main>
   </v-app>  
 </template>
 

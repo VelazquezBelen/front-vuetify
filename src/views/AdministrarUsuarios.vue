@@ -5,20 +5,20 @@
     </h2>
     <hr />
     <div class="text-center ma2">
-      <v-snackbar v-model="snackbarElimino" :timeout="2000" top color="error">
+      <v-snackbar v-model="snackbarElimino" :timeout="2000" top dense text color="success">
         <span>¡Usuario Eliminado! &nbsp;</span>
-        <v-icon dark> mdi-checkbox-marked-circle </v-icon>
+        <v-icon  left color="success" > mdi-checkbox-marked-circle </v-icon>
         <template v-slot:action="{ attrs }">
-          <v-btn v-bind="attrs" text color="white" @click="snackbarElimino = false"
+          <v-btn v-bind="attrs" color="success" text @click="snackbarElimino = false"
             >Cerrar</v-btn
           >
         </template>
       </v-snackbar>
-      <v-snackbar v-model="snackbarEditoPermiso" :timeout="2000" top color="indigo">
+      <v-snackbar v-model="snackbarEditoPermiso" :timeout="2000" top dense text color="success">
         <span>¡Los permisos del usuario se actualizaron! &nbsp;</span>
-        <v-icon dark> mdi-checkbox-marked-circle </v-icon>
+        <v-icon left color="success"> mdi-checkbox-marked-circle </v-icon>
         <template v-slot:action="{ attrs }">
-          <v-btn v-bind="attrs" text color="white" @click="snackbarEditoPermiso = false"
+          <v-btn v-bind="attrs"  color="success" text @click="snackbarEditoPermiso = false"
             >Cerrar</v-btn
           >
         </template>
