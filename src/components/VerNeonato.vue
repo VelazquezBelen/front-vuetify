@@ -107,15 +107,15 @@
             <v-row>
               <v-col cols="12" md="4">
                 <v-text-field
-                  v-model="encuesta.nombreApellidoBebe"
-                  label="Nombre y apellido"
+                  v-model="encuesta.nombreApellido"
+                  label="Nombre y apellido (madre)"
                   readonly
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="4">
                 <v-text-field
-                  v-model="encuesta.dniBebe"
-                  label="DNI"
+                  v-model="encuesta.dni"
+                  label="DNI (madre)"
                   readonly
                 ></v-text-field>
               </v-col>
@@ -148,7 +148,7 @@
               <v-col cols="12" md="4">
                 <v-text-field
                     v-model="encuesta.fechaNacimientoBebe"
-                    label="Fecha de nacimiento"
+                    label="Fecha de nacimiento (niño/a)"
                     prepend-icon="mdi-calendar"
                     readonly
                 ></v-text-field>

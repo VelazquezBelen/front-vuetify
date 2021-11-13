@@ -124,16 +124,18 @@
               <v-row>
                 <v-col cols="12" md="4">
                   <v-text-field
-                    v-model="encuesta.nombreApellidoBebe"
-                    label="Nombre y apellido"
+                    v-model="encuesta.nombreApellido"
+                    label="Nombre y apellido (madre)"
+                    :rules="rules.obligatorio"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <v-text-field
-                    v-model="encuesta.dniBebe"
-                    label="DNI"
+                    v-model="encuesta.dni"
+                    label="DNI (madre)"
                     type="number"
                     min="0"
+                    :rules="rules.obligatorio"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
@@ -148,7 +150,7 @@
                     <template v-slot:activator="{ on, attrs }">
                       <v-text-field
                         v-model="encuesta.fechaNacimiento"
-                        label="Fecha de nacimiento"
+                        label="Fecha de nacimiento (madre)"
                         prepend-icon="mdi-calendar"
                         readonly
                         v-bind="attrs"
@@ -192,7 +194,7 @@
                     <template v-slot:activator="{ on, attrs }">
                       <v-text-field
                         v-model="encuesta.fechaNacimientoBebe"
-                        label="Fecha de nacimiento"
+                        label="Fecha de nacimiento (niño/a)"
                         prepend-icon="mdi-calendar"
                         readonly
                         v-bind="attrs"
@@ -316,7 +318,6 @@
                   <v-text-field
                     v-model="encuesta.nombreApellido"
                     label="Nombre y apellido"
-                    :rules="rules.obligatorio"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="6">
@@ -325,7 +326,6 @@
                     label="DNI"
                     type="number"
                     min="0"
-                    :rules="rules.obligatorio"
                   ></v-text-field>
                 </v-col>
               </v-row>
