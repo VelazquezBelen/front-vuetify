@@ -1050,6 +1050,15 @@
                   </tbody>
                 </template>
               </v-simple-table>
+              <v-row>
+                <v-col>
+                  <v-text-field
+                    v-model="encuesta.observacionesBloque4Parte2"
+                    label="Observaciones"
+                    readonly
+                  ></v-text-field>
+                </v-col>
+              </v-row>
             </v-container>
             <v-card-title
               class="text-h5 font-weight-regular blue-grey white--text"
@@ -1195,6 +1204,15 @@
                     :label="`NS/NC`"
                     readonly
                   ></v-checkbox>
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col>
+                  <v-text-field
+                    v-model="encuesta.observacionesBloque4Parte3"
+                    label="Observaciones"
+                    readonly
+                  ></v-text-field>
                 </v-col>
               </v-row>
             </v-container>
