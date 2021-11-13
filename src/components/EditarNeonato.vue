@@ -135,7 +135,6 @@
                 <v-text-field
                   v-model="encuesta.nombreApellidoBebe"
                   label="Nombre y apellido"
-                  :rules = "rules.obligatorio"
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="4">
@@ -144,7 +143,6 @@
                   label="DNI"
                   type="number"
                   min="0"
-                  :rules = "rules.obligatorio"
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="4">
@@ -325,6 +323,7 @@
                 <v-text-field
                   v-model="encuesta.nombreApellido"
                   label="Nombre y apellido"
+                  :rules = "rules.obligatorio"
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="6">
@@ -333,6 +332,7 @@
                   label="DNI"
                   type="number"
                   min="0"
+                  :rules = "rules.obligatorio"
                 ></v-text-field>
               </v-col>
             </v-row>
