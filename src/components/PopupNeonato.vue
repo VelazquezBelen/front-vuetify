@@ -217,7 +217,9 @@
                       label="Parto vaginal"
                       value="Parto vaginal"
                     ></v-radio>
-                    <v-radio label="Cesárea" value="Cesárea"></v-radio>
+                    <v-radio label="Cesárea" 
+                    value="Cesárea">
+                    </v-radio>
                   </v-radio-group>
                 </v-col>
               </v-row>
@@ -372,8 +374,8 @@ class Encuesta {
     emailEncuestador2,
     fechaRelevamiento,
     lugarRelevamiento,
-    nombreApellidoBebe,
-    dniBebe,
+    nombreApellido,
+    dni,
     fechaNacimiento,
     domicilioBarrio,
     telefono,
@@ -387,8 +389,6 @@ class Encuesta {
     talla,
     perimetroCefalico,
     circunsferenciaBrazo,
-    nombreApellido,
-    dni,
     observacionesBloque5
   ) {
     this.nombreApellidoEncuestador1 = nombreApellidoEncuestador1;
@@ -399,8 +399,8 @@ class Encuesta {
     this.emailEncuestador2 = emailEncuestador2;
     this.fechaRelevamiento = fechaRelevamiento;
     this.lugarRelevamiento = lugarRelevamiento;
-    this.nombreApellidoBebe = nombreApellidoBebe;
-    this.dniBebe = dniBebe;
+    this.nombreApellido = nombreApellido;
+    this.dni = dni;
     this.fechaNacimiento = fechaNacimiento;
     this.domicilioBarrio = domicilioBarrio;
     this.telefono = telefono;
@@ -414,8 +414,6 @@ class Encuesta {
     this.talla = talla;
     this.perimetroCefalico = perimetroCefalico;
     this.circunsferenciaBrazo = circunsferenciaBrazo;
-    this.nombreApellido = nombreApellido;
-    this.dni = dni;
     this.observacionesBloque5 = observacionesBloque5;
     this.tipoEncuesta = "Neonato";
   }
@@ -491,6 +489,9 @@ export default {
           if (res.data.length == 1) {
             this.encuesta.nombreApellido = res.data[0].nombreApellido;
             this.encuesta.dni = res.data[0].dni;
+            this.encuesta.domicilioBarrio = res.data[0].domicilioBarrio;
+            this.encuesta.fechaNacimiento = res.data[0].fechaNacimiento;
+            this.encuesta.telefono = res.data[0].telefono;
           }
         });
       }
