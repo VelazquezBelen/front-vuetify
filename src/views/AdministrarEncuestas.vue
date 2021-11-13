@@ -616,9 +616,9 @@ export default {
             ";" +
             res.data.circunsferenciaBrazo +
             ";" +
-            res.data.nombreApellido +
+            res.data.NombreApellidoMadre +
             ";" +
-            res.data.dni +
+            res.data.dniMadre +
             ";" +
             res.data.observacionesBloque5 +
             "\n";
