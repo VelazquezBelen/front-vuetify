@@ -12,6 +12,7 @@
           mdi-pencil
         </v-icon>
       </template>
+      <v-form ref="obligatorio">
       <v-card>
         <v-card-title
           class="text-center text-h5 font-weight-regular blue-grey--text"
@@ -1627,6 +1628,7 @@
           </v-card>
         </v-card-text>
       </v-card>
+      </v-form>
     </v-dialog>
   </div>
 </template>
@@ -1904,14 +1906,7 @@ export default {
       this.recordatorios = res.data.recordatorio24Horas;
       },      
       async editarEncuesta() {
-        if (this.encuesta.nombreApellidoEncuestador1 &&
-        this.encuesta.telefonoEncuestador1 &&
-        this.encuesta.emailEncuestador1 &&
-        this.encuesta.nombreApellido &&
-        this.encuesta.dni &&
-        this.encuesta.domicilioBarrio &&
-        this.encuesta.semanasGestacion)
-        {
+        if (this.$refs.obligatorio.validate()) {
           this.loading = true;
           const headers = {
             Accept: "application/json",
