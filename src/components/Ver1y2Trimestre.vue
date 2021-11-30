@@ -827,202 +827,11 @@
                   ></v-text-field>
                 </v-col>
               </v-row>
-            </v-container>
+            </v-container>            
             <v-card-title
               class="text-h5 font-weight-regular blue-grey white--text"
-              >Bloque 4. Inseguridad alimentaria y datos
-              nutricionales.</v-card-title
-            >
-            <v-divider></v-divider>
-            <v-card-subtitle
-              ><h3 color="black">
-                Ahora vamos a hacer algunas preguntas sobre las comidas y sus
-                hábitos alimentarios.
-              </h3></v-card-subtitle
-            >
-            <v-card-subtitle
-              ><h2 color="black">
-                Cuestionario Escala Inseguridad Alimentaria basada en la
-                Experiencia
-              </h2></v-card-subtitle
-            >
-            <v-divider class="mx-3"></v-divider>
-            <v-card-subtitle
-              ><h3 class="font-weight-regular">
-                Durante los últimos doce meses, ha habido algún momento en que:
-              </h3></v-card-subtitle
-            >
-            <v-container>
-              <v-row>
-                <v-col>
-                  <v-radio-group
-                    v-model="encuesta.preocupadoSuficienteAlimentos"
-                    row
-                    readonly
-                  >
-                    <template v-slot:label>
-                      <div>
-                        <h3 class="font-weight-regular">
-                          4.1 ¿Usted se haya preocupado por no tener suficientes
-                          alimentos para comer por falta de dinero u otros
-                          recursos?
-                        </h3>
-                      </div>
-                    </template>
-                    <v-radio label="Si" value="Si"></v-radio>
-                    <v-radio label="No" value="No"></v-radio>
-                    <v-radio label="NS/NC" value="NS/NC"></v-radio>
-                  </v-radio-group>
-                </v-col>
-              </v-row>
-              <v-divider></v-divider>
-              <v-row>
-                <v-col>
-                  <v-radio-group v-model="encuesta.podidoAlimentos" row readonly>
-                    <template v-slot:label>
-                      <div>
-                        <h3 class="font-weight-regular">
-                          4.2 ¿Hubo alguna vez en que usted no haya podido comer
-                          alimentos saludables y nutritivos por falta de dinero
-                          u otros recursos?
-                        </h3>
-                      </div>
-                    </template>
-                    <v-radio label="Si" value="Si"></v-radio>
-                    <v-radio label="No" value="No"></v-radio>
-                    <v-radio label="NS/NC" value="NS/NC"></v-radio>
-                  </v-radio-group>
-                </v-col>
-              </v-row>
-              <v-divider></v-divider>
-              <v-row>
-                <v-col>
-                  <v-radio-group v-model="encuesta.comidoPocaVariedad" row readonly>
-                    <template v-slot:label>
-                      <div>
-                        <h3 class="font-weight-regular">
-                          4.3 ¿Hubo alguna vez en que usted haya comido poca
-                          variedad de alimentos por falta de dinero u otros
-                          recursos?
-                        </h3>
-                      </div>
-                    </template>
-                    <v-radio label="Si" value="Si"></v-radio>
-                    <v-radio label="No" value="No"></v-radio>
-                    <v-radio label="NS/NC" value="NS/NC"></v-radio>
-                  </v-radio-group>
-                </v-col>
-              </v-row>
-              <v-divider></v-divider>
-              <v-row>
-                <v-col>
-                  <v-radio-group
-                    v-model="encuesta.dejarDesayunoAlmuerzoCena"
-                    row
-                    readonly
-                  >
-                    <template v-slot:label>
-                      <div>
-                        <h3 class="font-weight-regular">
-                          4.4 ¿Hubo alguna vez en que usted haya tenido que
-                          dejar de desayunar, almorzar o cenar porque no había
-                          suficiente dinero u otros recursos para obtener
-                          alimentos?
-                        </h3>
-                      </div>
-                    </template>
-                    <v-radio label="Si" value="Si"></v-radio>
-                    <v-radio label="No" value="No"></v-radio>
-                    <v-radio label="NS/NC" value="NS/NC"></v-radio>
-                  </v-radio-group>
-                </v-col>
-              </v-row>
-              <v-divider></v-divider>
-              <v-row>
-                <v-col>
-                  <v-radio-group v-model="encuesta.comidoMenos" row readonly>
-                    <template v-slot:label>
-                      <div>
-                        <h3 class="font-weight-regular">
-                          4.5 ¿Hubo alguna vez en que usted haya comido menos de
-                          lo que pensaba que debía comer por falta de dinero u
-                          otros recursos?
-                        </h3>
-                      </div>
-                    </template>
-                    <v-radio label="Si" value="Si"></v-radio>
-                    <v-radio label="No" value="No"></v-radio>
-                    <v-radio label="NS/NC" value="NS/NC"></v-radio>
-                  </v-radio-group>
-                </v-col>
-              </v-row>
-              <v-divider></v-divider>
-              <v-row>
-                <v-col>
-                  <v-radio-group v-model="encuesta.sinAlimentos" row readonly>
-                    <template v-slot:label>
-                      <div>
-                        <h3 class="font-weight-regular">
-                          4.6 ¿Hubo alguna vez en que su hogar se haya quedado
-                          sin alimentos por falta de dinero u otros recursos?
-                        </h3>
-                      </div>
-                    </template>
-                    <v-radio label="Si" value="Si"></v-radio>
-                    <v-radio label="No" value="No"></v-radio>
-                    <v-radio label="NS/NC" value="NS/NC"></v-radio>
-                  </v-radio-group>
-                </v-col>
-              </v-row>
-              <v-divider></v-divider>
-              <v-row>
-                <v-col>
-                  <v-radio-group v-model="encuesta.sentidoHambre" row readonly>
-                    <template v-slot:label>
-                      <h3 class="font-weight-regular">
-                        4.7 ¿Hubo alguna vez en que usted haya sentido hambre
-                        pero no comió porque no había suficiente dinero u otros
-                        recursos para obtener alimentos?
-                      </h3>
-                    </template>
-                    <v-radio label="Si" value="Si"></v-radio>
-                    <v-radio label="No" value="No"></v-radio>
-                    <v-radio label="NS/NC" value="NS/NC"></v-radio>
-                  </v-radio-group>
-                </v-col>
-              </v-row>
-              <v-divider></v-divider>
-              <v-row>
-                <v-col>
-                  <v-radio-group v-model="encuesta.dejadoComer" row readonly>
-                    <template v-slot:label>
-                      <div>
-                        <h3 class="font-weight-regular">
-                          4.8 ¿Hubo alguna vez en que usted haya dejado de comer
-                          todo un día por falta de dinero u otros recursos?
-                        </h3>
-                      </div>
-                    </template>
-                    <v-radio label="Si" value="Si"></v-radio>
-                    <v-radio label="No" value="No"></v-radio>
-                    <v-radio label="NS/NC" value="NS/NC"></v-radio>
-                  </v-radio-group>
-                </v-col>
-              </v-row>
-              <v-row>
-                <v-col>
-                  <v-text-field
-                    v-model="encuesta.observacionesBloque4Parte1"
-                    label="Observaciones"
-                    readonly
-                  ></v-text-field>
-                </v-col>
-              </v-row>
-            </v-container>
-            <v-card-title
-              class="text-h5 font-weight-regular blue-grey white--text"
-              >Bloque 4. Inseguridad alimentaria y datos nutricionales
-              (continuación)</v-card-title
+              >Bloque 4. Datos nutricionales
+              </v-card-title
             >
             <v-divider></v-divider>
             <v-card-subtitle
@@ -1053,7 +862,7 @@
               <v-row>
                 <v-col>
                   <v-text-field
-                    v-model="encuesta.observacionesBloque4Parte2"
+                    v-model="encuesta.observacionesBloque4Parte1"
                     label="Observaciones"
                     readonly
                   ></v-text-field>
@@ -1062,7 +871,7 @@
             </v-container>
             <v-card-title
               class="text-h5 font-weight-regular blue-grey white--text"
-              >Bloque 4. Inseguridad alimentaria y datos nutricionales
+              >Bloque 4. Datos nutricionales
               (continuación)</v-card-title
             >
             <v-divider></v-divider>
@@ -1209,7 +1018,7 @@
               <v-row>
                 <v-col>
                   <v-text-field
-                    v-model="encuesta.observacionesBloque4Parte3"
+                    v-model="encuesta.observacionesBloque4Parte2"
                     label="Observaciones"
                     readonly
                   ></v-text-field>
@@ -1218,7 +1027,7 @@
             </v-container>
             <v-card-title
               class="text-h5 font-weight-regular blue-grey white--text"
-              >Bloque 4. Inseguridad alimentaria y datos nutricionales
+              >Bloque 4. Datos nutricionales
               (continuación)</v-card-title
             >
             <v-divider></v-divider>
@@ -1291,35 +1100,6 @@
                 </v-col>
               </v-row>
               <v-row>
-                <v-col>
-                  <v-text-field
-                    v-model="encuesta.observacionesBloque4Parte4"
-                    label="Observaciones"
-                  ></v-text-field>
-                </v-col>
-              </v-row>
-            </v-container>
-
-            <v-card-title
-              class="text-h5 font-weight-regular blue-grey white--text"
-              >Bloque 4. Inseguridad alimentaria y datos nutricionales
-              (continuación)</v-card-title
-            >
-            <v-divider></v-divider>
-            <v-card-subtitle
-              ><h2 color="black">
-                Historia alimentaria (Alimentos últimos 3 meses)
-              </h2></v-card-subtitle
-            >
-            <v-divider class="mx-3"></v-divider>
-            <v-card-subtitle
-              ><h3 class="font-weight-regular">
-                En general, tomando como referencia los últimos tres meses,
-                ¿cuántas veces al mes consumió...
-              </h3></v-card-subtitle
-            >
-            <v-container>
-              <v-row>
                 <v-col cols="12">
                   <v-text-field
                     v-model="encuesta.consumioCarne"
@@ -1372,8 +1152,198 @@
               <v-row>
                 <v-col>
                   <v-text-field
-                    v-model="encuesta.observacionesBloque4Parte5"
+                    v-model="encuesta.observacionesBloque4Parte3"
                     label="Observaciones"
+                  ></v-text-field>
+                </v-col>
+              </v-row>
+            </v-container>
+            <v-card-title
+              class="text-h5 font-weight-regular blue-grey white--text"
+              >Bloque 5. Inseguridad alimentaria</v-card-title
+            >
+            <v-divider></v-divider>
+            <v-card-subtitle
+              ><h3 color="black">
+                Ahora vamos a hacer algunas preguntas sobre las comidas y sus
+                hábitos alimentarios.
+              </h3></v-card-subtitle
+            >
+            <v-card-subtitle
+              ><h2 color="black">
+                Cuestionario Escala Inseguridad Alimentaria basada en la
+                Experiencia
+              </h2></v-card-subtitle
+            >
+            <v-divider class="mx-3"></v-divider>
+            <v-card-subtitle
+              ><h3 class="font-weight-regular">
+                Durante los últimos doce meses, ha habido algún momento en que:
+              </h3></v-card-subtitle
+            >
+            <v-container>
+              <v-row>
+                <v-col>
+                  <v-radio-group
+                    v-model="encuesta.preocupadoSuficienteAlimentos"
+                    row
+                    readonly
+                  >
+                    <template v-slot:label>
+                      <div>
+                        <h3 class="font-weight-regular">
+                          5.1 ¿Usted se haya preocupado por no tener suficientes
+                          alimentos para comer por falta de dinero u otros
+                          recursos?
+                        </h3>
+                      </div>
+                    </template>
+                    <v-radio label="Si" value="Si"></v-radio>
+                    <v-radio label="No" value="No"></v-radio>
+                    <v-radio label="NS/NC" value="NS/NC"></v-radio>
+                  </v-radio-group>
+                </v-col>
+              </v-row>
+              <v-divider></v-divider>
+              <v-row>
+                <v-col>
+                  <v-radio-group v-model="encuesta.podidoAlimentos" row readonly>
+                    <template v-slot:label>
+                      <div>
+                        <h3 class="font-weight-regular">
+                          5.2 ¿Hubo alguna vez en que usted no haya podido comer
+                          alimentos saludables y nutritivos por falta de dinero
+                          u otros recursos?
+                        </h3>
+                      </div>
+                    </template>
+                    <v-radio label="Si" value="Si"></v-radio>
+                    <v-radio label="No" value="No"></v-radio>
+                    <v-radio label="NS/NC" value="NS/NC"></v-radio>
+                  </v-radio-group>
+                </v-col>
+              </v-row>
+              <v-divider></v-divider>
+              <v-row>
+                <v-col>
+                  <v-radio-group v-model="encuesta.comidoPocaVariedad" row readonly>
+                    <template v-slot:label>
+                      <div>
+                        <h3 class="font-weight-regular">
+                          5.3 ¿Hubo alguna vez en que usted haya comido poca
+                          variedad de alimentos por falta de dinero u otros
+                          recursos?
+                        </h3>
+                      </div>
+                    </template>
+                    <v-radio label="Si" value="Si"></v-radio>
+                    <v-radio label="No" value="No"></v-radio>
+                    <v-radio label="NS/NC" value="NS/NC"></v-radio>
+                  </v-radio-group>
+                </v-col>
+              </v-row>
+              <v-divider></v-divider>
+              <v-row>
+                <v-col>
+                  <v-radio-group
+                    v-model="encuesta.dejarDesayunoAlmuerzoCena"
+                    row
+                    readonly
+                  >
+                    <template v-slot:label>
+                      <div>
+                        <h3 class="font-weight-regular">
+                          5.4 ¿Hubo alguna vez en que usted haya tenido que
+                          dejar de desayunar, almorzar o cenar porque no había
+                          suficiente dinero u otros recursos para obtener
+                          alimentos?
+                        </h3>
+                      </div>
+                    </template>
+                    <v-radio label="Si" value="Si"></v-radio>
+                    <v-radio label="No" value="No"></v-radio>
+                    <v-radio label="NS/NC" value="NS/NC"></v-radio>
+                  </v-radio-group>
+                </v-col>
+              </v-row>
+              <v-divider></v-divider>
+              <v-row>
+                <v-col>
+                  <v-radio-group v-model="encuesta.comidoMenos" row readonly>
+                    <template v-slot:label>
+                      <div>
+                        <h3 class="font-weight-regular">
+                          5.5 ¿Hubo alguna vez en que usted haya comido menos de
+                          lo que pensaba que debía comer por falta de dinero u
+                          otros recursos?
+                        </h3>
+                      </div>
+                    </template>
+                    <v-radio label="Si" value="Si"></v-radio>
+                    <v-radio label="No" value="No"></v-radio>
+                    <v-radio label="NS/NC" value="NS/NC"></v-radio>
+                  </v-radio-group>
+                </v-col>
+              </v-row>
+              <v-divider></v-divider>
+              <v-row>
+                <v-col>
+                  <v-radio-group v-model="encuesta.sinAlimentos" row readonly>
+                    <template v-slot:label>
+                      <div>
+                        <h3 class="font-weight-regular">
+                          5.6 ¿Hubo alguna vez en que su hogar se haya quedado
+                          sin alimentos por falta de dinero u otros recursos?
+                        </h3>
+                      </div>
+                    </template>
+                    <v-radio label="Si" value="Si"></v-radio>
+                    <v-radio label="No" value="No"></v-radio>
+                    <v-radio label="NS/NC" value="NS/NC"></v-radio>
+                  </v-radio-group>
+                </v-col>
+              </v-row>
+              <v-divider></v-divider>
+              <v-row>
+                <v-col>
+                  <v-radio-group v-model="encuesta.sentidoHambre" row readonly>
+                    <template v-slot:label>
+                      <h3 class="font-weight-regular">
+                        5.7 ¿Hubo alguna vez en que usted haya sentido hambre
+                        pero no comió porque no había suficiente dinero u otros
+                        recursos para obtener alimentos?
+                      </h3>
+                    </template>
+                    <v-radio label="Si" value="Si"></v-radio>
+                    <v-radio label="No" value="No"></v-radio>
+                    <v-radio label="NS/NC" value="NS/NC"></v-radio>
+                  </v-radio-group>
+                </v-col>
+              </v-row>
+              <v-divider></v-divider>
+              <v-row>
+                <v-col>
+                  <v-radio-group v-model="encuesta.dejadoComer" row readonly>
+                    <template v-slot:label>
+                      <div>
+                        <h3 class="font-weight-regular">
+                          5.8 ¿Hubo alguna vez en que usted haya dejado de comer
+                          todo un día por falta de dinero u otros recursos?
+                        </h3>
+                      </div>
+                    </template>
+                    <v-radio label="Si" value="Si"></v-radio>
+                    <v-radio label="No" value="No"></v-radio>
+                    <v-radio label="NS/NC" value="NS/NC"></v-radio>
+                  </v-radio-group>
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col>
+                  <v-text-field
+                    v-model="encuesta.observacionesBloque5"
+                    label="Observaciones"
+                    readonly
                   ></v-text-field>
                 </v-col>
               </v-row>
