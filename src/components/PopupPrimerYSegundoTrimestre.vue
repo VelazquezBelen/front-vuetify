@@ -8,6 +8,7 @@
           v-bind="attrs"
           v-on="on"
           class="caption"
+          @click="autocompletar(); resetearValidacion()"
         >
         <v-icon left >mdi-file-plus-outline</v-icon>
           Nueva encuesta primer y segundo trimestre
@@ -1886,11 +1887,11 @@ export default {
         obligatorio: [o=> !!o || 'Este campo es obligatorio'],
       },
       lugares: [],
+      controlValidacion: false,
     };
   },
   created() {
     this.getLugares();
-    this.autocompletar();
   },
   methods: {
     async agregarEncuesta() {
@@ -1911,8 +1912,7 @@ export default {
               this.$emit('encuestaAgregada');
               this.$emit('getEncuestas');
           })
-        this.$refs.obligatorio.resetValidation();
-        this.autocompletar();
+        this.controlValidacion = true;
       }
       else
       {
@@ -1935,6 +1935,11 @@ export default {
           this.encuesta.emailEncuestador1 = this.$auth.user.email;
         }
       });
+    },
+    resetearValidacion() {
+      if (this.controlValidacion) {
+        this.$refs.obligatorio.reset();
+      }
     },
     agregarRecordatorio() {
       this.recordatorios.push(this.recordatorio);

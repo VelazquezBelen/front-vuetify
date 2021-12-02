@@ -9,7 +9,7 @@
           v-bind="attrs"
           v-on="on"
           class="caption"
-          @click="completarDatosMadre"
+          @click="completarDatosMadre(); autocompletar(); resetearValidacion()"
         >
           Nueva encuesta tercer trimestre
         </v-btn>
@@ -553,6 +553,7 @@ export default {
         obligatorio: [o=> !!o || 'Este campo es obligatorio'],
       },
       lugares: [],
+      controlValidacion: false,
     };
   },
   created() {
@@ -583,8 +584,7 @@ export default {
             this.$emit('getEncuestas');
             this.$emit("cerarDialogNuevaEncuesta");
           });
-        this.$refs.obligatorio.resetValidation();
-        this.autocompletar();
+        this.controlValidacion = true;
       }
       else
       {
@@ -593,6 +593,8 @@ export default {
     },
 
     async completarDatosMadre() {
+      //this.$refs.obligatorio.reset();
+      this.autocompletar();
       if (this.dniMadre != "") {
         this.axios.get(`${this.baseUrl}/encuestas1y2Trimestre/madre/` + this.dniMadre)
         .then((res) => {
@@ -625,6 +627,11 @@ export default {
           this.encuesta.emailEncuestador1 = this.$auth.user.email;
         }
       });
+    },
+    resetearValidacion() {
+      if (this.controlValidacion) {
+        this.$refs.obligatorio.reset();
+      }
     },
     agregarRecordatorio() {
       this.recordatorios.push(this.recordatorio);

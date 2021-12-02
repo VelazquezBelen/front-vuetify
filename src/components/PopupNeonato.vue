@@ -2,364 +2,364 @@
   <div class="text-center">
     <v-dialog v-model="dialog" width="1200">
       <template v-slot:activator="{ on, attrs }">
-        <v-btn text color="primary" v-bind="attrs" v-on="on" class="caption" @click="completarDatosMadre">
+        <v-btn text color="primary" v-bind="attrs" v-on="on" class="caption" @click="completarDatosMadre(); autocompletar(); resetearValidacion()">
           Nueva encuesta neonato
         </v-btn>
       </template>
       <v-form ref="obligatorio">
-      <v-card>
-        <v-card-title
-          class="text-center text-h5 font-weight-regular blue-grey--text"
-        >
-          Nueva encuesta neonato
-        </v-card-title>
-        <v-divider class="mb-4"></v-divider>
-        <v-card-text>
-          <v-card ref="form" width="5000px" >
-            <v-card-title
-              class="text-h5 font-weight-regular blue-grey white--text"
-              >Bloque 0. Datos de los encuestadores y
-              participantes</v-card-title
-            >
-            <v-divider></v-divider>
-            <v-card-subtitle
-              ><h3 color="black">Datos encuestador</h3></v-card-subtitle
-            >
-            <v-divider class="mx-3"></v-divider>
-            <v-container>
-              <v-row>
-                <v-col cols="12" md="4">
-                  <v-text-field
-                    v-model="encuesta.nombreApellidoEncuestador1"
-                    label="Nombre y apellido Encuestador 1"
-                    :rules="rules.obligatorio"
-                  ></v-text-field>
-                </v-col>
-                <v-col cols="12" md="4">
-                  <v-text-field
-                    v-model="encuesta.telefonoEncuestador1"
-                    label="Teléfono"
-                    type="number"
-                    min="0"
-                    :rules="rules.obligatorio"
-                  ></v-text-field>
-                </v-col>
-                <v-col cols="12" md="4">
-                  <v-text-field
-                    v-model="encuesta.emailEncuestador1"
-                    :rules="rules.email"
-                    label="E-mail"
-                    hint="email@example.com"
-                    persistent-hint
-                  ></v-text-field>
-                </v-col>
-              </v-row>
-            </v-container>
-            <v-container>
-              <v-row>
-                <v-col cols="12" md="4">
-                  <v-text-field
-                    v-model="encuesta.nombreApellidoEncuestador2"
-                    label="Nombre y apellido Encuestador 2"
-                  ></v-text-field>
-                </v-col>
-                <v-col cols="12" md="4">
-                  <v-text-field
-                    v-model="encuesta.telefonoEncuestador2"
-                    label="Teléfono"
-                    type="number"
-                    min="0"
-                  ></v-text-field>
-                </v-col>
-                <v-col cols="12" md="4">
-                  <v-text-field
-                    v-model="encuesta.emailEncuestador2"
-                    label="E-mail"
-                    hint="email@example.com"
-                    persistent-hint
-                  ></v-text-field>
-                </v-col>
-              </v-row>
-            </v-container>
-            <v-container>
-              <v-row>
-                <v-col cols="12" md="6">
-                  <v-menu
-                    v-model="menu1"
-                    :close-on-content-click="false"
-                    :nudge-right="40"
-                    transition="scale-transition"
-                    offset-y
-                    min-width="auto"
-                  >
-                    <template v-slot:activator="{ on, attrs }">
-                      <v-text-field
-                        v-model="encuesta.fechaRelevamiento"
-                        label="Fecha de relevamiento"
-                        prepend-icon="mdi-calendar"
-                        readonly
-                        v-bind="attrs"
-                        v-on="on"
-                      ></v-text-field>
-                    </template>
-                    <v-date-picker
-                      v-model="encuesta.fechaRelevamiento"
-                      @input="menu1 = false"
-                    ></v-date-picker>
-                  </v-menu>
-                </v-col>
-                <v-col cols="12" md="6">
-                  <v-select
-                    v-model="encuesta.lugarRelevamiento"
-                    :items="lugares"
-                    item-value="nombre"
-                    item-text="nombre"
-                    label="Lugar de relevamiento"
-                  ></v-select>
-                </v-col>
-              </v-row>
-            </v-container>
-            <v-card-subtitle><h3>Madre y recien nacido</h3></v-card-subtitle>
-            <v-divider class="mx-3"></v-divider>
-            <v-container>
-              <v-row>
-                <v-col cols="12" md="4">
-                  <v-text-field
-                    v-model="encuesta.nombreApellido"
-                    label="Nombre y apellido (madre)"
-                    :rules="rules.obligatorio"
-                  ></v-text-field>
-                </v-col>
-                <v-col cols="12" md="4">
-                  <v-text-field
-                    v-model="encuesta.dni"
-                    label="DNI (madre)"
-                    type="number"
-                    min="0"
-                    :rules="rules.obligatorio"
-                  ></v-text-field>
-                </v-col>
-                <v-col cols="12" md="4">
-                  <v-menu
-                    v-model="menu2"
-                    :close-on-content-click="false"
-                    :nudge-right="40"
-                    transition="scale-transition"
-                    offset-y
-                    min-width="auto"
-                  >
-                    <template v-slot:activator="{ on, attrs }">
-                      <v-text-field
-                        v-model="encuesta.fechaNacimiento"
-                        label="Fecha de nacimiento (madre)"
-                        prepend-icon="mdi-calendar"
-                        readonly
-                        v-bind="attrs"
-                        v-on="on"
-                      ></v-text-field>
-                    </template>
-                    <v-date-picker
-                      v-model="encuesta.fechaNacimiento"
-                      @input="menu2 = false"
-                    ></v-date-picker>
-                  </v-menu>
-                </v-col>
-              </v-row>
-              <v-row>
-                <v-col cols="12" md="12">
-                  <v-text-field
-                    v-model="encuesta.domicilioBarrio"
-                    label="Domicilio/barrio"
-                    :rules="rules.obligatorio"
-                  ></v-text-field>
-                </v-col>
-              </v-row>
-              <v-row>
-                <v-col cols="12" md="4">
-                  <v-text-field
-                    v-model="encuesta.telefono"
-                    label="Teléfono"
-                    type="number"
-                    min="0"
-                  ></v-text-field>
-                </v-col>
-                <v-col cols="12" md="4">
-                  <v-menu
-                    v-model="menu3"
-                    :close-on-content-click="false"
-                    :nudge-right="40"
-                    transition="scale-transition"
-                    offset-y
-                    min-width="auto"
-                  >
-                    <template v-slot:activator="{ on, attrs }">
-                      <v-text-field
-                        v-model="encuesta.fechaNacimientoBebe"
-                        label="Fecha de nacimiento (niño/a)"
-                        prepend-icon="mdi-calendar"
-                        readonly
-                        v-bind="attrs"
-                        v-on="on"
-                      ></v-text-field>
-                    </template>
-                    <v-date-picker
-                      v-model="encuesta.fechaNacimientoBebe"
-                      @input="menu3 = false"
-                    ></v-date-picker>
-                  </v-menu>
-                </v-col>
-                <v-col cols="12" md="4">
-                  <v-radio-group
-                    label="Via de nacimiento"
-                    v-model="encuesta.viaNacimiento"
-                    encuesta.viaNacimiento
-                  >
-                    <v-radio
-                      label="Parto vaginal"
-                      value="Parto vaginal"
-                    ></v-radio>
-                    <v-radio label="Cesárea" 
-                    value="Cesárea">
-                    </v-radio>
-                  </v-radio-group>
-                </v-col>
-              </v-row>
-              <v-row>
-                <v-col cols="12" md="6">
-                  <v-text-field
-                    v-model="encuesta.lugarNacimiento"
-                    label="Lugar de nacimiento"
-                  ></v-text-field>
-                </v-col>
-                <v-col cols="12" md="6">
-                  <v-text-field
-                    v-model="encuesta.nombreBebe"
-                    label="Nombre niño/a"
-                  ></v-text-field>
-                </v-col>
-              </v-row>
-              <v-row>
-                <v-col cols="12" md="12">
-                  <v-text-field
-                    v-model="encuesta.observacionesBloque0"
-                    label="Observaciones"
-                  ></v-text-field>
-                </v-col>
-              </v-row>
-            </v-container>
-
-            <v-card-title
-              class="text-h5 font-weight-regular blue-grey white--text"
-              >Bloque 5. Antropometría neonato</v-card-title
-            >
-            <v-divider></v-divider>
-            <v-card-subtitle
-              ><h3 color="black">
-                Ahora vamos a hacer algunas mediciones para conocer el peso,
-                largo y otros datos de la composición corporal del bebé.
-              </h3></v-card-subtitle
-            >
-            <v-divider class="mx-3"></v-divider>
-            <v-container>
-              <v-row>
-                <v-col cols="12" md="4">
-                  <v-text-field
-                    v-model="encuesta.pesoKG"
-                    label="5.1 Peso"
-                    suffix="Kg"
-                    type="number"
-                    min="0"
-                  ></v-text-field>
-                </v-col>
-                <v-col cols="12" md="4">
-                  <v-text-field
-                    v-model="encuesta.ropaAlPesar"
-                    label="Ropa"
-                    hint="Especificar la ropa que tiene puesta al momento de tomar
-                      el peso"
-                    persistent-hint
-                  ></v-text-field>
-                </v-col>
-                <v-col cols="12" md="4">
-                  <v-text-field
-                    v-model="encuesta.talla"
-                    label="5.2 Longitud (talla)"
-                    suffix="cm"
-                    type="number"
-                    min="0"
-                  ></v-text-field>
-                </v-col>
-              </v-row>
-              <v-row>
-                <v-col cols="12" md="6">
-                  <v-text-field
-                    v-model="encuesta.perimetroCefalico"
-                    label="5.3 Perímetro cefálico"
-                    suffix="cm"
-                    type="number"
-                    min="0"
-                  ></v-text-field>
-                </v-col>
-                <v-col cols="12" md="6">
-                  <v-text-field
-                    v-model="encuesta.circunsferenciaBrazo"
-                    label="5.4 Cincunsferencia del brazo"
-                    suffix="cm"
-                    type="number"
-                    min="0"
-                    hint="La medida 5.4 tomar del lado derecho del cuerpo."
-                    persistent-hint
-                  ></v-text-field>
-                </v-col>
-              </v-row>
-            </v-container>
-            <v-card-subtitle><h3>Datos de la madre</h3></v-card-subtitle>
-            <v-divider class="mx-3"></v-divider>
-            <v-container>
-              <v-row>
-                <v-col cols="12" md="6">
-                  <v-text-field
-                    v-model="encuesta.nombreApellido"
-                    label="Nombre y apellido"
-                  ></v-text-field>
-                </v-col>
-                <v-col cols="12" md="6">
-                  <v-text-field
-                    v-model="encuesta.dni"
-                    label="DNI"
-                    type="number"
-                    min="0"
-                  ></v-text-field>
-                </v-col>
-              </v-row>
-              <v-row>
-                <v-col cols="12" md="12">
-                  <v-text-field
-                    v-model="encuesta.observacionesBloque5"
-                    label="Observaciones"
-                  ></v-text-field>
-                </v-col>
-              </v-row>
-            </v-container>
-            <v-divider class="mt-3"></v-divider>
-            <v-card-actions class="mx-4">              
-              <v-btn color="red" text @click="close"> Cerrar </v-btn>
-              <v-spacer></v-spacer>
-              <v-btn class="mr-4" text @click="limpiarEncuesta">
-                Limpiar
-              </v-btn> 
-              <v-btn
-                color="primary"
-                text
-                @click="agregarEncuesta"
-                :loading="loading"
+        <v-card>
+          <v-card-title
+            class="text-center text-h5 font-weight-regular blue-grey--text"
+          >
+            Nueva encuesta neonato
+          </v-card-title>
+          <v-divider class="mb-4"></v-divider>
+          <v-card-text>
+            <v-card ref="form" width="5000px" >
+              <v-card-title
+                class="text-h5 font-weight-regular blue-grey white--text"
+                >Bloque 0. Datos de los encuestadores y
+                participantes</v-card-title
               >
-                Agregar encuesta
-              </v-btn>                           
-            </v-card-actions>
-          </v-card>
-        </v-card-text>
-      </v-card>
+              <v-divider></v-divider>
+              <v-card-subtitle
+                ><h3 color="black">Datos encuestador</h3></v-card-subtitle
+              >
+              <v-divider class="mx-3"></v-divider>
+              <v-container>
+                <v-row>
+                  <v-col cols="12" md="4">
+                    <v-text-field
+                      v-model="encuesta.nombreApellidoEncuestador1"
+                      label="Nombre y apellido Encuestador 1"
+                      :rules="rules.obligatorio"
+                    ></v-text-field>
+                  </v-col>
+                  <v-col cols="12" md="4">
+                    <v-text-field
+                      v-model="encuesta.telefonoEncuestador1"
+                      label="Teléfono"
+                      type="number"
+                      min="0"
+                      :rules="rules.obligatorio"
+                    ></v-text-field>
+                  </v-col>
+                  <v-col cols="12" md="4">
+                    <v-text-field
+                      v-model="encuesta.emailEncuestador1"
+                      :rules="rules.email"
+                      label="E-mail"
+                      hint="email@example.com"
+                      persistent-hint
+                    ></v-text-field>
+                  </v-col>
+                </v-row>
+              </v-container>
+              <v-container>
+                <v-row>
+                  <v-col cols="12" md="4">
+                    <v-text-field
+                      v-model="encuesta.nombreApellidoEncuestador2"
+                      label="Nombre y apellido Encuestador 2"
+                    ></v-text-field>
+                  </v-col>
+                  <v-col cols="12" md="4">
+                    <v-text-field
+                      v-model="encuesta.telefonoEncuestador2"
+                      label="Teléfono"
+                      type="number"
+                      min="0"
+                    ></v-text-field>
+                  </v-col>
+                  <v-col cols="12" md="4">
+                    <v-text-field
+                      v-model="encuesta.emailEncuestador2"
+                      label="E-mail"
+                      hint="email@example.com"
+                      persistent-hint
+                    ></v-text-field>
+                  </v-col>
+                </v-row>
+              </v-container>
+              <v-container>
+                <v-row>
+                  <v-col cols="12" md="6">
+                    <v-menu
+                      v-model="menu1"
+                      :close-on-content-click="false"
+                      :nudge-right="40"
+                      transition="scale-transition"
+                      offset-y
+                      min-width="auto"
+                    >
+                      <template v-slot:activator="{ on, attrs }">
+                        <v-text-field
+                          v-model="encuesta.fechaRelevamiento"
+                          label="Fecha de relevamiento"
+                          prepend-icon="mdi-calendar"
+                          readonly
+                          v-bind="attrs"
+                          v-on="on"
+                        ></v-text-field>
+                      </template>
+                      <v-date-picker
+                        v-model="encuesta.fechaRelevamiento"
+                        @input="menu1 = false"
+                      ></v-date-picker>
+                    </v-menu>
+                  </v-col>
+                  <v-col cols="12" md="6">
+                    <v-select
+                      v-model="encuesta.lugarRelevamiento"
+                      :items="lugares"
+                      item-value="nombre"
+                      item-text="nombre"
+                      label="Lugar de relevamiento"
+                    ></v-select>
+                  </v-col>
+                </v-row>
+              </v-container>
+              <v-card-subtitle><h3>Madre y recien nacido</h3></v-card-subtitle>
+              <v-divider class="mx-3"></v-divider>
+              <v-container>
+                <v-row>
+                  <v-col cols="12" md="4">
+                    <v-text-field
+                      v-model="encuesta.nombreApellido"
+                      label="Nombre y apellido (madre)"
+                      :rules="rules.obligatorio"
+                    ></v-text-field>
+                  </v-col>
+                  <v-col cols="12" md="4">
+                    <v-text-field
+                      v-model="encuesta.dni"
+                      label="DNI (madre)"
+                      type="number"
+                      min="0"
+                      :rules="rules.obligatorio"
+                    ></v-text-field>
+                  </v-col>
+                  <v-col cols="12" md="4">
+                    <v-menu
+                      v-model="menu2"
+                      :close-on-content-click="false"
+                      :nudge-right="40"
+                      transition="scale-transition"
+                      offset-y
+                      min-width="auto"
+                    >
+                      <template v-slot:activator="{ on, attrs }">
+                        <v-text-field
+                          v-model="encuesta.fechaNacimiento"
+                          label="Fecha de nacimiento (madre)"
+                          prepend-icon="mdi-calendar"
+                          readonly
+                          v-bind="attrs"
+                          v-on="on"
+                        ></v-text-field>
+                      </template>
+                      <v-date-picker
+                        v-model="encuesta.fechaNacimiento"
+                        @input="menu2 = false"
+                      ></v-date-picker>
+                    </v-menu>
+                  </v-col>
+                </v-row>
+                <v-row>
+                  <v-col cols="12" md="12">
+                    <v-text-field
+                      v-model="encuesta.domicilioBarrio"
+                      label="Domicilio/barrio"
+                      :rules="rules.obligatorio"
+                    ></v-text-field>
+                  </v-col>
+                </v-row>
+                <v-row>
+                  <v-col cols="12" md="4">
+                    <v-text-field
+                      v-model="encuesta.telefono"
+                      label="Teléfono"
+                      type="number"
+                      min="0"
+                    ></v-text-field>
+                  </v-col>
+                  <v-col cols="12" md="4">
+                    <v-menu
+                      v-model="menu3"
+                      :close-on-content-click="false"
+                      :nudge-right="40"
+                      transition="scale-transition"
+                      offset-y
+                      min-width="auto"
+                    >
+                      <template v-slot:activator="{ on, attrs }">
+                        <v-text-field
+                          v-model="encuesta.fechaNacimientoBebe"
+                          label="Fecha de nacimiento (niño/a)"
+                          prepend-icon="mdi-calendar"
+                          readonly
+                          v-bind="attrs"
+                          v-on="on"
+                        ></v-text-field>
+                      </template>
+                      <v-date-picker
+                        v-model="encuesta.fechaNacimientoBebe"
+                        @input="menu3 = false"
+                      ></v-date-picker>
+                    </v-menu>
+                  </v-col>
+                  <v-col cols="12" md="4">
+                    <v-radio-group
+                      label="Via de nacimiento"
+                      v-model="encuesta.viaNacimiento"
+                      encuesta.viaNacimiento
+                    >
+                      <v-radio
+                        label="Parto vaginal"
+                        value="Parto vaginal"
+                      ></v-radio>
+                      <v-radio label="Cesárea" 
+                      value="Cesárea">
+                      </v-radio>
+                    </v-radio-group>
+                  </v-col>
+                </v-row>
+                <v-row>
+                  <v-col cols="12" md="6">
+                    <v-text-field
+                      v-model="encuesta.lugarNacimiento"
+                      label="Lugar de nacimiento"
+                    ></v-text-field>
+                  </v-col>
+                  <v-col cols="12" md="6">
+                    <v-text-field
+                      v-model="encuesta.nombreBebe"
+                      label="Nombre niño/a"
+                    ></v-text-field>
+                  </v-col>
+                </v-row>
+                <v-row>
+                  <v-col cols="12" md="12">
+                    <v-text-field
+                      v-model="encuesta.observacionesBloque0"
+                      label="Observaciones"
+                    ></v-text-field>
+                  </v-col>
+                </v-row>
+              </v-container>
+
+              <v-card-title
+                class="text-h5 font-weight-regular blue-grey white--text"
+                >Bloque 5. Antropometría neonato</v-card-title
+              >
+              <v-divider></v-divider>
+              <v-card-subtitle
+                ><h3 color="black">
+                  Ahora vamos a hacer algunas mediciones para conocer el peso,
+                  largo y otros datos de la composición corporal del bebé.
+                </h3></v-card-subtitle
+              >
+              <v-divider class="mx-3"></v-divider>
+              <v-container>
+                <v-row>
+                  <v-col cols="12" md="4">
+                    <v-text-field
+                      v-model="encuesta.pesoKG"
+                      label="5.1 Peso"
+                      suffix="Kg"
+                      type="number"
+                      min="0"
+                    ></v-text-field>
+                  </v-col>
+                  <v-col cols="12" md="4">
+                    <v-text-field
+                      v-model="encuesta.ropaAlPesar"
+                      label="Ropa"
+                      hint="Especificar la ropa que tiene puesta al momento de tomar
+                        el peso"
+                      persistent-hint
+                    ></v-text-field>
+                  </v-col>
+                  <v-col cols="12" md="4">
+                    <v-text-field
+                      v-model="encuesta.talla"
+                      label="5.2 Longitud (talla)"
+                      suffix="cm"
+                      type="number"
+                      min="0"
+                    ></v-text-field>
+                  </v-col>
+                </v-row>
+                <v-row>
+                  <v-col cols="12" md="6">
+                    <v-text-field
+                      v-model="encuesta.perimetroCefalico"
+                      label="5.3 Perímetro cefálico"
+                      suffix="cm"
+                      type="number"
+                      min="0"
+                    ></v-text-field>
+                  </v-col>
+                  <v-col cols="12" md="6">
+                    <v-text-field
+                      v-model="encuesta.circunsferenciaBrazo"
+                      label="5.4 Cincunsferencia del brazo"
+                      suffix="cm"
+                      type="number"
+                      min="0"
+                      hint="La medida 5.4 tomar del lado derecho del cuerpo."
+                      persistent-hint
+                    ></v-text-field>
+                  </v-col>
+                </v-row>
+              </v-container>
+              <v-card-subtitle><h3>Datos de la madre</h3></v-card-subtitle>
+              <v-divider class="mx-3"></v-divider>
+              <v-container>
+                <v-row>
+                  <v-col cols="12" md="6">
+                    <v-text-field
+                      v-model="encuesta.nombreApellido"
+                      label="Nombre y apellido"
+                    ></v-text-field>
+                  </v-col>
+                  <v-col cols="12" md="6">
+                    <v-text-field
+                      v-model="encuesta.dni"
+                      label="DNI"
+                      type="number"
+                      min="0"
+                    ></v-text-field>
+                  </v-col>
+                </v-row>
+                <v-row>
+                  <v-col cols="12" md="12">
+                    <v-text-field
+                      v-model="encuesta.observacionesBloque5"
+                      label="Observaciones"
+                    ></v-text-field>
+                  </v-col>
+                </v-row>
+              </v-container>
+              <v-divider class="mt-3"></v-divider>
+              <v-card-actions class="mx-4">              
+                <v-btn color="red" text @click="close"> Cerrar </v-btn>
+                <v-spacer></v-spacer>
+                <v-btn class="mr-4" text @click="limpiarEncuesta">
+                  Limpiar
+                </v-btn> 
+                <v-btn
+                  color="primary"
+                  text
+                  @click="agregarEncuesta"
+                  :loading="loading"
+                >
+                  Agregar encuesta
+                </v-btn>                           
+              </v-card-actions>
+            </v-card>
+          </v-card-text>
+        </v-card>
       </v-form>
     </v-dialog>
   </div>
@@ -445,6 +445,7 @@ export default {
         obligatorio: [(o) => !!o || 'Este campo es obligatorio'],
       },
       lugares: [],
+      controlValidacion: false,
     };
   },
   created() {
@@ -473,11 +474,15 @@ export default {
             this.$emit("getEncuestas");
             this.$emit("cerarDialogNuevaEncuesta");
           });
-        this.$refs.obligatorio.resetValidation();
-        this.autocompletar();
+        this.controlValidacion = true;
       }
       else {
         this.$emit("camposObligatorios");
+      }
+    },
+    resetearValidacion() {
+      if (this.controlValidacion) {
+        this.$refs.obligatorio.reset();
       }
     },
     async completarDatosMadre() {
