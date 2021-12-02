@@ -225,6 +225,7 @@
                     label="Semanas de gestación"
                     type="number"
                     min="0"
+                    :rules = "rules.obligatorio"
                   ></v-text-field>
                 </v-col>
               </v-row>
@@ -1910,6 +1911,8 @@ export default {
               this.$emit('encuestaAgregada');
               this.$emit('getEncuestas');
           })
+        this.$refs.obligatorio.resetValidation();
+        this.autocompletar();
       }
       else
       {

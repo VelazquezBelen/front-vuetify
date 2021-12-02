@@ -583,6 +583,8 @@ export default {
             this.$emit('getEncuestas');
             this.$emit("cerarDialogNuevaEncuesta");
           });
+        this.$refs.obligatorio.resetValidation();
+        this.autocompletar();
       }
       else
       {
