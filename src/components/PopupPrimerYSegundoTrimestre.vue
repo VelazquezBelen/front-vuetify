@@ -1912,7 +1912,7 @@ export default {
               this.$emit('getEncuestas');
           })
         this.$refs.obligatorio.resetValidation();
-        //this.autocompletar();
+        this.autocompletar();
       }
       else
       {

@@ -473,7 +473,10 @@ export default {
             this.$emit("getEncuestas");
             this.$emit("cerarDialogNuevaEncuesta");
           });
-      } else {
+        this.$refs.obligatorio.resetValidation();
+        this.autocompletar();
+      }
+      else {
         this.$emit("camposObligatorios");
       }
     },

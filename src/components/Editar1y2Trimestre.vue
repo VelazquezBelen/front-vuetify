@@ -1923,6 +1923,7 @@ export default {
                 this.$emit('encuestaActualizada')
                 this.$emit('getEncuestas')
             }) 
+          this.$refs.obligatorio.resetValidation();
         }
         else
         {
