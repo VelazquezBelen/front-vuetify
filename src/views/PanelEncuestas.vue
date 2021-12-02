@@ -180,7 +180,6 @@
           >
             <template v-slot:top>
               <v-toolbar flat>
-                <!-- <v-toolbar-title>My CRUD</v-toolbar-title> -->
                 <v-col sm="4">
                   <v-text-field
                     v-model="search"

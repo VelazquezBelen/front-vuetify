@@ -288,9 +288,9 @@
                 <template v-slot:default>
                   <thead>
                     <tr>
-                      <th class="text-left">Hora del día</th>
-                      <th class="text-left">Tipo de alimento</th>
-                      <th class="text-left">Cantidad</th>
+                      <th width="100px" class="text-left">Hora del día</th>
+                      <th width="3000px" class="text-left">Tipo de alimento</th>
+                      <th width="100px" class="text-left">Cantidad</th>
                     </tr>
                   </thead>
                   <tbody>
