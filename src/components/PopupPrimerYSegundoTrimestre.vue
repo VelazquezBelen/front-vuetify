@@ -1911,6 +1911,7 @@ export default {
               this.$emit('encuestaAgregada');
               this.$emit('getEncuestas');
           })
+        this.$refs.obligatorio.reset()
       }
       else
       {
