@@ -225,6 +225,7 @@
                     label="Semanas de gestación"
                     type="number"
                     min="0"
+                    :rules = "rules.obligatorio"
                   ></v-text-field>
                 </v-col>
               </v-row>
