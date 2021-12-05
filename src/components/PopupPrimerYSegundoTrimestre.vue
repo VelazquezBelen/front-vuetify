@@ -480,6 +480,8 @@
                   <v-text-field
                     v-model="encuesta.cuantosEmbarazoAntes"
                     label="Si contesta afirmativamente: ¿Cuántas veces?"
+                    type="number"
+                    min="0"
                   ></v-text-field>
                 </v-col>
               </v-row>
