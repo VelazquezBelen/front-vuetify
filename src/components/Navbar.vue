@@ -2,8 +2,8 @@
   <nav>
     <v-app-bar text app>
       <v-app-bar-nav-icon class="grey--text" @click="drawer = !drawer"></v-app-bar-nav-icon><v-toolbar-title class="text-uppercase">
-        <span class="font-weight-light">Trabajo</span>
-        <span>Final</span>
+        <span class="font-weight-light">Sistema</span>
+        <span>Encuestas</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
     <!-- Check that the SDK client is not currently loading before accessing is methods -->
