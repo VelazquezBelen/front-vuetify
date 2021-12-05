@@ -885,8 +885,8 @@ export default {
               "\n";
           }
           if (this.encuestasExportar[index].tipoEncuesta == "Tercer trimestre"
-            && ((this.fecha1 != "" && this.encuestas[index].fechaRelevamiento >= this.fecha1) || this.fecha1 == "") 
-            && ((this.fecha2 != "" && this.encuestas[index].fechaRelevamiento <= this.fecha2 ) || this.fecha2 == "")) {
+            && ((this.fecha1 != "" && this.encuestasExportar[index].fechaRelevamiento >= this.fecha1) || this.fecha1 == "") 
+            && ((this.fecha2 != "" && this.encuestasExportar[index].fechaRelevamiento <= this.fecha2 ) || this.fecha2 == "")) {
             const res = await this.axios.get(
               `${this.baseUrl}/encuestas3Trimestre/` + this.encuestasExportar[index]._id
             );
