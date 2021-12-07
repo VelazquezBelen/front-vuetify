@@ -1,6 +1,6 @@
 # FRONTEND VUETIFY
 
-## Dirección
+## Direccion
 ```
 https://sistemaencuestas.netlify.app
 ```
