@@ -66,6 +66,7 @@
               <v-icon class="white--text">mdi-clipboard-text-outline</v-icon>
             </v-list-item-icon>
             <v-list-item-title class="white--text">Encuestas</v-list-item-title>
+            <div v-html="redireccionEncuestas()"></div>
           </v-list-item>
 
           <v-list-group v-if="$auth.isAuthenticated && checkAdmin()" color="white" :value="false" no-action >
@@ -130,11 +131,14 @@ export default {
       });
   },
   methods: {
-
+    redireccionEncuestas() {
+      if (this.$auth.isAuthenticated) { this.$router.push('encuestas'); }
+    },
     // Chequea si el usuario logueado tiene permisos de administrador, si es así
     // muestra la opción de Administración en la barra de navegación
     checkAdmin() {
       const usuario = this.$auth.user.email;
+      this.$router.push('encuestas');
       for (var admin in this.usuarios) {
         if (
           usuario == this.usuarios[admin].email &&
