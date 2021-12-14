@@ -138,7 +138,6 @@ export default {
     // muestra la opción de Administración en la barra de navegación
     checkAdmin() {
       const usuario = this.$auth.user.email;
-      this.$router.push('encuestas');
       for (var admin in this.usuarios) {
         if (
           usuario == this.usuarios[admin].email &&
