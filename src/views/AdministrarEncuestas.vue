@@ -254,13 +254,9 @@ export default {
       var salida = "";
       for (var i = 0; i < recordatorio24Horas.length; i++) {
         salida +=
-          "{Hora del día: " +
-          recordatorio24Horas[i].horaDia +
-          ", Tipo de alimento: " +
-          recordatorio24Horas[i].tipoAlimento +
-          ", Cantidad: " +
-          recordatorio24Horas[i].cantidad +
-          "}";
+          "{  " +
+          recordatorio24Horas[i].alimento +
+          "  }  ";
       }
       return salida;
     },
