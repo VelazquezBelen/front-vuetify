@@ -288,9 +288,7 @@
                 <template v-slot:default>
                   <thead>
                     <tr>
-                      <th width="100px" class="text-left">Hora del día</th>
-                      <th width="3000px" class="text-left">Tipo de alimento</th>
-                      <th width="100px" class="text-left">Cantidad</th>
+                      <th width="3200px" class="text-left">Ingrese el alimento</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -298,9 +296,7 @@
                       v-for="recordatorio in recordatorios"
                       :key="recordatorio._id"
                     >
-                      <td>{{ recordatorio.horaDia }}</td>
-                      <td>{{ recordatorio.tipoAlimento }}</td>
-                      <td>{{ recordatorio.cantidad }}</td>
+                      <td>{{ recordatorio.alimento }}</td>
                     </tr>
                   </tbody>
                 </template>

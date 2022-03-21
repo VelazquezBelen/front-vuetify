@@ -359,30 +359,15 @@
                 <template v-slot:default>
                   <thead>
                     <tr>
-                      <th width="100px" class="text-left">Hora del día</th>
-                      <th width="3000px" class="text-left">Tipo de alimento</th>
-                      <th width="100px" class="text-left">Cantidad</th>
+                      <th width="3000px" class="text-left">Ingrese el alimento</th>
                       <th class="text-left">Acción</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td>
-                          <v-text-field
-                            v-model="recordatorio.horaDia"
-                            type="time"
-                          ></v-text-field>
-                      </td>
-                      <td>
                         <v-text-field
-                          v-model="recordatorio.tipoAlimento"
-                        ></v-text-field>
-                      </td>
-                      <td>
-                        <v-text-field
-                          v-model="recordatorio.cantidad"
-                          type="number"
-                          min="0"
+                          v-model="recordatorio.alimento"
                         ></v-text-field>
                       </td>
                       <td>
@@ -402,9 +387,7 @@
                       v-for="recordatorio in recordatorios"
                       :key="recordatorio._id"
                     >
-                      <td>{{ recordatorio.horaDia }}</td>
-                      <td>{{ recordatorio.tipoAlimento }}</td>
-                      <td>{{ recordatorio.cantidad }}</td>
+                      <td>{{ recordatorio.alimento }}</td>
                       <td>
                         <v-icon
                           small
@@ -460,10 +443,8 @@
 
 <script>
 class Recordatorio24hs {
-  constructor(horaDia, tipoAlimento, cantidad) {
-    this.horaDia = horaDia;
-    this.tipoAlimento = tipoAlimento;
-    this.cantidad = cantidad;
+  constructor(alimento) {
+    this.alimento = alimento;
   }
 }
 
@@ -641,9 +622,7 @@ export default {
       this.recordatorios.splice(this.recordatorios.indexOf(recordatorio), 1);
     },
     editarRecordatorio(recordatorio) {
-      this.recordatorio.horaDia = this.recordatorios[this.recordatorios.indexOf(recordatorio)].horaDia;
-      this.recordatorio.tipoAlimento = this.recordatorios[this.recordatorios.indexOf(recordatorio)].tipoAlimento;
-      this.recordatorio.cantidad = this.recordatorios[this.recordatorios.indexOf(recordatorio)].cantidad;
+      this.recordatorio.alimento = this.recordatorios[this.recordatorios.indexOf(recordatorio)].alimento;
       this.recordatorios.splice(this.recordatorios.indexOf(recordatorio), 1);
     },
     close(){
