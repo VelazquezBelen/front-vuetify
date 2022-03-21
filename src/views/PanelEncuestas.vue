@@ -344,7 +344,7 @@ export default {
         },
         { text: "Tipo encuesta", value: "tipoEncuesta" },
         {
-          text: "Actions",
+          text: "Accion",
           value: "actions",
           sortable: false,
           filterable: false,
