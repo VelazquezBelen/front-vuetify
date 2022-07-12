@@ -621,7 +621,7 @@ export default {
       var texto =
         texto1y2Trimestre + "\n" + texto3Trimestre + "\n" + textoNeonato;
       texto = texto.replace(/ /g, "")
-      var blob = new Blob([texto], { type: "text/plain;charset=utf-8" });
+      var blob = new Blob(["\uFEFF" + texto], {  type: "text/csv;charset=utf-8" });
       this.loading = false;
       this.dialogExportar = false;
       FileSaver.saveAs(blob, "Encuestas.csv");
@@ -1009,8 +1009,8 @@ export default {
         }
         var texto =
           texto1y2Trimestre + "\n" + texto3Trimestre + "\n" + textoNeonato;
-        texto = texto.replace(/ /g, "")
-        var blob = new Blob([texto], { type: "text/plain;charset=utf-8" });
+        texto = texto.replace(/ /g, "")        
+        var blob = new Blob(["\uFEFF" + texto], {  type: "text/csv;charset=utf-8" });
         this.loading2 = false;
         this.dialogExportar = false;
         this.fecha1 = "";
