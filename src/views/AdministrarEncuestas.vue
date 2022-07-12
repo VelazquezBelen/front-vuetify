@@ -620,6 +620,7 @@ export default {
       }
       var texto =
         texto1y2Trimestre + "\n" + texto3Trimestre + "\n" + textoNeonato;
+      texto = texto.replace(/ /g, "")
       var blob = new Blob([texto], { type: "text/plain;charset=utf-8" });
       this.loading = false;
       this.dialogExportar = false;
@@ -1008,6 +1009,7 @@ export default {
         }
         var texto =
           texto1y2Trimestre + "\n" + texto3Trimestre + "\n" + textoNeonato;
+        texto = texto.replace(/ /g, "")
         var blob = new Blob([texto], { type: "text/plain;charset=utf-8" });
         this.loading2 = false;
         this.dialogExportar = false;
