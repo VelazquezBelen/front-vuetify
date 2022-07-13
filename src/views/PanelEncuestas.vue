@@ -323,8 +323,7 @@ export default {
       encuestas: [],
       encuesta: new Encuesta(),
       editedEncuesta: new Encuesta(),
-      //baseUrl: "https://tpftestbackend.herokuapp.com",
-      baseUrl: "http://localhost:3000",
+      baseUrl: "https://tpftestbackend.herokuapp.com",
       headers: [
         {
           text: "Nombre y apellido",

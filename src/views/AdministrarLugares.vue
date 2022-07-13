@@ -56,8 +56,7 @@ export default {
   data() {
     return {
       search: "",
-      //baseUrl: "https://tpftestbackend.herokuapp.com",
-      baseUrl: "http://localhost:3000",
+      baseUrl: "https://tpftestbackend.herokuapp.com",
       headers: [
         { text: "Lugar de relevamiento", align: "start", value: "nombre" },
         { text: "Código", value: "codigo" },
