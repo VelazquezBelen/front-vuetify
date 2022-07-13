@@ -265,8 +265,8 @@
                     <template v-slot:label>
                       <div><h3 class ="font-weight-regular">Diabetes</h3></div>
                     </template>
-                    <v-radio label="Si" value="Si"></v-radio>
-                    <v-radio label="No" value="No"></v-radio>
+                    <v-radio label="Si" value="1"></v-radio>
+                    <v-radio label="No" value="0"></v-radio>
                     <v-radio label="NS/NC" value="NS/NC"></v-radio>
                   </v-radio-group>
                 </v-col>
@@ -275,8 +275,8 @@
                     <template v-slot:label>
                       <div><h3 class ="font-weight-regular">Enfermedad renal</h3></div>
                     </template>
-                    <v-radio label="Si" value="Si"></v-radio>
-                    <v-radio label="No" value="No"></v-radio>
+                    <v-radio label="Si" value="1"></v-radio>
+                    <v-radio label="No" value="0"></v-radio>
                     <v-radio label="NS/NC" value="NS/NC"></v-radio>
                   </v-radio-group>
                 </v-col>
@@ -285,8 +285,8 @@
                     <template v-slot:label>
                       <div><h3 class ="font-weight-regular">Hipertension</h3></div>
                     </template>
-                    <v-radio label="Si" value="Si"></v-radio>
-                    <v-radio label="No" value="No"></v-radio>
+                    <v-radio label="Si" value="1"></v-radio>
+                    <v-radio label="No" value="0"></v-radio>
                     <v-radio label="NS/NC" value="NS/NC"></v-radio>
                   </v-radio-group>
                 </v-col>
@@ -300,8 +300,8 @@
                     <template v-slot:label>
                       <div><h3 class ="font-weight-regular">Colesterol - Trigliceridos altos</h3></div>
                     </template>
-                    <v-radio label="Si" value="Si"></v-radio>
-                    <v-radio label="No" value="No"></v-radio>
+                    <v-radio label="Si" value="1"></v-radio>
+                    <v-radio label="No" value="0"></v-radio>
                     <v-radio label="NS/NC" value="NS/NC"></v-radio>
                   </v-radio-group>
                 </v-col>
@@ -310,8 +310,8 @@
                     <template v-slot:label>
                       <div><h3 class ="font-weight-regular">Asma o EPOC</h3></div>
                     </template>
-                    <v-radio label="Si" value="Si"></v-radio>
-                    <v-radio label="No" value="No"></v-radio>
+                    <v-radio label="Si" value="1"></v-radio>
+                    <v-radio label="No" value="0"></v-radio>
                     <v-radio label="NS/NC" value="NS/NC"></v-radio>
                   </v-radio-group>
                 </v-col>
@@ -320,8 +320,8 @@
                     <template v-slot:label>
                       <div><h3 class ="font-weight-regular">COVID-19</h3></div>
                     </template>
-                    <v-radio label="Si" value="Si"></v-radio>
-                    <v-radio label="No" value="No"></v-radio>
+                    <v-radio label="Si" value="1"></v-radio>
+                    <v-radio label="No" value="0"></v-radio>
                     <v-radio label="NS/NC" value="NS/NC"></v-radio>
                   </v-radio-group>
                 </v-col>
@@ -332,8 +332,8 @@
                     <template v-slot:label>
                       <div><h3 class ="font-weight-regular">Anemia</h3></div>
                     </template>
-                    <v-radio label="Si" value="Si"></v-radio>
-                    <v-radio label="No" value="No"></v-radio>
+                    <v-radio label="Si" value="1"></v-radio>
+                    <v-radio label="No" value="0"></v-radio>
                     <v-radio label="NS/NC" value="NS/NC"></v-radio>
                   </v-radio-group>
                 </v-col>
@@ -344,8 +344,8 @@
                     <template v-slot:label>
                       <div><h3 class ="font-weight-regular">¿Otra enfermedad crónica?</h3></div>
                     </template>
-                    <v-radio label="Si" value="Si"></v-radio>
-                    <v-radio label="No" value="No"></v-radio>
+                    <v-radio label="Si" value="1"></v-radio>
+                    <v-radio label="No" value="0"></v-radio>
                     <v-radio label="NS/NC" value="NS/NC"></v-radio>
                   </v-radio-group>
                 </v-col>
@@ -363,8 +363,8 @@
                     <template v-slot:label>
                       <div><h3 class ="font-weight-regular">1.2 ¿Consume algún medicamento?</h3></div>
                     </template>
-                    <v-radio label="Si" value="Si"></v-radio>
-                    <v-radio label="No" value="No"></v-radio>
+                    <v-radio label="Si" value="1"></v-radio>
+                    <v-radio label="No" value="0"></v-radio>
                     <v-radio label="NS/NC" value="NS/NC"></v-radio>
                   </v-radio-group>
                 </v-col>
@@ -394,8 +394,8 @@
                         </h5>
                       </div>
                     </template>
-                    <v-radio label="Si" value="Si"></v-radio>
-                    <v-radio label="No" value="No"></v-radio>
+                    <v-radio label="Si" value="1"></v-radio>
+                    <v-radio label="No" value="0"></v-radio>
                     <v-radio label="NS/NC" value="NS/NC"></v-radio>
                   </v-radio-group>
                 </v-col>
@@ -413,14 +413,14 @@
                     <template v-slot:label>
                       <div><h3 class ="font-weight-regular">1.4 ¿Actualmente fuma?</h3></div>
                     </template>
-                    <v-radio label="No, nunca" value="No, nunca"></v-radio>
+                    <v-radio label="No, nunca" value="0"></v-radio>
                     <v-radio
                       label="Algunas veces"
-                      value="Algunas veces"
+                      value="1"
                     ></v-radio>
                     <v-radio
                       label="Todos los dias"
-                      value="Todos los dias"
+                      value="2"
                     ></v-radio>
                     <v-radio label="NS/NC" value="NS/NC"></v-radio>
                   </v-radio-group>
@@ -433,14 +433,14 @@
                     <template v-slot:label>
                       <div><h3 class ="font-weight-regular">1.5 ¿Fumaba antes de estar embarazada?</h3></div>
                     </template>
-                    <v-radio label="No, nunca" value="No, nunca"></v-radio>
+                    <v-radio label="No, nunca" value="0"></v-radio>
                     <v-radio
                       label="Algunas veces"
-                      value="Algunas veces"
+                      value="1"
                     ></v-radio>
                     <v-radio
                       label="Todos los dias"
-                      value="Todos los dias"
+                      value="2"
                     ></v-radio>
                     <v-radio label="NS/NC" value="NS/NC"></v-radio>
                   </v-radio-group>
@@ -455,11 +455,11 @@
                         <h3 class ="font-weight-regular">1.6 ¿Actualmente consume bebidas alcoholicas?</h3>
                       </div>
                     </template>
-                    <v-radio label="No, nunca" value="No, nunca"></v-radio>
-                    <v-radio label="Algunas veces" value="Algunas veces"></v-radio>
+                    <v-radio label="No, nunca" value="0"></v-radio>
+                    <v-radio label="Algunas veces" value="1"></v-radio>
                     <v-radio
                       label="Todos los dias"
-                      value="Todos los dias"
+                      value="2"
                     ></v-radio>
                     <v-radio label="NS/NC" value="NS/NC"></v-radio>
                   </v-radio-group>
@@ -472,8 +472,8 @@
                     <template v-slot:label>
                       <div><h3 class ="font-weight-regular">1.7 ¿Estuvo embarazada antes?</h3></div>
                     </template>
-                    <v-radio label="Si" value="Si"></v-radio>
-                    <v-radio label="No" value="No"></v-radio>
+                    <v-radio label="Si" value="1"></v-radio>
+                    <v-radio label="No" value="0"></v-radio>
                   </v-radio-group>
                 </v-col>
                 <v-col>
@@ -492,8 +492,8 @@
                     <template v-slot:label>
                       <div><h3 class ="font-weight-regular">1.8 ¿Tiene hijos?</h3></div>
                     </template>
-                    <v-radio label="Si" value="Si"></v-radio>
-                    <v-radio label="No" value="No"></v-radio>
+                    <v-radio label="Si" value="1"></v-radio>
+                    <v-radio label="No" value="0"></v-radio>
                   </v-radio-group>
                 </v-col>
                 <v-col>
@@ -571,8 +571,8 @@
                         </h3>
                       </div>
                     </template>
-                    <v-radio label="Si" value="Si"></v-radio>
-                    <v-radio label="No" value="No"></v-radio>
+                    <v-radio label="Si" value="1"></v-radio>
+                    <v-radio label="No" value="0"></v-radio>
                     <v-radio label="NS/NC" value="NS/NC"></v-radio>
                   </v-radio-group>
                 </v-col>
@@ -589,8 +589,8 @@
                         </h3>
                       </div>
                     </template>
-                    <v-radio label="Si" value="Si"></v-radio>
-                    <v-radio label="No" value="No"></v-radio>
+                    <v-radio label="Si" value="1"></v-radio>
+                    <v-radio label="No" value="0"></v-radio>
                     <v-radio label="NS/NC" value="NS/NC"></v-radio>
                   </v-radio-group>
                 </v-col>
@@ -606,8 +606,8 @@
                         </h3>
                       </div>
                     </template>
-                    <v-radio label="Si" value="Si"></v-radio>
-                    <v-radio label="No" value="No"></v-radio>
+                    <v-radio label="Si" value="1"></v-radio>
+                    <v-radio label="No" value="0"></v-radio>
                     <v-radio label="NS/NC" value="NS/NC"></v-radio>
                   </v-radio-group>
                 </v-col>
@@ -619,8 +619,8 @@
                     <template v-slot:label>
                       <div><h3 class ="font-weight-regular">2.8 ¿Utiliza gas natural para cocinar?</h3></div>
                     </template>
-                    <v-radio label="Si" value="Si"></v-radio>
-                    <v-radio label="No" value="No"></v-radio>
+                    <v-radio label="Si" value="1"></v-radio>
+                    <v-radio label="No" value="0"></v-radio>
                     <v-radio label="NS/NC" value="NS/NC"></v-radio>
                   </v-radio-group>
                 </v-col>
@@ -671,8 +671,8 @@
                         </h3>
                       </div>
                     </template>
-                    <v-radio label="Si" value="Si"></v-radio>
-                    <v-radio label="No" value="No"></v-radio>
+                    <v-radio label="Si" value="1"></v-radio>
+                    <v-radio label="No" value="0"></v-radio>
                   </v-radio-group>
                 </v-col>
                 <v-col cols="6">
@@ -695,8 +695,8 @@
                     <template v-slot:label>
                       <div><h3 class ="font-weight-regular">¿Bolsón o caja de alimentos?</h3></div>
                     </template>
-                    <v-radio label="Si" value="Si"></v-radio>
-                    <v-radio label="No" value="No"></v-radio>
+                    <v-radio label="Si" value="1"></v-radio>
+                    <v-radio label="No" value="0"></v-radio>
                   </v-radio-group>
                 </v-col>
                 <v-col cols="6">
@@ -706,8 +706,8 @@
                         <h3 class ="font-weight-regular">¿Tickets o bonos para la compra de alimentos?</h3>
                       </div>
                     </template>
-                    <v-radio label="Si" value="Si"></v-radio>
-                    <v-radio label="No" value="No"></v-radio>
+                    <v-radio label="Si" value="1"></v-radio>
+                    <v-radio label="No" value="0"></v-radio>
                   </v-radio-group>
                 </v-col>
               </v-row>
@@ -717,8 +717,8 @@
                     <template v-slot:label>
                       <div><h3 class ="font-weight-regular">¿Tarjeta alimentar?</h3></div>
                     </template>
-                    <v-radio label="Si" value="Si"></v-radio>
-                    <v-radio label="No" value="No"></v-radio>
+                    <v-radio label="Si" value="1"></v-radio>
+                    <v-radio label="No" value="0"></v-radio>
                   </v-radio-group>
                 </v-col>
                 <v-col cols="6">
@@ -726,8 +726,8 @@
                     <template v-slot:label>
                       <div><h3 class ="font-weight-regular">¿Leche fluida o en polvo?</h3></div>
                     </template>
-                    <v-radio label="Si" value="Si"></v-radio>
-                    <v-radio label="No" value="No"></v-radio>
+                    <v-radio label="Si" value="1"></v-radio>
+                    <v-radio label="No" value="0"></v-radio>
                   </v-radio-group>
                 </v-col>
               </v-row>
@@ -737,8 +737,8 @@
                     <template v-slot:label>
                       <div><h3 class ="font-weight-regular">¿Otra forma de asistencia alimentaria?</h3></div>
                     </template>
-                    <v-radio label="Si" value="Si"></v-radio>
-                    <v-radio label="No" value="No"></v-radio>
+                    <v-radio label="Si" value="1"></v-radio>
+                    <v-radio label="No" value="0"></v-radio>
                   </v-radio-group>
                 </v-col>
                 <v-col cols="6">
@@ -799,8 +799,8 @@
                         </h3>
                       </div>
                     </template>
-                    <v-radio label="Si" value="Si"></v-radio>
-                    <v-radio label="No" value="No"></v-radio>
+                    <v-radio label="Si" value="1"></v-radio>
+                    <v-radio label="No" value="0"></v-radio>
                     <v-radio label="NS/NC" value="NS/NC"></v-radio>
                   </v-radio-group>
                 </v-col>
@@ -1448,8 +1448,8 @@
                         </h3>
                       </div>
                     </template>
-                    <v-radio label="Si" value="Si"></v-radio>
-                    <v-radio label="No" value="No"></v-radio>
+                    <v-radio label="Si" value="1"></v-radio>
+                    <v-radio label="No" value="0"></v-radio>
                     <v-radio label="NS/NC" value="NS/NC"></v-radio>
                   </v-radio-group>
                 </v-col>
@@ -1467,8 +1467,8 @@
                         </h3>
                       </div>
                     </template>
-                    <v-radio label="Si" value="Si"></v-radio>
-                    <v-radio label="No" value="No"></v-radio>
+                    <v-radio label="Si" value="1"></v-radio>
+                    <v-radio label="No" value="0"></v-radio>
                     <v-radio label="NS/NC" value="NS/NC"></v-radio>
                   </v-radio-group>
                 </v-col>
@@ -1486,8 +1486,8 @@
                         </h3>
                       </div>
                     </template>
-                    <v-radio label="Si" value="Si"></v-radio>
-                    <v-radio label="No" value="No"></v-radio>
+                    <v-radio label="Si" value="1"></v-radio>
+                    <v-radio label="No" value="0"></v-radio>
                     <v-radio label="NS/NC" value="NS/NC"></v-radio>
                   </v-radio-group>
                 </v-col>
@@ -1509,8 +1509,8 @@
                         </h3>
                       </div>
                     </template>
-                    <v-radio label="Si" value="Si"></v-radio>
-                    <v-radio label="No" value="No"></v-radio>
+                    <v-radio label="Si" value="1"></v-radio>
+                    <v-radio label="No" value="0"></v-radio>
                     <v-radio label="NS/NC" value="NS/NC"></v-radio>
                   </v-radio-group>
                 </v-col>
@@ -1528,8 +1528,8 @@
                         </h3>
                       </div>
                     </template>
-                    <v-radio label="Si" value="Si"></v-radio>
-                    <v-radio label="No" value="No"></v-radio>
+                    <v-radio label="Si" value="1"></v-radio>
+                    <v-radio label="No" value="0"></v-radio>
                     <v-radio label="NS/NC" value="NS/NC"></v-radio>
                   </v-radio-group>
                 </v-col>
@@ -1546,8 +1546,8 @@
                         </h3>
                       </div>
                     </template>
-                    <v-radio label="Si" value="Si"></v-radio>
-                    <v-radio label="No" value="No"></v-radio>
+                    <v-radio label="Si" value="1"></v-radio>
+                    <v-radio label="No" value="0"></v-radio>
                     <v-radio label="NS/NC" value="NS/NC"></v-radio>
                   </v-radio-group>
                 </v-col>
@@ -1563,8 +1563,8 @@
                         recursos para obtener alimentos?
                       </h3>
                     </template>
-                    <v-radio label="Si" value="Si"></v-radio>
-                    <v-radio label="No" value="No"></v-radio>
+                    <v-radio label="Si" value="1"></v-radio>
+                    <v-radio label="No" value="0"></v-radio>
                     <v-radio label="NS/NC" value="NS/NC"></v-radio>
                   </v-radio-group>
                 </v-col>
@@ -1581,8 +1581,8 @@
                         </h3>
                       </div>
                     </template>
-                    <v-radio label="Si" value="Si"></v-radio>
-                    <v-radio label="No" value="No"></v-radio>
+                    <v-radio label="Si" value="1"></v-radio>
+                    <v-radio label="No" value="0"></v-radio>
                     <v-radio label="NS/NC" value="NS/NC"></v-radio>
                   </v-radio-group>
                 </v-col>
