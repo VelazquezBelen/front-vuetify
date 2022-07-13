@@ -93,7 +93,7 @@
                 </v-col>
                 <v-col cols="12" md="6">
                   <v-text-field
-                    v-model="encuesta.lugarRelevamiento"
+                    v-model="lugarRelevamiento"
                     label="Lugar del relevamiento"
                     readonly
                   ></v-text-field>
@@ -1598,7 +1598,9 @@ export default {
         encuesta: new Encuesta(),
         recordatorios: [],
         recordatorio: new Recordatorio24hs(),
-        baseUrl: "https://tpftestbackend.herokuapp.com",
+        //baseUrl: "https://tpftestbackend.herokuapp.com",
+        baseUrl: "http://localhost:3000",
+        lugarRelevamiento: String
       }
     },
     methods: {
@@ -1608,6 +1610,7 @@ export default {
       );
       this.encuesta = res.data;
       this.recordatorios = res.data.recordatorio24Horas;
+      this.lugarRelevamiento = res.data.lugarRelevamiento.nombre;
       },
     }
 }

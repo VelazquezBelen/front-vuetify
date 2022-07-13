@@ -208,7 +208,8 @@ export default {
       encuestasExportar: [],
       encuesta: new Encuesta(),
       editedEncuesta: new Encuesta(),
-      baseUrl: "https://tpftestbackend.herokuapp.com",
+      //baseUrl: "https://tpftestbackend.herokuapp.com",
+      baseUrl: "http://localhost:3000",
       headers: [
         {
           text: "Email del encuestador 1",
@@ -293,7 +294,7 @@ export default {
             "; " +
             res.data.fechaRelevamiento +
             "; " +
-            res.data.lugarRelevamiento +
+            res.data.lugarRelevamiento.codigo +
             "; " +
             res.data.nombreApellido +
             ";" +
@@ -516,7 +517,7 @@ export default {
             "; " +
             res.data.fechaRelevamiento +
             "; " +
-            res.data.lugarRelevamiento +
+            res.data.lugarRelevamiento.codigo +
             "; " +
             res.data.nombreApellido +
             ";" +
@@ -578,7 +579,7 @@ export default {
             ";" +
             res.data.fechaRelevamiento +
             ";" +
-            res.data.lugarRelevamiento +
+            res.data.lugarRelevamiento.codigo +
             ";" +
             res.data.nombreApellido +
             ";" +
@@ -620,7 +621,8 @@ export default {
       }
       var texto =
         texto1y2Trimestre + "\n" + texto3Trimestre + "\n" + textoNeonato;
-      var blob = new Blob([texto], { type: "text/plain;charset=utf-8" });
+      texto = texto.replace(/ /g, "")
+      var blob = new Blob(["\uFEFF" + texto], {  type: "text/csv;charset=utf-8" });
       this.loading = false;
       this.dialogExportar = false;
       FileSaver.saveAs(blob, "Encuestas.csv");
@@ -677,7 +679,7 @@ export default {
               "; " +
               res.data.fechaRelevamiento +
               "; " +
-              res.data.lugarRelevamiento +
+              res.data.lugarRelevamiento.codigo +
               "; " +
               res.data.nombreApellido +
               ";" +
@@ -902,7 +904,7 @@ export default {
               "; " +
               res.data.fechaRelevamiento +
               "; " +
-              res.data.lugarRelevamiento +
+              res.data.lugarRelevamiento.codigo +
               "; " +
               res.data.nombreApellido +
               ";" +
@@ -966,7 +968,7 @@ export default {
               ";" +
               res.data.fechaRelevamiento +
               ";" +
-              res.data.lugarRelevamiento +
+              res.data.lugarRelevamiento.codigo +
               ";" +
               res.data.nombreApellido +
               ";" +
@@ -1008,7 +1010,8 @@ export default {
         }
         var texto =
           texto1y2Trimestre + "\n" + texto3Trimestre + "\n" + textoNeonato;
-        var blob = new Blob([texto], { type: "text/plain;charset=utf-8" });
+        texto = texto.replace(/ /g, "")        
+        var blob = new Blob(["\uFEFF" + texto], {  type: "text/csv;charset=utf-8" });
         this.loading2 = false;
         this.dialogExportar = false;
         this.fecha1 = "";
