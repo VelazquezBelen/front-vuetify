@@ -375,7 +375,10 @@ export default {
         `${this.baseUrl}/encuestasNeonato/` + this.id
       );
       this.encuesta = res.data;
-      this.lugarRelevamiento = res.data.lugarRelevamiento.nombre;
+      if (res.data.lugarRelevamiento != null)
+        this.lugarRelevamiento = res.data.lugarRelevamiento.nombre;
+      else
+        this.lugarRelevamiento = "";
       },
     }
 }

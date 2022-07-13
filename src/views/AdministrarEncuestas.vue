@@ -292,9 +292,10 @@ export default {
             res.data.emailEncuestador2 +
             "; " +
             res.data.fechaRelevamiento +
-            "; " +
-            res.data.lugarRelevamiento.codigo +
-            "; " +
+            "; "; 
+            if (res.data.lugarRelevamiento != null) texto1y2Trimestre += res.data.lugarRelevamiento.codigo 
+            else texto1y2Trimestre += "";
+            texto1y2Trimestre += ";" +
             res.data.nombreApellido +
             ";" +
             res.data.dni +
@@ -515,9 +516,11 @@ export default {
             res.data.emailEncuestador2 +
             "; " +
             res.data.fechaRelevamiento +
-            "; " +
-            res.data.lugarRelevamiento.codigo +
-            "; " +
+            "; ";
+          if (res.data.lugarRelevamiento != null) texto3Trimestre += res.data.lugarRelevamiento.codigo;
+          else texto3Trimestre += "";
+          texto3Trimestre += 
+            ";" +
             res.data.nombreApellido +
             ";" +
             res.data.dni +
@@ -577,9 +580,10 @@ export default {
             res.data.emailEncuestador2 +
             ";" +
             res.data.fechaRelevamiento +
-            ";" +
-            res.data.lugarRelevamiento.codigo +
-            ";" +
+            ";";
+          if (res.data.lugarRelevamiento != null) textoNeonato += res.data.lugarRelevamiento.codigo
+          else textoNeonato += "";
+          textoNeonato += ";" +
             res.data.nombreApellido +
             ";" +
             res.data.dni +
@@ -677,9 +681,10 @@ export default {
               res.data.emailEncuestador2 +
               "; " +
               res.data.fechaRelevamiento +
-              "; " +
-              res.data.lugarRelevamiento.codigo +
-              "; " +
+              "; ";
+            if (res.data.lugarRelevamiento != null) texto1y2Trimestre += res.data.lugarRelevamiento.codigo 
+            else texto1y2Trimestre += "";
+            texto1y2Trimestre += ";" +
               res.data.nombreApellido +
               ";" +
               res.data.dni +
@@ -902,9 +907,11 @@ export default {
               res.data.emailEncuestador2 +
               "; " +
               res.data.fechaRelevamiento +
-              "; " +
-              res.data.lugarRelevamiento.codigo +
-              "; " +
+              "; ";
+            if (res.data.lugarRelevamiento != null) texto3Trimestre += res.data.lugarRelevamiento.codigo;
+            else texto3Trimestre += "";
+            texto3Trimestre += 
+              ";" +
               res.data.nombreApellido +
               ";" +
               res.data.dni +
@@ -966,9 +973,10 @@ export default {
               res.data.emailEncuestador2 +
               ";" +
               res.data.fechaRelevamiento +
-              ";" +
-              res.data.lugarRelevamiento.codigo +
-              ";" +
+              ";";
+            if (res.data.lugarRelevamiento != null) textoNeonato += res.data.lugarRelevamiento.codigo
+            else textoNeonato += "";
+            textoNeonato += ";" +
               res.data.nombreApellido +
               ";" +
               res.data.dni +
