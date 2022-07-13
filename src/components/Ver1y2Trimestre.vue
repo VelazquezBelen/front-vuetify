@@ -1598,8 +1598,7 @@ export default {
         encuesta: new Encuesta(),
         recordatorios: [],
         recordatorio: new Recordatorio24hs(),
-        //baseUrl: "https://tpftestbackend.herokuapp.com",
-        baseUrl: "http://localhost:3000",
+        baseUrl: "https://tpftestbackend.herokuapp.com",
         lugarRelevamiento: String
       }
     },

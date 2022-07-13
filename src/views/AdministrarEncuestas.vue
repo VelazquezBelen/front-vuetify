@@ -208,8 +208,7 @@ export default {
       encuestasExportar: [],
       encuesta: new Encuesta(),
       editedEncuesta: new Encuesta(),
-      //baseUrl: "https://tpftestbackend.herokuapp.com",
-      baseUrl: "http://localhost:3000",
+      baseUrl: "https://tpftestbackend.herokuapp.com",
       headers: [
         {
           text: "Email del encuestador 1",

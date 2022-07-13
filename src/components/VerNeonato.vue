@@ -365,8 +365,7 @@ export default {
         return {
         dialog: false,
         encuesta: new Encuesta(),
-        //baseUrl: "https://tpftestbackend.herokuapp.com",
-        baseUrl: "http://localhost:3000",
+        baseUrl: "https://tpftestbackend.herokuapp.com",
         lugarRelevamiento: String
       }
     },
