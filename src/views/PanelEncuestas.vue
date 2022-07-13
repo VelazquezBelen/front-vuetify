@@ -323,7 +323,8 @@ export default {
       encuestas: [],
       encuesta: new Encuesta(),
       editedEncuesta: new Encuesta(),
-      baseUrl: "https://tpftestbackend.herokuapp.com",
+      //baseUrl: "https://tpftestbackend.herokuapp.com",
+      baseUrl: "http://localhost:3000",
       headers: [
         {
           text: "Nombre y apellido",
@@ -339,7 +340,7 @@ export default {
         },
         {
           text: "Lugar de relevamiento",
-          value: "lugarRelevamiento",
+          value: "lugarRelevamiento.nombre",
           filterable: false,
         },
         { text: "Tipo encuesta", value: "tipoEncuesta" },

@@ -122,9 +122,9 @@
                   <v-select
                   v-model="encuesta.lugarRelevamiento"
                   :items="lugares"
-                  item-value="nombre"
                   item-text="nombre"
                   label="Lugar de relevamiento"
+                  return-object
                 ></v-select>
                 </v-col>
               </v-row>
@@ -1856,7 +1856,8 @@ export default {
       recordatorios: [],
       encuestas: [],
       loading: false,
-      baseUrl: "https://tpftestbackend.herokuapp.com",
+      //baseUrl: "https://tpftestbackend.herokuapp.com",
+      baseUrl: "http://localhost:3000",
       menu1: false,
       menu2: false,
       menu3: false,

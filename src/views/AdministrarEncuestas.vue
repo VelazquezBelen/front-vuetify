@@ -208,7 +208,8 @@ export default {
       encuestasExportar: [],
       encuesta: new Encuesta(),
       editedEncuesta: new Encuesta(),
-      baseUrl: "https://tpftestbackend.herokuapp.com",
+      //baseUrl: "https://tpftestbackend.herokuapp.com",
+      baseUrl: "http://localhost:3000",
       headers: [
         {
           text: "Email del encuestador 1",
@@ -293,7 +294,7 @@ export default {
             "; " +
             res.data.fechaRelevamiento +
             "; " +
-            res.data.lugarRelevamiento +
+            res.data.lugarRelevamiento.codigo +
             "; " +
             res.data.nombreApellido +
             ";" +
@@ -516,7 +517,7 @@ export default {
             "; " +
             res.data.fechaRelevamiento +
             "; " +
-            res.data.lugarRelevamiento +
+            res.data.lugarRelevamiento.codigo +
             "; " +
             res.data.nombreApellido +
             ";" +
@@ -578,7 +579,7 @@ export default {
             ";" +
             res.data.fechaRelevamiento +
             ";" +
-            res.data.lugarRelevamiento +
+            res.data.lugarRelevamiento.codigo +
             ";" +
             res.data.nombreApellido +
             ";" +
@@ -678,7 +679,7 @@ export default {
               "; " +
               res.data.fechaRelevamiento +
               "; " +
-              res.data.lugarRelevamiento +
+              res.data.lugarRelevamiento.codigo +
               "; " +
               res.data.nombreApellido +
               ";" +
@@ -903,7 +904,7 @@ export default {
               "; " +
               res.data.fechaRelevamiento +
               "; " +
-              res.data.lugarRelevamiento +
+              res.data.lugarRelevamiento.codigo +
               "; " +
               res.data.nombreApellido +
               ";" +
@@ -967,7 +968,7 @@ export default {
               ";" +
               res.data.fechaRelevamiento +
               ";" +
-              res.data.lugarRelevamiento +
+              res.data.lugarRelevamiento.codigo +
               ";" +
               res.data.nombreApellido +
               ";" +

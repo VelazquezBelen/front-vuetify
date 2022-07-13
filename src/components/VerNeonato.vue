@@ -94,7 +94,7 @@
               </v-col>
               <v-col cols="12" md="6">
                 <v-text-field
-                  v-model="encuesta.lugarRelevamiento"
+                  v-model="lugarRelevamiento"
                   label="Lugar del relevamiento"
                   readonly
                 ></v-text-field>
@@ -365,7 +365,9 @@ export default {
         return {
         dialog: false,
         encuesta: new Encuesta(),
-        baseUrl: "https://tpftestbackend.herokuapp.com",
+        //baseUrl: "https://tpftestbackend.herokuapp.com",
+        baseUrl: "http://localhost:3000",
+        lugarRelevamiento: String
       }
     },
     methods: {
@@ -374,6 +376,7 @@ export default {
         `${this.baseUrl}/encuestasNeonato/` + this.id
       );
       this.encuesta = res.data;
+      this.lugarRelevamiento = res.data.lugarRelevamiento.nombre;
       },
     }
 }
