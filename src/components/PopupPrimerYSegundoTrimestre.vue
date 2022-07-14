@@ -1095,36 +1095,48 @@
                     v-model="encuesta.golosinas"
                     :label="`Golosinas, dulces, galletitas dulces, amasados de
                           pastelería, facturas, cereales con azúcar`"
+                    true-value="1" 
+                    false-value="0"
                   ></v-checkbox>
                 </v-col>
                 <v-col cols="4">
                   <v-checkbox
                     v-model="encuesta.panBlanco"
                     :label="`Pan blanco, galletitas saladas`"
+                    true-value="1" 
+                    false-value="0"
                   ></v-checkbox>
                 </v-col>
                 <v-col cols="4">
                   <v-checkbox
                     v-model="encuesta.pan"
                     :label="`Pan y otros cereales integrales, semillas`"
+                    true-value="1" 
+                    false-value="0"
                   ></v-checkbox>
                 </v-col>
                 <v-col cols="4">
                   <v-checkbox
                     v-model="encuesta.copetin"
                     :label="`Productos de copetín o snacks salados`"
+                    true-value="1" 
+                    false-value="0"
                   ></v-checkbox>
                 </v-col>
                 <v-col cols="4">
                   <v-checkbox
                     v-model="encuesta.frutas"
                     :label="`Frutas`"
+                    true-value="1" 
+                    false-value="0"
                   ></v-checkbox>
                 </v-col>
                 <v-col cols="4">
                   <v-checkbox
                     v-model="encuesta.lacteos"
                     :label="`Lácteos (leche, yogurt o quesos)`"
+                    true-value="1" 
+                    false-value="0"
                   ></v-checkbox>
                 </v-col>
                 <v-col cols="4">
@@ -1132,18 +1144,24 @@
                     v-model="encuesta.bebidas"
                     :label="`Bebidas azucaradas (jugos, gaseosas, infusiones con
                           azúcar, etc)`"
+                    true-value="1" 
+                    false-value="0"
                   ></v-checkbox>
                 </v-col>
                 <v-col cols="4">
                   <v-checkbox
                     v-model="encuesta.otros"
                     :label="`Otros`"
+                    true-value="1" 
+                    false-value="0"
                   ></v-checkbox>
                 </v-col>
                 <v-col cols="4">
                   <v-checkbox
                     v-model="encuesta.nsnc"
                     :label="`NS/NC`"
+                    true-value="1" 
+                    false-value="0"
                   ></v-checkbox>
                 </v-col>
               </v-row>
