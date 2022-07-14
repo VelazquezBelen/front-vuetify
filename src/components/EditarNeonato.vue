@@ -225,9 +225,9 @@
                 >
                   <v-radio
                     label="Parto vaginal"
-                    value="Parto vaginal"
+                    value="0"
                   ></v-radio>
-                  <v-radio label="Cesárea" value="Cesárea"></v-radio>
+                  <v-radio label="Cesárea" value="1"></v-radio>
                 </v-radio-group>
               </v-col>
             </v-row>
