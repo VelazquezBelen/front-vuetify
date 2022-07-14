@@ -242,7 +242,7 @@
                   <v-col cols="12" md="12">
                     <v-text-field
                       v-model="encuesta.observacionesBloque0"
-                      label="Observaciones"
+                      label="Edad Gestacional"
                     ></v-text-field>
                   </v-col>
                 </v-row>
