@@ -566,7 +566,7 @@
               <v-row>
                 <v-col>
                   <v-text-field
-                    v-model="encuesta.nivelEducativo"
+                    v-model="nivelEducativoTexto"
                     readonly
                     label="2.9 ¿Cuál es el nivel educativo máximo que ha
                     alcanzado?"
@@ -1617,21 +1617,32 @@ export default {
         recordatorios: [],
         recordatorio: new Recordatorio24hs(),
         baseUrl: "https://tpftestbackend.herokuapp.com",
-        lugarRelevamiento: String
+        lugarRelevamiento: String,
+        nivelEducativoTexto: String,
       }
     },
     methods: {
       async getEncuesta() {
-      const res = await this.axios.get(
-        `${this.baseUrl}/encuestas1y2Trimestre/` + this.id
-      );
-      this.encuesta = res.data;
-      this.recordatorios = res.data.recordatorio24Horas;
-      if (res.data.lugarRelevamiento != null)
-        this.lugarRelevamiento = res.data.lugarRelevamiento.nombre;
-      else
-        this.lugarRelevamiento = "";
+        const res = await this.axios.get(
+          `${this.baseUrl}/encuestas1y2Trimestre/` + this.id
+        );
+        this.encuesta = res.data;
+        this.recordatorios = res.data.recordatorio24Horas;
+        
+        if (res.data.lugarRelevamiento != null) {
+          this.lugarRelevamiento = res.data.lugarRelevamiento.nombre;
+        }
+        else {
+          this.lugarRelevamiento = "";
+        }
+        
+        if (res.data.nivelEducativo != null) {
+          this.nivelEducativoTexto = res.data.nivelEducativo.nivel;
+        }
+        else {
+          this.nivelEducativoTexto = "";
+        }
       },
     }
-}
+};
 </script>

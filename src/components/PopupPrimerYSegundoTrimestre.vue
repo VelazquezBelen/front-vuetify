@@ -630,14 +630,9 @@
                 <v-col>
                   <v-select
                     v-model="encuesta.nivelEducativo"
-                    :items="[
-                      'Primario incompleto',
-                      'Primario completo',
-                      'Secundario incompleto',
-                      'Secundario completo',
-                      'Universitario incompleto',
-                      'Universitario completo',
-                    ]"
+                    :items="itemsNivelEducativo"
+                    item-text="nivel"
+                    return-object
                     label="2.9 ¿Cuál es el nivel educativo máximo que ha
                     alcanzado?"
                   ></v-select>
@@ -1889,6 +1884,16 @@ export default {
       },
       lugares: [],
       controlValidacion: false,
+      itemsNivelEducativo: [
+          { nivel: 'Primario incompleto', valor: '0' },
+          { nivel: 'Primario completo', valor: '1' },
+          { nivel: 'Secundario incompleto', valor: '2' },
+          { nivel: 'Secundario completo', valor: '3' },
+          { nivel: 'Terciario incompleto', valor: '4' },
+          { nivel: 'Terciario completo', valor: '5' },
+          { nivel: 'Universitario incompleto', valor: '6' },
+          { nivel: 'Universitario completo', valor: '7' },
+        ],
     };
   },
   created() {
