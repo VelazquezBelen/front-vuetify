@@ -264,6 +264,10 @@ export default {
       if (lugarRelevamiento == null) return "";
       else return lugarRelevamiento.codigo;
     },
+    getNivelEducativo(nivelEducativo) {
+      if (nivelEducativo == null) return "";
+      else return nivelEducativo.valor;
+    },
 
     async exportarEncuestas() {
       // Genera un archivo .csv separando los datos con ;
@@ -462,7 +466,7 @@ export default {
         ";" +
         data.gasNatural +
         ";" +
-        data.nivelEducativo +
+        this.getNivelEducativo(data.nivelEducativo) +
         ";" +
         data.empleo +
         ";" +
