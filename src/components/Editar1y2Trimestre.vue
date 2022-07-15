@@ -641,7 +641,7 @@
                 <v-col>
                   <v-select
                     v-model="encuesta.empleo"
-                    :items="itemsNivelEducativo"
+                    :items="itemsEmpleo"
                     item-text="nivel"
                     return-object
                     label="2.10 Respecto a su empleo, actualmente se encuentra:"
