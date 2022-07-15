@@ -643,14 +643,9 @@
                 <v-col>
                   <v-select
                     v-model="encuesta.empleo"
-                    :items="[
-                      'Desempleada',
-                      'Empleada en relación de dependencia registrada',
-                      'Empleada en relación de dependencia no registrada',
-                      'Trabajando por cuenta propia',
-                      'Trabajando como monotributista',
-                      'Trabajando como autonomo',
-                    ]"
+                    :items="itemsEmpleo"
+                    item-text="nivel"
+                    return-object
                     label="2.10 Respecto a su empleo, actualmente se encuentra:"
                   ></v-select>
                 </v-col>
@@ -1893,6 +1888,14 @@ export default {
           { nivel: 'Terciario completo', valor: '5' },
           { nivel: 'Universitario incompleto', valor: '6' },
           { nivel: 'Universitario completo', valor: '7' },
+        ],
+        itemsEmpleo: [
+          { nivel: 'Desempleada', valor: 'Desempleada' },
+          { nivel: 'Empleada en relación de dependencia registrada', valor: 'Relación_dependencia' },
+          { nivel: 'Empleada en relación de dependencia no registrada', valor: 'Relación_dependencia' },
+          { nivel: 'Trabajando por cuenta propia', valor: 'Cuenta_propia' },
+          { nivel: 'Trabajando como monotribustista', valor: 'Monotributista' },
+          { nivel: 'Trabajando como autónomo', valor: 'Autonomo' },
         ],
     };
   },

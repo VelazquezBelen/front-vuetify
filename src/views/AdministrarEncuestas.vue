@@ -268,6 +268,10 @@ export default {
       if (nivelEducativo == null) return "";
       else return nivelEducativo.valor;
     },
+    getEmpleo(empleo) {
+      if (empleo == null) return "";
+      else return empleo.valor;
+    },
 
     async exportarEncuestas() {
       // Genera un archivo .csv separando los datos con ;

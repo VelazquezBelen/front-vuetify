@@ -577,7 +577,7 @@
               <v-row>
                 <v-col>
                   <v-text-field
-                    v-model="encuesta.empleo"
+                    v-model="empleoTexto"
                     readonly
                     label="2.10 Respecto a su empleo, actualmente se encuentra:"
                   ></v-text-field>
@@ -1619,6 +1619,7 @@ export default {
         baseUrl: "https://tpftestbackend.herokuapp.com",
         lugarRelevamiento: String,
         nivelEducativoTexto: String,
+        empleoTexto: String,
       }
     },
     methods: {
@@ -1641,6 +1642,13 @@ export default {
         }
         else {
           this.nivelEducativoTexto = "";
+        }
+
+        if (res.data.empleo != null) {
+          this.empleoTexto = res.data.empleo.nivel;
+        }
+        else {
+          this.empleoTexto = "";
         }
       },
     }
