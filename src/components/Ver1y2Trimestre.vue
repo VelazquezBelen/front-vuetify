@@ -1089,7 +1089,7 @@
                 </v-col>
                 <v-col cols="12">
                   <v-text-field
-                    v-model=papaTexto"
+                    v-model="papaTexto"
                     readonly
                     label="4.19. ... papa, batata, cereales refinados como arroz
                     blanco, pastas, tartas, empanadas o pan blanco?"
