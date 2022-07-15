@@ -472,7 +472,7 @@ export default {
         ";" +
         this.getNivelEducativo(data.nivelEducativo) +
         ";" +
-        data.empleo +
+        this.getEmpleo(data.empleo) +
         ";" +
         data.asistenciaEstado +
         ";" +
