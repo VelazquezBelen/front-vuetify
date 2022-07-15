@@ -1183,51 +1183,27 @@
                 <v-col cols="12">
                   <v-select
                     v-model="encuesta.consumioLeche"
-                    :items="[
-                      'Nunca o menos de 1 vez al mes',
-                      'Entre 1 y 3 veces al mes',
-                      '1 vez por semana',
-                      '2 a 4 veces por semana',
-                      '5 a 6 veces por semana',
-                      '1 vez al día',
-                      'Entre 2 y 3 veces al día',
-                      'Entre 4 y 5 veces al día',
-                      '6 veces o más por día',
-                    ]"
+                    :items="itemsConsumioAlimento"
+                    item-text="nivel"
+                    return-object
                     label="4.16. ... leche, yogur o quesos?"
                   ></v-select>
                 </v-col>
                 <v-col cols="12">
                   <v-select
                     v-model="encuesta.consumioFrutasFrescas"
-                    :items="[
-                      'Nunca o menos de 1 vez al mes',
-                      'Entre 1 y 3 veces al mes',
-                      '1 vez por semana',
-                      '2 a 4 veces por semana',
-                      '5 a 6 veces por semana',
-                      '1 vez al día',
-                      'Entre 2 y 3 veces al día',
-                      'Entre 4 y 5 veces al día',
-                      '6 veces o más por día',
-                    ]"
+                    :items="itemsConsumioAlimento"
+                    item-text="nivel"
+                    return-object
                     label="4.17. ... frutas frescas (solas o en preparaciones)?"
                   ></v-select>
                 </v-col>
                 <v-col cols="12">
                   <v-select
                     v-model="encuesta.consumioVerduras"
-                    :items="[
-                      'Nunca o menos de 1 vez al mes',
-                      'Entre 1 y 3 veces al mes',
-                      '1 vez por semana',
-                      '2 a 4 veces por semana',
-                      '5 a 6 veces por semana',
-                      '1 vez al día',
-                      'Entre 2 y 3 veces al día',
-                      'Entre 4 y 5 veces al día',
-                      '6 veces o más por día',
-                    ]"
+                    :items="itemsConsumioAlimento"
+                    item-text="nivel"
+                    return-object
                     label="4.18. ...verduras (solas o en preparaciones) sin contar
                     papa y batata?"
                   ></v-select>
@@ -1235,17 +1211,9 @@
                 <v-col cols="12">
                   <v-select
                     v-model="encuesta.consumioPapa"
-                    :items="[
-                      'Nunca o menos de 1 vez al mes',
-                      'Entre 1 y 3 veces al mes',
-                      '1 vez por semana',
-                      '2 a 4 veces por semana',
-                      '5 a 6 veces por semana',
-                      '1 vez al día',
-                      'Entre 2 y 3 veces al día',
-                      'Entre 4 y 5 veces al día',
-                      '6 veces o más por día',
-                    ]"
+                    :items="itemsConsumioAlimento"
+                    item-text="nivel"
+                    return-object
                     label="4.19. ... papa, batata, cereales refinados como arroz
                     blanco, pastas, tartas, empanadas o pan blanco?"
                   ></v-select>
@@ -1253,17 +1221,9 @@
                 <v-col cols="12">
                   <v-select
                     v-model="encuesta.consumioCereales"
-                    :items="[
-                      'Nunca o menos de 1 vez al mes',
-                      'Entre 1 y 3 veces al mes',
-                      '1 vez por semana',
-                      '2 a 4 veces por semana',
-                      '5 a 6 veces por semana',
-                      '1 vez al día',
-                      'Entre 2 y 3 veces al día',
-                      'Entre 4 y 5 veces al día',
-                      '6 veces o más por día',
-                    ]"
+                    :items="itemsConsumioAlimento"
+                    item-text="nivel"
+                    return-object
                     label="4.20. ...cereales integrales, legumbres (por ejemplo
                     lentejas, garbanzos, porotos) o pan integral o de
                     salvado?"
@@ -1272,17 +1232,9 @@
                 <v-col cols="12">
                   <v-select
                     v-model="encuesta.consumioEmbutidos"
-                    :items="[
-                      'Nunca o menos de 1 vez al mes',
-                      'Entre 1 y 3 veces al mes',
-                      '1 vez por semana',
-                      '2 a 4 veces por semana',
-                      '5 a 6 veces por semana',
-                      '1 vez al día',
-                      'Entre 2 y 3 veces al día',
-                      'Entre 4 y 5 veces al día',
-                      '6 veces o más por día',
-                    ]"
+                    :items="itemsConsumioAlimento"
+                    item-text="nivel"
+                    return-object
                     label="4.21. ... embutidos y fiambres (jamón, salame, chorizo,
                     salchicha, etc)?"
                   ></v-select>
@@ -1292,17 +1244,9 @@
                 <v-col cols="12">
                   <v-select
                     v-model="encuesta.consumioCarne"
-                    :items="[
-                      'Nunca o menos de 1 vez al mes',
-                      'Entre 1 y 3 veces al mes',
-                      '1 vez por semana',
-                      '2 a 4 veces por semana',
-                      '5 a 6 veces por semana',
-                      '1 vez al día',
-                      'Entre 2 y 3 veces al día',
-                      'Entre 4 y 5 veces al día',
-                      '6 veces o más por día',
-                    ]"
+                    :items="itemsConsumioAlimento"
+                    item-text="nivel"
+                    return-object
                     label="4.22. ... carne roja (por ejemplo de vaca), carne de ave o
                     huevos?"
                   ></v-select>
@@ -1310,34 +1254,18 @@
                 <v-col cols="12">
                   <v-select
                     v-model="encuesta.consumioPescado"
-                    :items="[
-                      'Nunca o menos de 1 vez al mes',
-                      'Entre 1 y 3 veces al mes',
-                      '1 vez por semana',
-                      '2 a 4 veces por semana',
-                      '5 a 6 veces por semana',
-                      '1 vez al día',
-                      'Entre 2 y 3 veces al día',
-                      'Entre 4 y 5 veces al día',
-                      '6 veces o más por día',
-                    ]"
+                    :items="itemsConsumioAlimento"
+                    item-text="nivel"
+                    return-object
                     label="4.23. ... pescado fresco o enlatado?"
                   ></v-select>
                 </v-col>
                 <v-col cols="12">
                   <v-select
                     v-model="encuesta.consumioAceites"
-                    :items="[
-                      'Nunca o menos de 1 vez al mes',
-                      'Entre 1 y 3 veces al mes',
-                      '1 vez por semana',
-                      '2 a 4 veces por semana',
-                      '5 a 6 veces por semana',
-                      '1 vez al día',
-                      'Entre 2 y 3 veces al día',
-                      'Entre 4 y 5 veces al día',
-                      '6 veces o más por día',
-                    ]"
+                    :items="itemsConsumioAlimento"
+                    item-text="nivel"
+                    return-object
                     label="4.24. ... aceites vegetales (como girasol, maíz, soja,
                     girasol alto oleico, oliva y canola)?"
                   ></v-select>
@@ -1345,17 +1273,9 @@
                 <v-col cols="12">
                   <v-select
                     v-model="encuesta.consumioFrutasSecas"
-                    :items="[
-                      'Nunca o menos de 1 vez al mes',
-                      'Entre 1 y 3 veces al mes',
-                      '1 vez por semana',
-                      '2 a 4 veces por semana',
-                      '5 a 6 veces por semana',
-                      '1 vez al día',
-                      'Entre 2 y 3 veces al día',
-                      'Entre 4 y 5 veces al día',
-                      '6 veces o más por día',
-                    ]"
+                    :items="itemsConsumioAlimento"
+                    item-text="nivel"
+                    return-object
                     label="4.25. ... frutas secas sin salar (como maní, nueces,
                     almendras, avellanas, castañas, etc.) o semillas sin salar
                     (chía, girasol, sésamo, lino, etc.)?"
@@ -1364,17 +1284,9 @@
                 <v-col cols="12">
                   <v-select
                     v-model="encuesta.consumioProductosCopetin"
-                    :items="[
-                      'Nunca o menos de 1 vez al mes',
-                      'Entre 1 y 3 veces al mes',
-                      '1 vez por semana',
-                      '2 a 4 veces por semana',
-                      '5 a 6 veces por semana',
-                      '1 vez al día',
-                      'Entre 2 y 3 veces al día',
-                      'Entre 4 y 5 veces al día',
-                      '6 veces o más por día',
-                    ]"
+                    :items="itemsConsumioAlimento"
+                    item-text="nivel"
+                    return-object
                     label="4.26. ... productos de copetín (papas fritas, palitos de
                     maíz, etc.)?"
                   ></v-select>
@@ -1382,17 +1294,9 @@
                 <v-col cols="12">
                   <v-select
                     v-model="encuesta.consumioGolosinas"
-                    :items="[
-                      'Nunca o menos de 1 vez al mes',
-                      'Entre 1 y 3 veces al mes',
-                      '1 vez por semana',
-                      '2 a 4 veces por semana',
-                      '5 a 6 veces por semana',
-                      '1 vez al día',
-                      'Entre 2 y 3 veces al día',
-                      'Entre 4 y 5 veces al día',
-                      '6 veces o más por día',
-                    ]"
+                    :items="itemsConsumioAlimento"
+                    item-text="nivel"
+                    return-object
                     label="4.27. ... golosinas (caramelos, alfajores, chupetines,
                     chicles, barras de cereal, etc.)?"
                   ></v-select>
@@ -1913,7 +1817,7 @@ export default {
           { nivel: 'Casi todos los días', valor: '2' },
           { nivel: 'Todos los días', valor: '3' },
         ],
-        itemsFrecuencia: [
+        itemsConsumioAlimento: [
           { nivel: 'Nunca o menos de 1 vez al mes', valor: '0' },
           { nivel: 'Entre 1 y 3 veces al mes', valor: '1' },
           { nivel: 'Una vez por semana', valor: '2' },

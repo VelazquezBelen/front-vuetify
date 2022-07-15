@@ -548,29 +548,29 @@ export default {
         ";" +
         data.observacionesBloque4Parte2 +
         ";" +
-        data.consumioLeche +
+        this.getValor(data.consumioLeche) +
         ";" +
-        data.consumioFrutasFrescas +
+        this.getValor(consumioFrutasFrescas) +
         ";" +
-        data.consumioVerduras +
+        this.getValor(consumioVerduras) +
         ";" +
-        data.consumioPapa +
+        this.getValor(consumioPapa) +
         ";" +
-        data.consumioCereales +
+        this.getValor(consumioCereales) +
         ";" +
-        data.consumioEmbutidos +
+        this.getValor(consumioEmbutidos) +
         ";" +
-        data.consumioCarne +
+        this.getValor(consumioCarne) +
         ";" +
-        data.consumioPescado +
+        this.getValor(consumioPescado) +
         ";" +
-        data.consumioAceites +
+        this.getValor(consumioAceites) +
         ";" +
-        data.consumioFrutasFrescas +
+        this.getValor(consumioFrutasSecas) +
         ";" +
-        data.consumioProductosCopetin +
+        this.getValor(consumioCopetin) +
         ";" +
-        data.consumioGolosinas +
+        this.getValor(consumioGolosinas) +
         ";" +
         data.observacionesBloque4Parte3 +
         ";" +

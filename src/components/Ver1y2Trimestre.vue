@@ -1067,21 +1067,21 @@
               <v-row>
                 <v-col cols="12">
                   <v-text-field
-                    v-model="encuesta.consumioLeche"
+                    v-model="lecheTexto"
                     readonly
                     label="4.16. ... leche, yogur o quesos?"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12">
                   <v-text-field
-                    v-model="encuesta.consumioFrutasFrescas"
+                    v-model="frutasFrescasTexto"
                     readonly
                     label="4.17. ... frutas frescas (solas o en preparaciones)?"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12">
                   <v-text-field
-                    v-model="encuesta.consumioVerduras"
+                    v-model="verdurasTexto"
                     readonly
                     label="4.18. ...verduras (solas o en preparaciones) sin contar
                     papa y batata?"
@@ -1089,7 +1089,7 @@
                 </v-col>
                 <v-col cols="12">
                   <v-text-field
-                    v-model="encuesta.consumioPapa"
+                    v-model=papaTexto"
                     readonly
                     label="4.19. ... papa, batata, cereales refinados como arroz
                     blanco, pastas, tartas, empanadas o pan blanco?"
@@ -1097,7 +1097,7 @@
                 </v-col>
                 <v-col cols="12">
                   <v-text-field
-                    v-model="encuesta.consumioCereales"
+                    v-model="cerealesTexto"
                     label="4.20. ...cereales integrales, legumbres (por ejemplo
                     lentejas, garbanzos, porotos) o pan integral o de
                     salvado?"
@@ -1106,7 +1106,7 @@
                 </v-col>
                 <v-col cols="12">
                   <v-text-field
-                    v-model="encuesta.consumioEmbutidos"
+                    v-model="embutidosTexto"
                     label="4.21. ... embutidos y fiambres (jamón, salame, chorizo,
                     salchicha, etc)?"
                     readonly
@@ -1116,7 +1116,7 @@
               <v-row>
                 <v-col cols="12">
                   <v-text-field
-                    v-model="encuesta.consumioCarne"
+                    v-model="carneTexto"
                     label="4.22. ... carne roja (por ejemplo de vaca), carne de ave o
                     huevos?"
                     readonly
@@ -1124,14 +1124,14 @@
                 </v-col>
                 <v-col cols="12">
                   <v-text-field
-                    v-model="encuesta.consumioPescado"
+                    v-model="pescadoTexto"
                     label="4.23. ... pescado fresco o enlatado?"
                     readonly
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12">
                   <v-text-field
-                    v-model="encuesta.consumioAceites"
+                    v-model="aceitesTexto"
                     label="4.24. ... aceites vegetales (como girasol, maíz, soja,
                     girasol alto oleico, oliva y canola)?"
                     readonly
@@ -1139,7 +1139,7 @@
                 </v-col>
                 <v-col cols="12">
                   <v-text-field
-                    v-model="encuesta.consumioFrutasSecas"
+                    v-model="frutasSecasTexto"
                     label="4.25. ... frutas secas sin salar (como maní, nueces,
                     almendras, avellanas, castañas, etc.) o semillas sin salar
                     (chía, girasol, sésamo, lino, etc.)?"
@@ -1148,7 +1148,7 @@
                 </v-col>
                 <v-col cols="12">
                   <v-text-field
-                    v-model="encuesta.consumioProductosCopetin"
+                    v-model="copetinTexto"
                     label="4.26. ... productos de copetín (papas fritas, palitos de
                     maíz, etc.)?"
                     readonly
@@ -1156,7 +1156,7 @@
                 </v-col>
                 <v-col cols="12">
                   <v-text-field
-                    v-model="encuesta.consumioGolosinas"
+                    v-model="golosinasTexto"
                     label="4.27. ... golosinas (caramelos, alfajores, chupetines,
                     chicles, barras de cereal, etc.)?"
                     readonly
@@ -1624,6 +1624,18 @@ export default {
         ingresoIndividualTexto: String,
         ingresoTotalTexto: String,
         frecuenciaConsumoTexto: String,
+        lecheTexto: String,
+        frutasFrescasTexto: String,
+        verdurasTexto: String,
+        papaTexto: String,
+        cerealesTexto: String,
+        embutidosTexto: String,
+        carneTexto: String,
+        pescadoTexto: String,
+        aceitesTexto: String,
+        frutasSecasTexto: String,
+        copetinTexto: String,
+        golosinasTexto: String,
       }
     },
     methods: {
@@ -1634,54 +1646,62 @@ export default {
         this.encuesta = res.data;
         this.recordatorios = res.data.recordatorio24Horas;
         
-        if (res.data.lugarRelevamiento != null) {
-          this.lugarRelevamiento = res.data.lugarRelevamiento.nombre;
-        }
-        else {
-          this.lugarRelevamiento = "";
-        }
+        if (res.data.lugarRelevamiento != null) { this.lugarRelevamiento = res.data.lugarRelevamiento.nombre; }
+        else { this.lugarRelevamiento = ""; }
         
-        if (res.data.nivelEducativo != null) {
-          this.nivelEducativoTexto = res.data.nivelEducativo.nivel;
-        }
-        else {
-          this.nivelEducativoTexto = "";
-        }
+        if (res.data.nivelEducativo != null) { this.nivelEducativoTexto = res.data.nivelEducativo.nivel; }
+        else { this.nivelEducativoTexto = ""; }
 
-        if (res.data.empleo != null) {
-          this.empleoTexto = res.data.empleo.nivel;
-        }
-        else {
-          this.empleoTexto = "";
-        }
+        if (res.data.empleo != null) { this.empleoTexto = res.data.empleo.nivel; }
+        else { this.empleoTexto = ""; }
 
-        if (res.data.cualAsistenciaEstado != null) {
-          this.asistenciaEstadoTexto = res.data.cualAsistenciaEstado.nivel;
-        }
-        else {
-          this.asistenciaEstadoTexto = "";
-        }
+        if (res.data.cualAsistenciaEstado != null) { this.asistenciaEstadoTexto = res.data.cualAsistenciaEstado.nivel; }
+        else { this.asistenciaEstadoTexto = ""; }
 
-        if (res.data.ingresoIndividual != null) {
-          this.ingresoIndividualTexto = res.data.ingresoIndividual.nivel;
-        }
-        else {
-          this.ingresoIndividualTexto = "";
-        }
+        if (res.data.ingresoIndividual != null) { this.ingresoIndividualTexto = res.data.ingresoIndividual.nivel; }
+        else { this.ingresoIndividualTexto = ""; }
 
-        if (res.data.ingresoTotal != null) {
-          this.ingresoTotalTexto = res.data.ingresoTotal.nivel;
-        }
-        else {
-          this.ingresoTotalTexto = "";
-        }
+        if (res.data.ingresoTotal != null) { this.ingresoTotalTexto = res.data.ingresoTotal.nivel; }
+        else { this.ingresoTotalTexto = ""; }
 
-        if (res.data.frecuenciaConsumo != null) {
-          this.frecuenciaConsumoTexto = res.data.frecuenciaConsumo.nivel;
-        }
-        else {
-          this.frecuenciaConsumoTexto = "";
-        }
+        if (res.data.frecuenciaConsumo != null) { this.frecuenciaConsumoTexto = res.data.frecuenciaConsumo.nivel; }
+        else { this.frecuenciaConsumoTexto = ""; }
+
+        if (res.data.consumioLeche != null) { this.lecheTexto = res.data.consumioLeche.nivel; }
+        else { this.lecheTexto = ""; }
+
+        if (res.data.consumioFrutasFrescas != null) { this.frutasFrescasTexto = res.data.consumioFrutasFrescas.nivel; }
+        else { this.frutasFrescasTexto = ""; }
+
+        if (res.data.consumioVerduras != null) { this.verdurasTexto = res.data.consumioVerduras.nivel; }
+        else { this.verdurasTexto = ""; }
+
+        if (res.data.consumioPapa != null) { this.papaTexto = res.data.consumioPapa.nivel; }
+        else { this.papaTexto = ""; }
+
+        if (res.data.consumioCereales != null) { this.cerealesTexto = res.data.consumioCereales.nivel; }
+        else { this.cerealesTexto = ""; }
+
+        if (res.data.consumioEmbutidos != null) { this.embutidosTexto = res.data.consumioEmbutidos.nivel; }
+        else { this.embutidosTexto = ""; }
+
+        if (res.data.consumioCarne != null) { this.carneTexto = res.data.consumioCarne.nivel; }
+        else { this.carneTexto = ""; }
+
+        if (res.data.consumioPescado != null) { this.pescadoTexto = res.data.consumioPescado.nivel; }
+        else { this.pescadoTexto = ""; }
+
+        if (res.data.consumioAceites != null) { this.aceitesTexto = res.data.consumioAceites.nivel; }
+        else { this.aceitesTexto = ""; }
+
+        if (res.data.consumioFrutasSecas != null) { this.frutasSecasTexto = res.data.consumioFrutasSecas.nivel; }
+        else { this.frutasSecasTexto = ""; }
+
+        if (res.data.consumioProductosCopetin != null) { this.copetinTexto = res.data.consumioProductosCopetin.nivel; }
+        else { this.copetinTexto = ""; }
+
+        if (res.data.consumioGolosinas != null) { this.golosinasTexto = res.data.consumioGolosinas.nivel; }
+        else { this.golosinasTexto = ""; }
       },
     }
 };
