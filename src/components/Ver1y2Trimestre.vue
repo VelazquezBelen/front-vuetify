@@ -927,7 +927,7 @@
               <v-row>
                 <v-col>
                   <v-text-field
-                    v-model="encuesta.frecuenciaConsumo"
+                    v-model="frecuenciaConsumoTexto"
                     label="4.14 Durante los últimos 7 días, ¿con que frecuencia
                       consumió algún alimento o bebida en otros momentos del
                       día?"
@@ -1623,6 +1623,7 @@ export default {
         asistenciaEstadoTexto: String,
         ingresoIndividualTexto: String,
         ingresoTotalTexto: String,
+        frecuenciaConsumoTexto: String,
       }
     },
     methods: {
@@ -1673,6 +1674,13 @@ export default {
         }
         else {
           this.ingresoTotalTexto = "";
+        }
+
+        if (res.data.frecuenciaConsumo != null) {
+          this.frecuenciaConsumoTexto = res.data.frecuenciaConsumo.nivel;
+        }
+        else {
+          this.frecuenciaConsumoTexto = "";
         }
       },
     }

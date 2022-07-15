@@ -526,7 +526,7 @@ export default {
         ";" +
         data.cena +
         ";" +
-        data.frecuenciaConsumo +
+        this.getValor(data.frecuenciaConsumo) +
         ";" +
         data.golosinas +
         ";" +

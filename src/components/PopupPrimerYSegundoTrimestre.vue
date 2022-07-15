@@ -1048,13 +1048,9 @@
                 <v-col>
                   <v-select
                     v-model="encuesta.frecuenciaConsumo"
-                    :items="[
-                      'Nunca',
-                      'Algunas veces',
-                      'Casi todos los dias',
-                      'Siempre/todos los dias',
-                      'NS/NC',
-                    ]"
+                    :items="itemsFrecuenciaConsumo"
+                    item-text="nivel"
+                    return-object
                     label="4.14 Durante los últimos 7 días, ¿con que frecuencia
                       consumió algún alimento o bebida en otros momentos del
                       día?"
@@ -1910,6 +1906,17 @@ export default {
           { nivel: '16.000 - 38.000', valor: '1' },
           { nivel: '38.000 - 60.000', valor: '2' },
           { nivel: 'Más de 60.000', valor: '3' },
+        ],
+        itemsFrecuenciaConsumo: [
+          { nivel: 'Nunca o menos de 1 vez al mes', valor: '0' },
+          { nivel: 'Entre 1 y 3 veces al mes', valor: '1' },
+          { nivel: 'Una vez por semana', valor: '2' },
+          { nivel: '2 a 4 veces por semana', valor: '3' },
+          { nivel: '5 a 6 veces por semana', valor: '4' },
+          { nivel: '1 vez al día', valor: '5' },
+          { nivel: 'Entre 2 y 3 veces al día', valor: '6' },
+          { nivel: 'Entre 4 y 5 veces al día', valor: '7' },
+          { nivel: '6 veces o más por día', valor: '8' },
         ],
     };
   },
