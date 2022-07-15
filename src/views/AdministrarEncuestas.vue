@@ -568,7 +568,7 @@ export default {
         ";" +
         this.getValor(data.consumioFrutasSecas) +
         ";" +
-        this.getValor(data.consumioCopetin) +
+        this.getValor(data.consumioProductosCopetin) +
         ";" +
         this.getValor(data.consumioGolosinas) +
         ";" +
