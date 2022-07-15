@@ -744,14 +744,9 @@
                 <v-col>
                   <v-select
                     v-model="encuesta.ingresoIndividual"
-                    :items="[
-                      '0 - 2.000',
-                      '2.200 - 4.400',
-                      '4.400 - 6.600',
-                      '6.600 - 13.000',
-                      '13.000 - 25.000',
-                      'Más de 25.000',
-                    ]"
+                    :items="itemsIngresoIndividual"
+                    item-text="nivel"
+                    return-object
                     label="2.13 ¿Podría indicar cuál de estos tramos se ubica su
                     ingreso individual en el hogar el último mes en
                     pesos?"
@@ -765,12 +760,9 @@
                 <v-col>
                   <v-select
                     v-model="encuesta.ingresoTotal"
-                    :items="[
-                      '0 - 16.000',
-                      '16.000 - 38.000',
-                      '38.000 - 60.000',
-                      'Más de 60.000',
-                    ]"
+                    :items="itemsIngresoTotal"
+                    item-text="nivel"
+                    return-object
                     label="2.14 ¿Podría indicar en cuál de estos tramos se ubica el
                     ingreso total mensual del hogar en pesos?"
                   ></v-select>
@@ -1906,6 +1898,20 @@ export default {
           { nivel: 'Pensión', valor: 'Pension' },
           { nivel: 'Plan social', valor: 'Plan' },
           { nivel: 'Otro', valor: 'Otro' },
+        ],
+        itemsIngresoIndividual: [
+          { nivel: '0 - 2200', valor: '0' },
+          { nivel: '2200 - 4400', valor: '1' },
+          { nivel: '4400 - 6600', valor: '2' },
+          { nivel: '6600 - 13000', valor: '3' },
+          { nivel: '13000 - 25000', valor: '4' },
+          { nivel: 'Más de 25000', valor: '5' },
+        ],
+        itemsIngresoTotal: [
+          { nivel: '0 - 16000', valor: '0' },
+          { nivel: '16000 - 38000', valor: '1' },
+          { nivel: '38000 - 60000', valor: '2' },
+          { nivel: 'Más de 60000', valor: '3' },
         ],
       }
     },

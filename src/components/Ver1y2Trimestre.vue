@@ -676,7 +676,7 @@
               <v-row>
                 <v-col>
                   <v-text-field
-                    v-model="encuesta.ingresoIndividual"
+                    v-model="ingresoIndividualTexto"
                     readonly
                     label="2.13 ¿Podría indicar cuál de estos tramos se ubica su
                     ingreso individual en el hogar el último mes en
@@ -690,7 +690,7 @@
               <v-row>
                 <v-col>
                   <v-text-field
-                    v-model="encuesta.ingresoTotal"
+                    v-model="ingresoTotalTexto"
                     readonly
                     label="2.14 ¿Podría indicar en cuál de estos tramos se ubica el
                     ingreso total mensual del hogar en pesos?"
@@ -1621,6 +1621,8 @@ export default {
         nivelEducativoTexto: String,
         empleoTexto: String,
         asistenciaEstadoTexto: String,
+        ingresoIndividualTexto: String,
+        ingresoTotalTexto: String,
       }
     },
     methods: {
@@ -1657,6 +1659,20 @@ export default {
         }
         else {
           this.asistenciaEstadoTexto = "";
+        }
+
+        if (res.data.ingresoIndividual != null) {
+          this.ingresoIndividualTexto = res.data.ingresoIndividual.nivel;
+        }
+        else {
+          this.ingresoIndividualTexto = "";
+        }
+
+        if (res.data.ingresoTotal != null) {
+          this.ingresoTotalTexto = res.data.ingresoTotal.nivel;
+        }
+        else {
+          this.ingresoTotalTexto = "";
         }
       },
     }

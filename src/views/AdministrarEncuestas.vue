@@ -264,17 +264,9 @@ export default {
       if (lugarRelevamiento == null) return "";
       else return lugarRelevamiento.codigo;
     },
-    getNivelEducativo(nivelEducativo) {
-      if (nivelEducativo == null) return "";
-      else return nivelEducativo.valor;
-    },
-    getEmpleo(empleo) {
-      if (empleo == null) return "";
-      else return empleo.valor;
-    },
-    getAsistenciaEstado(cualAsistenciaEstado) {
-      if (cualAsistenciaEstado == null) return "";
-      else return cualAsistenciaEstado.valor;
+    getValor(entrada) {
+      if (entrada == null) return "";
+      else return entrada.valor;
     },
 
     async exportarEncuestas() {
@@ -474,13 +466,13 @@ export default {
         ";" +
         data.gasNatural +
         ";" +
-        this.getNivelEducativo(data.nivelEducativo) +
+        this.getValor(data.nivelEducativo) +
         ";" +
-        this.getEmpleo(data.empleo) +
+        this.getValor(data.empleo) +
         ";" +
         data.asistenciaEstado +
         ";" +
-        this.getAsistenciaEstado(data.cualAsistenciaEstado) +
+        this.getValor(data.cualAsistenciaEstado) +
         ";" +
         data.recibioBolson +
         ";" +
@@ -494,9 +486,9 @@ export default {
         ";" +
         data.cualUltimoMesRecibio +
         ";" +
-        data.ingresoIndividual +
+        this.getValor(data.ingresoIndividual) +
         ";" +
-        data.ingresoTotal +
+        this.getValor(data.ingresoTotal) +
         ";" +
         data.recibioIFE +
         ";" +
