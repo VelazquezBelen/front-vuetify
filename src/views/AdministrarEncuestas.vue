@@ -478,9 +478,9 @@ export default {
         ";" +
         this.getEmpleo(data.empleo) +
         ";" +
-        this.getAsistenciaEstado(data.cualAsistenciaEstado) +
+        data.asistenciaEstado +
         ";" +
-        data.cualAsistenciaEstado +
+        this.getAsistenciaEstado(data.cualAsistenciaEstado) +
         ";" +
         data.recibioBolson +
         ";" +
