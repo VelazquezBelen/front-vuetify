@@ -272,6 +272,10 @@ export default {
       if (empleo == null) return "";
       else return empleo.valor;
     },
+    getAsistenciaEstado(cualAsistenciaEstado) {
+      if (cualAsistenciaEstado == null) return "";
+      else return cualAsistenciaEstado.valor;
+    },
 
     async exportarEncuestas() {
       // Genera un archivo .csv separando los datos con ;
@@ -474,7 +478,7 @@ export default {
         ";" +
         this.getEmpleo(data.empleo) +
         ";" +
-        data.asistenciaEstado +
+        this.getAsistenciaEstado(data.cualAsistenciaEstado) +
         ";" +
         data.cualAsistenciaEstado +
         ";" +

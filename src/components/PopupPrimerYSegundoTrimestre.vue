@@ -668,7 +668,9 @@
                 <v-col cols="6">
                   <v-select
                     v-model="encuesta.cualAsistenciaEstado"
-                    :items="['AUH', 'Pensión', 'Plan social', 'Otro']"
+                    :items="itemsPlanSocial"
+                    item-text="nivel"
+                    return-object
                     label="Si contesta afirmativamente: ¿Cúal?"
                   ></v-select>
                 </v-col>
@@ -1896,6 +1898,12 @@ export default {
           { nivel: 'Trabajando por cuenta propia', valor: 'Cuenta_propia' },
           { nivel: 'Trabajando como monotribustista', valor: 'Monotributista' },
           { nivel: 'Trabajando como autónomo', valor: 'Autonomo' },
+        ],
+        itemsPlanSocial: [
+          { nivel: 'AUH', valor: 'AUH' },
+          { nivel: 'Pensión', valor: 'Pension' },
+          { nivel: 'Plan social', valor: 'Plan' },
+          { nivel: 'Otro', valor: 'Otro' },
         ],
     };
   },

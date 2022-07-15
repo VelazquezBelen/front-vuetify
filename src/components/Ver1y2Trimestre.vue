@@ -600,7 +600,7 @@
                 </v-col>
                 <v-col cols="6">
                   <v-text-field
-                    v-model="encuesta.cualAsistenciaEstado"
+                    v-model="asistenciaEstadoTexto"
                     readonly
                     label="Si contesta afirmativamente: ¿Cúal?"
                   ></v-text-field>
@@ -1620,6 +1620,7 @@ export default {
         lugarRelevamiento: String,
         nivelEducativoTexto: String,
         empleoTexto: String,
+        asistenciaEstadoTexto: String,
       }
     },
     methods: {
@@ -1649,6 +1650,13 @@ export default {
         }
         else {
           this.empleoTexto = "";
+        }
+
+        if (res.data.cualAsistenciaEstado != null) {
+          this.asistenciaEstadoTexto = res.data.cualAsistenciaEstado.nivel;
+        }
+        else {
+          this.asistenciaEstadoTexto = "";
         }
       },
     }
