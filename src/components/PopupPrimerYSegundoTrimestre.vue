@@ -1908,6 +1908,12 @@ export default {
           { nivel: 'Más de 60.000', valor: '3' },
         ],
         itemsFrecuenciaConsumo: [
+          { nivel: 'Nunca', valor: '0' },
+          { nivel: 'Algunas veces', valor: '1' },
+          { nivel: 'Casi todos los días', valor: '2' },
+          { nivel: 'Todos los días', valor: '3' },
+        ],
+        itemsFrecuencia: [
           { nivel: 'Nunca o menos de 1 vez al mes', valor: '0' },
           { nivel: 'Entre 1 y 3 veces al mes', valor: '1' },
           { nivel: 'Una vez por semana', valor: '2' },
