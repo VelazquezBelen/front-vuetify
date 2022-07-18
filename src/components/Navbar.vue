@@ -132,7 +132,7 @@ export default {
   },
   methods: {
     redireccionEncuestas() {
-      if (this.$auth.isAuthenticated) { this.$router.push('encuestas'); }
+      if (this.$auth.isAuthenticated) { this.$router.push('encuestas').catch(()=>{}); }
     },
     // Chequea si el usuario logueado tiene permisos de administrador, si es así
     // muestra la opción de Administración en la barra de navegación
