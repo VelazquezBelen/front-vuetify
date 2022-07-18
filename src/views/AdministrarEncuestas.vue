@@ -252,12 +252,14 @@ export default {
     },
     getRecordatorios(recordatorio24Horas) {
       var salida = "";
-      for (var i = 0; i < recordatorio24Horas.length; i++) {
+      if (recordatorio24Horas.length > 0) {
+        for (var i = 0; i < recordatorio24Horas.length; i++) {
         salida +=
           "{  " +
           recordatorio24Horas[i].alimento +
           "  }  ";
-      }
+        }
+      } else salida = "NA";      
       return salida;
     },
     getValor(entrada) {
