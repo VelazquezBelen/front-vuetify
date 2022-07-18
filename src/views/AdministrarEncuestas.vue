@@ -260,10 +260,6 @@ export default {
       }
       return salida;
     },
-    getLugarRelevamiento(lugarRelevamiento) {
-      if (lugarRelevamiento == null) return "";
-      else return lugarRelevamiento.codigo;
-    },
     getValor(entrada) {
       if (entrada == null) return "";
       else return entrada.valor;
@@ -390,7 +386,7 @@ export default {
         "; " +
         data.fechaRelevamiento +
         "; " +
-        this.getLugarRelevamiento(data.lugarRelevamiento) +
+        this.getValor(data.lugarRelevamiento) +
         "; " +
         data.nombreApellido +
         "; " +

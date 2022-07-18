@@ -339,7 +339,7 @@ export default {
         },
         {
           text: "Lugar de relevamiento",
-          value: "lugarRelevamiento.nombre",
+          value: "lugarRelevamiento.nivel",
           filterable: false,
         },
         { text: "Tipo encuesta", value: "tipoEncuesta" },

@@ -1646,7 +1646,7 @@ export default {
         this.encuesta = res.data;
         this.recordatorios = res.data.recordatorio24Horas;
         
-        if (res.data.lugarRelevamiento != null) { this.lugarRelevamiento = res.data.lugarRelevamiento.nombre; }
+        if (res.data.lugarRelevamiento != null) { this.lugarRelevamiento = res.data.lugarRelevamiento.nivel; }
         else { this.lugarRelevamiento = ""; }
         
         if (res.data.nivelEducativo != null) { this.nivelEducativoTexto = res.data.nivelEducativo.nivel; }
