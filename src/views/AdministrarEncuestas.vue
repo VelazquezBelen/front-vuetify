@@ -608,7 +608,7 @@ export default {
         "; " +
         data.fechaRelevamiento +
         "; " +
-        this.getLugarRelevamiento(data.lugarRelevamiento) + 
+        this.getValor(data.lugarRelevamiento) + 
         ";" +
         data.pesoKG +
         ";" +
@@ -653,7 +653,7 @@ export default {
         ";" +
         data.fechaRelevamiento +
         ";" +
-        this.getLugarRelevamiento(data.lugarRelevamiento) +
+        this.getValor(data.lugarRelevamiento) +
         ";" +
         data.fechaNacimientoBebe +
         ";" +
