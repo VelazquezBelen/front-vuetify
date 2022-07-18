@@ -10,7 +10,7 @@
           <v-data-table
             :headers="headers"
             :items="lugares"
-            sort-by="lugar.nombre"
+            sort-by="lugar.nivel"
             class="elevation-1"
           >
             <template v-slot:top>
@@ -58,8 +58,8 @@ export default {
       search: "",
       baseUrl: "https://tpftestbackend.herokuapp.com",
       headers: [
-        { text: "Lugar de relevamiento", align: "start", value: "nombre" },
-        { text: "Código", value: "codigo" },
+        { text: "Lugar de relevamiento", align: "start", value: "nivel" },
+        { text: "Código", value: "valor" },
         {
           text: "Eliminar",
           value: "actions",
@@ -88,7 +88,7 @@ export default {
       };
       await this.axios.post(
         `${this.baseUrl}/lugares/`,
-        JSON.stringify({ nombre: this.lugarInput, codigo: this.codLugarInput }),
+        JSON.stringify({ nivel: this.lugarInput, valor: this.codLugarInput }),
         { headers }
       );
       this.getLugares();
