@@ -112,7 +112,7 @@
                     <v-select
                       v-model="encuesta.lugarRelevamiento"
                       :items="lugares"
-                      item-text="nombre"
+                      item-text="nivel"
                       label="Lugar de relevamiento"
                       return-object
                     ></v-select>

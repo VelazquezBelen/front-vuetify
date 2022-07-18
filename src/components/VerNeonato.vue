@@ -376,7 +376,7 @@ export default {
       );
       this.encuesta = res.data;
       if (res.data.lugarRelevamiento != null)
-        this.lugarRelevamiento = res.data.lugarRelevamiento.nombre;
+        this.lugarRelevamiento = res.data.lugarRelevamiento.nivel;
       else
         this.lugarRelevamiento = "";
       },

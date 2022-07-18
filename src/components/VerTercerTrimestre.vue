@@ -416,7 +416,7 @@ export default {
       this.encuesta = res.data;
       this.recordatorios = res.data.recordatorio24Horas;
       if (res.data.lugarRelevamiento != null)
-        this.lugarRelevamiento = res.data.lugarRelevamiento.nombre;
+        this.lugarRelevamiento = res.data.lugarRelevamiento.nivel;
       else
         this.lugarRelevamiento = "";
       },
