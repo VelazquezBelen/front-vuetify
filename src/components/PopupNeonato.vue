@@ -241,7 +241,7 @@
                 <v-row>
                   <v-col cols="12" md="12">
                     <v-text-field
-                      v-model="encuesta.observacionesBloque0"
+                      v-model="encuesta.edadGestacional"
                       label="Edad Gestacional"
                     ></v-text-field>
                   </v-col>
@@ -391,7 +391,7 @@ class Encuesta {
     viaNacimiento,
     lugarNacimiento,
     nombreBebe,
-    observacionesBloque0,
+    edadGestacional,
     pesoKG,
     ropaAlPesar,
     talla,
@@ -416,7 +416,7 @@ class Encuesta {
     this.viaNacimiento = viaNacimiento;
     this.lugarNacimiento = lugarNacimiento;
     this.nombreBebe = nombreBebe;
-    this.observacionesBloque0 = observacionesBloque0;
+    this.edadGestacional = edadGestacional;
     this.pesoKG = pesoKG;
     this.ropaAlPesar = ropaAlPesar;
     this.talla = talla;
@@ -557,8 +557,8 @@ export default {
         this.encuesta.lugarNacimiento = "NA";
       if (this.encuesta.nombreBebe === null || this.encuesta.nombreBebe === undefined)
         this.encuesta.nombreBebe = "NA";
-      if (this.encuesta.observacionesBloque0 === null || this.encuesta.observacionesBloque0 === undefined)
-        this.encuesta.observacionesBloque0 = "NA";
+      if (this.encuesta.edadGestacional === null || this.encuesta.edadGestacional === undefined)
+        this.encuesta.edadGestacional = "NA";
       if (this.encuesta.pesoKG === null || this.encuesta.pesoKG === undefined)
         this.encuesta.pesoKG = "NA";
       if (this.encuesta.ropaAlPesar === null || this.encuesta.ropaAlPesar === undefined)

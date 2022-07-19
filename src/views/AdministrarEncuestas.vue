@@ -668,7 +668,7 @@ export default {
         ";" +
         data.nombreBebe +
         ";" +
-        data.observacionesBloque0 +
+        data.edadGestacional +
         ";" +
         data.pesoKG +
         ";" +
