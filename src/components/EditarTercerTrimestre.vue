@@ -440,7 +440,12 @@ class Recordatorio24hs {
     this.alimento = alimento;
   }
 }
-
+class ParNivelValor {
+  constructor(nivel, valor) {
+    this.nivel = nivel;
+    this.valor = valor;
+  }
+}
 class Encuesta {
   constructor(
     nombreApellidoEncuestador1,
@@ -546,6 +551,7 @@ export default {
       async editarEncuesta() {
         if (this.$refs.obligatorio.validate()) {
           this.loading = true;
+          this.completarValoresDefault();
           const headers = {
             Accept: "application/json",
             "Content-type": "application/json",
@@ -584,6 +590,54 @@ export default {
     editarRecordatorio(recordatorio) {
       this.recordatorio.alimento = this.recordatorios[this.recordatorios.indexOf(recordatorio)].alimento;
       this.recordatorios.splice(this.recordatorios.indexOf(recordatorio), 1);
+    },
+    completarValoresDefault() {
+      if (this.encuesta.nombreApellidoEncuestador1 === null || this.encuesta.nombreApellidoEncuestador1 === undefined)
+        this.encuesta.nombreApellidoEncuestador1 = "NA";
+      if (this.encuesta.telefonoEncuestador1 === null || this.encuesta.telefonoEncuestador1 === undefined)
+        this.encuesta.telefonoEncuestador1 = 0;
+      if (this.encuesta.emailEncuestador1 === null || this.encuesta.emailEncuestador1 === undefined)
+        this.encuesta.emailEncuestador1 = "NA";
+      if (this.encuesta.nombreApellidoEncuestador2 === null || this.encuesta.nombreApellidoEncuestador2 === undefined)
+        this.encuesta.nombreApellidoEncuestador2 = "NA";
+      if (this.encuesta.telefonoEncuestador2 === null || this.encuesta.telefonoEncuestador2 === undefined)
+        this.encuesta.telefonoEncuestador2 = 0;
+      if (this.encuesta.emailEncuestador2 === null || this.encuesta.emailEncuestador2 === undefined)
+        this.encuesta.emailEncuestador2 = "NA";
+      if (this.encuesta.fechaRelevamiento === null || this.encuesta.fechaRelevamiento === undefined)
+        this.encuesta.fechaRelevamiento = "";
+      if (this.encuesta.lugarRelevamiento === null || this.encuesta.lugarRelevamiento === undefined)
+        this.encuesta.lugarRelevamiento = new ParNivelValor("NA", "NA");
+      if (this.encuesta.fechaNacimiento === null || this.encuesta.fechaNacimiento === undefined)
+        this.encuesta.fechaNacimiento = "";
+      if (this.encuesta.telefono === null || this.encuesta.telefono === undefined)
+        this.encuesta.telefono = 0;
+      if (this.encuesta.fechaUltimaMenstruacion === null || this.encuesta.fechaUltimaMenstruacion === undefined)
+        this.encuesta.fechaUltimaMenstruacion = "";
+      if (this.encuesta.observacionesBloque0 === null || this.encuesta.observacionesBloque0 === undefined)
+        this.encuesta.observacionesBloque0 = "NA";
+      if (this.encuesta.pesoKG === null || this.encuesta.pesoKG === undefined)
+        this.encuesta.pesoKG = "NA";
+      if (this.encuesta.ropaAlPesar === null || this.encuesta.ropaAlPesar === undefined)
+        this.encuesta.ropaAlPesar = "NA";
+      if (this.encuesta.talla === null || this.encuesta.talla === undefined)
+        this.encuesta.talla = "NA";
+      if (this.encuesta.tallaSentada === null || this.encuesta.tallaSentada === undefined)
+        this.encuesta.tallaSentada = "NA";
+      if (this.encuesta.perimetroBraquial === null || this.encuesta.perimetroBraquial === undefined)
+        this.encuesta.perimetroBraquial = "NA";
+      if (this.encuesta.pliegueTricipital === null || this.encuesta.pliegueTricipital === undefined)
+        this.encuesta.pliegueTricipital = "NA";
+      if (this.encuesta.pliegueBicipital === null || this.encuesta.pliegueBicipital === undefined)
+        this.encuesta.pliegueBicipital = "NA";
+      if (this.encuesta.pliegueSubescapular === null || this.encuesta.pliegueSubescapular === undefined)
+        this.encuesta.pliegueSubescapular = "NA";
+      if (this.encuesta.pliegueSuprailiaco === null || this.encuesta.pliegueSuprailiaco === undefined)
+        this.encuesta.pliegueSuprailiaco = "NA";
+      if (this.encuesta.observacionesBloque3 === null || this.encuesta.observacionesBloque3 === undefined)
+        this.encuesta.observacionesBloque3 = "NA";
+      if (this.encuesta.observacionesBloque4 === null || this.encuesta.observacionesBloque4 === undefined)
+        this.encuesta.observacionesBloque4 = "NA";
     },
   }    
 }

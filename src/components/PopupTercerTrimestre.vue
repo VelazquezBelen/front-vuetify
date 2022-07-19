@@ -582,7 +582,6 @@ export default {
     },
 
     async completarDatosMadre() {
-      //this.$refs.obligatorio.reset();
       this.autocompletar();
       if (this.dniMadre != "") {
         this.axios.get(`${this.baseUrl}/encuestas1y2Trimestre/madre/` + this.dniMadre)
