@@ -263,10 +263,13 @@ export default {
       return salida;
     },
     getValor(entrada) {
-      if (entrada == null) return "";
+      if (entrada === null) return "";
       else return entrada.valor;
     },
-
+    getValorFecha(fecha) {
+      if (fecha === "") return "NA";
+      else return fecha;
+    },
     async exportarEncuestas() {
       // Genera un archivo .csv separando los datos con ;
       this.loading = true;
@@ -386,7 +389,7 @@ export default {
         "; " +
         data.emailEncuestador2 +
         "; " +
-        data.fechaRelevamiento +
+        this.getValorFecha(data.fechaRelevamiento) +
         "; " +
         this.getValor(data.lugarRelevamiento) +
         "; " +
@@ -394,13 +397,13 @@ export default {
         "; " +
         data.dni +
         ";" +
-        data.fechaNacimiento +
+        this.getValorFecha(data.fechaNacimiento) +
         ";" +
         data.domicilioBarrio +
         ";" +
         data.telefono +
         "; " +
-        data.fechaUltimaMenstruacion +
+        this.getValorFecha(data.fechaUltimaMenstruacion) +
         ";" +
         data.semanasGestacion +
         ";" +
@@ -608,7 +611,7 @@ export default {
         "; " +
         data.emailEncuestador2 +
         "; " +
-        data.fechaRelevamiento +
+        this.getValorFecha(data.fechaRelevamiento) +
         "; " +
         this.getValor(data.lugarRelevamiento) + 
         ";" +
@@ -653,11 +656,11 @@ export default {
         ";" +
         data.emailEncuestador2 +
         ";" +
-        data.fechaRelevamiento +
+        this.getValorFecha(data.fechaRelevamiento) +
         ";" +
         this.getValor(data.lugarRelevamiento) +
         ";" +
-        data.fechaNacimientoBebe +
+        this.getValorFecha(data.fechaNacimientoBebe) +
         ";" +
         data.viaNacimiento +
         ";" +
