@@ -639,13 +639,13 @@ export default {
       if (this.encuesta.nombreApellidoEncuestador1 === null || this.encuesta.nombreApellidoEncuestador1 === undefined)
         this.encuesta.nombreApellidoEncuestador1 = "NA";
       if (this.encuesta.telefonoEncuestador1 === null || this.encuesta.telefonoEncuestador1 === undefined)
-        this.encuesta.telefonoEncuestador1 = 0;
+        this.encuesta.telefonoEncuestador1 = "NA";
       if (this.encuesta.emailEncuestador1 === null || this.encuesta.emailEncuestador1 === undefined)
         this.encuesta.emailEncuestador1 = "NA";
       if (this.encuesta.nombreApellidoEncuestador2 === null || this.encuesta.nombreApellidoEncuestador2 === undefined)
         this.encuesta.nombreApellidoEncuestador2 = "NA";
       if (this.encuesta.telefonoEncuestador2 === null || this.encuesta.telefonoEncuestador2 === undefined)
-        this.encuesta.telefonoEncuestador2 = 0;
+        this.encuesta.telefonoEncuestador2 = "NA";
       if (this.encuesta.emailEncuestador2 === null || this.encuesta.emailEncuestador2 === undefined)
         this.encuesta.emailEncuestador2 = "NA";
       if (this.encuesta.fechaRelevamiento === null || this.encuesta.fechaRelevamiento === undefined)
@@ -655,7 +655,7 @@ export default {
       if (this.encuesta.fechaNacimiento === null || this.encuesta.fechaNacimiento === undefined)
         this.encuesta.fechaNacimiento = "";
       if (this.encuesta.telefono === null || this.encuesta.telefono === undefined)
-        this.encuesta.telefono = 0;
+        this.encuesta.telefono = "NA";
       if (this.encuesta.fechaUltimaMenstruacion === null || this.encuesta.fechaUltimaMenstruacion === undefined)
         this.encuesta.fechaUltimaMenstruacion = "";
       if (this.encuesta.observacionesBloque0 === null || this.encuesta.observacionesBloque0 === undefined)

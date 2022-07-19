@@ -1897,27 +1897,123 @@ export default {
       if (this.encuesta.nombreApellidoEncuestador1 === null || this.encuesta.nombreApellidoEncuestador1 === undefined)
         this.encuesta.nombreApellidoEncuestador1 = "NA";
       if (this.encuesta.telefonoEncuestador1 === null || this.encuesta.telefonoEncuestador1 === undefined)
-        this.encuesta.telefonoEncuestador1 = 0;
+        this.encuesta.telefonoEncuestador1 = "NA";
       if (this.encuesta.emailEncuestador1 === null || this.encuesta.emailEncuestador1 === undefined)
         this.encuesta.emailEncuestador1 = "NA";
       if (this.encuesta.nombreApellidoEncuestador2 === null || this.encuesta.nombreApellidoEncuestador2 === undefined)
         this.encuesta.nombreApellidoEncuestador2 = "NA";
       if (this.encuesta.telefonoEncuestador2 === null || this.encuesta.telefonoEncuestador2 === undefined)
-        this.encuesta.telefonoEncuestador2 = 0;
+        this.encuesta.telefonoEncuestador2 = "NA";
       if (this.encuesta.emailEncuestador2 === null || this.encuesta.emailEncuestador2 === undefined)
         this.encuesta.emailEncuestador2 = "NA";
       if (this.encuesta.fechaRelevamiento === null || this.encuesta.fechaRelevamiento === undefined)
         this.encuesta.fechaRelevamiento = "";
       if (this.encuesta.lugarRelevamiento === null || this.encuesta.lugarRelevamiento === undefined)
         this.encuesta.lugarRelevamiento = new ParNivelValor("NA", "NA");
+      if (this.encuesta.nombreApellido === null || this.encuesta.nombreApellido === undefined)
+        this.encuesta.nombreApellido = "NA";
+      if (this.encuesta.dni === null || this.encuesta.dni === undefined)
+        this.encuesta.dni = "NA";
       if (this.encuesta.fechaNacimiento === null || this.encuesta.fechaNacimiento === undefined)
         this.encuesta.fechaNacimiento = "";
+      if (this.encuesta.domicilioBarrio === null || this.encuesta.domicilioBarrio === undefined)
+        this.encuesta.domicilioBarrio = "NA";
       if (this.encuesta.telefono === null || this.encuesta.telefono === undefined)
-        this.encuesta.telefono = 0;
+        this.encuesta.telefono = "NA";
       if (this.encuesta.fechaUltimaMenstruacion === null || this.encuesta.fechaUltimaMenstruacion === undefined)
         this.encuesta.fechaUltimaMenstruacion = "";
+      if (this.encuesta.semanasGestacion === null || this.encuesta.semanasGestacion === undefined)
+        this.encuesta.semanasGestacion = 0;
       if (this.encuesta.observacionesBloque0 === null || this.encuesta.observacionesBloque0 === undefined)
         this.encuesta.observacionesBloque0 = "NA";
+      if (this.encuesta.diabetes === null || this.encuesta.diabetes === undefined)
+        this.encuesta.diabetes = "NA";
+      if (this.encuesta.enfermedadRenal === null || this.encuesta.enfermedadRenal === undefined)
+        this.encuesta.enfermedadRenal = "NA";
+      if (this.encuesta.hipertension === null || this.encuesta.hipertension === undefined)
+        this.encuesta.hipertension = "NA";
+      if (this.encuesta.colesterolTrigliceridosAltos === null || this.encuesta.colesterolTrigliceridosAltos === undefined)
+        this.encuesta.colesterolTrigliceridosAltos = "NA";
+      if (this.encuesta.asmaEPOC === null || this.encuesta.asmaEPOC === undefined)
+        this.encuesta.asmaEPOC = "NA";
+      if (this.encuesta.covid19 === null || this.encuesta.covid19 === undefined)
+        this.encuesta.covid19 = "NA";
+      if (this.encuesta.anemia === null || this.encuesta.anemia === undefined)
+        this.encuesta.anemia = "NA";
+      if (this.encuesta.enfermedadCronica === null || this.encuesta.enfermedadCronica === undefined)
+        this.encuesta.enfermedadCronica = "NA";
+      if (this.encuesta.cualEnfermedadCronica === null || this.encuesta.cualEnfermedadCronica === undefined)
+        this.encuesta.cualEnfermedadCronica = "NA";
+      if (this.encuesta.consumeMedicamento === null || this.encuesta.consumeMedicamento === undefined)
+        this.encuesta.consumeMedicamento = "NA";
+      if (this.encuesta.cualConsumeMedicamento === null || this.encuesta.cualConsumeMedicamento === undefined)
+        this.encuesta.cualConsumeMedicamento = "NA";
+      if (this.encuesta.consumeComplejoVitaminicoSuplemento === null || this.encuesta.consumeComplejoVitaminicoSuplemento === undefined)
+        this.encuesta.consumeComplejoVitaminicoSuplemento = "NA";
+      if (this.encuesta.cualConsumeComplejoVitaminicoSuplemento === null || this.encuesta.cualConsumeComplejoVitaminicoSuplemento === undefined)
+        this.encuesta.cualConsumeComplejoVitaminicoSuplemento = "NA";
+      if (this.encuesta.fumaActual === null || this.encuesta.fumaActual === undefined)
+        this.encuesta.fumaActual = "NA";
+      if (this.encuesta.fumaAntes === null || this.encuesta.fumaAntes === undefined)
+        this.encuesta.fumaAntes = "NA";
+      if (this.encuesta.alcoholActual === null || this.encuesta.alcoholActual === undefined)
+        this.encuesta.alcoholActual = "NA";
+      if (this.encuesta.embarazoAntes === null || this.encuesta.embarazoAntes === undefined)
+        this.encuesta.embarazoAntes = "NA";
+      if (this.encuesta.cuantosEmbarazoAntes === null || this.encuesta.cuantosEmbarazoAntes === undefined)
+        this.encuesta.cuantosEmbarazoAntes = "NA";
+      if (this.encuesta.hijos === null || this.encuesta.hijos === undefined)
+        this.encuesta.hijos = "NA";
+      if (this.encuesta.cuantosHijos === null || this.encuesta.cuantosHijos === undefined)
+        this.encuesta.cuantosHijos = "NA";
+      if (this.encuesta.observacionesBloque1 === null || this.encuesta.observacionesBloque1 === undefined)
+        this.encuesta.observacionesBloque1 = "NA";
+      if (this.encuesta.pais === null || this.encuesta.pais === undefined)
+        this.encuesta.pais = "NA";
+      if (this.encuesta.provincia === null || this.encuesta.provincia === undefined)
+        this.encuesta.provincia = "NA";
+      if (this.encuesta.personasVivienda === null || this.encuesta.personasVivienda === undefined)
+        this.encuesta.personasVivienda = "NA";
+      if (this.encuesta.habitacionesVivienda === null || this.encuesta.habitacionesVivienda === undefined)
+        this.encuesta.habitacionesVivienda = "NA";
+      if (this.encuesta.desagueCloaca === null || this.encuesta.desagueCloaca === undefined)
+        this.encuesta.desagueCloaca = "NA";
+      if (this.encuesta.aguaPotable === null || this.encuesta.aguaPotable === undefined)
+        this.encuesta.aguaPotable = "NA";
+      if (this.encuesta.redElectrica === null || this.encuesta.redElectrica === undefined)
+        this.encuesta.redElectrica = "NA";
+      if (this.encuesta.gasNatural === null || this.encuesta.gasNatural === undefined)
+        this.encuesta.gasNatural = "NA";
+      if (this.encuesta.diabetes === null || this.encuesta.diabetes === undefined)
+        this.encuesta.diabetes = "NA";
+      if (this.encuesta.nivelEducativo === null || this.encuesta.nivelEducativo === undefined)
+        this.encuesta.nivelEducativo = new ParNivelValor("NA", "NA");
+      if (this.encuesta.empleo === null || this.encuesta.empleo === undefined)
+        this.encuesta.empleo = new ParNivelValor("NA", "NA");
+      if (this.encuesta.asistenciaEstado === null || this.encuesta.asistenciaEstado === undefined)
+        this.encuesta.asistenciaEstado = "NA";
+      if (this.encuesta.cualAsistenciaEstado === null || this.encuesta.cualAsistenciaEstado === undefined)
+        this.encuesta.cualAsistenciaEstado = new ParNivelValor("NA", "NA");
+      if (this.encuesta.recibioBolson === null || this.encuesta.recibioBolson === undefined)
+        this.encuesta.recibioBolson = "NA";
+      if (this.encuesta.recibioTickets === null || this.encuesta.recibioTickets === undefined)
+        this.encuesta.recibioTickets = "NA";
+      if (this.encuesta.recibioTarjeta === null || this.encuesta.recibioTarjeta === undefined)
+        this.encuesta.recibioTarjeta = "NA";
+      if (this.encuesta.recibioLeche === null || this.encuesta.recibioLeche === undefined)
+        this.encuesta.recibioLeche = "NA";
+      if (this.encuesta.recibioOtra === null || this.encuesta.recibioOtra === undefined)
+        this.encuesta.recibioOtra = "NA";
+      if (this.encuesta.cualUltimoMesRecibio === null || this.encuesta.cualUltimoMesRecibio === undefined)
+        this.encuesta.cualUltimoMesRecibio = "NA";
+      if (this.encuesta.ingresoIndividual === null || this.encuesta.ingresoIndividual === undefined)
+        this.encuesta.ingresoIndividual = new ParNivelValor("NA", "NA");
+      if (this.encuesta.ingresoTotal === null || this.encuesta.ingresoTotal === undefined)
+        this.encuesta.ingresoTotal = new ParNivelValor("NA", "NA");
+      if (this.encuesta.recibioIFE === null || this.encuesta.recibioIFE === undefined)
+        this.encuesta.recibioIFE = "NA";
+      if (this.encuesta.observacionesBloque2 === null || this.encuesta.observacionesBloque2 === undefined)
+        this.encuesta.observacionesBloque2 = "NA";
       if (this.encuesta.pesoKG === null || this.encuesta.pesoKG === undefined)
         this.encuesta.pesoKG = "NA";
       if (this.encuesta.ropaAlPesar === null || this.encuesta.ropaAlPesar === undefined)
@@ -1938,8 +2034,85 @@ export default {
         this.encuesta.pliegueSuprailiaco = "NA";
       if (this.encuesta.observacionesBloque3 === null || this.encuesta.observacionesBloque3 === undefined)
         this.encuesta.observacionesBloque3 = "NA";
-      if (this.encuesta.observacionesBloque4 === null || this.encuesta.observacionesBloque4 === undefined)
-        this.encuesta.observacionesBloque4 = "NA";
+      // RECORDATORIO 24HORAS
+      if (this.encuesta.observacionesBloque4Parte1 === null || this.encuesta.observacionesBloque4Parte1 === undefined)
+        this.encuesta.observacionesBloque4Parte1 = "NA";
+      if (this.encuesta.desayuno === null || this.encuesta.desayuno === undefined)
+        this.encuesta.desayuno = "NA";
+      if (this.encuesta.almuerzo === null || this.encuesta.almuerzo === undefined)
+        this.encuesta.almuerzo = "NA";
+      if (this.encuesta.merienda === null || this.encuesta.merienda === undefined)
+        this.encuesta.merienda = "NA";
+      if (this.encuesta.cena === null || this.encuesta.cena === undefined)
+        this.encuesta.cena = "NA";
+      if (this.encuesta.frecuenciaConsumo === null || this.encuesta.frecuenciaConsumo === undefined)
+        this.encuesta.frecuenciaConsumo = new ParNivelValor("NA", "NA");
+      if (this.encuesta.golosinas === null || this.encuesta.golosinas === undefined)
+        this.encuesta.golosinas = "0";
+      if (this.encuesta.panBlanco === null || this.encuesta.panBlanco === undefined)
+        this.encuesta.panBlanco = "0";
+      if (this.encuesta.pan === null || this.encuesta.pan === undefined)
+        this.encuesta.pan = "0";
+      if (this.encuesta.copetin === null || this.encuesta.copetin === undefined)
+        this.encuesta.copetin = "0";
+      if (this.encuesta.frutas === null || this.encuesta.frutas === undefined)
+        this.encuesta.frutas = "0";
+      if (this.encuesta.lacteos === null || this.encuesta.lacteos === undefined)
+        this.encuesta.lacteos = "0";
+      if (this.encuesta.bebidas === null || this.encuesta.bebidas === undefined)
+        this.encuesta.bebidas = "0";
+      if (this.encuesta.otros === null || this.encuesta.otros === undefined)
+        this.encuesta.otros = "0";
+      if (this.encuesta.nsnc === null || this.encuesta.nsnc === undefined)
+        this.encuesta.nsnc = "0";
+      if (this.encuesta.observacionesBloque4Parte2 === null || this.encuesta.observacionesBloque4Parte2 === undefined)
+        this.encuesta.observacionesBloque4Parte2 = "NA";
+      if (this.encuesta.consumioLeche === null || this.encuesta.consumioLeche === undefined)
+        this.encuesta.consumioLeche = new ParNivelValor("NA", "NA");
+      if (this.encuesta.consumioFrutasFrescas === null || this.encuesta.consumioFrutasFrescas === undefined)
+        this.encuesta.consumioFrutasFrescas = new ParNivelValor("NA", "NA");
+      if (this.encuesta.consumioVerduras === null || this.encuesta.consumioVerduras === undefined)
+        this.encuesta.consumioVerduras = new ParNivelValor("NA", "NA");
+      if (this.encuesta.consumioPapa === null || this.encuesta.consumioPapa === undefined)
+        this.encuesta.consumioPapa = new ParNivelValor("NA", "NA");
+      if (this.encuesta.consumioCereales === null || this.encuesta.consumioCereales === undefined)
+        this.encuesta.consumioCereales = new ParNivelValor("NA", "NA");
+      if (this.encuesta.consumioEmbutidos === null || this.encuesta.consumioEmbutidos === undefined)
+        this.encuesta.consumioEmbutidos = new ParNivelValor("NA", "NA");
+      if (this.encuesta.observacionesBloque4Parte3 === null || this.encuesta.observacionesBloque4Parte3 === undefined)
+        this.encuesta.observacionesBloque4Parte3 = "NA";
+      if (this.encuesta.consumioCarne === null || this.encuesta.consumioCarne === undefined)
+        this.encuesta.consumioCarne = new ParNivelValor("NA", "NA");
+      if (this.encuesta.consumioPescado === null || this.encuesta.consumioPescado === undefined)
+        this.encuesta.consumioPescado = new ParNivelValor("NA", "NA");
+      if (this.encuesta.consumioAceites === null || this.encuesta.consumioAceites === undefined)
+        this.encuesta.consumioAceites = new ParNivelValor("NA", "NA");
+      if (this.encuesta.consumioFrutasFrescas === null || this.encuesta.consumioFrutasFrescas === undefined)
+        this.encuesta.consumioFrutasFrescas = new ParNivelValor("NA", "NA");
+      if (this.encuesta.consumioProductosCopetin === null || this.encuesta.consumioProductosCopetin === undefined)
+        this.encuesta.consumioProductosCopetin = new ParNivelValor("NA", "NA");
+      if (this.encuesta.consumioGolosinas === null || this.encuesta.consumioGolosinas === undefined)
+        this.encuesta.consumioGolosinas = new ParNivelValor("NA", "NA");
+      if (this.encuesta.observacionesBloque4Parte4 === null || this.encuesta.observacionesBloque4Parte4 === undefined)
+        this.encuesta.observacionesBloque4Parte4 = "NA";
+      if (this.encuesta.preocupadoSuficienteAlimentos === null || this.encuesta.preocupadoSuficienteAlimentos === undefined)
+        this.encuesta.preocupadoSuficienteAlimentos = "NA";
+      if (this.encuesta.podidoAlimentos === null || this.encuesta.podidoAlimentos === undefined)
+        this.encuesta.podidoAlimentos = "NA";
+      if (this.encuesta.comidoPocaVariedad === null || this.encuesta.comidoPocaVariedad === undefined)
+        this.encuesta.comidoPocaVariedad = "NA";
+      if (this.encuesta.dejarDesayunoAlmuerzoCena === null || this.encuesta.dejarDesayunoAlmuerzoCena === undefined)
+        this.encuesta.dejarDesayunoAlmuerzoCena = "NA";
+      if (this.encuesta.comidoMenos === null || this.encuesta.comidoMenos === undefined)
+        this.encuesta.comidoMenos = "NA";
+      if (this.encuesta.sinAlimentos === null || this.encuesta.sinAlimentos === undefined)
+        this.encuesta.sinAlimentos = "NA";
+      if (this.encuesta.sentidoHambre === null || this.encuesta.sentidoHambre === undefined)
+        this.encuesta.sentidoHambre = "NA";
+      if (this.encuesta.dejadoComer === null || this.encuesta.dejadoComer === undefined)
+        this.encuesta.dejadoComer = "NA";
+      if (this.encuesta.observacionesBloque5 === null || this.encuesta.observacionesBloque5 === undefined)
+        this.encuesta.observacionesBloque5 = "NA";
     },
   }    
 }
