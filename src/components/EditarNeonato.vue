@@ -381,6 +381,12 @@
 </template>
 
 <script>
+class ParNivelValor {
+  constructor(nivel, valor) {
+    this.nivel = nivel;
+    this.valor = valor;
+  }
+}
 class Encuesta {
   constructor(
     nombreApellidoEncuestador1,
@@ -478,6 +484,7 @@ export default {
       async editarEncuesta() {
         if (this.$refs.obligatorio.validate()) {
           this.loading = true;
+          this.completarValoresDefault();
           const headers = {
             Accept: "application/json",
             "Content-type": "application/json",
@@ -503,6 +510,52 @@ export default {
     async getLugares() {
       const res = await this.axios.get(`${this.baseUrl}/lugares`);
       this.lugares = res.data;
+    },
+    completarValoresDefault() {
+      if (this.encuesta.nombreApellidoEncuestador1 === null || this.encuesta.nombreApellidoEncuestador1 === undefined)
+        this.encuesta.nombreApellidoEncuestador1 = "NA";
+      if (this.encuesta.telefonoEncuestador1 === null || this.encuesta.telefonoEncuestador1 === undefined)
+        this.encuesta.telefonoEncuestador1 = 0;
+      if (this.encuesta.emailEncuestador1 === null || this.encuesta.emailEncuestador1 === undefined)
+        this.encuesta.emailEncuestador1 = "NA";
+      if (this.encuesta.nombreApellidoEncuestador2 === null || this.encuesta.nombreApellidoEncuestador2 === undefined)
+        this.encuesta.nombreApellidoEncuestador2 = "NA";
+      if (this.encuesta.telefonoEncuestador2 === null || this.encuesta.telefonoEncuestador2 === undefined)
+        this.encuesta.telefonoEncuestador2 = 0;
+      if (this.encuesta.emailEncuestador2 === null || this.encuesta.emailEncuestador2 === undefined)
+        this.encuesta.emailEncuestador2 = "NA";
+      if (this.encuesta.fechaRelevamiento === null || this.encuesta.fechaRelevamiento === undefined)
+        this.encuesta.fechaRelevamiento = "";
+      if (this.encuesta.lugarRelevamiento === null || this.encuesta.lugarRelevamiento === undefined)
+        this.encuesta.lugarRelevamiento = new ParNivelValor("NA", "NA");
+      if (this.encuesta.fechaNacimiento === null || this.encuesta.fechaNacimiento === undefined)
+        this.encuesta.fechaNacimiento = "";
+      if (this.encuesta.domicilioBarrio === null || this.encuesta.domicilioBarrio === undefined)
+        this.encuesta.domicilioBarrio = "NA";
+      if (this.encuesta.telefono === null || this.encuesta.telefono === undefined)
+        this.encuesta.telefono = 0;
+      if (this.encuesta.fechaNacimientoBebe === null || this.encuesta.fechaNacimientoBebe === undefined)
+        this.encuesta.fechaNacimientoBebe = "";
+      if (this.encuesta.viaNacimiento === null || this.encuesta.viaNacimiento === undefined) 
+        this.encuesta.viaNacimiento = "NA";
+      if (this.encuesta.lugarNacimiento === null || this.encuesta.lugarNacimiento === undefined)
+        this.encuesta.lugarNacimiento = "NA";
+      if (this.encuesta.nombreBebe === null || this.encuesta.nombreBebe === undefined)
+        this.encuesta.nombreBebe = "NA";
+      if (this.encuesta.observacionesBloque0 === null || this.encuesta.observacionesBloque0 === undefined)
+        this.encuesta.observacionesBloque0 = "NA";
+      if (this.encuesta.pesoKG === null || this.encuesta.pesoKG === undefined)
+        this.encuesta.pesoKG = "NA";
+      if (this.encuesta.ropaAlPesar === null || this.encuesta.ropaAlPesar === undefined)
+        this.encuesta.ropaAlPesar = "NA";
+      if (this.encuesta.talla === null || this.encuesta.talla === undefined)
+        this.encuesta.talla = "NA";
+      if (this.encuesta.perimetroCefalico === null || this.encuesta.perimetroCefalico === undefined)
+        this.encuesta.perimetroCefalico = "NA";
+      if (this.encuesta.circunsferenciaBrazo === null || this.encuesta.circunsferenciaBrazo === undefined)  
+        this.encuesta.circunsferenciaBrazo = "NA";
+      if (this.encuesta.observacionesBloque5 === null || this.encuesta.observacionesBloque5 === undefined)
+        this.encuesta.observacionesBloque5 = "NA";
     },
   }    
 }

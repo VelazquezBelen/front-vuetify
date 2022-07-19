@@ -366,12 +366,11 @@
 </template>
 
 <script>
-class Lugar {
+class ParNivelValor {
   constructor(nivel, valor) {
     this.nivel = nivel;
     this.valor = valor;
   }
-
 }
 class Encuesta {
   constructor(
@@ -543,7 +542,7 @@ export default {
       if (this.encuesta.fechaRelevamiento === null || this.encuesta.fechaRelevamiento === undefined)
         this.encuesta.fechaRelevamiento = "";
       if (this.encuesta.lugarRelevamiento === null || this.encuesta.lugarRelevamiento === undefined)
-        this.encuesta.lugarRelevamiento = new Lugar("NA", "NA");
+        this.encuesta.lugarRelevamiento = new ParNivelValor("NA", "NA");
       if (this.encuesta.fechaNacimiento === null || this.encuesta.fechaNacimiento === undefined)
         this.encuesta.fechaNacimiento = "";
       if (this.encuesta.domicilioBarrio === null || this.encuesta.domicilioBarrio === undefined)
@@ -572,7 +571,7 @@ export default {
         this.encuesta.circunsferenciaBrazo = "NA";
       if (this.encuesta.observacionesBloque5 === null || this.encuesta.observacionesBloque5 === undefined)
         this.encuesta.observacionesBloque5 = "NA";
-    }
+    },
   },
 };
 </script>
