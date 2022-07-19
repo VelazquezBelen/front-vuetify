@@ -187,7 +187,7 @@
             <v-row>
               <v-col cols="12" md="12">
                 <v-text-field
-                  v-model="encuesta.observacionesBloque0"
+                  v-model="encuesta.edadGestacional"
                   label="Edad Gestacional"
                   readonly
                 ></v-text-field>
@@ -319,7 +319,7 @@ class Encuesta {
     viaNacimiento,
     lugarNacimiento,
     nombreBebe,
-    observacionesBloque0,
+    edadGestacional,
     pesoKG,
     ropaAlPesar,
     talla,
@@ -346,7 +346,7 @@ class Encuesta {
     this.viaNacimiento = viaNacimiento;
     this.lugarNacimiento = lugarNacimiento;
     this.nombreBebe = nombreBebe;
-    this.observacionesBloque0 = observacionesBloque0;
+    this.edadGestacional = edadGestacional;
     this.pesoKG = pesoKG;
     this.ropaAlPesar = ropaAlPesar;
     this.talla = talla;
