@@ -504,9 +504,24 @@ export default {
           this.$emit('camposObligatorios');
         } 
     },
+    async completarDatosMadre() {
+      if (this.dniMadre != "") {
+        this.axios.get(`${this.baseUrl}/encuestas1y2Trimestre/madre/` + this.dniMadre)
+        .then((res) => {
+          if (res.data.length == 1) {
+            this.encuesta.nombreApellido = res.data[0].nombreApellido;
+            this.encuesta.dni = res.data[0].dni;
+            this.encuesta.domicilioBarrio = res.data[0].domicilioBarrio;
+            this.encuesta.fechaNacimiento = res.data[0].fechaNacimiento;
+            this.encuesta.telefono = res.data[0].telefono;
+          }
+        });
+      }
+    },
     limpiarEncuesta() {
       this.encuesta = new Encuesta();
       this.autocompletar();
+      this.completarDatosMadre();
     }, 
     async getLugares() {
       const res = await this.axios.get(`${this.baseUrl}/lugares`);

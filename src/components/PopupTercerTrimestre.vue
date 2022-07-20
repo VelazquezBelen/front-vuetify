@@ -603,6 +603,7 @@ export default {
     limpiarEncuesta() {
       this.encuesta = new Encuesta();
       this.autocompletar();
+      this.completarDatosMadre();
     },
     async getLugares() {
       const res = await this.axios.get(`${this.baseUrl}/lugares`);
