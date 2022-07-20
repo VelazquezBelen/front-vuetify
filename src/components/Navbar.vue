@@ -119,6 +119,7 @@ export default {
   data: () => ({
       drawer: false,
       usuarios: [],
+      redireccionado: false,
   }),
   created() {
     axios
@@ -132,7 +133,8 @@ export default {
   },
   methods: {
     redireccionEncuestas() {
-      if (this.$auth.isAuthenticated) { this.$router.push('encuestas').catch(()=>{}); }
+      if (this.$auth.isAuthenticated && !this.redireccionado) { this.$router.push('encuestas').catch(()=>{}); }
+      this.redireccionado = true;
     },
     // Chequea si el usuario logueado tiene permisos de administrador, si es así
     // muestra la opción de Administración en la barra de navegación
