@@ -289,20 +289,20 @@ export default {
       for (var index in this.encuestas) {
         if (!dnis.includes(this.encuestas[index].dni)) {
           const res1 = await this.axios.get(`${this.baseUrl}/encuestas1y2Trimestre/madre/` + this.encuestas[index].dni);
-          if (res1 != null) {          
+          if (res1.data[0] != null) {          
             body += this.getData1y2Trimestre(res1.data[0]);
-          }
-          const res2 = await this.axios.get(`${this.baseUrl}/encuestas3Trimestre/madre/` + this.encuestas[index].dni);
-          if (res2.data[0] != null) {
-            body += this.getData3Trimestre(res2.data[0]);
-          }
-          const res3 = await this.axios.get(`${this.baseUrl}/encuestasNeonato/madre/` + this.encuestas[index].dni);
-          if (res3.data[0] != null) {
-            body += this.getDataNeonato(res3.data[0]);
-          }
-          body += "\n";
-        }
-        dnis.push(this.encuestas[index].dni);        
+            const res2 = await this.axios.get(`${this.baseUrl}/encuestas3Trimestre/madre/` + this.encuestas[index].dni);
+            if (res2.data[0] != null) {
+              body += this.getData3Trimestre(res2.data[0]);
+              const res3 = await this.axios.get(`${this.baseUrl}/encuestasNeonato/madre/` + this.encuestas[index].dni);
+              if (res3.data[0] != null) {
+                body += this.getDataNeonato(res3.data[0]);
+              }              
+            }
+            body += "\n";            
+          }    
+          dnis.push(this.encuestas[index].dni);        
+        }              
       }
       var texto = header + "\n" + body;
       texto = texto.replace(/ /g, "")
@@ -352,19 +352,19 @@ export default {
           && ((this.fecha2 != "" && this.encuestasExportar[index].fechaRelevamiento <= this.fecha2 ) || this.fecha2 == "")
         ) {          
           const res1 = await this.axios.get(`${this.baseUrl}/encuestas1y2Trimestre/madre/` + this.encuestasExportar[index].dni);
-          if (res1 != null) {          
+          if (res1.data[0] != null) {          
             body += this.getData1y2Trimestre(res1.data[0]);
+            const res2 = await this.axios.get(`${this.baseUrl}/encuestas3Trimestre/madre/` + this.encuestasExportar[index].dni);
+            if (res2.data[0] != null) {
+              body += this.getData3Trimestre(res2.data[0]);
+              const res3 = await this.axios.get(`${this.baseUrl}/encuestasNeonato/madre/` + this.encuestasExportar[index].dni);
+              if (res3.data[0] != null) {
+                body += this.getDataNeonato(res3.data[0]);
+              }
+            }            
+            body += "\n";            
           }
-          const res2 = await this.axios.get(`${this.baseUrl}/encuestas3Trimestre/madre/` + this.encuestasExportar[index].dni);
-          if (res2.data[0] != null) {
-            body += this.getData3Trimestre(res2.data[0]);
-          }
-          const res3 = await this.axios.get(`${this.baseUrl}/encuestasNeonato/madre/` + this.encuestasExportar[index].dni);
-          if (res3.data[0] != null) {
-            body += this.getDataNeonato(res3.data[0]);
-          }
-          body += "\n";
-          dnis.push(this.encuestasExportar[index].dni)
+          dnis.push(this.encuestasExportar[index].dni)          
         }
       }    
       var texto = header + "\n" + body;
@@ -373,6 +373,9 @@ export default {
       this.loading2 = false;
       this.dialogExportar = false;
       FileSaver.saveAs(blob, "Encuestas.csv");
+      this.fecha1 = "";
+      this.fecha2 = "";
+      this.emailUsuario = null;
     },
 
     getData1y2Trimestre(data) {
