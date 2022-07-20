@@ -46,7 +46,6 @@
               <v-col cols="12" md="4">
                 <v-text-field
                   v-model="encuesta.telefonoEncuestador1"
-                  :counter="10"
                   label="Teléfono"
                   type="number"
                   min="0"
@@ -60,6 +59,7 @@
                   hint="email@example.com"
                   persistent-hint
                   :rules = "rules.email"
+                  readonly
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -506,10 +506,21 @@ export default {
     },
     limpiarEncuesta() {
       this.encuesta = new Encuesta();
+      this.autocompletar();
     }, 
     async getLugares() {
       const res = await this.axios.get(`${this.baseUrl}/lugares`);
       this.lugares = res.data;
+    },
+    async autocompletar() {
+      this.axios.get(`${this.baseUrl}/usuarios/email/` + this.$auth.user.email)
+      .then((res) => {
+        if (res.data.length == 1) {
+          this.encuesta.nombreApellidoEncuestador1 = res.data[0].nombre;
+          this.encuesta.telefonoEncuestador1 = res.data[0].telefono;
+          this.encuesta.emailEncuestador1 = this.$auth.user.email;
+        }
+      });
     },
     completarValoresDefault() {
       if (this.encuesta.nombreApellidoEncuestador1 === null || this.encuesta.nombreApellidoEncuestador1 === undefined)

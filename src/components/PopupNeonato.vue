@@ -51,6 +51,7 @@
                       label="E-mail"
                       hint="email@example.com"
                       persistent-hint
+                      readonly
                     ></v-text-field>
                   </v-col>
                 </v-row>
@@ -508,6 +509,7 @@ export default {
     },
     limpiarEncuesta() {
       this.encuesta = new Encuesta();
+      this.autocompletar();
     },
     async getLugares() {
       const res = await this.axios.get(`${this.baseUrl}/lugares`);
